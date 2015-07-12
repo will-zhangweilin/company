@@ -1,0 +1,73 @@
+<!--<?php
+
+require_once template('head');
+echo <<<EOT
+-->
+</head>
+<!--
+EOT;
+$title="网站建设";
+$rurl="../dlapp/index.php?anyid={$anyid}&lang={$lang}";
+require_once template('metlangs');
+echo <<<EOT
+-->
+<body>
+<form method="POST" name="myform" action="index.php?anyid={$anyid}&lang={$lang}&cs={$cs}" target="_self">
+<input name="action" type="hidden" value="modify" />
+<table cellpadding="2" cellspacing="1" class="table">
+	<tr> 
+		<td class="text">首页强制访问地址：</td>
+		<td class="input">
+<!--
+EOT;
+foreach($met_langok as $key=>$val){
+echo <<<EOT
+-->		
+		{$val[name]}首页:{$met_weburl}index.php?lang={$val[mark]}&metopen={$met_member_force}&nbsp;&nbsp;<a href="{$met_weburl}index.php?lang={$val[mark]}&metopen={$met_member_force}" target="_blank">访问</a>
+		<br />
+<!--
+EOT;
+}
+echo <<<EOT
+-->			
+		</td>
+	</tr>
+	<tr> 
+		<td class="text">网站状态：</td>
+		<td class="input">
+		<label><input name="met_website" type="radio" class="radio" value="1" $met_website1[1] >{$lang_open}</label>
+		&nbsp;&nbsp;
+		<label><input name="met_website" type="radio" class="radio" value="0" $met_website1[0] >{$lang_close}</label>
+		<span class="tips">关闭网站，即可显示网站建设中。</span>
+		</td>
+	</tr>
+		  <tr> 
+				<td class="text"></td>
+				<td class="input color390">页面内容：</td>
+		  </tr>
+	<tr> 
+          <td class="input" valign="top" colspan="2">
+		  <textarea name="index_content" rows="20" cols="100">{$index_content}</textarea>
+			<script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+met_ckeditor('$depth','index_content');
+</script>
+		  </td>
+    </tr>
+	<tr> 
+		<td class="text"></td>
+		<td class="submit">
+			<input type="submit" name="submit" value="{$lang_Submit}" class="submit" onclick="return Smit($(this),'myform')" />
+		</td>
+    </tr>   
+		  <td class="footer" colspan="9">$foot</td>
+	  </tr>
+</table>
+
+</form>
+</body>
+</html>
+<!--
+EOT;
+
+?>-->

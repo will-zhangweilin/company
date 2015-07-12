@@ -1,0 +1,36 @@
+<!--<?php
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
+echo <<<EOT
+-->
+<link href="../member/templates/met/css/style.css" rel="stylesheet" />
+<div id="member_basic">
+<input name="useid" type="hidden"size="20" maxlength="20" value="$admin_list[admin_id]">
+<h3 class="hrtl">{$lang_memberIndex9}</h3>
+<ul class="hrtl_txt">
+	<li><em>{$lang_memberbasicUserName}</em> <span>$admin_list[admin_id]</span></li>
+	<li><em>{$lang_memberbasicType}</em> <span>$access</span></li>
+	<li><em>{$lang_memberbasicLoginNum}</em> <span>$admin_list[admin_login]</span></li>
+	<li><em>{$lang_memberbasicLastLogin}</em> <span>$admin_list[admin_modify_date]</span></li>
+</ul>
+<h3 class="hrtl line">活跃情况</h3>
+<ul class="hrtl_txt">
+	<li>
+	{$lang_memberIndex5}(<span>{$feedback_totalcount}</span>)&nbsp;&nbsp;<span><span style="color:#f00;">{$feedback_totalcount_readyes}</span>{$lang_memberIndex12}{$lang_memberbasicType3}{$lang_memberIndex13}&nbsp;&nbsp;<span style="color:#f00;">{$feedback_totalcount_readno}</span>{$lang_memberIndex12}{$lang_memberbasicType3}{$lang_memberIndex14}</span> 
+	</li>
+	<li>
+	{$lang_memberIndex6}(<span>{$message_totalcount}</span>)&nbsp;&nbsp;<span><span style="color:#f00;">{$message_totalcount_readyes}</span>{$lang_memberIndex12}{$lang_memberbasicType3}{$lang_memberIndex13}&nbsp;&nbsp;<span style="color:#f00;">{$message_totalcount_readno}</span>{$lang_memberIndex12}{$lang_memberbasicType3}{$lang_memberIndex14}</span> 
+	</li>
+	<li>
+	{$lang_memberIndex15}(<span>{$cv_totalcount}</span>)&nbsp;&nbsp;<span><span style="color:#f00;">{$cv_totalcount_readyes}</span>{$lang_memberIndex12}{$lang_memberbasicType3}{$lang_memberIndex13}&nbsp;&nbsp;<span style="color:#f00;">{$cv_totalcount_readno}</span>{$lang_memberIndex12}{$lang_memberbasicType3}{$lang_memberIndex14}</span> 
+	</li>
+</ul>
+<h3 class="hrtl line">{$lang_memberIndex16}</h3>
+<div class="hrtl_txt">
+{$met_membercontrol}
+</div>
+</div>
+<!--
+EOT;
+
+?>

@@ -1,0 +1,5539 @@
+#MetInfo.cn Created version:5.1.0
+# --------------------------------------------------------
+
+
+DROP TABLE IF EXISTS met_admin_table;
+CREATE TABLE `met_admin_table` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `admin_type` text NOT NULL,
+  `admin_id` char(15) NOT NULL,
+  `admin_pass` char(64) default NULL,
+  `admin_name` varchar(30) NOT NULL,
+  `admin_sex` tinyint(1) NOT NULL default '1',
+  `admin_tel` varchar(20) default NULL,
+  `admin_mobile` varchar(20) default NULL,
+  `admin_email` varchar(150) default NULL,
+  `admin_qq` varchar(12) NOT NULL,
+  `admin_msn` varchar(40) NOT NULL,
+  `admin_taobao` varchar(40) NOT NULL,
+  `admin_introduction` text,
+  `admin_login` int(11) unsigned NOT NULL default '0',
+  `admin_modify_ip` varchar(20) default NULL,
+  `admin_modify_date` datetime default NULL,
+  `admin_register_date` datetime default NULL,
+  `admin_approval_date` datetime default NULL,
+  `admin_ok` int(11) NOT NULL default '0',
+  `admin_op` varchar(20) default 'metinfo',
+  `admin_issueok` int(11) NOT NULL default '0',
+  `admin_group` int(11) NOT NULL,
+  `companyname` varchar(255) default NULL,
+  `companyaddress` varchar(255) default NULL,
+  `companyfax` varchar(255) default NULL,
+  `usertype` varchar(20) default 'all',
+  `checkid` int(1) default '0',
+  `companycode` varchar(50) default NULL,
+  `companywebsite` varchar(50) default NULL,
+  `lang` varchar(50) default NULL,
+  `langok` varchar(255) default 'metinfo',
+  PRIMARY KEY  (`id`),
+  KEY `admin_id` (`admin_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_admin_table VALUES('1','metinfo','admin','e10adc3949ba59abbe56e057f20f883e','111111','0','2','15616213396','364854234@qq.com','2','233333','2','2','26','113.240.187.66','2012-12-07 09:14:36','2012-12-04 02:31:39','','1','metinfo','0','10000','','','','3','0','','','','metinfo');
+
+DROP TABLE IF EXISTS met_admin_column;
+CREATE TABLE `met_admin_column` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `url` varchar(255) default NULL,
+  `bigclass` int(11) NOT NULL,
+  `field` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `list_order` int(11) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_admin_column VALUES('1','lang_indexbasic','','0','0','1','1');
+INSERT INTO met_admin_column VALUES('2','lang_indexskin','','0','0','1','2');
+INSERT INTO met_admin_column VALUES('3','lang_indexcolumn','','0','0','1','3');
+INSERT INTO met_admin_column VALUES('4','lang_indexcontent','','0','0','1','4');
+INSERT INTO met_admin_column VALUES('5','lang_indexseo','','0','0','1','5');
+INSERT INTO met_admin_column VALUES('6','lang_indexapp','','0','0','1','6');
+INSERT INTO met_admin_column VALUES('7','lang_indexuser','','0','0','1','7');
+INSERT INTO met_admin_column VALUES('8','lang_indexsysteminfo','system/sysadmin.php','1','0','2','1');
+INSERT INTO met_admin_column VALUES('9','lang_indexbasicinfo','system/basic.php','1','1001','2','2');
+INSERT INTO met_admin_column VALUES('10','lang_indexlang','system/lang/lang.php','1','1002','2','3');
+INSERT INTO met_admin_column VALUES('11','lang_indexpic','system/img.php','1','1003','2','4');
+INSERT INTO met_admin_column VALUES('12','lang_indexsafe','system/safe.php','1','1004','2','5');
+INSERT INTO met_admin_column VALUES('13','lang_indexdataback','system/database/index.php','1','1005','2','6');
+INSERT INTO met_admin_column VALUES('14','lang_indexupload','system/uploadfile.php','1','1006','2','7');
+INSERT INTO met_admin_column VALUES('15','lang_indexcode','system/authcode.php','1','0','2','8');
+INSERT INTO met_admin_column VALUES('16','lang_indexebook','http://www.metinfo.cn/course/','1','0','2','9');
+INSERT INTO met_admin_column VALUES('17','lang_indexbbs','http://bbs.metinfo.cn/','1','0','2','10');
+INSERT INTO met_admin_column VALUES('18','lang_temstyle','interface/skin_manager.php','2','1101','2','1');
+INSERT INTO met_admin_column VALUES('19','lang_indexhomeset','interface/skin.php?cs=2','2','1102','2','2');
+INSERT INTO met_admin_column VALUES('20','lang_pagesting','interface/skin.php?cs=3','2','1103','2','3');
+INSERT INTO met_admin_column VALUES('21','lang_contsting','interface/skin.php?cs=4','2','1104','2','4');
+INSERT INTO met_admin_column VALUES('22','lang_indexflashset','interface/flash/setflash.php','2','1105','2','5');
+INSERT INTO met_admin_column VALUES('23','lang_indexonlineset','interface/online/index.php','2','1106','2','6');
+INSERT INTO met_admin_column VALUES('24','lang_indexskinset','/interface/info.php','2','0','2','7');
+INSERT INTO met_admin_column VALUES('25','lang_indexcolumn','column/index.php','3','1201','2','1');
+INSERT INTO met_admin_column VALUES('26','lang_mod3|lang_field','column/parameter/parameter.php?module=3','3','1202','2','2');
+INSERT INTO met_admin_column VALUES('27','lang_mod4|lang_field','column/parameter/parameter.php?module=4','3','1203','2','3');
+INSERT INTO met_admin_column VALUES('28','lang_mod5|lang_field','column/parameter/parameter.php?module=5','3','1204','2','4');
+INSERT INTO met_admin_column VALUES('29','lang_indexcontent','content/content.php','4','1301','2','1');
+INSERT INTO met_admin_column VALUES('30','lang_indexfoot','content/foot.php','4','1302','2','2');
+INSERT INTO met_admin_column VALUES('31','lang_indexotherinfo','content/other_info.php','4','1303','2','3');
+INSERT INTO met_admin_column VALUES('32','lang_bulkopr','app/batch/contentup.php','4','1304','2','4');
+INSERT INTO met_admin_column VALUES('33','lang_recycle','content/recycle/index.php','4','1305','2','5');
+INSERT INTO met_admin_column VALUES('34','lang_indexwebcount','app/stat/index.php','5','1401','2','1');
+INSERT INTO met_admin_column VALUES('35','lang_indexhtmset','seo/sethtm.php','5','1402','2','2');
+INSERT INTO met_admin_column VALUES('36','lang_htmsitemap','seo/sitemap.php','5','1403','2','3');
+INSERT INTO met_admin_column VALUES('37','lang_indexseoset','seo/seo.php','5','1404','2','4');
+INSERT INTO met_admin_column VALUES('38','lang_indexhot','seo/strcontent.php','5','1405','2','5');
+INSERT INTO met_admin_column VALUES('39','lang_indexlink','seo/link/index.php','5','1406','2','6');
+INSERT INTO met_admin_column VALUES('40','lang_smsfuc','app/sms/sms.php','6','1503','2','1');
+INSERT INTO met_admin_column VALUES('41','lang_indexwap','app/wap/wap.php','6','1502','2','2');
+INSERT INTO met_admin_column VALUES('42','lang_webnanny','app/nurse/index.php','6','1504','2','3');
+INSERT INTO met_admin_column VALUES('43','lang_indexPhysical','app/physical/index.php','6','1501','2','4');
+INSERT INTO met_admin_column VALUES('44','lang_myapp','app/dlapp/index.php','6','1505','2','5');
+INSERT INTO met_admin_column VALUES('45','lang_memberManage','member/index.php','7','1601','2','1');
+INSERT INTO met_admin_column VALUES('46','lang_memberset','member/member.php','7','1602','2','2');
+INSERT INTO met_admin_column VALUES('47','lang_indexadminname','admin/index.php','7','1603','2','3');
+INSERT INTO met_admin_column VALUES('48','lang_indexperson','admin/editor_pass.php','7','0','2','4');
+INSERT INTO met_admin_column VALUES('50','订单管理','app/shop/index.php','6','1506','2','4');
+
+DROP TABLE IF EXISTS met_app;
+CREATE TABLE `met_app` (
+  `id` int(11) NOT NULL auto_increment,
+  `no` varchar(10) NOT NULL,
+  `ver` varchar(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `download` tinyint(1) NOT NULL,
+  `power` int(11) NOT NULL,
+  `sys` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `site` varchar(255) NOT NULL,
+  `url` tinytext NOT NULL,
+  `info` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_app VALUES('1','4','1','网站建设中','website','0','0','5.0 Beta','4.jpg','1','/app/website/webc.php','可以在首页显示网站建设中');
+INSERT INTO met_app VALUES('2','5','1.0','地址栏小图标替换','ico','0','0','5.0 Beta','5.jpg','0','','');
+INSERT INTO met_app VALUES('3','6','1.0','社会化分享工具','share','0','0','5.0 Beta','6.jpg','2','/app/share/share.php','自定义社会化分享代码');
+INSERT INTO met_app VALUES('4','8','1.0','内容批量替换器','replace','0','0','5.0 Beta','8.jpg','0','','用于批量修改内容或链接');
+INSERT INTO met_app VALUES('5','9','1.0','在线订购','shop','0','0','5.0.4','9.jpg','2-3-4','/app/shop/2.php-/app/shop/3.php-/app/shop/4.php','为系统提供在线订购功能');
+INSERT INTO met_app VALUES('7','9','1.0','在线订购','shop','1','0','5.0.4','9.jpg','2-3-4','/app/shop/2.php-/app/shop/3.php-/app/shop/4.php','为系统提供在线订购功能');
+
+DROP TABLE IF EXISTS met_column;
+CREATE TABLE `met_column` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `foldername` varchar(50) default NULL,
+  `filename` varchar(50) default NULL,
+  `bigclass` int(11) default '0',
+  `samefile` int(11) NOT NULL default '0',
+  `module` int(11) default NULL,
+  `no_order` int(11) default NULL,
+  `wap_ok` int(1) default '0',
+  `if_in` int(1) default '0',
+  `nav` int(1) default '0',
+  `ctitle` varchar(200) default NULL,
+  `keywords` varchar(200) default NULL,
+  `content` longtext,
+  `description` text,
+  `list_order` int(11) default '0',
+  `new_windows` varchar(50) default NULL,
+  `classtype` int(11) default '1',
+  `out_url` varchar(200) default NULL,
+  `index_num` int(11) default '0',
+  `access` int(2) default '0',
+  `indeximg` varchar(255) default NULL,
+  `columnimg` varchar(255) default NULL,
+  `isshow` int(11) default '1',
+  `lang` varchar(50) default NULL,
+  `namemark` varchar(255) default NULL,
+  `releclass` int(11) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_column VALUES('1','关于我们','about','','0','0','1','0','0','0','1','','','','','1','0','1','','2','0','','','0','cn','','0');
+INSERT INTO met_column VALUES('2','新闻资讯','news','','0','0','2','1','0','0','1','','','','','0','','1','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('3','产品展示','product','','0','0','3','2','0','0','1','','','','','0','','1','','1','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('4','公司动态','news','','2','0','2','1','0','0','2','','','','','0','','2','','3','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('5','业界资讯','news','','2','0','2','2','0','0','0','','','','','0','','2','','4','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('6','饰品珠宝','product','','3','0','3','1','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('7','数码家电','product','','3','0','3','2','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('8','家具建材','product','','3','0','3','3','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('9','交通工具','product','','3','0','3','4','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('10','健身器材','product','','3','0','3','5','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('11','日化五金','product','','3','0','3','6','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('12','图书音像','product','','3','0','3','7','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('13','食品零食','product','','3','0','3','8','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('14','流行饰品','product','','6','0','3','0','0','0','0','','','','','0','','3','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('15','太阳镜','product','','6','0','3','0','0','0','0','','','','','0','','3','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('16','品牌手表','product','','6','0','3','0','0','0','0','','','','','0','','3','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('17','太阳镜','product','','6','0','3','0','0','0','0','','','','','0','','3','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('18','Zippo/烟具','product','','6','0','3','0','0','0','0','','','','','0','','3','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('19','公司简介','about','','1','0','1','1','0','0','0','','','<div>\r\n	<img alt=\"\" src=\"http://cx6274025.gicp.net/metv5/upload/images/20120716_133022.gif\" style=\"margin: 8px; width: 150px; float: left; height: 150px\" />&nbsp; &nbsp; &nbsp;米拓信息（MetInfo.cn）专注于网络信息化及网络营销领域，通过整合团队专业的市场营销理念与网络技术为客户提供优质的网络营销服务。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;米拓信息的主要业务包括：网站系统开发、网站建设、网站推广、空间域名以及网络营销策划与运行。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;米拓信息主打产品&mdash;&mdash;MetInfo企业网站管理系统采用PHP+Mysql架构，全站内置了SEO搜索引擎优化机制，支持用户自定义界面语言，拥有企业网站常用的模块功能（企业简介模块、新闻模块、产品模块、下载模块、图片模块、招聘模块、在线留言、反馈系统、在线交流、友情链接、会员与权限管理）。强大灵活的后台管理功能、静态页面生成功能、个性化模块添加功能、不同栏目自定义FLASH样式功能等可为企业打造出大气漂亮且具有营销力的精品网站。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;米拓信息秉承&ldquo;为合作伙伴创造价值&rdquo;的核心价值观，并以&ldquo;诚实、宽容、创新、服务&rdquo;为企业精神，通过自主创新和真诚合作为电子商务及信息服务行业创造价值。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size: 13px\">关于&ldquo;为合作伙伴创造价值&rdquo;</span></strong></div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;米拓信息认为客户、供应商、公司股东、公司员工等一切和自身有合作关系的单位和个人都是自己的合作伙伴，并只有通过努力为合作伙伴创造价值，才能体现自身的价值并获得发展和成功。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size: 13px\">关于&ldquo;诚实、宽容、创新、服务&rdquo;</span></strong></div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;米拓信息认为诚信是一切合作的基础，宽容是解决问题的前提，创新是发展事业的利器，服务是创造价值的根本。</div>\r\n','','1','0','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('31','在线反馈','feedback','','1','0','8','3','0','0','2','','','','','0','','2','','0','0','','','1','cn','','1');
+INSERT INTO met_column VALUES('22','联系我们','about','联系方式','1','0','1','11','0','0','1','','','<div>\r\n	<strong><span style=\"font-size:14px;\">某某有限公司</span></strong></div>\r\n<div>\r\n	地址：XX市XX区XXX号XXX栋XXX房</div>\r\n<div>\r\n	电话：0000-888888 13300000000</div>\r\n<div>\r\n	Q &nbsp;Q：000000 &nbsp;000000 &nbsp;000000</div>\r\n<div>\r\n	邮编：000000</div>\r\n<div>\r\n	邮箱：admin@admin.cn</div>\r\n<div>\r\n	网址：www.000000.cn</div>\r\n','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('25','在线留言','message','','1','0','7','2','0','0','2','','','','','0','','2','','0','0','','','1','cn','','1');
+INSERT INTO met_column VALUES('32','下载中心','download','','0','0','4','3','0','0','1','','','','','0','','1','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('33','客户案例','case','','0','0','5','4','0','0','1','','','','','0','','1','','6','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('34','软件下载','download','','32','0','4','0','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('35','文件下载','download','','32','0','4','0','0','0','0','','','','','0','','2','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('36','招贤纳士','job','','0','0','6','5','0','0','1','','','','','0','','1','','5','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('37','友情链接','link','','0','0','9','6','0','0','2','','','','','0','','1','','7','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('38','会员中心','member','','0','0','10','7','0','0','2','','','','','0','','1','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('39','站内搜索','search','','0','0','11','8','0','0','2','','','','','0','','1','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('40','网站地图','sitemap','','0','0','12','9','0','0','2','','','','','0','','1','','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('41','网站管理','','','0','0','0','10','0','1','2','','','','','0','','1','http://cx6274025.gicp.net/metv5/admin/','0','0','','','1','cn','','0');
+INSERT INTO met_column VALUES('42','About Us','about','','0','0','1','0','0','0','1','','','<div>\r\n	<img alt=\"\" src=\"http://cx6274025.gicp.net/metv5/upload/images/20120716_133022.gif\" style=\"margin: 8px; width: 150px; float: left; height: 150px\" />&nbsp; &nbsp; &nbsp;MetInfo Co., Ltd. (<a href=\"http://www.MetInfo.cn\" target=\"_blank\">MetInfo.cn</a>) focused on the field of network information and network marketing, integrated team of professional marketing ideas and networking technologies to provide customers with high quality online marketing services.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;MetInfo main activities include: Web system development, website building, website promotion, planning and running of the spatial domain as well as network marketing.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;MetInfo main products - MetInfo enterprise website management system using PHP + Mysql structure, the station&#39;s built-in SEO search engine optimization mechanism to support the user to customize the interface language, module has a corporate website (Company Profile module, news module product modules, download the module, image module, the recruitment module, feedback, feedback systems, online exchanges, links, membership and rights management). Powerful and flexible back-office management functions, static page generation, personalized modules to add functionality, various sections of custom styles FLASH functions for enterprise to create a beautiful atmosphere, and the marketing power of the boutique site.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;MetInfo adhering to the &quot;create value for partners,&quot; the core values ??of honesty, tolerance, innovation, service &quot;as the spirit of enterprise, e-commerce and information services industry to create value through independent innovation and sincere cooperation.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size: 13px\">On creating value for partners. &quot;</span></strong></div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;MetInfo Co., Ltd. that customers, suppliers, shareholders, employees, and their own cooperative relations between the units and individuals who are their partners, and only through efforts to create value for partners, in order to realize their own value and access to development and success.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size: 13px\">&quot;Honesty, tolerance, innovation, service&quot;</span></strong></div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;MetInfo Co., Ltd. that honesty is the foundation of all cooperation, tolerance is the premise of problem-solving, innovation is a tool for career development and service is fundamental to create value.</div>\r\n','','1','0','1','','2','0','','','1','en','','0');
+INSERT INTO met_column VALUES('43','News','news','','0','0','2','1','0','0','1','','','','','0','','1','','3','0','','','1','en','','0');
+INSERT INTO met_column VALUES('44','Product','product','','0','0','3','2','0','0','1','','','','','0','','1','','1','0','','','1','en','','0');
+INSERT INTO met_column VALUES('45','Download','download','','0','0','4','3','0','0','1','','','','','0','','1','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('46','Case','case','','0','0','5','4','0','0','1','','','','','0','','1','','6','0','','','1','en','','0');
+INSERT INTO met_column VALUES('47','job','job','','0','0','6','5','0','0','1','','','','','0','','1','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('48','Contact','about','','42','0','1','11','0','0','1','','','<div>\r\n	<strong><span style=\"font-size:14px;\">MetInfo Co., Ltd.</span></strong></div>\r\n<div>\r\n	Address: Yuelu South Second Ring Road, Sunshine 100 International Metro 3-17 Building, room 803</div>\r\n<div>\r\n	Tel:0731 -8,892,079,415,274,925,108</div>\r\n<div>\r\n	Q Q: 426507856 1302730113 1498488199</div>\r\n<div>\r\n	E-mail: sales@metinfo.cn</div>\r\n<div>\r\n	Website: www.MetInfo.cn</div>\r\n','','0','','2','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('49','Message','message','','42','0','7','1','0','0','2','','','','','0','','2','','0','0','','','1','en','','42');
+INSERT INTO met_column VALUES('50','Feedback','feedback','','42','0','8','2','0','0','2','','','','','0','','2','','0','0','','','1','en','','42');
+INSERT INTO met_column VALUES('51','Friendly Link','link','','0','0','9','6','0','0','2','','','','','1','0','1','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('52','Jewelry','product','','44','0','3','1','0','0','0','','','','A brief description of the text of a brief description of a brief text description text A brief description of the text','1','0','2','','0','0','../upload/201209/1347850506.jpg','','1','en','','0');
+INSERT INTO met_column VALUES('53','Home Appliance','product','','44','0','3','2','0','0','0','','','','A brief description of the text of a brief description of a brief text description text A brief description of the text','1','0','2','','0','0','../upload/201209/1347850532.jpg','','1','en','','0');
+INSERT INTO met_column VALUES('54','Furniture Building ','product','','44','0','3','3','0','0','0','','','','A brief description of the text of a brief description of a brief text description text A brief description of the text','1','0','2','','0','0','../upload/201209/1347850544.jpg','','1','en','','0');
+INSERT INTO met_column VALUES('55','Traffic Tools','product','','44','0','3','4','0','0','0','','','','','0','','2','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('56','Fitness Equipment','product','','44','0','3','5','0','0','0','','','','','0','','2','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('57','Cosmetic Hardware','product','','44','0','3','6','0','0','0','','','','','0','','2','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('58','Audio books','product','','44','0','3','7','0','0','0','','','','','0','','2','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('59','Food snacks','product','','44','0','3','8','0','0','0','','','','','0','','2','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('60','Member','member','','0','0','10','7','0','0','2','','','','','0','','1','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('61','Search','search','','0','0','11','8','0','0','2','','','','','0','','1','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('62','Sitemap','sitemap','','0','0','12','9','0','0','2','','','','','0','','1','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('63','Admin','','','0','0','0','10','0','1','2','','','','','0','','1','http://cx6274025.gicp.net/metv5/admin/','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('64','Enterprise News','news','','43','0','2','0','0','0','0','','','','','0','','2','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('65','Industry News','news','','43','0','2','0','0','0','0','','','','','0','','2','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('66','Software Download','download','','45','0','4','0','0','0','0','','','','','0','','2','','0','0','','','1','en','','0');
+INSERT INTO met_column VALUES('67','File Download','download','','45','0','4','0','0','0','0','','','','','0','','2','','0','0','','','1','en','','0');
+
+DROP TABLE IF EXISTS met_config;
+CREATE TABLE `met_config` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL,
+  `value` text NOT NULL,
+  `columnid` int(11) NOT NULL,
+  `flashid` int(11) NOT NULL,
+  `lang` varchar(50) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=759 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_config VALUES('1','met_nurse_link_tel','','0','0','metinfo');
+INSERT INTO met_config VALUES('2','met_nurse_link','0','0','0','metinfo');
+INSERT INTO met_config VALUES('3','metcms_v','5.1.0','0','0','metinfo');
+INSERT INTO met_config VALUES('4','met_nurse_job_tel','','0','0','metinfo');
+INSERT INTO met_config VALUES('5','met_nurse_job','0','0','0','metinfo');
+INSERT INTO met_config VALUES('6','met_nurse_massge_tel','','0','0','metinfo');
+INSERT INTO met_config VALUES('7','met_nurse_massge','0','0','0','metinfo');
+INSERT INTO met_config VALUES('8','met_nurse_feed_tel','','0','0','metinfo');
+INSERT INTO met_config VALUES('9','met_nurse_feed','0','0','0','metinfo');
+INSERT INTO met_config VALUES('10','met_nurse_member_tel','','0','0','metinfo');
+INSERT INTO met_config VALUES('11','met_nurse_member','0','0','0','metinfo');
+INSERT INTO met_config VALUES('12','met_nurse_monitor_tel','','0','0','metinfo');
+INSERT INTO met_config VALUES('13','met_nurse_monitor_timeb','23','0','0','metinfo');
+INSERT INTO met_config VALUES('14','met_nurse_monitor_timea','0','0','0','metinfo');
+INSERT INTO met_config VALUES('15','met_apptime','1354171016','0','0','metinfo');
+INSERT INTO met_config VALUES('16','met_nurse_monitor_weeka','1','0','0','metinfo');
+INSERT INTO met_config VALUES('17','met_nurse_monitor_fre','1','0','0','metinfo');
+INSERT INTO met_config VALUES('18','met_nurse_monitor','0','0','0','metinfo');
+INSERT INTO met_config VALUES('19','met_host','api.metinfo.cn','0','0','metinfo');
+INSERT INTO met_config VALUES('20','met_nurse_stat','0','0','0','metinfo');
+INSERT INTO met_config VALUES('21','met_nurse_stat_tel','','0','0','metinfo');
+INSERT INTO met_config VALUES('22','met_nurse_max','10','0','0','metinfo');
+INSERT INTO met_config VALUES('23','met_sitemap_html','0','0','0','metinfo');
+INSERT INTO met_config VALUES('24','met_adminfile','admin','0','0','metinfo');
+INSERT INTO met_config VALUES('25','met_ch_lang','1','0','0','metinfo');
+INSERT INTO met_config VALUES('26','met_stat_max','10000','0','0','metinfo');
+INSERT INTO met_config VALUES('27','met_stat_cr5','2','0','0','metinfo');
+INSERT INTO met_config VALUES('28','met_stat_cr4','3','0','0','metinfo');
+INSERT INTO met_config VALUES('29','met_stat_cr3','3','0','0','metinfo');
+INSERT INTO met_config VALUES('30','met_stat_cr1','0','0','0','metinfo');
+INSERT INTO met_config VALUES('31','met_stat_cr2','3','0','0','metinfo');
+INSERT INTO met_config VALUES('32','met_stat','1','0','0','metinfo');
+INSERT INTO met_config VALUES('33','met_ch_mark','cn','0','0','metinfo');
+INSERT INTO met_config VALUES('34','met_lang_editor','','0','0','metinfo');
+INSERT INTO met_config VALUES('35','met_lang_mark','1','0','0','metinfo');
+INSERT INTO met_config VALUES('36','met_url_type','0','0','0','metinfo');
+INSERT INTO met_config VALUES('37','met_admin_type_ok','1','0','0','metinfo');
+INSERT INTO met_config VALUES('38','met_admin_type','cn','0','0','metinfo');
+INSERT INTO met_config VALUES('39','met_sitemap_lang','1','0','0','metinfo');
+INSERT INTO met_config VALUES('40','met_sitemap_not2','1','0','0','metinfo');
+INSERT INTO met_config VALUES('41','met_sitemap_not1','0','0','0','metinfo');
+INSERT INTO met_config VALUES('42','met_sitemap_txt','0','0','0','metinfo');
+INSERT INTO met_config VALUES('43','met_sitemap_xml','0','0','0','metinfo');
+INSERT INTO met_config VALUES('44','met_index_type','cn','0','0','metinfo');
+INSERT INTO met_config VALUES('45','met_nurse_monitor_weekb','1','0','0','metinfo');
+INSERT INTO met_config VALUES('46','physical_time','2012-12-06 13:30:46','0','0','metinfo');
+INSERT INTO met_config VALUES('47','physical_admin','0','0','0','metinfo');
+INSERT INTO met_config VALUES('48','physical_backup','-2','0','0','metinfo');
+INSERT INTO met_config VALUES('49','physical_update','142','0','0','metinfo');
+INSERT INTO met_config VALUES('50','physical_seo','1|1|1|','0','0','metinfo');
+INSERT INTO met_config VALUES('51','physical_static','1','0','0','metinfo');
+INSERT INTO met_config VALUES('52','physical_unread','0|1|0','0','0','metinfo');
+INSERT INTO met_config VALUES('53','physical_spam','1','0','0','metinfo');
+INSERT INTO met_config VALUES('54','physical_member','1','0','0','metinfo');
+INSERT INTO met_config VALUES('55','physical_web','1','0','0','metinfo');
+INSERT INTO met_config VALUES('56','physical_file','2|member/index_member.php|,2|member/met_shop_journal.php|,2|public/php/imgdisplayhtml.inc.php|,2|public/php/metlabel.inc.php|,2|admin/admin/save.php|,2|admin/app/batch/watermark.php|,2|admin/interface/skin_manager.php|,2|admin/login/login_check.php|,2|admin/templates/met/admin/admin_editor.html|,2|admin/templates/met/admin/admin_pass.html|','0','0','metinfo');
+INSERT INTO met_config VALUES('57','physical_fingerprint','-1','0','0','metinfo');
+INSERT INTO met_config VALUES('58','physical_function','1','0','0','metinfo');
+INSERT INTO met_config VALUES('59','met_member_force','vnxtsku','0','0','metinfo');
+INSERT INTO met_config VALUES('60','met_smspass','1','0','0','metinfo');
+INSERT INTO met_config VALUES('61','met_nurse_sendtime','10','0','0','metinfo');
+INSERT INTO met_config VALUES('62','met_recycle','1','0','0','metinfo');
+INSERT INTO met_config VALUES('534','met_tablename','admin_table|admin_column|app|column|config|cv|download|feedback|flash|flist|img|index|job|label|lang|link|message|news|online|otherinfo|parameter|plist|product|skin_table|sms|visit_day|visit_detail|visit_summary|shop_orders|shop_shopcart|shop_slist|shop_consignee|shop_slists|shop_province|shop_city|shop_district|shop_journal|shop_balance','0','0','metinfo');
+INSERT INTO met_config VALUES('63','wap_product_imgx','240','0','0','cn');
+INSERT INTO met_config VALUES('64','wap_job_list','10','0','0','cn');
+INSERT INTO met_config VALUES('65','wap_img_list','10','0','0','cn');
+INSERT INTO met_config VALUES('66','wap_download_list','10','0','0','cn');
+INSERT INTO met_config VALUES('67','wap_product_list','10','0','0','cn');
+INSERT INTO met_config VALUES('68','wap_news_list','10','0','0','cn');
+INSERT INTO met_config VALUES('69','met_wap_img','../upload/201207/1342516476.jpg','0','0','cn');
+INSERT INTO met_config VALUES('70','met_wap_logo','../upload/201207/1342516579.png','0','0','cn');
+INSERT INTO met_config VALUES('71','met_wap_url','','0','0','cn');
+INSERT INTO met_config VALUES('72','met_wap_tpb','0','0','0','cn');
+INSERT INTO met_config VALUES('73','met_wap_tpa','1','0','0','cn');
+INSERT INTO met_config VALUES('74','met_wap_ok','0','0','0','cn');
+INSERT INTO met_config VALUES('75','met_waplink','1','0','0','cn');
+INSERT INTO met_config VALUES('76','met_wap','1','0','0','cn');
+INSERT INTO met_config VALUES('77','wap_product_imgy','200','0','0','cn');
+INSERT INTO met_config VALUES('78','wap_img_imgx','240','0','0','cn');
+INSERT INTO met_config VALUES('79','wap_img_imgy','200','0','0','cn');
+INSERT INTO met_config VALUES('80','wap_title','米拓信息','0','0','cn');
+INSERT INTO met_config VALUES('81','wap_description','MetInfo企业网站管理系统是一个功能完善的营销型企业网站管理平台，PHP+MYSQL架构，全站内置SEO优化机制，界面简洁，操作方便，个人网站永久免费，欢迎下载使用。','0','0','cn');
+INSERT INTO met_config VALUES('82','wap_footertext','服务热线<br/>0000-888888','0','0','cn');
+INSERT INTO met_config VALUES('83','met_weburl','http://cx6274025.gicp.net/metv5/','0','0','cn');
+INSERT INTO met_config VALUES('84','met_webname','网站名称','0','0','cn');
+INSERT INTO met_config VALUES('85','met_logo','../upload/201207/1342516579.png','0','0','cn');
+INSERT INTO met_config VALUES('86','met_skin_user','metv4','0','0','cn');
+INSERT INTO met_config VALUES('87','met_big_wate','1','0','0','cn');
+INSERT INTO met_config VALUES('88','met_thumb_wate','1','0','0','cn');
+INSERT INTO met_config VALUES('89','met_wate_class','1','0','0','cn');
+INSERT INTO met_config VALUES('90','met_wate_img','','0','0','cn');
+INSERT INTO met_config VALUES('91','met_wate_bigimg','','0','0','cn');
+INSERT INTO met_config VALUES('92','met_thumb_kind','3','0','0','cn');
+INSERT INTO met_config VALUES('93','met_text_wate','MetInfo','0','0','cn');
+INSERT INTO met_config VALUES('94','met_text_size','10','0','0','cn');
+INSERT INTO met_config VALUES('95','met_text_bigsize','35','0','0','cn');
+INSERT INTO met_config VALUES('96','met_text_fonts','../include/fonts/verdana.ttf','0','0','cn');
+INSERT INTO met_config VALUES('97','met_text_color','#000000','0','0','cn');
+INSERT INTO met_config VALUES('98','met_text_angle','0','0','0','cn');
+INSERT INTO met_config VALUES('99','met_watermark','0','0','0','cn');
+INSERT INTO met_config VALUES('100','met_img_style','1','0','0','cn');
+INSERT INTO met_config VALUES('101','met_img_x','150','0','0','cn');
+INSERT INTO met_config VALUES('102','met_img_y','150','0','0','cn');
+INSERT INTO met_config VALUES('103','met_newsimg_x','200','0','0','cn');
+INSERT INTO met_config VALUES('104','met_newsimg_y','200','0','0','cn');
+INSERT INTO met_config VALUES('105','met_productimg_x','160','0','0','cn');
+INSERT INTO met_config VALUES('106','met_productimg_y','130','0','0','cn');
+INSERT INTO met_config VALUES('107','met_imgs_x','116','0','0','cn');
+INSERT INTO met_config VALUES('108','met_imgs_y','80','0','0','cn');
+INSERT INTO met_config VALUES('109','met_keywords','网站关键词','0','0','cn');
+INSERT INTO met_config VALUES('110','met_description','网站描述，一般显示在搜索引擎搜索结果中的描述文字，用于介绍网站，吸引浏览者点击。','0','0','cn');
+INSERT INTO met_config VALUES('111','met_title_type','3','0','0','cn');
+INSERT INTO met_config VALUES('112','met_seo','<p>\r\n	优化推广-SEO参数设置-头部优化文字</p>\r\n','0','0','cn');
+INSERT INTO met_config VALUES('113','met_tools_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('114','met_alt','图片关键词','0','0','cn');
+INSERT INTO met_config VALUES('115','met_atitle','链接关键词','0','0','cn');
+INSERT INTO met_config VALUES('116','met_linkname','某某公司网站','0','0','cn');
+INSERT INTO met_config VALUES('117','met_online_type','4','0','0','cn');
+INSERT INTO met_config VALUES('118','met_footright','我的网站 版权所有 2008-2012 湘ICP备8888888','0','0','cn');
+INSERT INTO met_config VALUES('119','met_footaddress','','0','0','cn');
+INSERT INTO met_config VALUES('120','met_foottel','电话：0731-12345678 12345678  QQ:88888888 999999  Email:metinfo@metinfo.cn','0','0','cn');
+INSERT INTO met_config VALUES('121','met_footother','','0','0','cn');
+INSERT INTO met_config VALUES('122','met_foottext','','0','0','cn');
+INSERT INTO met_config VALUES('123','met_footstat','<script src=\"http://s6.cnzz.com/stat.php?id=1670348&web_id=1670348\" language=\"JavaScript\"></script>','0','0','cn');
+INSERT INTO met_config VALUES('124','met_product_list','10','0','0','cn');
+INSERT INTO met_config VALUES('125','met_news_list','10','0','0','cn');
+INSERT INTO met_config VALUES('126','met_download_list','10','0','0','cn');
+INSERT INTO met_config VALUES('127','met_img_list','10','0','0','cn');
+INSERT INTO met_config VALUES('128','met_job_list','10','0','0','cn');
+INSERT INTO met_config VALUES('129','met_message_list','10','0','0','cn');
+INSERT INTO met_config VALUES('130','met_search_list','10','0','0','cn');
+INSERT INTO met_config VALUES('131','met_fd_fromname','米拓信息','0','0','cn');
+INSERT INTO met_config VALUES('132','met_fd_smtp','smtp.qq.com','0','0','cn');
+INSERT INTO met_config VALUES('133','met_fd_usename','364854234@qq.com','0','0','cn');
+INSERT INTO met_config VALUES('134','met_fd_password','mayuri-713','0','0','cn');
+INSERT INTO met_config VALUES('135','met_skin_css','metinfo.css','0','0','cn');
+INSERT INTO met_config VALUES('136','met_autothumb_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('137','met_member_use','1','0','0','cn');
+INSERT INTO met_config VALUES('138','met_member_login','3','0','0','cn');
+INSERT INTO met_config VALUES('139','met_newsdays','3','0','0','cn');
+INSERT INTO met_config VALUES('140','met_hot','100','0','0','cn');
+INSERT INTO met_config VALUES('141','met_listtime','Y-m-d','0','0','cn');
+INSERT INTO met_config VALUES('142','met_contenttime','Y-m-d H:i:s','0','0','cn');
+INSERT INTO met_config VALUES('143','met_memberemail','欢迎注册为【米拓信息】www.metinfo.cn会员，会员激活后您可以享受更多的专业服务！','0','0','cn');
+INSERT INTO met_config VALUES('144','met_membercontrol','欢迎注册为【米拓信息】www.metinfo.cn会员，会员激活后您可以享受更多的专业服务！','0','0','cn');
+INSERT INTO met_config VALUES('145','met_pseudo','0','0','0','cn');
+INSERT INTO met_config VALUES('146','met_online_skin','1','0','0','cn');
+INSERT INTO met_config VALUES('147','met_online_color','4','0','0','cn');
+INSERT INTO met_config VALUES('148','met_qq_type','3','0','0','cn');
+INSERT INTO met_config VALUES('149','met_msn_type','1','0','0','cn');
+INSERT INTO met_config VALUES('150','met_taobao_type','2','0','0','cn');
+INSERT INTO met_config VALUES('151','met_alibaba_type','101','0','0','cn');
+INSERT INTO met_config VALUES('152','met_skype_type','11','0','0','cn');
+INSERT INTO met_config VALUES('153','met_onlinetel','<p>\r\n	界面风格-在线交流设置</p>\r\n','0','0','cn');
+INSERT INTO met_config VALUES('154','met_addlinkopen','1','0','0','cn');
+INSERT INTO met_config VALUES('155','met_pageskin','8','0','0','cn');
+INSERT INTO met_config VALUES('156','met_indexskin','','0','0','cn');
+INSERT INTO met_config VALUES('157','met_urlblank','0','0','0','cn');
+INSERT INTO met_config VALUES('158','met_pnorder','0','0','0','cn');
+INSERT INTO met_config VALUES('159','met_hitsok','','0','0','cn');
+INSERT INTO met_config VALUES('160','met_product_page','0','0','0','cn');
+INSERT INTO met_config VALUES('161','met_img_page','0','0','0','cn');
+INSERT INTO met_config VALUES('162','met_product_detail','1','0','0','cn');
+INSERT INTO met_config VALUES('163','met_img_detail','1','0','0','cn');
+INSERT INTO met_config VALUES('164','met_productdetail_x','380','0','0','cn');
+INSERT INTO met_config VALUES('165','met_productdetail_y','350','0','0','cn');
+INSERT INTO met_config VALUES('166','met_imgdetail_x','600','0','0','cn');
+INSERT INTO met_config VALUES('167','met_imgdetail_y','287','0','0','cn');
+INSERT INTO met_config VALUES('168','met_onlineright_top','110','0','0','cn');
+INSERT INTO met_config VALUES('169','met_onlineright_right','10','0','0','cn');
+INSERT INTO met_config VALUES('170','met_onlineleft_top','110','0','0','cn');
+INSERT INTO met_config VALUES('171','met_onlineleft_left','10','0','0','cn');
+INSERT INTO met_config VALUES('172','met_onlinenameok','','0','0','cn');
+INSERT INTO met_config VALUES('173','met_file_format','rar|zip|doc|pdf|jpg|xls|png|gif|mp3|jpeg|bmp|swf|flv|ico','0','0','cn');
+INSERT INTO met_config VALUES('174','met_file_maxsize','8','0','0','cn');
+INSERT INTO met_config VALUES('175','met_memberlogin_code','1','0','0','cn');
+INSERT INTO met_config VALUES('176','met_login_code','0','0','0','cn');
+INSERT INTO met_config VALUES('177','met_webhtm','0','0','0','cn');
+INSERT INTO met_config VALUES('178','met_htmtype','html','0','0','cn');
+INSERT INTO met_config VALUES('179','met_htmpagename','2','0','0','cn');
+INSERT INTO met_config VALUES('180','met_listhtmltype','1','0','0','cn');
+INSERT INTO met_config VALUES('181','met_htmlistname','1','0','0','cn');
+INSERT INTO met_config VALUES('182','met_htmway','0','0','0','cn');
+INSERT INTO met_config VALUES('183','index_news_no','10','0','0','cn');
+INSERT INTO met_config VALUES('184','index_product_no','10','0','0','cn');
+INSERT INTO met_config VALUES('185','index_download_no','10','0','0','cn');
+INSERT INTO met_config VALUES('186','index_img_no','2','0','0','cn');
+INSERT INTO met_config VALUES('187','index_job_no','10','0','0','cn');
+INSERT INTO met_config VALUES('188','index_link_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('189','index_link_img','10','0','0','cn');
+INSERT INTO met_config VALUES('190','index_link_text','10','0','0','cn');
+INSERT INTO met_config VALUES('191','met_pageclick','1','0','0','cn');
+INSERT INTO met_config VALUES('192','met_pagetime','1','0','0','cn');
+INSERT INTO met_config VALUES('193','met_pageprint','1','0','0','cn');
+INSERT INTO met_config VALUES('194','met_pageclose','1','0','0','cn');
+INSERT INTO met_config VALUES('195','met_deleteimg','0','0','0','cn');
+INSERT INTO met_config VALUES('196','met_columnshow','0','0','0','cn');
+INSERT INTO met_config VALUES('197','met_kzqie','0','0','0','cn');
+INSERT INTO met_config VALUES('198','met_cv_time','120','0','0','cn');
+INSERT INTO met_config VALUES('199','met_cv_word','','0','0','cn');
+INSERT INTO met_config VALUES('200','met_cv_type','1','0','0','cn');
+INSERT INTO met_config VALUES('201','met_cv_image','32','0','0','cn');
+INSERT INTO met_config VALUES('202','met_cv_emtype','0','0','0','cn');
+INSERT INTO met_config VALUES('203','met_cv_to','','0','0','cn');
+INSERT INTO met_config VALUES('204','met_tools_code','<div class=\"jiathis_style\"><span class=\"jiathis_txt\">分享到：</span><a class=\"jiathis_button_icons_1\"></a><a class=\"jiathis_button_icons_2\"></a><a class=\"jiathis_button_icons_3\"></a><a class=\"jiathis_button_icons_4\"></a><a href=\"http://www.jiathis.com/share\" class=\"jiathis jiathis_txt jtico jtico_jiathis\" target=\"_blank\"></a></div><script type=\"text/javascript\" src=\"http://v3.jiathis.com/code/jia.js?uid=1346378669840136\" charset=\"utf-8\"></script>','0','0','cn');
+INSERT INTO met_config VALUES('524','met_cv_back','0','0','0','cn');
+INSERT INTO met_config VALUES('525','met_cv_title','','0','0','cn');
+INSERT INTO met_config VALUES('526','met_cv_content','','0','0','cn');
+INSERT INTO met_config VALUES('527','met_cv_email','24','0','0','cn');
+INSERT INTO met_config VALUES('533','index_hadd_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('535','met_hometitle','','0','0','cn');
+INSERT INTO met_config VALUES('205','met_cv_time','120','0','0','en');
+INSERT INTO met_config VALUES('206','met_cv_word','','0','0','en');
+INSERT INTO met_config VALUES('207','met_cv_type','1','0','0','en');
+INSERT INTO met_config VALUES('208','met_cv_image','0','0','0','en');
+INSERT INTO met_config VALUES('209','met_cv_emtype','1','0','0','en');
+INSERT INTO met_config VALUES('210','met_cv_to','','0','0','en');
+INSERT INTO met_config VALUES('211','met_wap','1','0','0','en');
+INSERT INTO met_config VALUES('212','met_waplink','1','0','0','en');
+INSERT INTO met_config VALUES('213','met_wap_ok','0','0','0','en');
+INSERT INTO met_config VALUES('214','met_wap_tpa','1','0','0','en');
+INSERT INTO met_config VALUES('215','met_wap_tpb','0','0','0','en');
+INSERT INTO met_config VALUES('216','met_wap_url','','0','0','en');
+INSERT INTO met_config VALUES('217','met_wap_logo','../upload/201207/1342516579.png','0','0','en');
+INSERT INTO met_config VALUES('218','met_wap_img','../upload/201207/1342516476.jpg','0','0','en');
+INSERT INTO met_config VALUES('219','wap_news_list','5','0','0','en');
+INSERT INTO met_config VALUES('220','wap_product_list','5','0','0','en');
+INSERT INTO met_config VALUES('221','wap_download_list','5','0','0','en');
+INSERT INTO met_config VALUES('222','wap_img_list','5','0','0','en');
+INSERT INTO met_config VALUES('223','wap_job_list','5','0','0','en');
+INSERT INTO met_config VALUES('224','wap_product_imgx','200','0','0','en');
+INSERT INTO met_config VALUES('225','wap_product_imgy','200','0','0','en');
+INSERT INTO met_config VALUES('226','wap_img_imgx','240','0','0','en');
+INSERT INTO met_config VALUES('227','wap_img_imgy','200','0','0','en');
+INSERT INTO met_config VALUES('228','wap_title','123123','0','0','en');
+INSERT INTO met_config VALUES('229','wap_description','MetInfo enterprise website management system ','0','0','en');
+INSERT INTO met_config VALUES('230','wap_footertext','gerger','0','0','en');
+INSERT INTO met_config VALUES('231','met_weburl','http://cx6274025.gicp.net/metv5/','0','0','en');
+INSERT INTO met_config VALUES('232','met_webname','Website Name','0','0','en');
+INSERT INTO met_config VALUES('233','met_logo','../upload/201207/1342516579.png','0','0','en');
+INSERT INTO met_config VALUES('234','met_skin_user','metv5s','0','0','en');
+INSERT INTO met_config VALUES('235','met_big_wate','0','0','0','en');
+INSERT INTO met_config VALUES('236','met_thumb_wate','0','0','0','en');
+INSERT INTO met_config VALUES('237','met_wate_class','1','0','0','en');
+INSERT INTO met_config VALUES('238','met_wate_img','','0','0','en');
+INSERT INTO met_config VALUES('239','met_wate_bigimg','','0','0','en');
+INSERT INTO met_config VALUES('240','met_thumb_kind','2','0','0','en');
+INSERT INTO met_config VALUES('241','met_text_wate','www.MetInfo.cn','0','0','en');
+INSERT INTO met_config VALUES('242','met_text_size','10','0','0','en');
+INSERT INTO met_config VALUES('243','met_text_bigsize','15','0','0','en');
+INSERT INTO met_config VALUES('244','met_text_fonts','../include/fonts/verdana.ttf','0','0','en');
+INSERT INTO met_config VALUES('245','met_text_color','#808080','0','0','en');
+INSERT INTO met_config VALUES('246','met_text_angle','0','0','0','en');
+INSERT INTO met_config VALUES('247','met_watermark','0','0','0','en');
+INSERT INTO met_config VALUES('248','met_img_style','1','0','0','en');
+INSERT INTO met_config VALUES('249','met_img_x','150','0','0','en');
+INSERT INTO met_config VALUES('250','met_img_y','150','0','0','en');
+INSERT INTO met_config VALUES('251','met_newsimg_x','200','0','0','en');
+INSERT INTO met_config VALUES('252','met_newsimg_y','200','0','0','en');
+INSERT INTO met_config VALUES('253','met_productimg_x','160','0','0','en');
+INSERT INTO met_config VALUES('254','met_productimg_y','130','0','0','en');
+INSERT INTO met_config VALUES('255','met_imgs_x','216','0','0','en');
+INSERT INTO met_config VALUES('256','met_imgs_y','100','0','0','en');
+INSERT INTO met_config VALUES('257','met_keywords','Website Keywords','0','0','en');
+INSERT INTO met_config VALUES('258','met_description','MetInfo enterprise content manager system','0','0','en');
+INSERT INTO met_config VALUES('259','met_title_type','3','0','0','en');
+INSERT INTO met_config VALUES('260','met_tools_ok','0','0','0','en');
+INSERT INTO met_config VALUES('261','met_tools_code','<div class=\"jiathis_style\"><span class=\"jiathis_txt\">分享到：</span><a class=\"jiathis_button_icons_1\"></a><a class=\"jiathis_button_icons_2\"></a><a class=\"jiathis_button_icons_3\"></a><a class=\"jiathis_button_icons_4\"></a><a href=\"http://www.jiathis.com/share\" class=\"jiathis jiathis_txt jtico jtico_jiathis\" target=\"_blank\"></a></div><script type=\"text/javascript\" src=\"http://v3.jiathis.com/code/jia.js?uid=1346378669840136\" charset=\"utf-8\"></script>','0','0','en');
+INSERT INTO met_config VALUES('262','met_alt','MetInfo enterprise content manager system | MetInfo CMS','0','0','en');
+INSERT INTO met_config VALUES('263','met_atitle','MetInfo CMS','0','0','en');
+INSERT INTO met_config VALUES('264','met_linkname','MetInfo CMS','0','0','en');
+INSERT INTO met_config VALUES('265','met_online_type','3','0','0','en');
+INSERT INTO met_config VALUES('266','met_footaddress','','0','0','en');
+INSERT INTO met_config VALUES('267','met_foottel','','0','0','en');
+INSERT INTO met_config VALUES('268','met_footother','','0','0','en');
+INSERT INTO met_config VALUES('269','met_foottext','','0','0','en');
+INSERT INTO met_config VALUES('270','met_product_list','10','0','0','en');
+INSERT INTO met_config VALUES('271','met_news_list','8','0','0','en');
+INSERT INTO met_config VALUES('272','met_download_list','10','0','0','en');
+INSERT INTO met_config VALUES('273','met_img_list','12','0','0','en');
+INSERT INTO met_config VALUES('274','met_job_list','10','0','0','en');
+INSERT INTO met_config VALUES('275','met_message_list','10','0','0','en');
+INSERT INTO met_config VALUES('276','met_search_list','10','0','0','en');
+INSERT INTO met_config VALUES('277','met_fd_fromname','MetInfo Co.,Ltd','0','0','en');
+INSERT INTO met_config VALUES('278','met_fd_smtp','61.152.188.131','0','0','en');
+INSERT INTO met_config VALUES('279','met_fd_usename','test@mail.metinfo.cn','0','0','en');
+INSERT INTO met_config VALUES('280','met_fd_password','123456','0','0','en');
+INSERT INTO met_config VALUES('281','met_skin_css','metinfo.css','0','0','en');
+INSERT INTO met_config VALUES('282','met_autothumb_ok','1','0','0','en');
+INSERT INTO met_config VALUES('283','met_member_use','1','0','0','en');
+INSERT INTO met_config VALUES('284','met_member_login','3','0','0','en');
+INSERT INTO met_config VALUES('285','met_newsdays','3','0','0','en');
+INSERT INTO met_config VALUES('286','met_hot','100','0','0','en');
+INSERT INTO met_config VALUES('287','met_listtime','Y/m/d','0','0','en');
+INSERT INTO met_config VALUES('288','met_contenttime','Y-m-d H:i:s','0','0','en');
+INSERT INTO met_config VALUES('289','met_memberemail','Welcome to register the member of MetInfo(www.metinfo.cn), after activated you can enjoy more professional service!','0','0','en');
+INSERT INTO met_config VALUES('290','met_membercontrol','Welcome to register the member of【MetInfo】www.metinfo.cn, after activated you can enjoy more professional service!','0','0','en');
+INSERT INTO met_config VALUES('291','met_pseudo','0','0','0','en');
+INSERT INTO met_config VALUES('292','met_online_skin','3','0','0','en');
+INSERT INTO met_config VALUES('293','met_online_color','1','0','0','en');
+INSERT INTO met_config VALUES('294','met_qq_type','4','0','0','en');
+INSERT INTO met_config VALUES('295','met_msn_type','1','0','0','en');
+INSERT INTO met_config VALUES('296','met_taobao_type','2','0','0','en');
+INSERT INTO met_config VALUES('297','met_alibaba_type','102','0','0','en');
+INSERT INTO met_config VALUES('298','met_skype_type','13','0','0','en');
+INSERT INTO met_config VALUES('299','met_addlinkopen','1','0','0','en');
+INSERT INTO met_config VALUES('300','met_pageskin','8','0','0','en');
+INSERT INTO met_config VALUES('301','met_indexskin','index','0','0','en');
+INSERT INTO met_config VALUES('302','met_urlblank','0','0','0','en');
+INSERT INTO met_config VALUES('303','met_pnorder','0','0','0','en');
+INSERT INTO met_config VALUES('304','met_hitsok','1','0','0','en');
+INSERT INTO met_config VALUES('305','met_product_page','0','0','0','en');
+INSERT INTO met_config VALUES('306','met_img_page','0','0','0','en');
+INSERT INTO met_config VALUES('307','met_product_detail','1','0','0','en');
+INSERT INTO met_config VALUES('308','met_img_detail','5','0','0','en');
+INSERT INTO met_config VALUES('309','met_productdetail_x','400','0','0','en');
+INSERT INTO met_config VALUES('310','met_productdetail_y','400','0','0','en');
+INSERT INTO met_config VALUES('311','met_imgdetail_x','610','0','0','en');
+INSERT INTO met_config VALUES('312','met_imgdetail_y','287','0','0','en');
+INSERT INTO met_config VALUES('313','met_onlineright_top','118','0','0','en');
+INSERT INTO met_config VALUES('314','met_onlineright_right','0','0','0','en');
+INSERT INTO met_config VALUES('315','met_onlineleft_top','118','0','0','en');
+INSERT INTO met_config VALUES('316','met_onlineleft_left','0','0','0','en');
+INSERT INTO met_config VALUES('317','met_onlinenameok','','0','0','en');
+INSERT INTO met_config VALUES('318','met_file_format','rar|zip|doc|pdf|jpg|jpeg|xls|png|gif|mp3|ico|swf','0','0','en');
+INSERT INTO met_config VALUES('319','met_file_maxsize','5','0','0','en');
+INSERT INTO met_config VALUES('320','met_memberlogin_code','1','0','0','en');
+INSERT INTO met_config VALUES('321','met_login_code','0','0','0','en');
+INSERT INTO met_config VALUES('322','met_webhtm','0','0','0','en');
+INSERT INTO met_config VALUES('323','met_htmtype','html','0','0','en');
+INSERT INTO met_config VALUES('324','met_htmpagename','2','0','0','en');
+INSERT INTO met_config VALUES('325','met_listhtmltype','1','0','0','en');
+INSERT INTO met_config VALUES('326','met_htmlistname','1','0','0','en');
+INSERT INTO met_config VALUES('327','met_htmway','0','0','0','en');
+INSERT INTO met_config VALUES('328','index_news_no','3','0','0','en');
+INSERT INTO met_config VALUES('329','index_product_no','10','0','0','en');
+INSERT INTO met_config VALUES('330','index_download_no','10','0','0','en');
+INSERT INTO met_config VALUES('331','index_img_no','10','0','0','en');
+INSERT INTO met_config VALUES('332','index_job_no','10','0','0','en');
+INSERT INTO met_config VALUES('333','index_link_ok','1','0','0','en');
+INSERT INTO met_config VALUES('334','index_link_img','10','0','0','en');
+INSERT INTO met_config VALUES('335','index_link_text','20','0','0','en');
+INSERT INTO met_config VALUES('336','met_pageclick','','0','0','en');
+INSERT INTO met_config VALUES('337','met_pagetime','','0','0','en');
+INSERT INTO met_config VALUES('338','met_pageprint','','0','0','en');
+INSERT INTO met_config VALUES('339','met_pageclose','','0','0','en');
+INSERT INTO met_config VALUES('340','met_deleteimg','0','0','0','en');
+INSERT INTO met_config VALUES('341','met_columnshow','0','0','0','en');
+INSERT INTO met_config VALUES('342','met_onlinetel','','0','0','en');
+INSERT INTO met_config VALUES('343','met_kzqie','0','0','0','en');
+INSERT INTO met_config VALUES('344','met_seo','<p><a href=\"http://www.metinfo.cn/\" target=\"_blank\">MetInfo CMS</a> | <a href=\"http://www.metinfo.cn/idc\" target=\"_blank\">Foreign Host</a> | <a href=\"http://ok.metinfo.cn/\" target=\"_blank\">Domain Registration</a></p>','0','0','en');
+INSERT INTO met_config VALUES('345','met_footright','MSN:0000@000.com Email:sales@metinfo.cn','0','0','en');
+INSERT INTO met_config VALUES('346','met_footstat','<script src=\"http://s6.cnzz.com/stat.php?id=1670348&web_id=1670348&show=pic\" language=\"JavaScript\"></script>','0','0','en');
+INSERT INTO met_config VALUES('528','met_cv_back','0','0','0','en');
+INSERT INTO met_config VALUES('529','met_cv_title','','0','0','en');
+INSERT INTO met_config VALUES('530','met_cv_content','','0','0','en');
+INSERT INTO met_config VALUES('531','met_cv_email','49','0','0','en');
+INSERT INTO met_config VALUES('532','index_hadd_ok','1','0','0','en');
+INSERT INTO met_config VALUES('536','met_hometitle','','0','0','en');
+INSERT INTO met_config VALUES('374','met_fd_content','','25','0','cn');
+INSERT INTO met_config VALUES('373','met_fd_title','','25','0','cn');
+INSERT INTO met_config VALUES('372','met_fd_back','1','25','0','cn');
+INSERT INTO met_config VALUES('371','met_fd_to','','25','0','cn');
+INSERT INTO met_config VALUES('370','met_fd_type','1','25','0','cn');
+INSERT INTO met_config VALUES('369','met_fd_email','','25','0','cn');
+INSERT INTO met_config VALUES('368','met_fd_word','','25','0','cn');
+INSERT INTO met_config VALUES('367','met_fd_time','120','25','0','cn');
+INSERT INTO met_config VALUES('375','met_fd_ok','1','25','0','cn');
+INSERT INTO met_config VALUES('440','met_fd_class','4','31','0','cn');
+INSERT INTO met_config VALUES('441','met_fd_ok','1','31','0','cn');
+INSERT INTO met_config VALUES('438','met_fd_content','','31','0','cn');
+INSERT INTO met_config VALUES('439','met_fdtable','在线反馈','31','0','cn');
+INSERT INTO met_config VALUES('437','met_fd_title','','31','0','cn');
+INSERT INTO met_config VALUES('436','met_fd_email','5','31','0','cn');
+INSERT INTO met_config VALUES('435','met_fd_back','','31','0','cn');
+INSERT INTO met_config VALUES('434','met_fd_to','','31','0','cn');
+INSERT INTO met_config VALUES('433','met_fd_type','1','31','0','cn');
+INSERT INTO met_config VALUES('432','met_fd_word','','31','0','cn');
+INSERT INTO met_config VALUES('431','met_fd_time','1','31','0','cn');
+INSERT INTO met_config VALUES('442','flash_10000','3|980|90|1','0','10000','cn');
+INSERT INTO met_config VALUES('443','flash_10001','1|980|245|6','0','10001','cn');
+INSERT INTO met_config VALUES('444','flash_1','3|980|90|1','0','1','cn');
+INSERT INTO met_config VALUES('445','flash_14','3|980|90|1','0','14','cn');
+INSERT INTO met_config VALUES('446','flash_15','3|980|90|1','0','15','cn');
+INSERT INTO met_config VALUES('447','flash_16','3|980|90|1','0','16','cn');
+INSERT INTO met_config VALUES('448','flash_17','3|980|90|1','0','17','cn');
+INSERT INTO met_config VALUES('449','flash_18','3|980|90|1','0','18','cn');
+INSERT INTO met_config VALUES('450','flash_34','3|980|90|1','0','34','cn');
+INSERT INTO met_config VALUES('451','flash_35','3|980|90|1','0','35','cn');
+INSERT INTO met_config VALUES('452','flash_2','3|980|90|1','0','2','cn');
+INSERT INTO met_config VALUES('453','flash_4','3|980|90|1','0','4','cn');
+INSERT INTO met_config VALUES('454','flash_6','3|980|90|1','0','6','cn');
+INSERT INTO met_config VALUES('455','flash_19','3|980|90|1','0','19','cn');
+INSERT INTO met_config VALUES('456','flash_3','3|980|90|1','0','3','cn');
+INSERT INTO met_config VALUES('457','flash_5','3|980|90|1','0','5','cn');
+INSERT INTO met_config VALUES('458','flash_7','3|980|90|1','0','7','cn');
+INSERT INTO met_config VALUES('459','flash_25','3|980|90|1','0','25','cn');
+INSERT INTO met_config VALUES('460','flash_8','3|980|90|1','0','8','cn');
+INSERT INTO met_config VALUES('461','flash_31','3|980|90|1','0','31','cn');
+INSERT INTO met_config VALUES('462','flash_32','3|980|90|1','0','32','cn');
+INSERT INTO met_config VALUES('463','flash_9','3|980|90|1','0','9','cn');
+INSERT INTO met_config VALUES('464','flash_33','3|980|90|1','0','33','cn');
+INSERT INTO met_config VALUES('465','flash_10','3|980|90|1','0','10','cn');
+INSERT INTO met_config VALUES('466','flash_36','3|980|90|1','0','36','cn');
+INSERT INTO met_config VALUES('467','flash_11','3|980|90|1','0','11','cn');
+INSERT INTO met_config VALUES('468','flash_37','3|980|90|1','0','37','cn');
+INSERT INTO met_config VALUES('469','flash_12','3|980|90|1','0','12','cn');
+INSERT INTO met_config VALUES('470','flash_38','3|980|90|1','0','38','cn');
+INSERT INTO met_config VALUES('471','flash_13','3|980|90|1','0','13','cn');
+INSERT INTO met_config VALUES('472','flash_39','3|980|90|1','0','39','cn');
+INSERT INTO met_config VALUES('473','flash_40','3|980|90|1','0','40','cn');
+INSERT INTO met_config VALUES('474','flash_22','3|980|90|1','0','22','cn');
+INSERT INTO met_config VALUES('475','met_fd_time','120','49','0','en');
+INSERT INTO met_config VALUES('476','met_fd_word','','49','0','en');
+INSERT INTO met_config VALUES('477','met_fd_email','','49','0','en');
+INSERT INTO met_config VALUES('478','met_fd_type','1','49','0','en');
+INSERT INTO met_config VALUES('479','met_fd_to','','49','0','en');
+INSERT INTO met_config VALUES('480','met_fd_back','','49','0','en');
+INSERT INTO met_config VALUES('481','met_fd_title','','49','0','en');
+INSERT INTO met_config VALUES('482','met_fd_content','','49','0','en');
+INSERT INTO met_config VALUES('483','met_fd_ok','1','49','0','en');
+INSERT INTO met_config VALUES('484','met_fd_time','120','50','0','en');
+INSERT INTO met_config VALUES('485','met_fd_word','','50','0','en');
+INSERT INTO met_config VALUES('486','met_fd_type','1','50','0','en');
+INSERT INTO met_config VALUES('487','met_fd_to','','50','0','en');
+INSERT INTO met_config VALUES('488','met_fd_back','0','50','0','en');
+INSERT INTO met_config VALUES('489','met_fd_email','1','50','0','en');
+INSERT INTO met_config VALUES('490','met_fd_title','','50','0','en');
+INSERT INTO met_config VALUES('491','met_fd_content','','50','0','en');
+INSERT INTO met_config VALUES('492','met_fdtable','Feedback','50','0','en');
+INSERT INTO met_config VALUES('493','met_fd_class','1','50','0','en');
+INSERT INTO met_config VALUES('494','met_fd_ok','1','50','0','en');
+INSERT INTO met_config VALUES('495','flash_10000','0|950|90|1','0','10000','en');
+INSERT INTO met_config VALUES('496','flash_10001','1|950|220|2','0','10001','en');
+INSERT INTO met_config VALUES('497','flash_42','0|950|90|1','0','42','en');
+INSERT INTO met_config VALUES('498','flash_43','0|950|90|1','0','43','en');
+INSERT INTO met_config VALUES('499','flash_49','0|950|90|1','0','49','en');
+INSERT INTO met_config VALUES('500','flash_52','0|950|90|1','0','52','en');
+INSERT INTO met_config VALUES('501','flash_44','0|950|90|1','0','44','en');
+INSERT INTO met_config VALUES('502','flash_50','0|950|90|1','0','50','en');
+INSERT INTO met_config VALUES('503','flash_53','0|950|90|1','0','53','en');
+INSERT INTO met_config VALUES('504','flash_45','0|950|90|1','0','45','en');
+INSERT INTO met_config VALUES('505','flash_54','0|950|90|1','0','54','en');
+INSERT INTO met_config VALUES('506','flash_46','0|950|90|1','0','46','en');
+INSERT INTO met_config VALUES('507','flash_55','0|950|90|1','0','55','en');
+INSERT INTO met_config VALUES('508','flash_47','0|950|90|1','0','47','en');
+INSERT INTO met_config VALUES('509','flash_56','0|950|90|1','0','56','en');
+INSERT INTO met_config VALUES('510','flash_51','0|950|90|1','0','51','en');
+INSERT INTO met_config VALUES('511','flash_57','0|950|90|1','0','57','en');
+INSERT INTO met_config VALUES('512','flash_58','0|950|90|1','0','58','en');
+INSERT INTO met_config VALUES('513','flash_59','0|950|90|1','0','59','en');
+INSERT INTO met_config VALUES('514','flash_48','0|950|90|1','0','48','en');
+INSERT INTO met_config VALUES('517','flash_64','0|950|90|1','0','64','en');
+INSERT INTO met_config VALUES('518','flash_65','0|950|90|1','0','65','en');
+INSERT INTO met_config VALUES('519','flash_66','0|950|90|1','0','66','en');
+INSERT INTO met_config VALUES('520','flash_67','0|950|90|1','0','67','en');
+INSERT INTO met_config VALUES('521','flash_60','0|950|90|1','0','60','en');
+INSERT INTO met_config VALUES('522','flash_61','0|950|90|1','0','61','en');
+INSERT INTO met_config VALUES('523','flash_62','0|950|90|1','0','62','en');
+INSERT INTO met_config VALUES('735','met_shop_admin_orders_email_address','','0','0','en');
+INSERT INTO met_config VALUES('734','met_shop_admin_shipments_sms_content','','0','0','en');
+INSERT INTO met_config VALUES('731','met_shop_admin_payment_email_content','','0','0','en');
+INSERT INTO met_config VALUES('730','met_shop_admin_orders_sms_content','','0','0','en');
+INSERT INTO met_config VALUES('729','met_shop_admin_orders_email_content','','0','0','en');
+INSERT INTO met_config VALUES('728','met_shop_user_shipments_sms_content','','0','0','en');
+INSERT INTO met_config VALUES('727','met_shop_user_shipments_email_content','','0','0','en');
+INSERT INTO met_config VALUES('726','met_shop_user_payment_sms_content','','0','0','en');
+INSERT INTO met_config VALUES('725','met_shop_user_payment_email_content','','0','0','en');
+INSERT INTO met_config VALUES('720','met_shop_admin_payment_sms_ok','','0','0','en');
+INSERT INTO met_config VALUES('718','met_shop_admin_orders_sms_ok','','0','0','en');
+INSERT INTO met_config VALUES('716','met_shop_user_shipments_sms_ok','','0','0','en');
+INSERT INTO met_config VALUES('714','met_shop_user_payment_sms_ok','','0','0','en');
+INSERT INTO met_config VALUES('712','met_shop_user_orders_sms_ok','','0','0','en');
+INSERT INTO met_config VALUES('710','met_shop_method','','0','0','en');
+INSERT INTO met_config VALUES('708','met_shop_invoicetype','','0','0','en');
+INSERT INTO met_config VALUES('706','met_shop_cash','1','0','0','en');
+INSERT INTO met_config VALUES('704','met_shop_admin_recharge_sms_content','充值后管理员sms','0','0','cn');
+INSERT INTO met_config VALUES('702','met_shop_admin_recharge_sms_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('701','met_shop_admin_recharge_email_content','充值后管理员email','0','0','cn');
+INSERT INTO met_config VALUES('698','met_shop_admin_recharge_email_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('696','met_shop_user_recharge_sms_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('694','met_shop_user_recharge_email_title','充值后用户','0','0','cn');
+INSERT INTO met_config VALUES('692','met_shop_admin_shipments_email_title','发货后管理员','0','0','cn');
+INSERT INTO met_config VALUES('689','met_shop_user_shipments_email_title','发货后用户','0','0','cn');
+INSERT INTO met_config VALUES('688','met_shop_user_payment_email_title','付款后用户','0','0','cn');
+INSERT INTO met_config VALUES('686','met_shop_admin_shipments_sms_tel','15616213396','0','0','cn');
+INSERT INTO met_config VALUES('685','met_shop_admin_shipments_email_address','364854234@qq.com','0','0','cn');
+INSERT INTO met_config VALUES('682','met_shop_admin_orders_sms_tel','15616213396','0','0','cn');
+INSERT INTO met_config VALUES('680','met_shop_admin_shipments_sms_content','发货后管理员sms','0','0','cn');
+INSERT INTO met_config VALUES('679','met_shop_admin_shipments_email_content','充值后管理员email','0','0','cn');
+INSERT INTO met_config VALUES('677','met_shop_admin_payment_email_content','付款后管理员email','0','0','cn');
+INSERT INTO met_config VALUES('675','met_shop_admin_orders_email_content','下单后管理员email','0','0','cn');
+INSERT INTO met_config VALUES('672','met_shop_user_payment_sms_content','付款后用户SMS','0','0','cn');
+INSERT INTO met_config VALUES('670','met_shop_user_orders_sms_content','下单后用户SMS','0','0','cn');
+INSERT INTO met_config VALUES('669','met_shop_user_orders_email_content','下单后用户email','0','0','cn');
+INSERT INTO met_config VALUES('667','met_shop_admin_shipments_email_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('665','met_shop_admin_payment_email_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('663','met_shop_admin_orders_email_ok','0','0','0','cn');
+INSERT INTO met_config VALUES('661','met_shop_user_shipments_email_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('659','met_shop_user_payment_email_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('657','met_shop_user_orders_email_ok','0','0','0','cn');
+INSERT INTO met_config VALUES('655','met_shop_price','3','0','0','cn');
+INSERT INTO met_config VALUES('652','met_shop_cash','1','0','0','cn');
+INSERT INTO met_config VALUES('653','met_shop_invoice','1','0','0','cn');
+INSERT INTO met_config VALUES('733','met_shop_admin_shipments_email_content','','0','0','en');
+INSERT INTO met_config VALUES('732','met_shop_admin_payment_sms_content','','0','0','en');
+INSERT INTO met_config VALUES('724','met_shop_user_orders_sms_content','','0','0','en');
+INSERT INTO met_config VALUES('723','met_shop_user_orders_email_content','','0','0','en');
+INSERT INTO met_config VALUES('722','met_shop_admin_shipments_sms_ok','','0','0','en');
+INSERT INTO met_config VALUES('721','met_shop_admin_shipments_email_ok','','0','0','en');
+INSERT INTO met_config VALUES('719','met_shop_admin_payment_email_ok','','0','0','en');
+INSERT INTO met_config VALUES('717','met_shop_admin_orders_email_ok','','0','0','en');
+INSERT INTO met_config VALUES('715','met_shop_user_shipments_email_ok','','0','0','en');
+INSERT INTO met_config VALUES('713','met_shop_user_payment_email_ok','','0','0','en');
+INSERT INTO met_config VALUES('711','met_shop_user_orders_email_ok','','0','0','en');
+INSERT INTO met_config VALUES('709','met_shop_price','0','0','0','en');
+INSERT INTO met_config VALUES('707','met_shop_invoice','1','0','0','en');
+INSERT INTO met_config VALUES('705','met_shop_shopok','0','0','0','en');
+INSERT INTO met_config VALUES('703','met_shop_admin_recharge_sms_tel','15616213396','0','0','cn');
+INSERT INTO met_config VALUES('700','met_shop_admin_recharge_email_title','充值后管理员','0','0','cn');
+INSERT INTO met_config VALUES('699','met_shop_admin_recharge_email_address','364854234@qq.com','0','0','cn');
+INSERT INTO met_config VALUES('697','met_shop_user_recharge_sms_content','充值后用户SMS','0','0','cn');
+INSERT INTO met_config VALUES('695','met_shop_user_recharge_email_content','充值后用户email','0','0','cn');
+INSERT INTO met_config VALUES('693','met_shop_user_recharge_email_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('691','met_shop_admin_payment_email_title','付款后管理员','0','0','cn');
+INSERT INTO met_config VALUES('690','met_shop_admin_orders_email_title','下单后管理员','0','0','cn');
+INSERT INTO met_config VALUES('687','met_shop_user_orders_email_title','下单后用户','0','0','cn');
+INSERT INTO met_config VALUES('684','met_shop_admin_payment_sms_tel','15616213396','0','0','cn');
+INSERT INTO met_config VALUES('683','met_shop_admin_payment_email_address','364854234@qq.com','0','0','cn');
+INSERT INTO met_config VALUES('681','met_shop_admin_orders_email_address','364854234@qq.com','0','0','cn');
+INSERT INTO met_config VALUES('678','met_shop_admin_payment_sms_content','付款后管理员sms','0','0','cn');
+INSERT INTO met_config VALUES('676','met_shop_admin_orders_sms_content','下单后管理员sms','0','0','cn');
+INSERT INTO met_config VALUES('674','met_shop_user_shipments_sms_content','发货后用户SMS','0','0','cn');
+INSERT INTO met_config VALUES('673','met_shop_user_shipments_email_content','发货后用户email','0','0','cn');
+INSERT INTO met_config VALUES('671','met_shop_user_payment_email_content','付款后用户email','0','0','cn');
+INSERT INTO met_config VALUES('668','met_shop_admin_shipments_sms_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('666','met_shop_admin_payment_sms_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('664','met_shop_admin_orders_sms_ok','0','0','0','cn');
+INSERT INTO met_config VALUES('662','met_shop_user_shipments_sms_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('660','met_shop_user_payment_sms_ok','1','0','0','cn');
+INSERT INTO met_config VALUES('658','met_shop_user_orders_sms_ok','0','0','0','cn');
+INSERT INTO met_config VALUES('656','met_shop_method','圆通,12|顺风,22','0','0','cn');
+INSERT INTO met_config VALUES('654','met_shop_invoicetype','增值|产品|123','0','0','cn');
+INSERT INTO met_config VALUES('648','met_shop_key','pc5r36yyg5byhb6uc8i8gqzo89sopwcx','0','0','metinfo');
+INSERT INTO met_config VALUES('649','met_shop_partner','2088302585381492','0','0','metinfo');
+INSERT INTO met_config VALUES('650','met_shop_seller_email','metinfo@metinfo.cn','0','0','metinfo');
+INSERT INTO met_config VALUES('651','met_shop_shopok','1','0','0','cn');
+INSERT INTO met_config VALUES('736','met_shop_admin_orders_sms_tel','','0','0','en');
+INSERT INTO met_config VALUES('737','met_shop_admin_payment_email_address','','0','0','en');
+INSERT INTO met_config VALUES('738','met_shop_admin_payment_sms_tel','','0','0','en');
+INSERT INTO met_config VALUES('739','met_shop_admin_shipments_email_address','','0','0','en');
+INSERT INTO met_config VALUES('740','met_shop_admin_shipments_sms_tel','','0','0','en');
+INSERT INTO met_config VALUES('741','met_shop_user_orders_email_title','','0','0','en');
+INSERT INTO met_config VALUES('742','met_shop_user_payment_email_title','','0','0','en');
+INSERT INTO met_config VALUES('743','met_shop_user_shipments_email_title','','0','0','en');
+INSERT INTO met_config VALUES('744','met_shop_admin_orders_email_title','','0','0','en');
+INSERT INTO met_config VALUES('745','met_shop_admin_payment_email_title','','0','0','en');
+INSERT INTO met_config VALUES('746','met_shop_admin_shipments_email_title','','0','0','en');
+INSERT INTO met_config VALUES('747','met_shop_user_recharge_email_ok','','0','0','en');
+INSERT INTO met_config VALUES('748','met_shop_user_recharge_email_title','','0','0','en');
+INSERT INTO met_config VALUES('749','met_shop_user_recharge_email_content','','0','0','en');
+INSERT INTO met_config VALUES('750','met_shop_user_recharge_sms_ok','','0','0','en');
+INSERT INTO met_config VALUES('751','met_shop_user_recharge_sms_content','','0','0','en');
+INSERT INTO met_config VALUES('752','met_shop_admin_recharge_email_ok','','0','0','en');
+INSERT INTO met_config VALUES('753','met_shop_admin_recharge_email_address','','0','0','en');
+INSERT INTO met_config VALUES('754','met_shop_admin_recharge_email_title','','0','0','en');
+INSERT INTO met_config VALUES('755','met_shop_admin_recharge_email_content','','0','0','en');
+INSERT INTO met_config VALUES('756','met_shop_admin_recharge_sms_ok','','0','0','en');
+INSERT INTO met_config VALUES('757','met_shop_admin_recharge_sms_tel','','0','0','en');
+INSERT INTO met_config VALUES('758','met_shop_admin_recharge_sms_content','','0','0','en');
+
+DROP TABLE IF EXISTS met_cv;
+CREATE TABLE `met_cv` (
+  `id` int(11) NOT NULL auto_increment,
+  `addtime` datetime default NULL,
+  `readok` int(11) default '0',
+  `customerid` varchar(50) default '0',
+  `jobid` int(11) NOT NULL default '0',
+  `lang` varchar(50) default NULL,
+  `ip` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS met_download;
+CREATE TABLE `met_download` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `ctitle` varchar(200) default NULL,
+  `keywords` varchar(200) default NULL,
+  `description` text,
+  `content` longtext,
+  `class1` int(11) default '0',
+  `class2` int(11) default '0',
+  `class3` int(11) default '0',
+  `no_order` int(11) default '0',
+  `new_ok` int(1) default '0',
+  `wap_ok` int(1) default '0',
+  `downloadurl` varchar(255) default NULL,
+  `filesize` varchar(100) default NULL,
+  `com_ok` int(1) default '0',
+  `hits` int(11) default '0',
+  `updatetime` datetime default NULL,
+  `addtime` datetime default NULL,
+  `issue` varchar(100) default '',
+  `access` int(2) default '0',
+  `top_ok` int(1) default '0',
+  `downloadaccess` int(1) default '0',
+  `filename` varchar(255) default NULL,
+  `lang` varchar(50) default NULL,
+  `recycle` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_download VALUES('1','MetInfo企业网站管理系统V5.0','','','适合企业网站建设、个人网站建设、政府单位网站建设等','&nbsp; &nbsp; MetInfo企业网站管理系统采用PHP+Mysql架构，全站内置了SEO搜索引擎优化机制，支持用户自定义界面语言(全球各种语言)，拥有企业网站常用的模块功能（企业简介模块、新闻模块、产品模块、下载模块、图片模块、招聘模块、在线留言、反馈系统、在线交流、友情链接、网站地图、会员与权限管理）。强大灵活的后台管理功能、静态页面生成功能、个性化模块添加功能、不同栏目自定义FLASH样式功能、伪静态功能等可为企业打造出大气漂亮且具有营销力的精品网站。<br />\r\n<br />\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">支持语言</span></strong></div>\r\n<ol>\r\n	<li>\r\n		支持全球各种语言（包括简体中文、繁体中文、英文、日文等等），用户可以无限自定义多种语言，并可以在后台根据需要设置相应语言访问域名和自定义默认首页；</li>\r\n	<li>\r\n		独创的语言包编辑功能，用户可以通过网站管理后台轻松的编辑网站语言包,从而控制前台显示语言和语言参数（字体、文字大小、网页背景、显示字数等等）；</li>\r\n</ol>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">界面风格</span></strong></div>\r\n<ol>\r\n	<li>\r\n		<span style=\"font-size:12px;\">全站文字、系统栏目、信息内容及主要图片支持用户自定义，所见即可改；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">独创的栏目标识显示控制方法，管理员只需要通过设置栏目标识便可以灵活的控制首页显示栏目及相关信息列表等；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">前台模板与程序完全分离，独创的各种语言共用一套风格模板技术，也可以为每种语言设置不同的页面风格；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">风格模板制作简单灵活，同时支持标签化模板制作及PHP标准语法模板制作方法；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">独创的同一套模板支持不同的颜色风格、同时支持多种首页布局，用户可以通过后台轻松切换；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">缩略图自动生成、图片文字水印后台自定义、上传图片时水印自动添加功能；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">Flash动画（广告）可以根据栏目设置不同样式（包括图片轮播、Flash动画、单张图片），并可以选择多种不同的图片轮播方式；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">内置多种在线交流随屏幕滚动样式；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">独创的产品图片及图片模块图片多种样式显示模式，支持同一产品添加无限张图片；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">翻页样式、每页信息显示数、时间格式、热门信息点击次数、最新信息发布天数等完全实现后台自定义；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">社会化分享收藏按钮，分为侧栏式和工具式，且能够自定义代码；</span></li>\r\n	<li>\r\n		<span style=\"font-size:12px;\">DIV+CSS布局，全部兼容IE6、IE7、IE8、火狐、谷歌、TT、360度、遨游等主流浏览器；</span></li>\r\n</ol>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网站内容</span></strong></div>\r\n<ol>\r\n	<li>\r\n		简介、文章、产品、下载、图片模块三级栏目添加功能，栏目显示方式及显示与否完全有管理员通过后台控制；</li>\r\n	<li>\r\n		使用所见即所得文字编辑器ckeditor，可以轻松实现文字、图片、动画的添加与排版，支持内容手动分页；</li>\r\n	<li>\r\n		后台管理员管理权限互相独立，可以为每一个管理员设置不同的内容管理权限，创始人无法删除且拥有最高级权限；</li>\r\n	<li>\r\n		产品、图片、下载字段自定义功能（包括简短、下拉、文本、多选、单选、图片字段），每个产品可以上传多张产品图片；</li>\r\n	<li>\r\n		后台信息管理支持批量删除、批量转移、批量复制、批量权限设置操作；</li>\r\n	<li>\r\n		支持多种信息列表排序方式；</li>\r\n	<li>\r\n		支持信息置顶、推荐等设置；</li>\r\n</ol>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">SEO优化</span></strong></div>\r\n<ol>\r\n	<li>\r\n		可为网站设置全局SEO参数，也可以单独设置所有页面的页面title，关键词、页面描述，静态页面名称等；</li>\r\n	<li>\r\n		全站静态页面生成功能，可自动或手动一键生成全站静态页面，并可以个性化静态页面名称及静态页面格式，支持中文静态页面名称；</li>\r\n	<li>\r\n		全站伪静态功能、全站静态打包功能（打包静态页面文件程序完全分离，可将打包文件上传至任何空间正常访问）；</li>\r\n	<li>\r\n		页面标题已经按照[信息标题-栏目名称-网站Title]方式进行全面优化而且可以自由调整页面标题构成方式，所有Title内容默认均由系统自动生成，并支持自定义页面title；</li>\r\n	<li>\r\n		内置热门标签功能，可有效增加网站内部链接和关键词链接，可以自定义替换次数；</li>\r\n	<li>\r\n		官方模板通过DIV+CSS构架对标题H1、图片ALT、超链接Title、页头页尾关键词、首页信息更新排版、相关信息内链等全方位SEO优化；</li>\r\n	<li>\r\n		内置网站地图模块，可以生成最新的Html，xml，txt网站地图在网站根目录，让搜索引擎更快的收录你网站的所有页面；</li>\r\n	<li>\r\n		内置友情链接模块，可以轻松完成与其他网站的相互连接；</li>\r\n	<li>\r\n		支持栏目文件夹自定义和栏目内容页面静态页面名称及格式自定义，可以有效区分竞争对手同质化信息，增强SEO的效果；</li>\r\n</ol>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">互动营销</span></strong></div>\r\n<ol>\r\n	<li>\r\n		内置完整的在线交流后台管理功能、可添加QQ、MSN、淘宝旺旺、阿里旺旺、SKYPE、第三方客服交流软件等，并可以设置显示风格和图标；</li>\r\n	<li>\r\n		内置强大的在线反馈系统，可添加任意数量的反馈系统，表单字段完全自定义，可以用于产品订购、在线报名、在线调查、意见反馈等，可以自动将反馈信息发送至管理员设置的指定邮箱（可设置多个邮箱），并可以分类导出EXCEL表格形式的反馈信息；</li>\r\n	<li>\r\n		在线留言后台管理功能及邮件发送功能，管理员可以通过后台审核和回复留言内容；</li>\r\n	<li>\r\n		招聘信息发布和应聘者简历在线提交功能，简历自动发送到指定邮箱功能；</li>\r\n	<li>\r\n		后台内置站长统计功能，可以轻松监控网站浏览及来访者详情、搜索引擎来访和搜索的关键词等信息；</li>\r\n	<li>\r\n		后台内置短信群发功能，支持自定义发送或获取所有会员手机号码群发短信。</li>\r\n</ol>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>会员与权限管理</strong></span></div>\r\n<ol>\r\n	<li>\r\n		系统内置游客、普通会员、代理商、系统管理员四种权限角色，并可以实现普通会员、代理商前台注册与后台管理；</li>\r\n	<li>\r\n		语言内容、全站栏目、信息页面、字段参数均可以进行权限控制，进而可以灵活的设置代理价格、资料下载、最新产品公布等等的权限管理；</li>\r\n	<li>\r\n		可直接根据后台栏目设置管理员权限及操作权限功能，从而可以实现网站栏目及内容多人独立管理，且可以使管理员操作界面简洁明了；</li>\r\n</ol>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>安全与效率</strong></span></div>\r\n<ol>\r\n	<li>\r\n		内置数据库备份和恢复功能，可一键轻松完成整站数据库备份与恢复，支持配置文件和整站后台压缩打包下载；</li>\r\n	<li>\r\n		后台管理文件夹名称后台更改功能，可以让你轻松的隐藏管理登陆路径，从而提高系统安全性能；</li>\r\n	<li>\r\n		验证码、防刷新机制、SQL危险符号和语句过滤机制等大大增强了系统防恶意攻击的能力；</li>\r\n	<li>\r\n		管理员密码邮箱找回功能、会员密码邮箱找回功能增强了系统的自助安全性能；</li>\r\n	<li>\r\n		公共信息读取效率控制参数、模板调用数据库控制文件（由模板制作者控制）大大提高了系统的运行效率；</li>\r\n	<li>\r\n		上传文件夹及可视化文件管理功能，可以轻松管理删除垃圾文件；</li>\r\n	<li>\r\n		PHP+MYSQL构架、全站静态功能、系统文件权限设置等大大增强了系统抗击木马和恶意攻击的能力；</li>\r\n	<li>\r\n		后台内置网站体检功能，可以发现网站存在的细节问题，并保护网站安全；</li>\r\n</ol>\r\n<br />\r\n<div>\r\n	官方网站：http://www.metinfo.cn</div>\r\n<div>\r\n	系统开发：长沙米拓信息技术有限公司</div>\r\n<div>\r\n	发布日期：2012年9月14日</div>\r\n<div>\r\n	联系电话：0000-888888</div>\r\n','32','34','0','0','0','0','../upload/file/1342520542.zip','5054.96','1','7','2012-07-17 18:07:14','2012-07-16 15:39:38','admin','0','1','0','','cn','0');
+INSERT INTO met_download VALUES('2','MetInfo Enterprise Web Site Management System V5.0','','','Suitable for enterprise website construction, website construction, government agencies, website construction, etc.','<div>\r\n	&nbsp; &nbsp; &nbsp;MetInfo enterprise website management system using PHP + Mysql structure, the station built-in SEO search engine optimization mechanisms to support user-defined interface language (the world&#39;s languages), has a corporate website module (Company Profile module, news module, product modules, download the module, image module, the recruitment module, Feedback, feedback system, online communication, Links, Site Map, membership and permissions management). Powerful and flexible back-office management functions, static page generation, personalized modules to add functionality, various sections of custom styles FLASH functions, pseudo-static functions for enterprise to create a beautiful atmosphere, and the marketing power of the boutique site.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Supported Languages</span></strong></div>\r\n<ol>\r\n	<li>\r\n		Support the world&#39;s languages ??(including Simplified Chinese, Traditional Chinese, English, Japanese, etc.), unlimited custom languages, and set the appropriate language in the background as needed access to the domain name and custom default home;</li>\r\n	<li>\r\n		Original language pack editing features, users can easily edit website Admin site language packs to control the front of language and language parameters (font, text size, page background, show the number of words, etc.);</li>\r\n</ol>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Interface style</span></strong></div>\r\n<ol>\r\n	<li>\r\n		Text of the station, the system part, information content and images to support user-defined and seen to change;</li>\r\n	<li>\r\n		The unique part identifier display control method, administrators only need to set the part ID can be flexible control page displays topics and related information list;</li>\r\n	<li>\r\n		Foreground template and the program is completely separated from the original languages ??share a style template technology, you can also set different page style for each language;</li>\r\n	<li>\r\n		Style templates to create a simple and flexible, while supporting the production of label templates and PHP standard syntax template production methods;</li>\r\n	<li>\r\n		Original the same set of templates to support a different color style, while supporting a variety of page layout, users can easily switch;</li>\r\n	<li>\r\n		Automatically generated thumbnails, pictures, text watermark background custom watermark automatically add functionality to upload pictures;</li>\r\n	<li>\r\n		Flash animation (advertising) according to the columns of different styles (including Image Carousel, Flash animation, a single picture), and can choose a variety of image carousel;</li>\r\n	<li>\r\n		Built-in a variety of online communication with the screen scrolling style;</li>\r\n	<li>\r\n		The original product images and image module images a variety of styles to display mode, support for the same product to add unlimited pictures;</li>\r\n	<li>\r\n		Flip style, each page of information, time format, popular hits, the latest release days, the number of full realization of the background custom;</li>\r\n	<li>\r\n		Social sharing button collection divided into side-column and instrumental, and can custom code;</li>\r\n	<li>\r\n		DIV + CSS layout, and all mainstream browser compatible IE6, IE7, IE8, Firefox, Google, in TT, 360 degree travel, etc.;</li>\r\n</ol>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Site Content</span></strong></div>\r\n<ol>\r\n	<li>\r\n		Profiles, articles, products, downloads, pictures module three columns add columns to display and display whether or not full administrator control by the background;</li>\r\n	<li>\r\n		WYSIWYG text editor CKEditor can easily add text, images, animation, layout, and support the contents of the manual page;</li>\r\n	<li>\r\n		Background administrator administrative privileges independent of each other, different content management permissions can be set for each administrator, the founder can not be deleted with the most senior authority;</li>\r\n	<li>\r\n		Products, pictures, download field customization features (including a brief drop-down, text, multiple choice, radio, pictures, fields), each product can upload multiple product images;</li>\r\n	<li>\r\n		Background information management to support bulk delete bulk transfers, bulk copy, bulk permission setting operation;</li>\r\n	<li>\r\n		Supports a variety of information to sort the list;</li>\r\n	<li>\r\n		Support the information Top recommended settings;</li>\r\n</ol>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">SEO Optimization</span></strong></div>\r\n<ol>\r\n	<li>\r\n		Site set the parameters of the global SEO can be individually set the page is the title of all pages, keywords, page description, the name of the static pages;</li>\r\n	<li>\r\n		Station static page generation, automatic or manual a key generation station static pages, and can be personalized static page names and static page format to support the static pages of Chinese names;</li>\r\n	<li>\r\n		The pseudo-static functions of the station, the station static packaging function (packaged static page file program to be completely separated from the package file upload normal access to any space);</li>\r\n	<li>\r\n		Page title in accordance with Title - Column Name - Site Title manner fully optimized and can freely adjust the page title constitutes a way to default all Title content automatically generated by the system, and support self-defined page title;</li>\r\n	<li>\r\n		Built-in hot tag feature, which can effectively increase website&#39;s internal links and keyword links, you can customize the number of replacements;</li>\r\n	<li>\r\n		Official template DIV + CSS framework title H1, image ALT, hyperlink the Title, page headers tail keywords home information updated layout, the information chain, and other full SEO optimization;</li>\r\n	<li>\r\n		Built-in site map module, can generate the latest Html, xml, txt site map in the web root, so the search engines faster collection of all the pages of your website;</li>\r\n	<li>\r\n		Built-in link modules can be easily connected to each other and other sites;</li>\r\n	<li>\r\n		The support section folders custom self-definition and column content page static page name and format, can effectively distinguish between competitors in the homogenization of information, enhance the effect of SEO;</li>\r\n</ol>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Interactive Marketing</span></strong></div>\r\n<ol>\r\n	<li>\r\n		Back office management functions, built-in online exchange that can be added to the QQ, MSN, Live Messenger, Ali Want SKYPE, third-party customer communication software, etc., and can set the display style and icon;</li>\r\n	<li>\r\n		Built-in powerful online feedback system, feedback system can add any number of form fields fully customizable and can be used for product ordering, online registration, online surveys, feedback can automatically send feedback to the administrator to set the specified mailbox (you can set multiple mailboxes), and can be categorized as export EXCEL spreadsheet form of feedback;</li>\r\n	<li>\r\n		Feedback background management functions and email functions, administrators can review and reply to the message content through the background;</li>\r\n	<li>\r\n		Recruitment information and candidate resume submitted online functionality, resumes automatically sent to the specified mailbox;</li>\r\n	<li>\r\n		Background built-in Site Statistics feature, you can easily monitor website visitor details, visit the search engine and search keywords and other information;</li>\r\n	<li>\r\n		Background built-in SMS group sending, support custom to send or bulk SMS for all Member phone number.</li>\r\n</ol>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Members and rights management</span></strong></div>\r\n<ol>\r\n	<li>\r\n		Built-in tourists, ordinary members, agents, system administrators, four kinds of permission roles, and ordinary members, agents the foreground registered Manage;</li>\r\n	<li>\r\n		Language content, part of the station information page, field parameters can be access control, and thus the flexibility to set the proxy prices, data download, the latest product announcement permissions management;</li>\r\n	<li>\r\n		Can set administrator rights and authority to operate directly under the background section, which can achieve the independent management of the site columns and content people, and allows the administrator user interface is clear and concise;</li>\r\n</ol>\r\n<div>\r\n	<span style=\"font-size:16px;\"><strong>Safety and efficiency</strong></span></div>\r\n<ol>\r\n	<li>\r\n		Built-in database backup and restore functions, can be a key to easily complete the entire station database backup and recovery, support the background of the configuration files and the entire station compressed package download;</li>\r\n	<li>\r\n		Admin folder name of the background change feature that allows you to easily hide the Admin path, thereby improving system safety performance;</li>\r\n	<li>\r\n		Verification code, anti-refresh mechanism, SQL hazard symbols and statements filtering mechanism greatly enhances the ability of the system against malicious attacks;</li>\r\n	<li>\r\n		Administrator password for the mailbox to retrieve function, member password for the mailbox to retrieve the enhanced self-safety performance of the system;</li>\r\n	<li>\r\n		Efficiency of public information read control parameters to the template call database control files (control) by the template production has greatly increased the efficiency of the system;</li>\r\n	<li>\r\n		Upload folder and visualization file management functions, you can easily manage to delete junk files;</li>\r\n	<li>\r\n		PHP + MYSQL framework, the static function of the station, the system file permissions set greatly enhanced the ability of the system to fight the Trojans, and malicious attacks;</li>\r\n	<li>\r\n		Background built-in site examination, you can find the details of the existing site, and to protect the site safety;</li>\r\n</ol>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Official Website: http://www.metinfo.cn</div>\r\n<div>\r\n	System development: MetInfo Co., Ltd.</div>\r\n<div>\r\n	Release Date: July 28, 2012</div>\r\n<div>\r\n	Tel :0731 -88,920,794</div>\r\n','45','66','0','0','0','0','../upload/file/1342520567.zip','7200.16','1','4','2012-07-17 18:06:56','2012-07-16 15:39:38','admin','0','1','0','','en','0');
+
+DROP TABLE IF EXISTS met_feedback;
+CREATE TABLE `met_feedback` (
+  `id` int(11) NOT NULL auto_increment,
+  `class1` int(11) default '0',
+  `fdtitle` varchar(255) default NULL,
+  `fromurl` varchar(255) default NULL,
+  `ip` varchar(255) default NULL,
+  `addtime` datetime default NULL,
+  `readok` int(11) default '0',
+  `useinfo` text,
+  `customerid` varchar(30) default '0',
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS met_flash;
+CREATE TABLE `met_flash` (
+  `id` int(11) NOT NULL auto_increment,
+  `module` text,
+  `img_title` varchar(255) default NULL,
+  `img_path` varchar(255) default NULL,
+  `img_link` varchar(255) default NULL,
+  `flash_path` varchar(255) default NULL,
+  `flash_back` varchar(255) default NULL,
+  `no_order` int(11) default NULL,
+  `width` int(11) default NULL,
+  `height` int(11) default NULL,
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_flash VALUES('1',',10001,','MetInfo企业网站管理系统','../upload/201207/1342429839.jpg','http://www.metinfo.cn/','','','0','0','0','cn');
+INSERT INTO met_flash VALUES('2',',10001,','MetInfo企业网站管理系统','../upload/201207/1342430031.jpg','http://www.metinfo.cn/','','','1','0','0','cn');
+INSERT INTO met_flash VALUES('4',',1,19,25,31,22,2,4,5,3,6,14,15,16,17,18,7,8,9,10,11,12,13,32,34,35,33,36,37,38,39,40,','MetInfo企业网站管理系统','../upload/201207/1342430358.jpg','http://www.metinfo.cn/','','','0','0','0','cn');
+INSERT INTO met_flash VALUES('5',',10001,','Img1','../upload/201207/1342514509.jpg','http://www.metinfo.cn/','','','0','0','0','en');
+INSERT INTO met_flash VALUES('6',',10001,','','../upload/201207/1342514855.jpg','','','','0','0','0','en');
+INSERT INTO met_flash VALUES('7',',42,49,50,48,43,64,65,44,52,53,54,55,56,57,58,59,45,66,67,46,47,51,60,61,62,','','../upload/201207/1342514825.jpg','','','','0','0','0','en');
+
+DROP TABLE IF EXISTS met_flist;
+CREATE TABLE `met_flist` (
+  `id` int(11) NOT NULL auto_increment,
+  `listid` int(11) default NULL,
+  `paraid` int(11) default NULL,
+  `info` text,
+  `lang` varchar(50) default NULL,
+  `module` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS met_img;
+CREATE TABLE `met_img` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `ctitle` varchar(200) default NULL,
+  `keywords` varchar(200) default NULL,
+  `description` text,
+  `content` longtext,
+  `class1` int(11) default '0',
+  `class2` int(11) default '0',
+  `class3` int(11) default '0',
+  `no_order` int(11) default '0',
+  `wap_ok` int(1) default '0',
+  `new_ok` int(1) default '0',
+  `imgurl` varchar(255) default NULL,
+  `imgurls` varchar(255) default NULL,
+  `displayimg` text,
+  `com_ok` int(1) default '0',
+  `hits` int(11) default '0',
+  `updatetime` datetime default NULL,
+  `addtime` datetime default NULL,
+  `issue` varchar(100) default '',
+  `access` int(2) default '0',
+  `top_ok` int(1) default '0',
+  `filename` varchar(255) default NULL,
+  `lang` varchar(50) default NULL,
+  `content1` text,
+  `content2` text,
+  `content3` text,
+  `content4` text,
+  `contentinfo` varchar(255) default NULL,
+  `contentinfo1` varchar(255) default NULL,
+  `contentinfo2` varchar(255) default NULL,
+  `contentinfo3` varchar(255) default NULL,
+  `contentinfo4` varchar(255) default NULL,
+  `recycle` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_img VALUES('1','示例案例二','','','','','33','0','0','0','0','0','../upload/201207/1342431492.jpg','../upload/201207/thumb/1342431492.jpg','图1-../upload/201207/1342428054.jpg,图2-../upload/201207/1342427503.jpg,图3-../upload/201207/1342427712.jpg','1','1','2012-07-16 17:33:02','2012-07-16 16:23:06','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_img VALUES('2','示例案例三','','','','','33','0','0','0','0','0','../upload/201207/1342431628.jpg','../upload/201207/thumb/1342431628.jpg','','1','2','2012-07-16 17:32:33','2012-07-16 16:23:06','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_img VALUES('5','示例案例六','','','相关描述文字，相关描述文字，相关描述文字，相关描述文字，相关描述文字。','','33','0','0','0','0','0','../upload/201207/1342431883.jpg','../upload/201207/thumb/1342431883.jpg','','1','2','2012-07-16 17:35:42','2012-07-16 16:23:06','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_img VALUES('3','示例案例四','','','','','33','0','0','0','0','0','../upload/201207/1342431433.jpg','../upload/201207/thumb/1342431433.jpg','','1','1','2012-07-16 17:33:45','2012-07-16 16:23:06','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_img VALUES('4','示例案例五','','','相关描述文字，相关描述文字，相关描述文字，相关描述文字，相关描述文字。','','33','0','0','0','0','0','../upload/201207/1342428068.jpg','../upload/201207/thumb/1342428068.jpg','图1-../upload/201207/1342428054.jpg,图2-../upload/201207/1342427503.jpg,图3-../upload/201207/1342427712.jpg','1','2','2012-07-16 17:35:36','2012-07-16 16:23:06','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_img VALUES('6','示例案例一','','','','','33','0','0','0','0','0','../upload/201207/1342428068.jpg','../upload/201207/thumb/1342428068.jpg','图1-../upload/201207/1342428054.jpg,图2-../upload/201207/1342427503.jpg,图3-../upload/201207/1342427712.jpg','1','1','2012-07-16 16:23:06','2012-07-16 16:23:06','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_img VALUES('7','Case6','','','','','46','0','0','0','0','0','../upload/201207/1342431883.jpg','../upload/201207/thumb/1342431883.jpg','','1','1','2012-07-17 11:40:18','2012-07-16 16:23:06','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_img VALUES('8','Case5','','','','','46','0','0','0','0','0','../upload/201207/1342428068.jpg','../upload/201207/thumb/1342428068.jpg','图1-../upload/201207/1342428054.jpg,Img2-../upload/201207/1342427503.jpg,Img3-../upload/201207/1342427712.jpg','1','1','2012-07-17 11:40:14','2012-07-16 16:23:06','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_img VALUES('9','Case4','','','','','46','0','0','0','0','0','../upload/201207/1342431433.jpg','../upload/201207/thumb/1342431433.jpg','','1','1','2012-07-17 11:40:10','2012-07-16 16:23:06','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_img VALUES('10','Case2','','','','','46','0','0','0','0','0','../upload/201207/1342431492.jpg','../upload/201207/thumb/1342431492.jpg','Img1-../upload/201207/1342428054.jpg,Img2-../upload/201207/1342427503.jpg,Img3-../upload/201207/1342427712.jpg','1','1','2012-07-17 11:40:07','2012-07-16 16:23:06','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_img VALUES('11','Case3','','','','','46','0','0','0','0','0','../upload/201207/1342431628.jpg','../upload/201207/thumb/1342431628.jpg','','1','2','2012-07-17 11:40:03','2012-07-16 16:23:06','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_img VALUES('12','Case1','','','','','46','0','0','0','0','0','../upload/201207/1342428068.jpg','../upload/201207/thumb/1342428068.jpg','Img1-../upload/201207/1342428054.jpg,Img2-../upload/201207/1342427503.jpg,Img3-../upload/201207/1342427712.jpg','1','1','2012-07-17 11:39:52','2012-07-16 16:23:06','admin','0','0','','en','','','','','','','','','','0');
+
+DROP TABLE IF EXISTS met_index;
+CREATE TABLE `met_index` (
+  `id` int(11) NOT NULL auto_increment,
+  `content` text,
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_index VALUES('1','<div>\r\n	<img alt=\"\" src=\"http://cx6274025.gicp.net/metv5/upload/images/20120716_094159.jpg\" style=\"margin: 8px; width: 196px; float: left; height: 209px; \" /></div>\r\n<div style=\"padding-top:10px;\">\r\n	<span style=\"font-size:14px;\"><strong>关于&ldquo;为合作伙伴创造价值&rdquo;</strong></span></div>\r\n<div>\r\n	米拓信息认为客户、供应商、公司股东、公司员工等一切和自身有合作关系的单位和个人都是自己的合作伙伴，并只有通过努力为合作伙伴创造价值，才能体现自身的价值并获得发展和成功。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>关于&ldquo;诚实、宽容、创新、服务&rdquo;</strong></span></div>\r\n<div>\r\n	<span style=\"font-size:12px;\">米拓信息认为诚信是一切合作的基础，宽容是解决问题的前提，创新是发展事业的利器，服务是创造价值的根本。</span></div>\r\n','cn');
+INSERT INTO met_index VALUES('2','<p><span style=\"color: rgb(102, 102, 102); -webkit-text-size-adjust: none; \">&nbsp; &nbsp; &nbsp;MetInfo Co., Ltd. (</span><a href=\"http://www.metinfo.cn/\" style=\"color: rgb(28, 87, 196); -webkit-text-size-adjust: none; \" target=\"_blank\">MetInfo.cn</a><span style=\"color: rgb(102, 102, 102); -webkit-text-size-adjust: none; \">) focused on the field of network information and network marketing, integrated team of professional marketing ideas and networking technologies to provide customers with high quality online marketing services.</span></p>','en');
+
+DROP TABLE IF EXISTS met_job;
+CREATE TABLE `met_job` (
+  `id` int(11) NOT NULL auto_increment,
+  `position` varchar(200) default NULL,
+  `count` int(11) default '0',
+  `place` varchar(200) default NULL,
+  `deal` varchar(200) default NULL,
+  `addtime` date default NULL,
+  `useful_life` int(11) default NULL,
+  `content` longtext,
+  `access` int(2) default '0',
+  `no_order` int(11) default '0',
+  `wap_ok` int(1) default '0',
+  `top_ok` int(1) default '0',
+  `email` varchar(255) default NULL,
+  `filename` varchar(255) default NULL,
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_job VALUES('1','PHP技术支持','10','长沙市','面议','2012-07-16','0','<p>\r\n	<strong><span style=\"font-size:14px;\">主要工作内容：</span></strong></p>\r\n<div>\r\n	1. 负责MetInfo企业网站管理系统技术支持；</div>\r\n<div>\r\n	2. 为客服人员提供技术支持；</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">岗位要求：&nbsp;</span></strong></div>\r\n<ol>\r\n	<li>\r\n		php能看懂且对PHP感兴趣，理解面向对象基本概念，写过一些小程序；</li>\r\n	<li>\r\n		懂MySql数据库备份、恢复等基本操作，熟悉PHP环境的搭建和配置；</li>\r\n	<li>\r\n		javascript能看懂，了解jquery等js框架；</li>\r\n	<li>\r\n		html/css会写，懂linux的优先；</li>\r\n	<li>\r\n		擅长网上查找资料解决问题；</li>\r\n	<li>\r\n		有PHP作品（留言板，blog等）的优先；</li>\r\n	<li>\r\n		做事要有耐心，性格谦和，学习能力强，能吃苦耐劳，愿意同公司共同发展。</li>\r\n</ol>\r\n<div>\r\n	如果你对我们的职位感兴趣，且符合我们的基本要求，请将个人简历投递至metinfo@qq.com，或者直接与我们取得联系！</div>\r\n','0','0','0','0','','','cn');
+INSERT INTO met_job VALUES('2','网络销售','10','长沙市','面议','2012-07-16','0','<ol>\r\n	<li>\r\n		大专以上学历，一年以上网络销售经验；</li>\r\n	<li>\r\n		熟悉网络推广，熟悉网站建设基本流程；</li>\r\n	<li>\r\n		有网站制作相关工作经验者优先；</li>\r\n	<li>\r\n		学习能力强，能吃苦耐劳，愿意同公司共同发展；</li>\r\n	<li>\r\n		本岗位招收兼职，投递简历时请说明自己的工作意愿；</li>\r\n</ol>\r\n<div>\r\n	如果你对我们的职位感兴趣，且符合我们的基本要求，请将个人简历投递至metinfo@qq.com，或者直接与我们取得联系！</div>\r\n','0','0','0','0','','','cn');
+INSERT INTO met_job VALUES('3','网页UI设计师','10','长沙市','面议','2012-07-16','0','<p>\r\n	<span style=\"font-size: 14px; \"><strong>主要工作内容：</strong></span>负责MetInfo界面和公司网站的界面设计等，重视用户体验。</p>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">岗位要求：</span></strong></div>\r\n<ol>\r\n	<li>\r\n		视觉设计、平面设计或美术相关专业，大专以上学历。</li>\r\n	<li>\r\n		具有良好的创意设计能力及良好的色彩感，有较高的美术功底，较强的网页设计能力和整体布局感。</li>\r\n	<li>\r\n		精通photoshop、Illustrator、Fireworks、Dreamweaver等图形设计工具中至少两种。</li>\r\n	<li>\r\n		了解网页交互设计知识，对作品有不断追求完美的精神特质。</li>\r\n	<li>\r\n		有网站UI设计同等职位工作经验、能提供过往作品者优先。</li>\r\n</ol>\r\n','0','0','0','0','','','cn');
+INSERT INTO met_job VALUES('4','Web前端开发人员','10','长沙市','面议','2012-07-16','0','<div>\r\n	<strong><span style=\"font-size:14px;\">主要工作内容：</span></strong>负责MetInfo企业网站管理系统前台模板功能设计、用户体验提升和Web界面技术优化。</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">岗位要求：</span></strong></div>\r\n<ol>\r\n	<li>\r\n		熟悉JavaScript、Ajax、JQuery等前端开发脚本技能；</li>\r\n	<li>\r\n		精通HTML/XHTML、CSS，能够快速手写CSS代码，熟悉页面架构和布局。</li>\r\n	<li>\r\n		熟悉Web网站以及Web应用的可用性及用户分析方法，深入理解产品流程、用户体验和用户需求，对提升用户体验有一定经验及造诣。</li>\r\n	<li>\r\n		对Web技术发展有强烈兴趣，有良好的学习能力和强烈的进取心，愿意同公司共同发展。</li>\r\n	<li>\r\n		能跟踪最新的WEB前端设计、懂PHP基本语言者优先。</li>\r\n</ol>\r\n','0','0','0','0','','','cn');
+INSERT INTO met_job VALUES('5','电子商务专员','10','长沙市','面议','2012-07-16','0','<p>\r\n	<strong><span style=\"font-size:14px;\">主要工作内容：</span></strong>负责MetInfo企业网站管理系统在线销售工作，向客户提供迅速、准确、周到的服务。</p>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">岗位要求：</span></strong></div>\r\n<ol>\r\n	<li>\r\n		<span style=\"font-size:14px;\">熟悉互联网销售与推广；</span></li>\r\n	<li>\r\n		<span style=\"font-size:14px;\">能熟练操作网站管理系统后台，了解基本的建站知识；</span></li>\r\n	<li>\r\n		<span style=\"font-size:14px;\">能敏锐把握网站建设行业市场动向，善于把握客户心理；</span></li>\r\n	<li>\r\n		<span style=\"font-size:14px;\">沟通能力强，勤奋耐劳，办事认真严谨细致；</span></li>\r\n	<li>\r\n		<span style=\"font-size:14px;\">具有较强的学习能力，愿意同公司共同发展；</span></li>\r\n	<li>\r\n		<span style=\"font-size:14px;\">有网站建设相关产品工作经验者优先，电子商务、市场营销等相关专业优先。</span></li>\r\n</ol>\r\n','0','0','0','0','','','cn');
+INSERT INTO met_job VALUES('6','Internet sales','10','ChangSha','Negotiable','2012-07-16','30','<ol>\r\n	<li>\r\n		College education, more than one year of experience in network sales;</li>\r\n	<li>\r\n		Familiar with web promotion, familiar with the site construction process;</li>\r\n	<li>\r\n		Site production of relevant work experience is preferred;</li>\r\n	<li>\r\n		Ability to learn, hard working, willing and common development with the company;</li>\r\n	<li>\r\n		Positions to recruit part-time, please send your resume to explain their willingness to work;</li>\r\n</ol>\r\n<div>\r\n	If you are interested in our position and meet our basic requirements, please send your CV to metinfo@qq.com, or contact us directly!</div>\r\n','0','0','0','0','','','en');
+
+DROP TABLE IF EXISTS met_label;
+CREATE TABLE `met_label` (
+  `id` int(11) NOT NULL auto_increment,
+  `oldwords` varchar(255) default NULL,
+  `newwords` varchar(255) default NULL,
+  `newtitle` varchar(255) default NULL,
+  `url` varchar(255) default NULL,
+  `num` int(11) NOT NULL default '99',
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS met_lang;
+CREATE TABLE `met_lang` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL,
+  `useok` int(1) NOT NULL,
+  `no_order` int(11) NOT NULL,
+  `mark` varchar(50) NOT NULL,
+  `flag` varchar(100) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `newwindows` int(1) NOT NULL,
+  `met_webhtm` int(1) NOT NULL,
+  `met_htmtype` varchar(50) NOT NULL,
+  `met_weburl` varchar(255) NOT NULL,
+  `lang` varchar(50) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_lang VALUES('2','English','1','2','en','','','0','0','','','metinfo');
+INSERT INTO met_lang VALUES('1','简体中文','1','1','cn','','','0','0','','','metinfo');
+INSERT INTO met_lang VALUES('3','简体中文','1','1','cn','cn.gif','','0','0','html','','cn');
+INSERT INTO met_lang VALUES('4','English','1','2','en','en.gif','','0','0','html','','en');
+
+DROP TABLE IF EXISTS met_link;
+CREATE TABLE `met_link` (
+  `id` int(11) NOT NULL auto_increment,
+  `webname` varchar(255) default NULL,
+  `weburl` varchar(255) default NULL,
+  `weblogo` varchar(255) default NULL,
+  `link_type` int(11) default '0',
+  `info` varchar(255) default NULL,
+  `contact` varchar(255) default NULL,
+  `orderno` int(11) default '0',
+  `com_ok` int(11) default '0',
+  `show_ok` int(11) default '0',
+  `addtime` datetime default NULL,
+  `lang` varchar(50) default NULL,
+  `ip` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_link VALUES('1','MetInfo','http://www.metinfo.cn','../upload/201207/1342432038.png','0','MetInfo企业网站管理系统','','1000','1','1','2012-07-16 17:44:23','cn','');
+INSERT INTO met_link VALUES('2','米拓信息','http://www.metinfo.cn','','0','MetInfo企业网站管理系统','','99','1','1','2012-07-16 17:41:46','cn','');
+INSERT INTO met_link VALUES('3','MetInfo','http://www.metinfo.cn','','0','MetInfo','','0','1','1','2012-07-17 11:22:36','en','');
+INSERT INTO met_link VALUES('4','MetCMS','http://www.metinfo.cn','','0','MetCMS','','0','1','1','2012-07-17 11:22:56','en','');
+INSERT INTO met_link VALUES('5','MetInfo Co., Ltd.','http://www.metinfo.cn','','0','MetInfo','','0','1','1','2012-07-17 11:26:43','en','');
+
+DROP TABLE IF EXISTS met_message;
+CREATE TABLE `met_message` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `tel` varchar(255) default NULL,
+  `email` varchar(255) default NULL,
+  `contact` varchar(255) default NULL,
+  `info` text,
+  `ip` varchar(255) default NULL,
+  `addtime` datetime default NULL,
+  `readok` int(11) default '0',
+  `useinfo` text,
+  `lang` varchar(50) default NULL,
+  `access` int(2) default '0',
+  `customerid` varchar(30) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_message VALUES('1','张三','13333333333','','','怎么更换浏览器地址栏上网址左边的小图标？','','2012-07-16 14:14:27','1','可以在后台-企业应用-我的应用-应用市场，找到并下载地址栏图片更换工具，下载后重新上传地址栏小图标即可。','cn','0','admin');
+INSERT INTO met_message VALUES('2','李四','','','','访问网站出现MySQL Server Error错误怎么办？','','2012-07-16 14:21:13','1','出现这样的报错不用过于紧张，空间和程序都没有问题，这是由于数据库无法连接造成的。\r\n详细请查看：http://www.metinfo.cn/faq/shownews329.htm','cn','0','admin');
+INSERT INTO met_message VALUES('5','webwe','','','','webwebetrty','','2012-07-18 11:34:01','0','','cn','0','admin');
+INSERT INTO met_message VALUES('3','Zhang San','','','','Visit the MySQL Server Error error how to do?','113.240.184.226','2012-07-17 11:48:00','1','This error appears not get too excited about space and programs there is no problem, this is caused because the database can not connect. For details, see:http://www.metinfo.cn/faq/shownews329.htm','en','0','admin');
+INSERT INTO met_message VALUES('4','LiSi','','','','How to replace the small icon to the left of the URL in the browser address bar?','113.240.184.226','2012-07-17 11:48:44','1','In the background - enterprise applications - application - application market, find and download the address bar picture replacement tools, download and re-upload the icon of the address bar.','en','0','admin');
+
+DROP TABLE IF EXISTS met_news;
+CREATE TABLE `met_news` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `ctitle` varchar(200) default NULL,
+  `keywords` varchar(200) default NULL,
+  `description` text,
+  `content` longtext,
+  `class1` int(11) default '0',
+  `class2` int(11) default '0',
+  `class3` int(11) default '0',
+  `no_order` int(11) default '0',
+  `wap_ok` int(1) default '0',
+  `img_ok` int(1) default '0',
+  `imgurl` varchar(255) default NULL,
+  `imgurls` varchar(255) default NULL,
+  `com_ok` int(1) default '0',
+  `issue` varchar(100) default NULL,
+  `hits` int(11) default '0',
+  `updatetime` datetime default NULL,
+  `addtime` datetime default NULL,
+  `access` int(2) default '0',
+  `top_ok` int(1) default '0',
+  `filename` varchar(255) default NULL,
+  `lang` varchar(50) default NULL,
+  `recycle` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_news VALUES('1','为什么企业要建多国语言网站？','','','','<p>\r\n	互联网在不断发展壮大，已成为企业和个人寻求生意机会，对商品、服务和信息进行了解的首选方式。从站在增强一个企业竞争优势的角度看，建设一个多语言网站是不断增加客户数量的前提和提高销售的高效手段。</p>\r\n<div>\r\n	随着国际化进程的不断加快，多语言网站将成为企业和组织必不可少的一部分。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>多语言网站帮助企业面对众多的非英语国家互联网用户</strong></span></div>\r\n<div>\r\n	随着时间变化，非英语国家互联网用户的比例已不断在攀升。相比以前由讲英语的用户控制互联网的局面已产生了根本改变。尼尔森集团(一个美国互联网研究咨询公司)在05年3月谈到：国外互联网市场是&ldquo;将要成熟的果子&rdquo;，只要你愿意付出较少的努力就能够得到巨大的收获。结果显示，互联网的增长在美国、德国、英国和瑞典趋于缓慢，在其他国家例如法国，香港、意大利和日本则增长显着。</div>\r\n<div>\r\n	尼尔森的一位高级分析员阐述：&ldquo;最容易得到的机会是在这个国家的互联网使用习惯和用户(或站点)关系被确立之前。在当前成长阶段培养的客户将成为未来忠诚客户的基础。&rdquo;多语言网站是企业有效的营销工具有能力对多数互联网用户用他们自己的语言进行沟通，这不仅仅意味着销售的增加，更可贵的是在当地市场建立起有关您的品牌、服务和产品的知晓。</div>\r\n<div>\r\n	建设多语言网站是一个非常伟大的计划，因为它很可能是企业进行市场营销，抓住新的用户，建立与新的客户关系和赋予企业品牌一个国际形象的最有效方式。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>多语言网站能为企业带来新的顾客</strong></span></div>\r\n<div>\r\n	通过把您的多语言网站暴露在各个国家，地区潜在的顾客面前，自然而然地您会获得这些本国语用户的注意。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>多语言网站能够为企业增加销售</strong></span></div>\r\n<div>\r\n	在网站上每增加一种语言都有可能潜在的提高一倍的销售额。即便只把网站建成只包含有西班牙语，法语，德语和意大利语这四种世界主要语言的网站，其销售额也有可能潜在的提升4倍。这是一种较少见的方式利用如此小的投资获得如此大的效果。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>多语言网站能够传达以顾客为中心的服务意识</strong></span></div>\r\n<div>\r\n	您的多语言网站显示出您为顾客思考。您以顾客为中心的思想及关爱顾客的努力将得到顾客的感激，因为您的这份额外的工作，他们将会更多的倾向于惠顾您的企业。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>多语言网站能够获得更多的信任</strong></span></div>\r\n<div>\r\n	许多通过互联网执行的交易往往由于彼此并不熟悉相互的语言而产生不同文化间的信任问题。提供给顾客多语言的选择帮助他们感到安全，确切地清楚他们在如何交易，与谁交易。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>多语言网站帮助克服文化上的敏感</strong></span></div>\r\n<div>\r\n	一个经过恰当设计的多语言网站，通过使用目标市场的本土语能够克服潜在的文化障碍。因为多语言网站自动为客户创造了&ldquo;文化舒适区&rdquo;，使他们能够自如地导航，了解网站信息，并与您展开互动。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>多语言网站能够有效打击竞争者</strong></span></div>\r\n<div>\r\n	获得竞争优势需要在当今的环境中跳出思维的框架。许多企业试图把自己与竞争者区别出来。观察您的竞争者，如果他们有多语种网站为什么您没有呢？假若他们没有，为什么不在他们之前主导这个市场首先建立你公司的品牌呢？</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>多语言网站展示企业的国际性风范</strong></span></div>\r\n<div>\r\n	一个多语种网站展示您的思想，经营及国际性的业务流程。国际性企业形象及行业领导地位由此树立多语言网站帮助面向不同地域国家的查寻引擎，搜索引擎会带着人们来到您的站点。然而在一些国家和地区有他们自己受欢迎的搜索引擎，主要是这些搜索引擎依据母语的使用习惯来工作，适应了人们的需要，所以获得了成功。这类搜索引擎引擎是开启本地市场的钥匙，除此之外，除非他们能够使用一种特定的语言(比如英语)否则很难找到您。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	另外，许多关键字搜索引擎，尤其是Google，在多语言开发方面能力优异。拥有多语言页面的网站能够最大限度的保障您的网站能够被众多搜索引擎检索并展示。事务总是在不断地转移和变化。当前多语言网站仍处在早期阶段，许多跨国公司使用多语言网站来巩固其国际地位。然而，接下来的影响将自然地发生，多语言网站将成为互联网存在的主要部分。不管企业是选择现在或将来，这都是网站建设的唯一选择。</div>\r\n','2','4','0','0','0','0','','','1','admin','7','2012-07-16 10:19:27','2012-07-16 10:05:40','0','0','','cn','0');
+INSERT INTO met_news VALUES('2','如何获取MetInfo网站管理系统商业授权？','','','','<p>\r\n	<strong style=\"font-size: 14px; line-height: 25px; \">方法一：参加&ldquo;个性化网站模板换取商业授权活动&rdquo;</strong></p>\r\n<div style=\"margin-left: 40px; \">\r\n	提供一套符合《MetInfo用户手册》模板制作规范要求的企业网站模板，便可以申请一个永久商业授权。具体要求如下：</div>\r\n<div style=\"margin-left: 40px; \">\r\n	1）修改官方或已有模板者需要风格和功能与已有模板有明显的区别；</div>\r\n<div style=\"margin-left: 40px; \">\r\n	2）模板文件应符合《MetInfo用户手册》模板制作规范要求，所有文件完整有序；</div>\r\n<div style=\"margin-left: 40px; \">\r\n	3）模板首页栏目、相关联系方式及一切重要信息均可以通过后台配置进行修改；</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>方法二：购买官方虚拟空间免费获取相应时长的商业授权</strong></span></div>\r\n<div style=\"margin-left: 40px; \">\r\n	购买官方虚拟空间，可以免费获取相应时长的商业授权，第二年只需要续费空间便可以继续免费获取商业授权，让MetInfo企业网站管理系统的商业授权费用一直为0；<br />\r\n	详细情况请参考：<a href=\"http://www.metinfo.cn/web/promotion.htm\" target=\"_blank\">http://www.metinfo.cn/web/promotion.htm</a></div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>方法三：直接购买永久商业授权</strong></span></div>\r\n<div style=\"margin-left: 40px; \">\r\n	普通版1000元，高级版3000元，详细情况请参考：<a href=\"http://www.metinfo.cn/web/product.htm\" target=\"_blank\">http://www.metinfo.cn/web/product.htm</a></div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">商业授权常见问答：</span></strong></div>\r\n<div>\r\n	1、已经100%开源为什么还要收取商业授权费用？</div>\r\n<div style=\"margin-left: 40px; \">\r\n	官方解答：MetInfo企业网站管理系统是一款100%开源的企业网站管理系统，对于个人网站及非赢利网站是可以永久免费使用的，如果您是单位用户且将我们的系统用于商业用途，我们需要收取相应的版权使用费，以维持软件的开发成本和进一步发展，商业用户包括但不仅限于企业、事业单位、政府部门、学校等等；当然您也可以参加我们的促销活动，免费获取商业授权。</div>\r\n<div>\r\n	2、获取商业授权有什么好处？</div>\r\n<div style=\"margin-left: 40px; \">\r\n	官方解答：除了得到官方正式商业授权外，可以享受相应等级的官方技术支持服务。</div>\r\n<div>\r\n	3、哪些网站不需要购买商业授权？如何区分个人网站和单位网站？</div>\r\n<div style=\"margin-left: 40px; \">\r\n	官方解答：所有个人网站（不限制用途）、非盈利性质的单位网站不需要购买商业版权，但未经商业授权许可，不允许去除官方版权信息。个人网站是指网站所有信息均以个人名义（包括无工商登记的个人和个体工商户）呈现的商业和非商业网站，以个人名义注册的域名和备案但用于宣传企业的网站不属于个人网站范畴。</div>\r\n','2','4','0','0','0','0','','','1','admin','9','2012-07-16 10:18:05','2012-07-16 10:08:18','0','0','','cn','0');
+INSERT INTO met_news VALUES('3','商业版和免费版在系统功能上有区别吗？','','','','<p>\r\n	<strong><span style=\"font-size:14px;\">商业版和免费版在系统功能上没有任何区别。</span></strong></p>\r\n<div>\r\n	商业版和免费版区别：</div>\r\n<ol>\r\n	<li>\r\n		如您将程序用于商业用途，请自觉购买商业授权，否则我们将保留追究法律责任的权利；</li>\r\n	<li>\r\n		免费版和商业版在网站功能上没有任何区别，商业用户可以获取专业的技术支持服务；</li>\r\n	<li>\r\n		免费版如去除【Powered by MetInfo】版权标识将不能正常运行！米拓官方并将追求相应的法律责任！</li>\r\n	<li>\r\n		查看免费版与商业版的详细功能及服务对比：<a href=\"http://www.metinfo.cn/web/product.htm\" target=\"_blank\">查看详细</a></li>\r\n</ol>\r\n','2','4','0','0','0','0','','','1','admin','7','2012-07-16 10:23:38','2012-07-16 10:21:25','0','0','','cn','0');
+INSERT INTO met_news VALUES('4','新手使用MetInfo建站步骤','','','','<p>\r\n	<strong><span style=\"font-size:14px;\">试用操作步骤</span></strong></p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	第一步：注册空间管理账号</p>\r\n<div style=\"margin-left: 40px; \">\r\n	登陆：<a href=\"http://idc.metinfo.cn/\" target=\"_blank\">http://idc.metinfo.cn/</a></div>\r\n<div style=\"margin-left: 40px; \">\r\n	注册一个用户账号，并收取验证邮件对账号进行验证，如未收到验证邮件请直接与客服联系；</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	第二步：开通试用空间</div>\r\n<div style=\"margin-left: 40px; \">\r\n	（在线帮助：<a href=\"http://www.metinfo.cn/faq/shownews64.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews64.htm</a>）；</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	第三步：上传文件</div>\r\n<div style=\"margin-left: 40px; \">\r\n	上传MetInfo企业网站管理系统安装文件（如压缩上传需要在线解压），系统文件可以从官方网站下载</div>\r\n<div style=\"margin-left: 40px; \">\r\n	（在线帮助：<a href=\"http://www.metinfo.cn/faq/shownews64.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews64.htm</a>）；</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	第四步：开通数据库</div>\r\n<div style=\"margin-left: 40px; \">\r\n	（在线帮助：<a href=\"http://www.metinfo.cn/faq/shownews65.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews65.htm</a>）；</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	第五步：安装网站管理系统</div>\r\n<div style=\"margin-left: 40px; \">\r\n	运行免费三级域名安装系统（在线帮助：<a href=\"http://www.metinfo.cn/faq/shownews66.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews66.htm</a>）；</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	<div>\r\n		第六步、快速配置网站[视频教程]</div>\r\n	<ol>\r\n		<li>\r\n			网站后台登录教程：<a href=\"http://www.metinfo.cn/faq/shownews694.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews694.htm</a></li>\r\n		<li>\r\n			网站内容添加教程：<a href=\"http://www.metinfo.cn/faq/shownews694.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews699.htm</a></li>\r\n		<li>\r\n			在线交流配置教程：<a href=\"http://www.metinfo.cn/faq/shownews694.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews698.htm</a></li>\r\n		<li>\r\n			静态页面设置教程：<a href=\"http://www.metinfo.cn/faq/shownews700.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews700.htm</a></li>\r\n		<li>\r\n			模板安装及配置教程（一）：<a href=\"http://www.metinfo.cn/faq/shownews695.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews695.htm</a></li>\r\n		<li>\r\n			模板安装及配置教程（二）：<a href=\"http://www.metinfo.cn/faq/shownews696.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews696.htm</a></li>\r\n		<li>\r\n			模板安装及配置教程（三）：<a href=\"http://www.metinfo.cn/faq/shownews697.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews697.htm</a></li>\r\n	</ol>\r\n</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">正式开通操作步骤</span></strong></div>\r\n<div>\r\n	需要联系米拓信息缴纳费用后方可进行</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	第一步：执行试用操作的所有步骤</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	第二步：转正空间</div>\r\n<div style=\"margin-left: 40px; \">\r\n	（在线帮助：<a href=\"http://www.metinfo.cn/faq/shownews67.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews67.htm</a>）</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	第三步：注册域名</div>\r\n<div style=\"margin-left: 40px; \">\r\n	（在线帮助：<a href=\"http://www.metinfo.cn/faq/shownews68.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews68.htm</a>）</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	第四步：域名解析</div>\r\n<div style=\"margin-left: 40px; \">\r\n	（在线帮助：<a href=\"http://www.metinfo.cn/faq/shownews69.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews69.htm</a>）</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	第五步：绑定域名</div>\r\n<div style=\"margin-left: 40px; \">\r\n	登陆空间管理后台，添加已解析到空间的域名</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	第六步：网站备案</div>\r\n<div style=\"margin-left: 40px; \">\r\n	（在线帮助：<a href=\"http://www.metinfo.cn/faq/shownews70.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews70.htm</a>）</div>\r\n<div style=\"margin-left: 40px; \">\r\n	&nbsp;</div>\r\n<div>\r\n	第七步：开通邮箱</div>\r\n<div style=\"margin-left: 40px; \">\r\n	（在线帮助：<a href=\"http://www.metinfo.cn/faq/shownews71.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews71.htm</a>）</div>\r\n','2','4','0','0','0','0','','','0','admin','10','2012-07-16 13:14:48','2012-07-16 10:24:23','0','0','','cn','0');
+INSERT INTO met_news VALUES('5','MetInfo企业建站系统有何优势？','','','','<ol>\r\n	<li>\r\n		<strong><span style=\"font-size:13px;\">价格更低：</span></strong>网站建设公司自行开发系统，一般的开发成本都会在千元以上，就算网站建设公司使用自己已经开发的系统建站，客户的一些个性化需要也需要二次开发，而使用MetInfo企业网站管理系统能满足绝大多数企业网站的功能需求，且成本非常低，甚至为零；</li>\r\n	<li>\r\n		<strong><span style=\"font-size:14px;\">功能更完善、系统更安全：</span></strong>MetInfo企业网站管理系统已经经过众多用户(2012年3月份已经超过10万安装量)、多种运行环境的测试，并在不断完善和升级之中，从而促使系统功能会不断完善，运行更稳定与安全；</li>\r\n	<li>\r\n		<strong><span style=\"font-size:13px;\">网站更具有营销力：</span></strong>借助MetInfo企业网站管理系统内置的SEO优化机制及静态页面生成功能等，使网站更容易被推广、更容易被搜索引擎收录、更容易提升关键词排名；</li>\r\n	<li>\r\n		<span style=\"font-size:13px;\"><strong>完善的技术支持服务：</strong></span>根据用户所选服务等级，米拓官方提供论坛商业用户技术支持、QQ\\MSN、Email、电话等多种技术支持，且不会因为建站公司的转型而导致代码无人维护与升级；</li>\r\n	<li>\r\n		<strong><span style=\"font-size:13px;\">交流更便捷：</span></strong>MetInfo企业网站管理系统100%开源，拥有庞大用户群，用户可以在官方技术论坛及通过其他方式进行相互交流；</li>\r\n	<li>\r\n		<span style=\"font-size:13px;\"><strong>更容易更换网站风格：</strong></span>使用MetInfo企业网站管理系统建站，配合优秀的前台模板，可以让前台所见的内容全部通过后台控制，从而使用户管理网站轻松自如；当企业想更换一种网站风格时，与网站公司自行开发的系统需要重新开发设计不同的是，企业只需要重新设计网站风格，而无须重新添加数据和开发网站后台；</li>\r\n</ol>\r\n','2','4','0','0','0','0','','','1','admin','4','2012-07-16 10:56:05','2012-07-16 10:52:38','0','0','','cn','0');
+INSERT INTO met_news VALUES('6','企业用网站进行网络宣传的优势','','','','<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传是多维宣传&nbsp;</span></strong></div>\r\n<div>\r\n	　　传统媒体是二维的，而网络宣传则是多维的，它能将文字、图像和声音有机的组合在一起，传递多感官的信息，让顾客如身临其境般感受商品或服务。使消费者能亲身体验产品、服务与品牌。这种图、文、声、像相结合的宣传形式，增强了网络宣传的实效。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传拥有最有活力的消费群体</span></strong></div>\r\n<div>\r\n	　　互联网用户70.54%集中在经济较为发达地区，64%家庭人均月收入高于1000元，85.8%年龄在18岁到35岁之间，83%受过大学以上教育。因此，网络宣传的目标群体是目前社会上层次最高、收入最高、消费能力最高的最具活力的消费群体。这一群体的消费总额往往大于其他消费层次之和。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传制作成本低，速度快，更改灵活</span></strong></div>\r\n<div>\r\n	　　网络宣传制作周期短，即使在较短的周期进行投放，也可以根据客户的需求很快完成制作，而传统宣传制作成本高，投放周期固定。另外，在传统媒体上做宣传发布后很难更改即使可以改动往往也须付出很大的经济代价。而在互联网上做宣传能够按照客户需要及时变更宣传内容。这样，经营决策的变化就能及时实施和推广。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传具有交互性和纵深性</span></strong></div>\r\n<div>\r\n	　　交互性强是互联网络媒体的最大的优势，它不同于传统媒体的信息单向传播，而是信息互动传播。通过链接，用户只需简单地点击鼠标，就可以从厂商的相关站点中得到更多、更详尽的信息。另外，用户可以通过网络直接填写并提交在线表单信息，厂商可以随时得到宝贵的用户反馈信息，进一步减少了用户和宣传客户之间的距离。同时，网络宣传可以提供进一步的产品查询需求。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传能进行完善的统计</span></strong></div>\r\n<div>\r\n	　　&quot;无法衡量的东西就无法管理。&quot;网络宣传通过及时和精确的统计机制，使用户能够直接对信息的发布进行在线监控。而传统的信息发布形式只能通过并不精确的收视率、发行量等来统计投放的受众数量。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传可以跟踪和衡量宣传的效果</span></strong></div>\r\n<div>\r\n	　　用户能通过Internet即时衡量宣传的效果。通过监视宣传的浏览量、点击率等指标，用户可以统计出多少人看到了发布的信息，其中有多少人对发布的信息感兴趣进而进一步了解了信息的详细信息。因此，较之其他任何宣传，网络宣传使用户能够更好地跟踪受众的反应，及时了解用户和潜在用户的情况。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传的投放更具有针对性</span></strong></div>\r\n<div>\r\n	　　通过提供众多的免费服务，网站一般都能建立完整的用户数据库，包括用户的地域分布、年龄、性别、收入、职业、婚姻状况、爱好等。这些资料可帮助用户分析市场与受众，根据信息发布目标受众的特点，有针对性地进行信息发布，并根据用户特点作定点投放和跟踪分析，对投放效果作出客观准确的评价。</div>\r\n<div>\r\n	另外，网络宣传还可以提供有针对性的内容环境。不同的网站或者是同一网站不同的频道所提供的服务是不同质且具有很强的类分别的，这就为密切迎合用户的兴趣提供了可能。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传的受众关注度高</span></strong></div>\r\n<div>\r\n	　　据资料显示，电视并不能集中人的注意力，电视观众40%的人同时在阅读，21%的人同时在做家务，13%的人在吃喝，12%的人在玩赏它物，10%在烹饪，9%在写作，8%在打电话。而网上用户55%在使用计算机时不做任何它事，只有6%同时在打电话，只有5%在吃喝，只有4%在写作。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传缩短了媒体投放的进程</span></strong></div>\r\n<div>\r\n	　　用户在传统媒体上进行市场推广一般要经过三个阶段：市场开发期、市场巩固期和市场维持期。在这三个阶段中，厂商要首先获取注意力，创立品牌知名度；在消费者获得品牌的初步信息后，推广更为详细的产品信息。然后是建立和消费者之间较为牢固的联系，以建立品牌忠诚。而互联网将这三个阶段合并在一次信息发布中实现：消费者看到网络宣传，点击后获得详细信息，并填写用户资料或直接参与用户的市场活动甚至直接在网上实施购买行为。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>网络宣传传播范围广、不受时空限制</strong></span></div>\r\n<div>\r\n	　　通过国际互联网络，网络宣传可以将信息24小时不间断地传播到世界的每一个角落。只要具备上网条件，任何人，在任何地点都可以阅读。这是传统媒体无法达到的。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传具有可重复性和可检索性</span></strong></div>\r\n<div>\r\n	　　网络宣传可以将文字、声音、画面完美地结合之后供用户主动检索，重复观看。而与之相比电视宣传却是让用户被动地接受宣传内容。如果错过宣传时间，就不能再得到发布信息。另外，显而易见，较之网络宣传的检索平面宣传的检索要费时、费事的多。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">网络宣传具有价格优势</span></strong></div>\r\n<div>\r\n	　　从价格方面考虑，与报纸杂志或电视宣传相比，目前网络宣传费用还是较为低廉的。获得同等的宣传效应，网络宣传的有效千人成本远远低于传统宣传媒体。一个宣传主页一年的费用大致为几千元人民币，而且主页内容可以随企业经营决策的变更随时改变，这是传统宣传媒体不可想像的。网络宣传将成为企业市场推广必不可少的高效途径。</div>\r\n','2','5','0','0','0','0','','','1','admin','27','2012-07-16 11:16:01','2012-07-16 11:16:01','0','0','','cn','0');
+INSERT INTO met_news VALUES('7','什么是伪静态？伪静态有何作用?','','','','<div>\r\n	&nbsp; &nbsp; 伪静态是相对真实静态来讲的，真实静态会生成一个html或htm后缀的文件，访客能够访问到真实存在的静态页面，而伪静态则没有生成实体静态页面文件，而仅仅是以.html一类的静态页面形式,但其实是用PHP程序动态脚本来处理的，这就是伪静态。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">静态页面的优缺点：</span></strong></div>\r\n<div>\r\n	&nbsp; &nbsp; 真实静态通常是为了更好的缓解服务器压力，和增强搜索引擎的友好面，所以都将网页内容生成静态页面。但最大缺陷是每次在网站后台修改网页内容都需要重新生成静态页面，无法实时显示更新的内容，而久之网站内容多了，占用的空间大小以及每次生成静态页面所耗费的服务器资源也不容小觑（有出现内容过多且一次性生成静态页面而导致服务器奔溃的案例）。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">伪静态有什么作用？</span></strong></div>\r\n<div>\r\n	&nbsp; &nbsp; 有的朋友为了实时的显示一些信息，或者还想运用动态脚本解决一些问题，不能用静态的方式来展示网站内容，但是这就损失了对搜索引擎的友好面，怎么样在两者之间找个中间方法呢？这就产生了伪静态技术。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">伪静态有什么不足？</span></strong></div>\r\n<div>\r\n	&nbsp; &nbsp; 由于伪静态是用正则判断需要跳转到的页面而不是真实页面地址，分辨到底显示哪个页面的责任也由直接指定转由服务器CPU来判断了，所以CPU占有量的上升，确实是伪静态最大的弊病。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:12px;\">MetInfo建议：</span></div>\r\n<ol>\r\n	<li>\r\n		企业网站一般都可以开启伪静态，因为企业站点访问量一般不大，伪静态对CPU的影响也较小，如果访问量大也可以升级服务器来解决。</li>\r\n	<li>\r\n		根据空间访问速度来选择，如国外空间建议开真实静态，而国内空间访问应该较快，基本都可以选择开启伪静态。</li>\r\n	<li>\r\n		伪静态与真实静态只可选择一个，因为URL格式不一样，频繁更换会让搜索引擎摸不着北，站点上线后选择其中一种就应该坚持下去。</li>\r\n</ol>\r\n','2','5','0','0','0','0','','','0','admin','2','2012-07-16 12:52:55','2012-07-16 12:52:55','0','0','','cn','0');
+INSERT INTO met_news VALUES('8','如何充分发挥MetInfo的SEO功能','','','','<div>\r\n	&nbsp; &nbsp; &nbsp;MetInfo企业网站管理系统以SEO功能完善而著称，但是很多建站的朋友却忽略了网站的真正价值，完全没有考虑网站的优化推广，从而让网站仅仅是一个摆设，使用MetInfo建站需要从以下几个方面来设置网站的SEO功能。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>一、SEO参数设置</strong></span></div>\r\n<ol>\r\n	<li>\r\n		网站标题关键词：这是整个网站SEO的核心，搜索引擎将以此为重要依据对你的网站进行排名，关键词的选择应该充分考虑客户的搜索习惯、自身的产品和服务以及竞争对手的情况，在分析关键词的冷热程度时可以参考百度指数；而关键词首次设定之后，最好不要变动，以免造成排名波动及网站降权。</li>\r\n	<li>\r\n		网站关键词：主要是给搜索引擎区分网页关键词排名提供参考，并不意味你此处设置了关键词就能排到搜索结果里面去。</li>\r\n	<li>\r\n		网站描述：网站描述一般显示在搜索引擎结果中的网页（首页）描述部分，主要用于向浏览者介绍网站大体情况，吸引浏览者点击。</li>\r\n	<li>\r\n		头部优化文字：如果模板支持，一般建议使用HTML strong 标签加粗网站关键词，以增强优化效果，当然也可以用做网站的促销推广信息发布。</li>\r\n	<li>\r\n		图片默认ALT、超链接默认Title、友情链接本站名称：一般填写全站核心关键词即可。</li>\r\n	<li>\r\n		网站底部优化文字：如果模板支持，一般建议使用HTML strong 标签加粗网站关键词，以增强优化效果。</li>\r\n</ol>\r\n<br />\r\n<strong style=\"font-size: 14px; line-height: 25px; \">二、静态页面</strong>\r\n<ol>\r\n	<li>\r\n		一般建议开启全站静态页面，这样更利于搜索引擎收录；</li>\r\n	<li>\r\n		静态页面类型可以根据自己的喜好选择任意一种；</li>\r\n	<li>\r\n		内容页面名称和列表页面名称推荐采用文件夹名称形式，尤其是英文网站；</li>\r\n	<li>\r\n		在添加一级栏目时，尽量按照栏目属性设置文件夹名称，如常见问答，设为FAQ等。</li>\r\n</ol>\r\n<br />\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>三、热门标签</strong></span></div>\r\n<div style=\"margin-left: 40px; \">\r\n	热门标签的作用主要是增加内链，建议用户将网站关键词设置为热门标签</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>四、内容页面的关键词和简短描述</strong></span></div>\r\n<div style=\"margin-left: 40px; \">\r\n	建议用在添加网站内容时尽量添加每篇内容和栏目的关键词和简短描述，以便搜索引擎更好的收录</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>五、友情链接</strong></span></div>\r\n<div style=\"margin-left: 40px; \">\r\n	尽可能争取同行相关网站的互相友情链接</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;当然网站优化推广不仅仅是以上设置就可以完成的，网站系统仅仅是个基础， 用户应该有规律的添加网站内容并到互联网上大量推广网站，这样才能使网站访问量增大，同时提升关键词在搜索引擎中的排名。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	更多有关网站SEO优化问题，欢迎到官方论坛发帖探讨：<a href=\"http://bbs.metinfo.cn/forum-20-1.html\" target=\"_blank\">http://bbs.metinfo.cn/forum-20-1.html</a></div>\r\n','2','5','0','0','0','0','','','0','admin','7','2012-07-16 13:07:33','2012-07-16 13:01:11','0','0','','cn','0');
+INSERT INTO met_news VALUES('9','企业网站应该多长时间备份一次？','','','','<div>\r\n	&nbsp; &nbsp; &nbsp;企业网站的信息量一般比较少，使用MetInfo企业网站管理系统让网站备份操作非常简单，我们建议用户没有必要经常去备份网站，一般只需要做到一下几点即可：</div>\r\n<ol>\r\n	<li>\r\n		网站初次安装、初次配置、添加基本内容可以备份数据库及整站打包下载到本地；</li>\r\n	<li>\r\n		网站运行中可以更加信息的更新频率1-3个月备份一次数据库；</li>\r\n	<li>\r\n		如果你的网站图片特别多，且担心空间不稳定，你可以选择1-2个月备份一次网站上传文件。</li>\r\n</ol>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	注意：当将备份文件下载到本地后，为了节省空间，建议删除服务器上的备份文件。</div>\r\n','2','5','0','0','0','0','','','1','admin','14','2012-07-16 13:08:32','2012-07-16 13:08:32','0','0','','cn','0');
+INSERT INTO met_news VALUES('10','如何选择网站关键词?','','','','<div>\r\n	&nbsp; &nbsp; &nbsp;网站关键词是SEO优化的核心，关键词的选择将直接影响网站优化推广效果及网站的价值，选择关键词应该注意一下几点：</div>\r\n<div>\r\n	&nbsp;</div>\r\n<ol>\r\n	<li>\r\n		<span style=\"font-size:13px;\"><strong>考虑用户搜索习惯</strong><span style=\"font-size:12px;\">，</span></span>而并非企业名称或产品名称，尤其是对于一种新的产品，当市场还没有人知道的时候，自然不会有人去搜索这个关键词，因此选择关键词首先就应该去分析你的目标群体会在搜索引擎中搜索哪些关键词，而你应该选择那些与你的产品相关并能为你的销售带来帮助的关键词。<br />\r\n		&nbsp;</li>\r\n	<li>\r\n		中小企业切忌<span style=\"font-size:13px;\"><strong>不要将自己的公司名称或品牌作为主要关键词</strong><span style=\"font-size:12px;\">，</span></span>因为在你的目标群体中，很多人是没有听说过你的公司和品牌的，小企业做产品，对于中小企业来说，客户一般都是通过产品和服务来了解你的公司和品牌的，因此，网站关键词如果设置为公司名称，则不能达到良好的营销效果。<br />\r\n		&nbsp;</li>\r\n	<li>\r\n		<span style=\"font-size:13px;\"><strong>关键词不宜过长</strong><span style=\"font-size:12px;\">，</span></span>太长的关键词很少会有人搜索；点击量不宜太热，点击量太大搜索的人越多那么竞争也就会越激烈；同时关键词也不能太冷门，冷门关键词排到第一位也不会有多少人搜索访问，具体可以参考&ldquo;百度指数&rdquo;中的关键词访问量。<br />\r\n		&nbsp;</li>\r\n	<li>\r\n		碰到热门关键词时，<span style=\"font-size:13px;\"><strong>最好在关键词前面或后面加上地域限制</strong></span>，譬如&ldquo;塑钢门窗&rdquo;，这个关键词竞争是非常激烈，但是&ldquo;长沙塑钢门窗&rdquo;就比较好做了，而且如果你做的是有地域限制的业务，那么其他地方搜索到你的网站也没有多大意义。<br />\r\n		&nbsp;</li>\r\n	<li>\r\n		<span style=\"font-size:13px;\"><strong>标题关键词应该控制在1-3个之间</strong></span>，除非第四个以后的关键词是比较冷门的，否则在标题中添加多个关键词是没有任何意义的，反而会影响主关键词的排名。<br />\r\n		&nbsp;</li>\r\n</ol>\r\n','2','5','0','0','0','0','','','0','admin','3','2012-07-17 16:53:59','2012-07-16 13:15:45','0','0','网站关键词','cn','0');
+INSERT INTO met_news VALUES('11','How to choose the site keywords?','','','','<div>\r\n	&nbsp; &nbsp; &nbsp;The site keywords is the core of SEO optimization, keyword selection will directly affect the site optimization promotion effects and the value of the site, choose keywords should note the following points:</div>\r\n<div>\r\n	&nbsp;</div>\r\n<ol>\r\n	<li>\r\n		<strong>Consider the user search habits</strong>, rather than the business name or product name, especially for a new product to market, no one knows when, naturally no one to search for that keyword, so choose the keywords you should first analyze your target group will search in search engines which keywords you should choose the keywords related to your product and your sales to help.</li>\r\n	<li>\r\n		SMEs do <strong>not avoid their own company name or brand as the main keywords</strong>, because a lot of people in your target group is not heard of your company and brands, small businesses to make products for SMEs, the customer are generally the products and services to understand your company and brand, so the site keywords set to company name, you can not achieve good marketing results.</li>\r\n	<li>\r\n		<strong>Key words should not be too long</strong>, too long keywords rarely will someone searches; traffic should not be too hot, the traffic too much search, the more competition the more intense; keywords can not be too upset, upset key visits of the key words in the word routed to the first is not how many people will search access, the specific reference to Baidu index.</li>\r\n	<li>\r\n		Encountered popular keywords, <strong>the best in the keywords in front of or behind with geographical restrictions</strong>, such as steel doors and windows, the keyword competition is very intense, but Changsha plastic doors and windows do better, and if you do business with geographical restrictions and other local search to your site did not make much sense.</li>\r\n	<li>\r\n		<strong>Title Keywords should be controlled between 1-3</strong>, after the fourth key word is more popular, or add multiple keywords in the title is no sense, but will affect the main keyword rankings.</li>\r\n</ol>\r\n','43','65','0','0','0','0','','','1','admin','1','2012-07-17 14:33:33','2012-07-16 13:15:45','0','0','','en','0');
+INSERT INTO met_news VALUES('12','MetInfo establishment of the station steps','','','','<div>\r\n	<strong><span style=\"font-size:14px;\">Trial operation steps</span></strong></div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 1: Register Space account</div>\r\n<div style=\"margin-left: 40px; \">\r\n	Log in: <a href=\"http://idc.metinfo.cn/\" target=\"_blank\">http://idc.metinfo.cn/</a></div>\r\n<div style=\"margin-left: 40px; \">\r\n	Register a user account, and receive a verification message to validate the account, if not received the verification message, please contact customer service;</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 2: the opening of the trial space</div>\r\n<div style=\"margin-left: 40px; \">\r\n	(On-line help: <a href=\"http://www.metinfo.cn/faq/shownews64.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews64.htm</a>);</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 3: Upload the file</div>\r\n<div style=\"margin-left: 40px; \">\r\n	Upload MetInfo enterprise website management system installation files (such as compressed upload need to be online decompression), system files can be downloaded from the official site</div>\r\n<div style=\"margin-left: 40px; \">\r\n	(On-line help: <a href=\"http://www.metinfo.cn/faq/shownews64.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews64.htm</a>);</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 4: Open the database</div>\r\n<div style=\"margin-left: 40px; \">\r\n	(On-line help: <a href=\"http://www.metinfo.cn/faq/shownews65.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews65.htm</a>);</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 5: Install the Web Site Management System</div>\r\n<div style=\"margin-left: 40px; \">\r\n	Run free third-level domain to install the system (on-line help: http://www.metinfo.cn/faq/shownews66.htm);</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step6: to quickly configure site [Video Tutorial]</div>\r\n<ol>\r\n	<li>\r\n		Site background login tutorial: <a href=\"http://www.metinfo.cn/faq/shownews694.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews694.htm</a></li>\r\n	<li>\r\n		Web site content to add tutorial: <a href=\"http://www.metinfo.cn/faq/shownews699.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews699.htm</a></li>\r\n	<li>\r\n		Online communication configuration tutorial: <a href=\"http://www.metinfo.cn/faq/shownews698.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews698.htm</a></li>\r\n	<li>\r\n		Static page set up tutorial: <a href=\"http://www.metinfo.cn/faq/shownews700.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews700.htm</a></li>\r\n	<li>\r\n		Template installation and configuration tutorial (a): <a href=\"http://www.metinfo.cn/faq/shownews695.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews695.htm</a></li>\r\n	<li>\r\n		Template installation and configuration tutorial (b): <a href=\"http://www.metinfo.cn/faq/shownews696.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews696.htm</a></li>\r\n	<li>\r\n		Template installation and configuration tutorial (c): <a href=\"http://www.metinfo.cn/faq/shownews697.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews697.htm</a></li>\r\n</ol>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>The official opening of the steps</strong></span></div>\r\n<div>\r\n	Need to contact m extension information to pay the fee before</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 1: Perform trial operation of all the steps</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 2: positive space</div>\r\n<div style=\"margin-left: 40px; \">\r\n	(On-line help: <a href=\"http://www.metinfo.cn/faq/shownews67.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews67.htm</a>)</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 3: register a domain name</div>\r\n<div style=\"margin-left: 40px; \">\r\n	(On-line help: <a href=\"http://www.metinfo.cn/faq/shownews68.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews68.htm</a>)</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 4: DNS</div>\r\n<div style=\"margin-left: 40px; \">\r\n	(On-line help: <a href=\"http://www.metinfo.cn/faq/shownews69.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews69.htm</a>)</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 5: binding domain</div>\r\n<div style=\"margin-left: 40px; \">\r\n	Landing space management background, add the resolved space domain</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 6: The website for the record</div>\r\n<div style=\"margin-left: 40px; \">\r\n	(On-line help: <a href=\"http://www.metinfo.cn/faq/shownews70.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews70.htm</a>)</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Step 7: opening the mailbox</div>\r\n<div style=\"margin-left: 40px; \">\r\n	(On-line help: <a href=\"http://www.metinfo.cn/faq/shownews71.htm\" target=\"_blank\">http://www.metinfo.cn/faq/shownews71.htm</a>)</div>\r\n','43','65','0','0','0','0','','','0','admin','9','2012-07-17 14:36:16','2012-07-16 10:24:23','0','0','','en','0');
+INSERT INTO met_news VALUES('13','Corporate website how long backup time?','','','','<div>\r\n	&nbsp; &nbsp; &nbsp;Corporate website the amount of information is generally less MetInfo Enterprise Web Site Management System site backup operation is very simple, we recommend that the user does not need to frequently go to the backup site, generally only need to do a few you can:</div>\r\n<ol>\r\n	<li>\r\n		The site initial installation, initial configuration, and add basic content of the backup database and the entire station package downloaded to the local;</li>\r\n	<li>\r\n		1-3 months backup a database update frequency of the site run more information;</li>\r\n	<li>\r\n		If your website images are particularly large, and worry about the space unstable, you can choose 1-2 months backup site to upload files.</li>\r\n</ol>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Note: To save space, proposed to delete the backup files on the server when the backup file is downloaded to the local.</div>\r\n','43','65','0','0','0','0','','','1','admin','3','2012-07-17 14:42:38','2012-07-16 13:08:32','0','0','','en','0');
+INSERT INTO met_news VALUES('14','How to give full play to MetInfo the SEO features','','','','<div>\r\n	&nbsp; &nbsp; &nbsp;MetInfo enterprise website management system to improve the SEO function is known, but many of the establishment of the station&#39;s friend has ignored the true value of the site, did not consider the promotion of website optimization, so that the site is just a decoration, the use of MetInfo establishment of the station needs from the following aspects to set the site&#39;s SEO features.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong><span style=\"font-size:18px;\">A</span>, SEO parameter settings</strong></span></div>\r\n<ol>\r\n	<li>\r\n		Site Title Keywords: This is the core of the entire site SEO, search engines will take this as an important basis for ranking your site, keyword selection should take full account of the customer&#39;s search habits, their products and services, as well as competitors in the Baidu Index in the analysis of hot and cold of the key words can refer; first set up your keywords, it is best not to change in order to avoid the ranking fluctuations and website down the right.</li>\r\n	<li>\r\n		Site Keywords: to search engines to distinguish between the page to be ranked to provide a reference does not mean that you set here keywords can routed to the search results which go.</li>\r\n	<li>\r\n		Site Description: Site Description is generally displayed in the search engine results pages (home page) description of the part, mainly for site general introduction to the viewer, to attract visitors to click.</li>\r\n	<li>\r\n		Head optimize text: If the template support is generally recommended to use the HTML strong tag bold website keywords to enhance the effect of optimization, of course, can also use the site sales and marketing information.</li>\r\n	<li>\r\n		Picture default ALT hyperlinks default Title, Link Site Name: general core keywords can fill out the station.</li>\r\n	<li>\r\n		Website optimization at the bottom of text: If the template support is generally recommended to use the HTML strong tag in bold website keywords to enhance the effect of optimization.</li>\r\n</ol>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong><span style=\"font-size:18px;\">B</span>, static pages</strong></span></div>\r\n<ol>\r\n	<li>\r\n		Is generally recommended that a static page to open the station, which is more conducive to search engines;</li>\r\n	<li>\r\n		Any one static page types can be selected according to their preferences;</li>\r\n	<li>\r\n		The content page name and list the name of the page recommend the use of the folder name forms, especially the English website;</li>\r\n	<li>\r\n		Add a part, as far as possible in accordance with section attribute settings file folder name, such as Frequently Asked Questions Make FAQ.</li>\r\n</ol>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong><span style=\"font-size:18px;\">C</span>, Top tagged</strong></span></div>\r\n<div style=\"margin-left: 40px; \">\r\n	Tagged main function is to increase within the chain, it is recommended that the site keywords set to popular label</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\"><span style=\"font-size:18px;\">D</span>, the keywords and a brief description of the content of the page</span></strong></div>\r\n<div style=\"margin-left: 40px; \">\r\n	Is recommended to add the site content as much as possible to add the keywords and a brief description of each content and columns, in order to better search engine included</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong><span style=\"font-size:18px;\">E</span>, Links</strong></span></div>\r\n<div style=\"margin-left: 40px; \">\r\n	As far as possible to fight for each other peer-related sites Links</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;Only of course, site optimization to promote not only the above settings can be completed, the site system is a foundation, users should regularly add website content to the Internet a lot to promote the site, so as to make the site traffic increases, while improving the key words in search engine rankings.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	More problems related to website SEO optimization, Welcome to the official post to explore: <a href=\"http://bbs.metinfo.cn/forum-20-1.html\" target=\"_blank\">http://bbs.metinfo.cn/forum-20-1.html</a></div>\r\n','43','64','0','0','0','0','','','0','admin','6','2012-07-17 14:44:04','2012-07-16 13:01:11','0','0','','en','0');
+INSERT INTO met_news VALUES('15','What is a pseudo-static?','','','','<div>\r\n	&nbsp; &nbsp; &nbsp;Pseudo-static is relatively true static in terms of the real static generates an html or htm file with the extension, visitors can gain access to the real static pages, while the pseudo-static generating entity static page file, but simply is. Htmlclass form of static pages, but in fact dynamic scripting with PHP program to deal with, this is a pseudo-static.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>The advantages and disadvantages of static pages:</strong></span></div>\r\n<div>\r\n	&nbsp; &nbsp; True static is usually better to ease the pressure on the server, and to enhance the search engine-friendly surface, so the page to generate static pages. But the biggest drawback is each background in site modify webpage content and need to re-generate static pages can not be updated in real time, long the site content, the size of the space occupied by each generating static pages consuming server resources can not be underestimated (too much content and a one-time to generate static pages and cause the server to Ben collapse of the case).</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">What is the role of pseudo-static?</span></strong></div>\r\n<div>\r\n	&nbsp; &nbsp; Some friends in order to real-time display of some information, or would like to solve some problems using dynamic script static display site content, but the loss of the friendly side of the search engines, how to find between the two a middle way? This creates a pseudo-static technology.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">The pseudo-static anything less?</span></strong></div>\r\n<div>\r\n	&nbsp; &nbsp; Pseudo-static is a regular judge the need to jump to the page instead of the real page address, to distinguish in the end to show which page is the responsibility of the specified transfer directly from the server CPU to determine the CPU share of the rise is indeed a pseudo-static maximum ills.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	MetInfo recommendations:</div>\r\n<ol>\r\n	<li>\r\n		Corporate Web site can generally open a pseudo-static, corporate site visits are generally small, pseudo-static influence on the CPU is also smaller, if the access to large can also upgrade the server to resolve.</li>\r\n	<li>\r\n		Space access speed to choose, and proposes a real static, such as foreign space and domestic space access should be faster, basically you can choose to open the pseudo-static.</li>\r\n	<li>\r\n		Pseudo-static and real static select a URL format, frequent replacement makes the search engine touched North site on-line, one should stick to it.</li>\r\n</ol>\r\n','43','64','0','0','0','0','','','0','admin','2','2012-07-17 14:48:39','2012-07-16 12:52:55','0','0','','en','0');
+INSERT INTO met_news VALUES('16','Enterprise the advantages of online promotion site','','','','<div>\r\n	<span style=\"font-size:16px;\"><strong>Propaganda is a multi-dimensional publicity</strong></span></div>\r\n<div>\r\n	The traditional media is two-dimensional network publicity is multidimensional, it can be text, image and sound organic combination together, to pass a multi-sensory information for customers such as immersive feel the goods or services. So that consumers can experience the products, services and brands. This picture, text, sound, like a combination of forms of propaganda, and enhance the effectiveness of network publicity.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Propaganda has the most dynamic consumer groups</span></strong></div>\r\n<div>\r\n	70.54% of Internet users concentrated in the economically more developed regions, 64 percent of families with per capita monthly income higher than 1000 yuan, 85.8% aged between 18 and 35 years old, 83% had a college education. Therefore, the target group of the network publicity is the community the highest level, the highest income, the highest spending power of the most dynamic consumer groups. The total amount of spending in this group is often greater than the sum of the other consumer level.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Propaganda low production cost, fast, flexible to change</span></strong></div>\r\n<div>\r\n	Propaganda short production cycles, even in a short period of delivery, but also according to customer needs quickly to complete the production, the high cost of traditional media productions and put in a fixed cycle. In addition, in the traditional media to do it very difficult to change even if it can change often required to pay a high economic cost of the publicity release. Advertise on the Internet in accordance with customer needs in a timely manner to change the promotional content. Thus, changes in business decision-making will be able to timely implementation and promotion.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:16px;\"><strong>Network to disseminate interactive and depth</strong></span></div>\r\n<div>\r\n	The strong interaction is the biggest advantage of the Internet media, it is different from the one-way propagation of traditional media, but the information on interactive communication. Through the link, users simply click the mouse, you can get more and more detailed information from the vendor&#39;s site. In addition, users can directly through the network to fill in and submit the online form information, manufacturers can have ready access to valuable user feedback to further reduce the distance between the user and publicity customers. At the same time, the network information can provide further inquiry needs.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">The network publicity to improve the statistical</span></strong></div>\r\n<div>\r\n	&quot;Things can not be measured can not be managed.&quot; Propaganda through timely and accurate statistical mechanism, enables the user to direct the release of information on-line monitoring. And the dissemination of information in the form not accurate ratings, circulation to the statistics put the number of audience.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:16px;\"><strong>Propaganda can track and measure the publicity effect</strong></span></div>\r\n<div>\r\n	Users through the Internet real-time measure of the effect of publicity. Monitor publicity page views, click-through rate and other indicators, the user statistics of how many people saw the release of information, including how many people are interested in the information released thus further understanding of the detailed information of the information. Compared to any other publicity, the network information so that users are better able to track the audience&#39;s reaction, to keep abreast of the situation of users and potential users.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Propaganda put more targeted</span></strong></div>\r\n<div>\r\n	By providing many free services, the site in general can create a complete user database, including the user&#39;s geographical distribution, age, gender, income, occupation, marital status, hobbies and so on. Such information can help users to analyze markets and audiences, according to the characteristics of information to target audiences, and carry out information dissemination, and for fixed-point delivery and tracking analysis based on user characteristics, and put in effect to make objective and accurate evaluation.</div>\r\n<div>\r\n	In addition, the network information can also provide a targeted environment. A different site or the services provided by the different channels of the same site different quality with strong class, respectively, which provides the possibility to close to meet the user&#39;s interest.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Network publicity audience concerned about the high</span></strong></div>\r\n<div>\r\n	According to statistics, the TV does not focus people&#39;s attention, the television audience of 40% at the same time in reading, 21 percent of the people at the same time doing housework, 13% of people eating and drinking, 12 per cent of people enjoying it matter, 10% in cooking, 9% in writing, 8 percent on the phone. 55% online users in the use of computer makes no matter, only 6% while on the phone, only 5% of food, drink, and only 4 percent in writing.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:16px;\">Network publicity shorten the process of media placement</span></strong></div>\r\n<div>\r\n	Users of traditional media marketing efforts generally go through three stages: market development period, the market consolidation of market maintenance period. In all three phases, firms should first obtain the attention, the creation of brand awareness; to obtain preliminary information on the brand in the consumer, to promote a more detailed product information. Then there is a strong link between the establishment and consumers to build brand loyalty. The merger of the Internet in these three phases the release of information: Consumers see the network publicity, click for more information and fill out the user information or participate directly in the market activities of the user or even directly in the implementation of the purchasing behavior.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:16px;\"><strong>Propaganda spread wide, free from the constraints of time</strong></span></div>\r\n<div>\r\n	Through the Internet, the network information 24 hours a day spread to every corner of the world. Have access to the Internet, anyone, anywhere can read. This is the traditional media can not be achieved.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:16px;\"><strong>Propaganda has repeatability and can be retrieved</strong></span></div>\r\n<div>\r\n	Propaganda can be text, voice, picture perfect combination for the user to take the initiative to search, repeat viewing. Compared to the TV is to enable users to passively accept the propaganda content. If you miss the promotional time, you can not get information. In addition, it is evident, the search plane publicity publicity compared to the network to retrieve time-consuming, cumbersome multi-</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:16px;\"><strong>Propaganda has a price advantage</strong></span></div>\r\n<div>\r\n	From price considerations, compared with newspapers and magazines or TV, the network publicity costs still relatively cheap. Receive the same publicity effect, the effective cost per thousand of the network publicity is far lower than traditional advertising media. A publicity Home-year costs roughly a few thousand yuan, and home page content can be changed at any time with the change of business decision-making, traditional advertising media can not imagine. Propaganda will be the essential and efficient way of corporate marketing.</div>\r\n','43','64','0','0','0','0','','','1','admin','26','2012-07-17 14:53:44','2012-07-16 11:16:01','0','0','','en','0');
+INSERT INTO met_news VALUES('17','MetInfo Enterprises Website What are the advantages?','','','Lower prices: website development company developed the system, the development costs in general will be a thousand','<ol>\r\n	<li>\r\n		<span style=\"font-size:13px;\"><strong>Lower prices: </strong></span>website development company developed the system, the development costs in general will be a thousand dollars, even if a website development company has developed a system establishment of the station, the customer&#39;s individual needs also need the secondary development, the use of MetInfo enterprise websitemanagement system to meet the functional requirements of the vast majority of corporate websites, and the cost is very low, even zero;</li>\r\n	<li>\r\n		<strong><span style=\"font-size:13px;\">Better, the system is more secure: </span></strong>MetInfo enterprise website management system has many users (March 2012 more than 100,000 installed capacity), a variety of testing of the operating environment, thus contributing to the system functions, and continue to improve and upgrade continuous improvement, and more stable operation and security;</li>\r\n	<li>\r\n		<span style=\"font-size:13px;\"><strong>The website has a sales force: </strong></span>With MetInfo enterprise website management system built-in SEO optimization mechanism and a static page generation capabilities, such as to make the site easier to be extended more easily indexed by search engines, easier to enhance the keywords;</li>\r\n	<li>\r\n		<strong><span style=\"font-size:13px;\">Technical support services:</span></strong> based on user selected service level, m extension of official technical support forum business users, QQ \\ MSN, email, telephone technical support, and will not lead to code no one to maintain the company&#39;s transformation of the establishment of the station and upgrades;</li>\r\n	<li>\r\n		<strong><span style=\"font-size:13px;\">Exchange is more convenient:</span></strong> MetInfo enterprise website management system 100% open source, has a huge user base, the user can be in the official forums and other ways to communicate with each other;</li>\r\n	<li>\r\n		<span style=\"font-size:13px;\"><strong>Easier to replace the site style: </strong></span>Use MetInfo enterprise website management system establishment, with excellent reception template allows the front desk to see all controlled by the background, allowing users to manage the site with ease; when companies want to replace a web site style, self-developed system and website development need to re-design is different is that companies only need to re-design the website style, without having to re-add the data and the development of a website background;</li>\r\n</ol>\r\n','43','65','0','0','0','0','','','1','admin','3','2012-07-17 14:55:39','2012-07-16 10:52:38','0','0','','en','0');
+INSERT INTO met_news VALUES('18','Commercial and free version on the system functions there a difference?','','','The Internet continues to grow and develop, has become the preferred way to businesses and individuals seeking business opportunities','<div>\r\n	<strong><span style=\"font-size:16px;\">Commercial and free version on the system functions without any distinction.</span></strong></div>\r\n<div>\r\n	<br />\r\n	The difference between commercial and free version:</div>\r\n<ol>\r\n	<li>\r\n		If you program for commercial use, please consciously purchase a commercial license, otherwise we reserve the right to pursue legal responsibilities;</li>\r\n	<li>\r\n		Free version and commercial version without any distinction on the site functionality, business users can get professional technical support services;</li>\r\n	<li>\r\n		The free version such as the removal of [Powered by MetInfo] copyright notice will not be able to normal operation! M extension of official and the pursuit of the corresponding legal responsibility!</li>\r\n	<li>\r\n		View the free version and commercial version of the detailed features and services compared: View</li>\r\n</ol>\r\n','43','64','0','0','0','0','','','1','admin','5','2012-07-17 14:57:05','2012-07-16 10:21:25','0','0','','en','0');
+INSERT INTO met_news VALUES('19','Why companies to build multi-lingual website?','','','The Internet continues to grow and develop, has become the preferred way to businesses and individuals seeking business opportunities','<div>\r\n	&nbsp; &nbsp; &nbsp;The Internet continues to grow and develop, has become the preferred way to businesses and individuals seeking business opportunities, goods, services and information to understand. From the perspective of standing enhance the competitive advantage of an enterprise to build a multi-language site is the increasing number of customers premise and efficient means to increase sales.</div>\r\n<div>\r\n	With the accelerating of the process of internationalization, multilingual website will become an indispensable part of businesses and organizations.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">Multi-language website to help businesses face many non-English speaking Internet users</span></strong></div>\r\n<div>\r\n	Change over time, the proportion of non-English speaking Internet users is constantly rising. Compared to the previous situation by English-speaking users to control the Internet has produced a fundamental change. Nelson Group (a U.S. Internet research and consulting company) in March 2005 about: foreign Internet market is the mature fruit, as long as you are willing to pay less effort will be able to get a huge harvest. The results show that the Internet tends to slow the growth in the United States, Germany, Britain and Sweden, in other countries such as France, Hong Kong, Italy and Japan grew significantly.</div>\r\n<div>\r\n	Nelson, a senior analyst explained: &quot;The most readily available opportunities in the country&#39;s Internet usage and the user (or site) before the relationship has been established culture in the current growth stage, customers will become the loyal customer base.&quot; multi-language Web site an effective marketing tool in the enterprise has the ability of the majority of Internet users to communicate in their own language, which not only means an increase in sales even more valuable is to establish your brand, services and products in the local market known.</div>\r\n<div>\r\n	The construction of multi-language website is a great program because it is likely that corporate marketing, seize new users, the most effective way to establish new customer relationships and the empowerment of an international image of the corporate brand of.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>Multi-language Web site can bring new customers</strong></span></div>\r\n<div>\r\n	By your multilingual website exposure in front of potential customers in various countries, regions, naturally you will get the attention of these native language users.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">Multi-language Web site to increase sales to the enterprise</span></strong></div>\r\n<div>\r\n	On the site to add a language has the potential doubling sales. Even if only to completion of the site contains only Spanish, French, German and Italian website of the four major world languages, its sales may also be potentially up to four times. This is a rare use of such a small investment for such a large effect.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">Multi-language website is able to convey the sense of customer-centric service</span></strong></div>\r\n<div>\r\n	Your multi-language Web site shows your thinking for the customer. Customer-centric thinking and caring efforts of customers will receive the gratitude of the customer, because of this extra work, they will be more inclined to patronize your business.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">Multi-language website to get more trust</span></strong></div>\r\n<div>\r\n	Many of the transactions executed through the Internet are often not familiar with each other in each other&#39;s language and the issue of trust between different cultures. Available to customers the choice of language to help them feel safe, exactly clear how to trade, with whom transactions.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">Multi-language Web site to help overcome the cultural sensitivity</span></strong></div>\r\n<div>\r\n	A properly designed multi-language Web site, through the use of the native language of the target market to be able to overcome potential cultural barriers. Multi-language Web sites automatically for the customer to create a &quot;cultural comfort zone, so that they can freely navigate and understanding of website information, and interact with you.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">Multi-language Web site to fight efficiently against competitors</span></strong></div>\r\n<div>\r\n	Thinking out of the frame to gain a competitive advantage in today&#39;s environment. Many companies are trying to distinguish themselves from competitors. Look at your competitors, if they are multilingual site Why do you not? If they do not, why not them before leading this market is to first establish your company&#39;s brand?</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">Multi-language web site for the international style</span></strong></div>\r\n<div>\r\n	A multilingual web site for your ideas, business and international business processes. International corporate image and industry leadership thus establish a multi-language Web site to help search engines for different regional countries, the search engine will bring people to your site. However, in some countries and regions have their own popular search engines, these search engines based on the use of mother tongue habits to adapt to the needs of the people, so successful. The engine of this type of search engine is the key to open the local market, In addition, unless they are able to use a particular language (English) would be difficult to find your.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&nbsp; &nbsp; &nbsp;In addition, many of keyword search engines, especially Google, excellent ability in multi-language development. With multi-language page of the site can maximize the protection of your site to many search engines to retrieve and display. The transaction is always constantly shift and change. Multi-language Web site is still at an early stage, many multinational companies to use multi-language Web site to strengthen its international position. However, the following effects will occur naturally multi-lingual website will become the main part of the Internet. Whether an organization is to choose now or in the future, this is the only choice of the site construction.</div>\r\n','43','65','0','0','0','0','','','1','admin','6','2012-07-17 14:58:05','2012-07-16 10:05:40','0','0','','en','0');
+INSERT INTO met_news VALUES('20','How to Get MetInfo commercial license?','','','','<div>\r\n	<strong><span style=\"font-size:14px;\">1. To participate in personalized web site templates in exchange for a commercial license</span></strong></div>\r\n<div>\r\n	Provide a set to meet the specifications of the MetInfo user&#39;s manual, templates to create enterprise site templates, can apply for a permanent business license. The specific requirements are as follows:</div>\r\n<div>\r\n	1) modify the official or existing templates was significantly different in style and function with existing templates;</div>\r\n<div>\r\n	2) the template file should be consistent with MetInfo user&#39;s manual, templates to create the specification requirements, all documents are complete and orderly;</div>\r\n<div>\r\n	3) Template Home section, relevant contact information and all important information can be modified by the background configuration;</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<span style=\"font-size:14px;\"><strong>2. Buy the official virtual space free access to a commercial license in the appropriate time</strong></span></div>\r\n<div>\r\n	Buy the virtual space of the official, free access to the appropriate length of a commercial license, the second year only need to renew space will be able to continue to enjoy free access to the commercial license, commercial license costs MetInfo enterprise website manager system has been 0;</div>\r\n<div>\r\n	For details, please refer to: http://www.metinfo.cn/web/promotion.htm</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">3. direct purchase of a permanent business license</span></strong></div>\r\n<div>\r\n	Regular edition of 1000 yuan, 3000 yuan advanced version details, please refer to: http://www.metinfo.cn/web/product.htm</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong><span style=\"font-size:14px;\">Businesses authorize FAQ:</span></strong></div>\r\n<ol>\r\n	<li>\r\n		100% open source why charge business license fees?<br />\r\n		Official answer: MetInfo enterprise website management system is a 100% open source enterprise website management system for personal websites and non-profit site is permanently free to use, If you are a user of the unit and our system for commercial use, we need to charge copyright royalties, in order to maintain the software development costs and further development, and commercial users, including but not limited to enterprises, institutions, government departments, schools, etc.; of course you can also participate in our promotions, and free access to the commercial license .</li>\r\n	<li>\r\n		What are the benefits to obtain a commercial license?<br />\r\n		The official answer: In addition to get the official commercial license, you can enjoy the appropriate level of official technical support services.</li>\r\n	<li>\r\n		which sites do not need to buy a commercial license? How to distinguish the individual sites and units site?<br />\r\n		The official answer: All personal website (not restricted as to use), non-profit nature of the unit website does not need to buy commercial copyright, but without a business license does not allow removal of the official copyright information. Individual site is the site all the information in their personal capacity (including industrial and commercial registration of personal and individual businesses), showing the commercial and non commercial websites, promotional corporate website is a personal website to the domain name and the record of an individual registered category.</li>\r\n</ol>\r\n','43','0','0','0','0','0','','','1','admin','9','2012-07-17 12:06:07','2012-07-16 10:08:18','0','0','','en','0');
+
+DROP TABLE IF EXISTS met_online;
+CREATE TABLE `met_online` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(200) default NULL,
+  `no_order` int(11) default NULL,
+  `qq` text,
+  `msn` varchar(100) default NULL,
+  `taobao` varchar(100) default NULL,
+  `alibaba` varchar(100) default NULL,
+  `skype` varchar(100) default NULL,
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_online VALUES('1','咨询销售','1','348468810','','metinfo','','','cn');
+INSERT INTO met_online VALUES('2','咨询销售','2','1498488199','metinfo@metinfo.cn','','','','cn');
+INSERT INTO met_online VALUES('3','空间域名','3','2545740365','','metinfo','','','cn');
+INSERT INTO met_online VALUES('4','合作加盟','4','909059761','metinfo@metinfo.cn','','','','cn');
+INSERT INTO met_online VALUES('5','Sales','1','348468810','','metinfo','','','en');
+INSERT INTO met_online VALUES('6','Sales','2','1498488199','metinfo@metinfo.cn','','','','en');
+INSERT INTO met_online VALUES('7','Space','3','2545740365','','metinfo','','','en');
+INSERT INTO met_online VALUES('8','Join Us','4','909059761','metinfo@metinfo.cn','','','','en');
+
+DROP TABLE IF EXISTS met_otherinfo;
+CREATE TABLE `met_otherinfo` (
+  `id` int(11) NOT NULL auto_increment,
+  `info1` varchar(255) default NULL,
+  `info2` varchar(255) default NULL,
+  `info3` varchar(255) default NULL,
+  `info4` varchar(255) default NULL,
+  `info5` varchar(255) default NULL,
+  `info6` varchar(255) default NULL,
+  `info7` varchar(255) default NULL,
+  `info8` text,
+  `info9` text,
+  `info10` text,
+  `imgurl1` varchar(255) default NULL,
+  `imgurl2` varchar(255) default NULL,
+  `rightmd5` varchar(255) default NULL,
+  `righttext` varchar(255) default NULL,
+  `authcode` text,
+  `authpass` varchar(255) default NULL,
+  `authtext` varchar(255) default NULL,
+  `data` longtext,
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_otherinfo VALUES('1','NOUSER','2147483647','','','','','','','','','','','','','','','您的域名没有经过MetInfo企业网站管理系统官方认证','','metinfo');
+INSERT INTO met_otherinfo VALUES('3','','','','','','','','','','<div>\r\n	请在<strong>后台-内容管理-备用字段</strong>中修改此段文字</div>\r\n<div>\r\n	某某有限公司</div>\r\n<div>\r\n	电 &nbsp;话：0000-888888</div>\r\n<div>\r\n	邮 &nbsp;编：000000</div>\r\n<div>\r\n	Email：admin@admin.cn</div>\r\n<div>\r\n	网 &nbsp;址：www.xxxxx.cn</div>\r\n','','','','','','','','','cn');
+INSERT INTO met_otherinfo VALUES('4','','','','','','','','','','<p>Tel:+86-000000</p><div>E-mail:sales@metinfo.cn</div>','','','','','','','','','en');
+INSERT INTO met_otherinfo VALUES('5','','','','','','','','','','','','','','','','30110e65cf8869118441f8bb1237b617','','','met_sms');
+
+DROP TABLE IF EXISTS met_parameter;
+CREATE TABLE `met_parameter` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `no_order` int(2) default NULL,
+  `type` int(2) default NULL,
+  `access` int(2) default '0',
+  `wr_ok` int(2) default '0',
+  `class1` int(11) default NULL,
+  `module` int(2) default NULL,
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_parameter VALUES('1','型号','1','1','0','1','0','3','cn');
+INSERT INTO met_parameter VALUES('2','品牌','2','1','0','1','0','3','cn');
+INSERT INTO met_parameter VALUES('3','价格','3','1','0','1','0','3','cn');
+INSERT INTO met_parameter VALUES('4','反馈主题','1','2','0','1','31','8','cn');
+INSERT INTO met_parameter VALUES('5','姓名','2','1','0','1','31','8','cn');
+INSERT INTO met_parameter VALUES('6','职务','3','1','0','0','31','8','cn');
+INSERT INTO met_parameter VALUES('7','Email','4','1','0','1','31','8','cn');
+INSERT INTO met_parameter VALUES('8','联系电话','5','1','0','0','31','8','cn');
+INSERT INTO met_parameter VALUES('9','单位名称','6','1','0','0','31','8','cn');
+INSERT INTO met_parameter VALUES('10','省份','7','2','0','1','31','8','cn');
+INSERT INTO met_parameter VALUES('11','详细地址','8','1','0','0','31','8','cn');
+INSERT INTO met_parameter VALUES('12','信息描述','9','3','0','1','31','8','cn');
+INSERT INTO met_parameter VALUES('13','您是怎么找到我们的','10','4','0','1','31','8','cn');
+INSERT INTO met_parameter VALUES('14','文件类型','0','1','0','0','0','4','cn');
+INSERT INTO met_parameter VALUES('15','文件版本','0','1','0','0','0','4','cn');
+INSERT INTO met_parameter VALUES('16','简要说明','0','1','0','0','0','4','cn');
+INSERT INTO met_parameter VALUES('18','姓名','1','1','0','1','0','6','cn');
+INSERT INTO met_parameter VALUES('19','性别','2','6','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('20','出生年月','3','1','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('21','籍贯','4','1','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('22','联系电话','5','1','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('23','邮编','6','1','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('24','E–mail','7','1','0','1','0','6','cn');
+INSERT INTO met_parameter VALUES('25','学历','8','1','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('26','专业','9','1','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('27','学校','10','1','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('28','通讯地址','11','1','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('29','所获奖项','12','3','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('30','工作经历','13','3','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('31','业余爱好','14','3','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('32','近期照片','15','5','0','0','0','6','cn');
+INSERT INTO met_parameter VALUES('33','theme Select','1','2','0','1','50','8','en');
+INSERT INTO met_parameter VALUES('34','Name','2','1','0','1','50','8','en');
+INSERT INTO met_parameter VALUES('35','Duties','3','1','0','0','50','8','en');
+INSERT INTO met_parameter VALUES('36','Email','4','1','0','1','50','8','en');
+INSERT INTO met_parameter VALUES('37','Phone','5','1','0','0','50','8','en');
+INSERT INTO met_parameter VALUES('38','Company','6','1','0','0','50','8','en');
+INSERT INTO met_parameter VALUES('39','province','7','2','0','0','50','8','en');
+INSERT INTO met_parameter VALUES('40','Address','8','1','0','0','50','8','en');
+INSERT INTO met_parameter VALUES('41','Description','9','3','0','0','50','8','en');
+INSERT INTO met_parameter VALUES('42','How did you find us','10','4','0','0','50','8','en');
+INSERT INTO met_parameter VALUES('43','name','1','1','0','0','0','6','en');
+INSERT INTO met_parameter VALUES('44','sex','2','6','0','0','0','6','en');
+INSERT INTO met_parameter VALUES('45','birth','3','1','0','0','0','6','en');
+INSERT INTO met_parameter VALUES('46','Hometown','4','1','0','0','0','6','en');
+INSERT INTO met_parameter VALUES('47','tel','5','1','0','0','0','6','en');
+INSERT INTO met_parameter VALUES('48','Zip Code','6','1','0','0','0','6','en');
+INSERT INTO met_parameter VALUES('49','E–mail','7','1','0','1','0','6','en');
+INSERT INTO met_parameter VALUES('50','Degree','8','1','0','0','0','6','en');
+INSERT INTO met_parameter VALUES('51','Professional','9','1','0','0','0','6','en');
+INSERT INTO met_parameter VALUES('52','School','10','1','0','1','0','6','en');
+INSERT INTO met_parameter VALUES('53','Mailing Address','11','1','0','1','0','6','en');
+INSERT INTO met_parameter VALUES('54','Awards','12','3','0','1','0','6','en');
+INSERT INTO met_parameter VALUES('55','Work experience','13','3','0','1','0','6','en');
+INSERT INTO met_parameter VALUES('56','Hobby','14','3','0','1','0','6','en');
+INSERT INTO met_parameter VALUES('57','Recent photos','15','5','0','1','0','6','en');
+
+DROP TABLE IF EXISTS met_plist;
+CREATE TABLE `met_plist` (
+  `id` int(11) NOT NULL auto_increment,
+  `listid` int(11) default NULL,
+  `paraid` int(11) default NULL,
+  `info` text,
+  `lang` varchar(50) default NULL,
+  `imgname` varchar(255) default NULL,
+  `module` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_plist VALUES('1','1','1','925银','cn','','3');
+INSERT INTO met_plist VALUES('2','1','2','艾念','cn','','3');
+INSERT INTO met_plist VALUES('3','1','3','180','cn','','3');
+INSERT INTO met_plist VALUES('4','2','1','iPad 2 wifi版(64G)','cn','','3');
+INSERT INTO met_plist VALUES('5','2','2','Apple/苹果','cn','','3');
+INSERT INTO met_plist VALUES('6','2','3','4500','cn','','3');
+INSERT INTO met_plist VALUES('7','3','1','23199-78901','cn','','3');
+INSERT INTO met_plist VALUES('8','3','2','全友','cn','','3');
+INSERT INTO met_plist VALUES('9','3','3','1800','cn','','3');
+INSERT INTO met_plist VALUES('10','4','1','丰田凯美瑞','cn','','3');
+INSERT INTO met_plist VALUES('11','4','2','TOYOTA/丰田','cn','','3');
+INSERT INTO met_plist VALUES('12','4','3','15','cn','','3');
+INSERT INTO met_plist VALUES('13','1','14','软件','cn','','4');
+INSERT INTO met_plist VALUES('14','1','15','5.0','cn','','4');
+INSERT INTO met_plist VALUES('15','1','16','2012年7月28日最新发布','cn','','4');
+INSERT INTO met_plist VALUES('16','1','18','awgegweg','cn','','6');
+INSERT INTO met_plist VALUES('17','1','19','先生','cn','','6');
+INSERT INTO met_plist VALUES('18','1','20','','cn','','6');
+INSERT INTO met_plist VALUES('19','1','21','','cn','','6');
+INSERT INTO met_plist VALUES('20','1','22','','cn','','6');
+INSERT INTO met_plist VALUES('21','1','23','','cn','','6');
+INSERT INTO met_plist VALUES('22','1','24','wegweweg','cn','','6');
+INSERT INTO met_plist VALUES('23','1','25','','cn','','6');
+INSERT INTO met_plist VALUES('24','1','26','','cn','','6');
+INSERT INTO met_plist VALUES('25','1','27','','cn','','6');
+INSERT INTO met_plist VALUES('26','1','28','','cn','','6');
+INSERT INTO met_plist VALUES('27','1','29','','cn','','6');
+INSERT INTO met_plist VALUES('28','1','30','weg','cn','','6');
+INSERT INTO met_plist VALUES('29','1','31','wegweg','cn','','6');
+INSERT INTO met_plist VALUES('30','1','32','','cn','','6');
+INSERT INTO met_plist VALUES('31','13','1','11','cn','','3');
+INSERT INTO met_plist VALUES('32','13','2','11','cn','','3');
+INSERT INTO met_plist VALUES('33','13','3','11','cn','','3');
+INSERT INTO met_plist VALUES('34','16','1','32','cn','','3');
+INSERT INTO met_plist VALUES('35','16','2','33','cn','','3');
+INSERT INTO met_plist VALUES('36','16','3','33','cn','','3');
+INSERT INTO met_plist VALUES('37','15','1','44','cn','','3');
+INSERT INTO met_plist VALUES('38','15','2','44','cn','','3');
+INSERT INTO met_plist VALUES('39','15','3','44','cn','','3');
+INSERT INTO met_plist VALUES('40','14','1','56','cn','','3');
+INSERT INTO met_plist VALUES('41','14','2','65','cn','','3');
+INSERT INTO met_plist VALUES('42','14','3','76','cn','','3');
+
+DROP TABLE IF EXISTS met_product;
+CREATE TABLE `met_product` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `ctitle` varchar(200) default NULL,
+  `keywords` varchar(200) default NULL,
+  `description` text,
+  `content` longtext,
+  `class1` int(11) default '0',
+  `class2` int(11) default '0',
+  `class3` int(11) default '0',
+  `no_order` int(11) default '0',
+  `wap_ok` int(1) default '0',
+  `new_ok` int(1) default '0',
+  `imgurl` varchar(255) default NULL,
+  `imgurls` varchar(255) default NULL,
+  `displayimg` text,
+  `com_ok` int(1) default '0',
+  `hits` int(11) default '0',
+  `updatetime` datetime default NULL,
+  `addtime` datetime default NULL,
+  `issue` varchar(100) default '',
+  `access` int(2) default '0',
+  `top_ok` int(1) default '0',
+  `filename` varchar(255) default NULL,
+  `lang` varchar(50) default NULL,
+  `content1` text,
+  `content2` text,
+  `content3` text,
+  `content4` text,
+  `contentinfo` varchar(255) default NULL,
+  `contentinfo1` varchar(255) default NULL,
+  `contentinfo2` varchar(255) default NULL,
+  `contentinfo3` varchar(255) default NULL,
+  `contentinfo4` varchar(255) default NULL,
+  `recycle` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_product VALUES('1','示例产品五','','','由于本店工厂直销，当中省去了各级代理，省去店租，把最大的利润全反给买家，现在此款商品零利润特价销售。','<ul class=\"attributes-list\" style=\"margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 15px; list-style-type: none; list-style-position: initial; list-style-image: initial; zoom: 1; clear: both; font-family: tahoma, arial, 宋体; line-height: 18px; \">\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;银饰\">\r\n		链子材质:&nbsp;银饰</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;925银\">\r\n		银饰分类:&nbsp;925银</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;扭片链\">\r\n		链子样式:&nbsp;扭片链</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;银饰\">\r\n		坠子材质:&nbsp;银饰</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;艾念\">\r\n		品牌:&nbsp;艾念</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;无\">\r\n		延长链:&nbsp;无</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;（小吊坠）紫钻链长45CM现货&nbsp;（小吊坠）紫钻链长40CM现货&nbsp;（小吊坠）白钻链长45CM现货&nbsp;（小吊坠）白钻链长40CM现货&nbsp;（大吊坠）紫钻链长45CM现货&nbsp;（大吊坠）紫钻链长40CM现货&nbsp;（大吊坠）白钻链长45CM现货&nbsp;（大吊坠）白钻链长40CM现货\">\r\n		颜色分类:&nbsp;（小吊坠）紫钻链长45CM现货&nbsp;（小吊坠）紫钻链长40CM现货&nbsp;（小吊坠）白钻链长45CM现货&nbsp;（小吊坠）白钻链长40CM现货&nbsp;（大吊坠）紫钻链长45CM现货&nbsp;（大吊坠）紫钻链长40CM现货&nbsp;（大吊坠）白钻链长45CM现货&nbsp;（大吊坠）白钻链长40CM现货</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;其它形状/图案\">\r\n		形状/图案:&nbsp;其它形状/图案</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;日韩\">\r\n		风格:&nbsp;日韩</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;纯银镶嵌宝石\">\r\n		是否镶嵌:&nbsp;纯银镶嵌宝石</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;是\">\r\n		是否带坠:&nbsp;是</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;否\">\r\n		是否多层:&nbsp;否</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;女\">\r\n		适用人群:&nbsp;女</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;现货\">\r\n		是否现货:&nbsp;现货</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;21cm-50cm\">\r\n		链周长:&nbsp;21cm-50cm</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;全新\">\r\n		成色:&nbsp;全新</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;新鲜出炉\">\r\n		新奇特:&nbsp;新鲜出炉</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;740\">\r\n		货号:&nbsp;740</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;101-200元\">\r\n		价格区间:&nbsp;101-200元</li>\r\n</ul>\r\n','3','6','14','0','0','0','../upload/201207/watermark/1342360923.jpg','../upload/201207/thumb/1342360923.jpg','图1-../upload/201207/watermark/1342361453.jpg,图2-../upload/201207/watermark/1342361225.jpg,图3-../upload/201207/watermark/1342361059.jpg','1','25','2012-12-05 15:44:40','2012-07-15 21:52:11','admin','0','0','示例产品1','cn','','','','','','','','','','0');
+INSERT INTO met_product VALUES('2','示例产品三','','','iPad 让你随心所欲。它是你的网络浏览器、你的收件箱、你最喜爱的小说，更是你实现足不出户，即可与远方好友面对面交谈的方式。它让你常做和不常做的事变得更智能、更直观，而且乐趣无穷。','<div>\r\n	<strong>迅速浏览</strong></div>\r\n<div>\r\n	高速 WLAN 或蜂窝网络数据连接，加上 A5X 芯片的四核图形处理功能，让网页载入或重新载入瞬间完成。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong>专心阅读</strong></div>\r\n<div>\r\n	只需轻点阅读器图标，杂乱信息即刻消失，让你只看到文章。没有足够的时间阅读？你可以将文章链接加入你的阅读列表，稍后再看。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong>分享网站</strong></div>\r\n<div>\r\n	如果你看到有趣的网页，并希望与人分享，对你来说轻而易举即可完成。只需轻点一下，即可打开菜单，用电子邮件将网页链接发出。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong>Safari 和 iCloud</strong></div>\r\n<div>\r\n	iCloud 让你所有设备上的阅读列表和书签都自动保持更新。因此在一部设备上中断的操作，可以在另一设备上继续进行。</div>\r\n','3','7','0','0','0','0','../upload/201207/watermark/1342404144.jpg','../upload/201207/thumb/1342404144.jpg','','1','10','2012-12-05 15:44:46','2012-07-16 09:47:43','admin','0','0','ipad','cn','','','','','','','','','','0');
+INSERT INTO met_product VALUES('3','示例产品七','','','','','3','8','0','0','0','0','../upload/201207/watermark/1342404422.jpg','../upload/201207/thumb/1342404422.jpg','','1','30','2012-12-05 15:44:58','2012-07-16 09:56:45','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_product VALUES('4','示例产品四','','','','<p>\r\n	&nbsp;</p>\r\n<ul class=\"attributes-list\" style=\"margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 15px; list-style-type: none; list-style-position: initial; list-style-image: initial; overflow-x: hidden; overflow-y: hidden; zoom: 1; clear: both; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(230, 230, 230); border-right-color: rgb(230, 230, 230); border-bottom-color: rgb(230, 230, 230); border-left-color: rgb(230, 230, 230); color: rgb(64, 64, 64); font-family: tahoma, arial, 宋体; line-height: 18px; \">\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;TOYOTA/丰田\">\r\n		品牌:&nbsp;TOYOTA/丰田</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;黑色&nbsp;白色\">\r\n		颜色分类:&nbsp;黑色&nbsp;白色</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;国产\">\r\n		车辆产地:&nbsp;国产</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;手自一体\">\r\n		变速箱:&nbsp;手自一体</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;三厢轿车\">\r\n		整车类别:&nbsp;三厢轿车</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;2L\">\r\n		汽车排量:&nbsp;2L</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;15万-20万\">\r\n		汽车价格:&nbsp;15万-20万</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;直列分布（L）\">\r\n		发动机类型:&nbsp;直列分布（L）</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;4档\">\r\n		档位:&nbsp;4档</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;4缸\">\r\n		缸数:&nbsp;4缸</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;16气门\">\r\n		气门数:&nbsp;16气门</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;汽车类型\">\r\n		动力类型:&nbsp;汽车类型</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;其它\">\r\n		上市时间:&nbsp;其它</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;丰田凯美瑞\">\r\n		适合车型:&nbsp;丰田凯美瑞</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;TOYOTA/丰田\">\r\n		适用车系:&nbsp;TOYOTA/丰田</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;广东\">\r\n		新车二手车销售区域:&nbsp;广东</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;30天提车\">\r\n		提车周期:&nbsp;30天提车</li>\r\n</ul>\r\n','3','9','0','0','0','0','../upload/201207/watermark/1342405015.jpg','../upload/201207/thumb/1342405015.jpg','','1','33','2012-12-05 15:44:33','2012-07-16 10:01:04','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_product VALUES('13','示例产品八','','','','<p>\r\n	&nbsp;</p>\r\n<ul class=\"attributes-list\" style=\"margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 15px; list-style-type: none; list-style-position: initial; list-style-image: initial; overflow-x: hidden; overflow-y: hidden; zoom: 1; clear: both; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(230, 230, 230); border-right-color: rgb(230, 230, 230); border-bottom-color: rgb(230, 230, 230); border-left-color: rgb(230, 230, 230); color: rgb(64, 64, 64); font-family: tahoma, arial, 宋体; line-height: 18px; \">\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;TOYOTA/丰田\">\r\n		品牌:&nbsp;TOYOTA/丰田</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;黑色&nbsp;白色\">\r\n		颜色分类:&nbsp;黑色&nbsp;白色</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;国产\">\r\n		车辆产地:&nbsp;国产</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;手自一体\">\r\n		变速箱:&nbsp;手自一体</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;三厢轿车\">\r\n		整车类别:&nbsp;三厢轿车</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;2L\">\r\n		汽车排量:&nbsp;2L</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;15万-20万\">\r\n		汽车价格:&nbsp;15万-20万</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;直列分布（L）\">\r\n		发动机类型:&nbsp;直列分布（L）</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;4档\">\r\n		档位:&nbsp;4档</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;4缸\">\r\n		缸数:&nbsp;4缸</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;16气门\">\r\n		气门数:&nbsp;16气门</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;汽车类型\">\r\n		动力类型:&nbsp;汽车类型</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;其它\">\r\n		上市时间:&nbsp;其它</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;丰田凯美瑞\">\r\n		适合车型:&nbsp;丰田凯美瑞</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;TOYOTA/丰田\">\r\n		适用车系:&nbsp;TOYOTA/丰田</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;广东\">\r\n		新车二手车销售区域:&nbsp;广东</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;30天提车\">\r\n		提车周期:&nbsp;30天提车</li>\r\n</ul>\r\n','3','10','0','0','0','0','../upload/201207/watermark/1342405015.jpg','../upload/201207/thumb/1342405015.jpg','','1','44','2012-12-05 15:45:06','2012-07-16 10:01:04','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_product VALUES('14','示例产品六','','','','','3','10','0','0','0','0','../upload/201207/watermark/1342404422.jpg','../upload/201207/thumb/1342404422.jpg','','1','12','2012-12-05 15:44:52','2012-07-16 09:56:45','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_product VALUES('15','示例产品二','','','iPad 让你随心所欲。它是你的网络浏览器、你的收件箱、你最喜爱的小说，更是你实现足不出户，即可与远方好友面对面交谈的方式。它让你常做和不常做的事变得更智能、更直观，而且乐趣无穷。','<div>\r\n	<strong>迅速浏览</strong></div>\r\n<div>\r\n	高速 WLAN 或蜂窝网络数据连接，加上 A5X 芯片的四核图形处理功能，让网页载入或重新载入瞬间完成。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong>专心阅读</strong></div>\r\n<div>\r\n	只需轻点阅读器图标，杂乱信息即刻消失，让你只看到文章。没有足够的时间阅读？你可以将文章链接加入你的阅读列表，稍后再看。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong>分享网站</strong></div>\r\n<div>\r\n	如果你看到有趣的网页，并希望与人分享，对你来说轻而易举即可完成。只需轻点一下，即可打开菜单，用电子邮件将网页链接发出。</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong>Safari 和 iCloud</strong></div>\r\n<div>\r\n	iCloud 让你所有设备上的阅读列表和书签都自动保持更新。因此在一部设备上中断的操作，可以在另一设备上继续进行。</div>\r\n','3','10','0','0','0','0','../upload/201207/watermark/1342404144.jpg','../upload/201207/thumb/1342404144.jpg','','1','25','2012-12-05 15:44:25','2012-07-16 09:47:43','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_product VALUES('16','示例产品一','','','由于本店工厂直销，当中省去了各级代理，省去店租，把最大的利润全反给买家，现在此款商品零利润特价销售。','<ul class=\"attributes-list\" style=\"margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 15px; list-style-type: none; list-style-position: initial; list-style-image: initial; zoom: 1; clear: both; font-family: tahoma, arial, 宋体; line-height: 18px; \">\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;银饰\">\r\n		链子材质:&nbsp;银饰</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;925银\">\r\n		银饰分类:&nbsp;925银</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;扭片链\">\r\n		链子样式:&nbsp;扭片链</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;银饰\">\r\n		坠子材质:&nbsp;银饰</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;艾念\">\r\n		品牌:&nbsp;艾念</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;无\">\r\n		延长链:&nbsp;无</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;（小吊坠）紫钻链长45CM现货&nbsp;（小吊坠）紫钻链长40CM现货&nbsp;（小吊坠）白钻链长45CM现货&nbsp;（小吊坠）白钻链长40CM现货&nbsp;（大吊坠）紫钻链长45CM现货&nbsp;（大吊坠）紫钻链长40CM现货&nbsp;（大吊坠）白钻链长45CM现货&nbsp;（大吊坠）白钻链长40CM现货\">\r\n		颜色分类:&nbsp;（小吊坠）紫钻链长45CM现货&nbsp;（小吊坠）紫钻链长40CM现货&nbsp;（小吊坠）白钻链长45CM现货&nbsp;（小吊坠）白钻链长40CM现货&nbsp;（大吊坠）紫钻链长45CM现货&nbsp;（大吊坠）紫钻链长40CM现货&nbsp;（大吊坠）白钻链长45CM现货&nbsp;（大吊坠）白钻链长40CM现货</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;其它形状/图案\">\r\n		形状/图案:&nbsp;其它形状/图案</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;日韩\">\r\n		风格:&nbsp;日韩</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;纯银镶嵌宝石\">\r\n		是否镶嵌:&nbsp;纯银镶嵌宝石</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;是\">\r\n		是否带坠:&nbsp;是</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;否\">\r\n		是否多层:&nbsp;否</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;女\">\r\n		适用人群:&nbsp;女</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;现货\">\r\n		是否现货:&nbsp;现货</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;21cm-50cm\">\r\n		链周长:&nbsp;21cm-50cm</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;全新\">\r\n		成色:&nbsp;全新</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;新鲜出炉\">\r\n		新奇特:&nbsp;新鲜出炉</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;740\">\r\n		货号:&nbsp;740</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;101-200元\">\r\n		价格区间:&nbsp;101-200元</li>\r\n</ul>\r\n','3','10','0','0','0','0','../upload/201207/watermark/1342360923.jpg','../upload/201207/thumb/1342360923.jpg','图1-../upload/201207/watermark/1342361453.jpg,图2-../upload/201207/watermark/1342361225.jpg,图3-../upload/201207/watermark/1342361059.jpg','1','19','2012-12-05 15:44:17','2012-07-15 21:52:11','admin','0','0','','cn','','','','','','','','','','0');
+INSERT INTO met_product VALUES('5','Sample Product8','','','','<p>\r\n	&nbsp;</p>\r\n<ul class=\"attributes-list\" style=\"margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 15px; list-style-type: none; list-style-position: initial; list-style-image: initial; overflow-x: hidden; overflow-y: hidden; zoom: 1; clear: both; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(230, 230, 230); border-right-color: rgb(230, 230, 230); border-bottom-color: rgb(230, 230, 230); border-left-color: rgb(230, 230, 230); color: rgb(64, 64, 64); font-family: tahoma, arial, 宋体; line-height: 18px; \">\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;TOYOTA/丰田\">\r\n		品牌:&nbsp;TOYOTA/丰田</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;黑色&nbsp;白色\">\r\n		颜色分类:&nbsp;黑色&nbsp;白色</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;国产\">\r\n		车辆产地:&nbsp;国产</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;手自一体\">\r\n		变速箱:&nbsp;手自一体</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;三厢轿车\">\r\n		整车类别:&nbsp;三厢轿车</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;2L\">\r\n		汽车排量:&nbsp;2L</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;15万-20万\">\r\n		汽车价格:&nbsp;15万-20万</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;直列分布（L）\">\r\n		发动机类型:&nbsp;直列分布（L）</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;4档\">\r\n		档位:&nbsp;4档</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;4缸\">\r\n		缸数:&nbsp;4缸</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;16气门\">\r\n		气门数:&nbsp;16气门</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;汽车类型\">\r\n		动力类型:&nbsp;汽车类型</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;其它\">\r\n		上市时间:&nbsp;其它</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;丰田凯美瑞\">\r\n		适合车型:&nbsp;丰田凯美瑞</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;TOYOTA/丰田\">\r\n		适用车系:&nbsp;TOYOTA/丰田</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;广东\">\r\n		新车二手车销售区域:&nbsp;广东</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;30天提车\">\r\n		提车周期:&nbsp;30天提车</li>\r\n</ul>\r\n','44','52','0','0','0','0','../upload/201207/1342405015.jpg','../upload/201207/thumb/1342405015.jpg','','1','7','2012-07-17 11:34:46','2012-07-16 10:01:04','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_product VALUES('6','Sample Product7','','','','','44','52','0','0','0','0','../upload/201207/1342404422.jpg','../upload/201207/thumb/1342404422.jpg','','1','5','2012-07-17 11:34:38','2012-07-16 09:56:45','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_product VALUES('7','Sample Product6','','','iPad make you want it. It is your web browser, your inbox, your favorite novel, the more you realize that the stay at home, you can talk face to face with distant friends. It often Incident seldom do more intelligent, more intuitive, and fun.','<div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		<strong>Quick glance</strong></div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		High-speed WLAN or cellular network data connection, add A5X chip quad-core graphics processing, let the page load or reload a snap.</div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		&nbsp;</div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		<strong>Concentrate on reading</strong></div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		Just tap the icon of the reader, messy information instantly disappear, so that you can only see the article. Do not have enough time to read? You can link to the article in your reading list later.</div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		&nbsp;</div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		<strong>Sharing site</strong></div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		If you see an interesting web page and would like to share, easy for you to complete. Simply tap to open the menu, e-mail will be issued by the web links.</div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		&nbsp;</div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		<strong>Safari and iCloud</strong></div>\r\n	<div style=\"color: rgb(51, 51, 51); font-family: Tahoma, Simsun; line-height: 24px; \">\r\n		The iCloud Let the reading list and bookmarks are automatically kept up to date on all your equipment. Interrupt the operation of a device on another device.</div>\r\n</div>\r\n<br />\r\n','44','52','0','0','0','0','../upload/201207/1342404144.jpg','../upload/201207/thumb/1342404144.jpg','','1','6','2012-07-17 11:34:04','2012-07-16 09:47:43','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_product VALUES('8','Sample Product5','','','Our factory outlet, which eliminates the need for agents at all levels, eliminating the need for rent, the biggest profits of all-trans to the buyer, zero profit sale of this section merchandise.\r\n','<ul class=\"attributes-list\" style=\"margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 15px; list-style-type: none; list-style-position: initial; list-style-image: initial; zoom: 1; clear: both; font-family: tahoma, arial, 宋体; line-height: 18px; \">\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;银饰\">\r\n		链子材质:&nbsp;银饰</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;925银\">\r\n		银饰分类:&nbsp;925银</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;扭片链\">\r\n		链子样式:&nbsp;扭片链</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;银饰\">\r\n		坠子材质:&nbsp;银饰</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;艾念\">\r\n		品牌:&nbsp;艾念</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;无\">\r\n		延长链:&nbsp;无</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;（小吊坠）紫钻链长45CM现货&nbsp;（小吊坠）紫钻链长40CM现货&nbsp;（小吊坠）白钻链长45CM现货&nbsp;（小吊坠）白钻链长40CM现货&nbsp;（大吊坠）紫钻链长45CM现货&nbsp;（大吊坠）紫钻链长40CM现货&nbsp;（大吊坠）白钻链长45CM现货&nbsp;（大吊坠）白钻链长40CM现货\">\r\n		颜色分类:&nbsp;（小吊坠）紫钻链长45CM现货&nbsp;（小吊坠）紫钻链长40CM现货&nbsp;（小吊坠）白钻链长45CM现货&nbsp;（小吊坠）白钻链长40CM现货&nbsp;（大吊坠）紫钻链长45CM现货&nbsp;（大吊坠）紫钻链长40CM现货&nbsp;（大吊坠）白钻链长45CM现货&nbsp;（大吊坠）白钻链长40CM现货</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;其它形状/图案\">\r\n		形状/图案:&nbsp;其它形状/图案</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;日韩\">\r\n		风格:&nbsp;日韩</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;纯银镶嵌宝石\">\r\n		是否镶嵌:&nbsp;纯银镶嵌宝石</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;是\">\r\n		是否带坠:&nbsp;是</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;否\">\r\n		是否多层:&nbsp;否</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;女\">\r\n		适用人群:&nbsp;女</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;现货\">\r\n		是否现货:&nbsp;现货</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;21cm-50cm\">\r\n		链周长:&nbsp;21cm-50cm</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;全新\">\r\n		成色:&nbsp;全新</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;新鲜出炉\">\r\n		新奇特:&nbsp;新鲜出炉</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;740\">\r\n		货号:&nbsp;740</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;101-200元\">\r\n		价格区间:&nbsp;101-200元</li>\r\n</ul>\r\n','44','52','0','0','0','0','../upload/201207/1342360923.jpg','../upload/201207/thumb/1342360923.jpg','图1-../upload/201207/1342361453.jpg,图2-../upload/201207/1342361225.jpg,图3-../upload/201207/1342361059.jpg','1','13','2012-07-17 11:33:47','2012-07-15 21:52:11','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_product VALUES('9','Sample Product4','','','','<p>\r\n	&nbsp;</p>\r\n<ul class=\"attributes-list\" style=\"margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 15px; list-style-type: none; list-style-position: initial; list-style-image: initial; overflow-x: hidden; overflow-y: hidden; zoom: 1; clear: both; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(230, 230, 230); border-right-color: rgb(230, 230, 230); border-bottom-color: rgb(230, 230, 230); border-left-color: rgb(230, 230, 230); color: rgb(64, 64, 64); font-family: tahoma, arial, 宋体; line-height: 18px; \">\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;TOYOTA/丰田\">\r\n		品牌:&nbsp;TOYOTA/丰田</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;黑色&nbsp;白色\">\r\n		颜色分类:&nbsp;黑色&nbsp;白色</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;国产\">\r\n		车辆产地:&nbsp;国产</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;手自一体\">\r\n		变速箱:&nbsp;手自一体</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;三厢轿车\">\r\n		整车类别:&nbsp;三厢轿车</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;2L\">\r\n		汽车排量:&nbsp;2L</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;15万-20万\">\r\n		汽车价格:&nbsp;15万-20万</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;直列分布（L）\">\r\n		发动机类型:&nbsp;直列分布（L）</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;4档\">\r\n		档位:&nbsp;4档</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;4缸\">\r\n		缸数:&nbsp;4缸</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;16气门\">\r\n		气门数:&nbsp;16气门</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;汽车类型\">\r\n		动力类型:&nbsp;汽车类型</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;其它\">\r\n		上市时间:&nbsp;其它</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;丰田凯美瑞\">\r\n		适合车型:&nbsp;丰田凯美瑞</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;TOYOTA/丰田\">\r\n		适用车系:&nbsp;TOYOTA/丰田</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;广东\">\r\n		新车二手车销售区域:&nbsp;广东</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;30天提车\">\r\n		提车周期:&nbsp;30天提车</li>\r\n</ul>\r\n','44','52','0','0','0','0','../upload/201207/1342405015.jpg','../upload/201207/thumb/1342405015.jpg','','1','7','2012-07-17 11:33:39','2012-07-16 10:01:04','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_product VALUES('10','Sample Product3','','','','','44','52','0','0','0','0','../upload/201207/1342404422.jpg','../upload/201207/thumb/1342404422.jpg','','1','5','2012-07-17 11:33:11','2012-07-16 09:56:45','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_product VALUES('11','Sample Product2','','','iPad make you want it. It is your web browser, your inbox, your favorite novel, the more you realize that the stay at home, you can talk face to face with distant friends. It often Incident seldom do more intelligent, more intuitive, and fun.','<div>\r\n	<strong>Quick glance</strong></div>\r\n<div>\r\n	High-speed WLAN or cellular network data connection, add A5X chip quad-core graphics processing, let the page load or reload a snap.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong>Concentrate on reading</strong></div>\r\n<div>\r\n	Just tap the icon of the reader, messy information instantly disappear, so that you can only see the article. Do not have enough time to read? You can link to the article in your reading list later.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong>Sharing site</strong></div>\r\n<div>\r\n	If you see an interesting web page and would like to share, easy for you to complete. Simply tap to open the menu, e-mail will be issued by the web links.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	<strong>Safari and iCloud</strong></div>\r\n<div>\r\n	The iCloud Let the reading list and bookmarks are automatically kept up to date on all your equipment. Interrupt the operation of a device on another device.</div>\r\n','44','52','0','0','0','0','../upload/201207/1342404144.jpg','../upload/201207/thumb/1342404144.jpg','','1','6','2012-07-17 11:32:12','2012-07-16 09:47:43','admin','0','0','','en','','','','','','','','','','0');
+INSERT INTO met_product VALUES('12','Sample Product1','','','Our factory outlet, which eliminates the need for agents at all levels, eliminating the need for rent, the biggest profits of all-trans to the buyer, zero profit sale of this section merchandise.','<ul class=\"attributes-list\" style=\"margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 15px; list-style-type: none; list-style-position: initial; list-style-image: initial; zoom: 1; clear: both; font-family: tahoma, arial, 宋体; line-height: 18px; \">\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;银饰\">\r\n		链子材质:&nbsp;银饰</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;925银\">\r\n		银饰分类:&nbsp;925银</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;扭片链\">\r\n		链子样式:&nbsp;扭片链</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;银饰\">\r\n		坠子材质:&nbsp;银饰</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;艾念\">\r\n		品牌:&nbsp;艾念</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;无\">\r\n		延长链:&nbsp;无</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;（小吊坠）紫钻链长45CM现货&nbsp;（小吊坠）紫钻链长40CM现货&nbsp;（小吊坠）白钻链长45CM现货&nbsp;（小吊坠）白钻链长40CM现货&nbsp;（大吊坠）紫钻链长45CM现货&nbsp;（大吊坠）紫钻链长40CM现货&nbsp;（大吊坠）白钻链长45CM现货&nbsp;（大吊坠）白钻链长40CM现货\">\r\n		颜色分类:&nbsp;（小吊坠）紫钻链长45CM现货&nbsp;（小吊坠）紫钻链长40CM现货&nbsp;（小吊坠）白钻链长45CM现货&nbsp;（小吊坠）白钻链长40CM现货&nbsp;（大吊坠）紫钻链长45CM现货&nbsp;（大吊坠）紫钻链长40CM现货&nbsp;（大吊坠）白钻链长45CM现货&nbsp;（大吊坠）白钻链长40CM现货</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;其它形状/图案\">\r\n		形状/图案:&nbsp;其它形状/图案</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;日韩\">\r\n		风格:&nbsp;日韩</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;纯银镶嵌宝石\">\r\n		是否镶嵌:&nbsp;纯银镶嵌宝石</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;是\">\r\n		是否带坠:&nbsp;是</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;否\">\r\n		是否多层:&nbsp;否</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;女\">\r\n		适用人群:&nbsp;女</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;现货\">\r\n		是否现货:&nbsp;现货</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;21cm-50cm\">\r\n		链周长:&nbsp;21cm-50cm</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;全新\">\r\n		成色:&nbsp;全新</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;新鲜出炉\">\r\n		新奇特:&nbsp;新鲜出炉</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;740\">\r\n		货号:&nbsp;740</li>\r\n	<li style=\"margin-top: 0px; margin-right: 20px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; display: inline; float: left; width: 206px; height: 24px; overflow-x: hidden; overflow-y: hidden; text-indent: 5px; line-height: 24px; white-space: nowrap; text-overflow: ellipsis; \" title=\"&nbsp;101-200元\">\r\n		价格区间:&nbsp;101-200元</li>\r\n</ul>\r\n','44','52','0','0','0','0','../upload/201207/1342360923.jpg','../upload/201207/thumb/1342360923.jpg','图1-../upload/201207/1342361453.jpg,图2-../upload/201207/1342361225.jpg,图3-../upload/201207/1342361059.jpg','1','13','2012-07-17 11:31:46','2012-07-15 21:52:11','admin','0','0','','en','','','','','','','','','','0');
+
+DROP TABLE IF EXISTS met_skin_table;
+CREATE TABLE `met_skin_table` (
+  `id` int(11) NOT NULL auto_increment,
+  `skin_name` varchar(200) default NULL,
+  `skin_file` varchar(20) default NULL,
+  `skin_info` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_skin_table VALUES('1','metv5','default','MetInfo v5.0默认模板，正式版新增二种颜色！');
+INSERT INTO met_skin_table VALUES('2','metv5s','metv5s','MetInfo v5.0正式版新推出一套全新精致免费模板！');
+INSERT INTO met_skin_table VALUES('3','metv4','metv4','MetInfo企业网站管理系统V4.0默认模板');
+INSERT INTO met_skin_table VALUES('4','met007','met007','Met007免费模板');
+INSERT INTO met_skin_table VALUES('5','metv3','metv3','MetInfo企业网站管理系统V3.0默认模板');
+INSERT INTO met_skin_table VALUES('6','metv2','metv2','MetInfo企业网站管理系统V2.0默认模板');
+INSERT INTO met_skin_table VALUES('7','met078','met078','met078');
+
+DROP TABLE IF EXISTS met_sms;
+CREATE TABLE `met_sms` (
+  `id` int(11) NOT NULL auto_increment,
+  `time` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `tel` text NOT NULL,
+  `remark` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_sms VALUES('1','1354757550','6','下单后用户SMS','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('2','1354757553','6','下单后管理员sms','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('3','1354757556','6','下单后用户SMS','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('4','1354757559','6','下单后管理员sms','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('5','1354757562','6','下单后用户SMS','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('6','1354757565','6','下单后管理员sms','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('7','1354758467','6','付款后用户SMS','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('8','1354758470','6','付款后管理员sms','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('9','1354758609','6','发货后用户SMS','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('10','1354758613','6','发货后管理员sms','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('11','1354777559','6','充值后用户SMS','1112','ERR_13');
+INSERT INTO met_sms VALUES('12','1354777560','6','充值后管理员sms','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('13','1354780393','6','充值后用户SMS','15616213396','SUCCESS');
+INSERT INTO met_sms VALUES('14','1354780395','6','充值后管理员sms','15616213396','SUCCESS');
+
+DROP TABLE IF EXISTS met_visit_day;
+CREATE TABLE `met_visit_day` (
+  `id` int(11) NOT NULL auto_increment,
+  `ip` varchar(30) NOT NULL,
+  `acctime` int(10) NOT NULL,
+  `visitpage` varchar(255) NOT NULL,
+  `antepage` varchar(255) NOT NULL,
+  `columnid` int(11) NOT NULL,
+  `listid` int(11) NOT NULL,
+  `browser` varchar(255) NOT NULL,
+  `dizhi` varchar(255) NOT NULL,
+  `network` varchar(100) NOT NULL,
+  `lang` varchar(50) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=504 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_visit_day VALUES('1','222.244.242.171','1354588345','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('2','222.244.242.171','1354588350','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/','9','4','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('3','222.244.242.171','1354588402','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('4','222.244.242.171','1354588452','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','http://cx6274025.gicp.net/metv5/','14','1','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('5','222.244.242.171','1354588490','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('6','222.244.242.171','1354600267','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('7','222.244.242.171','1354602288','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('8','192.168.1.108','1354671193','http://192.168.1.110/metv5/','','10001','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('9','222.244.242.171','1354688214','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('10','222.244.242.171','1354688394','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('11','222.244.242.171','1354688397','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('12','222.244.242.171','1354688409','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('13','222.244.242.171','1354688411','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('14','222.244.242.171','1354688440','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('15','222.244.242.171','1354688528','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('16','222.244.242.171','1354688531','http://cx6274025.gicp.net/metv5/case/','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','33','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('17','222.244.242.171','1354688533','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/case/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('18','222.244.242.171','1354688536','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('19','222.244.242.171','1354688538','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('20','222.244.242.171','1354688648','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('21','222.244.242.171','1354688654','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('22','222.244.242.171','1354688656','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('23','222.244.242.171','1354688699','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('24','222.244.242.171','1354688703','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('25','222.244.242.171','1354688706','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('26','222.244.242.171','1354688708','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('27','222.244.242.171','1354688710','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('28','222.244.242.171','1354688712','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('29','222.244.242.171','1354688715','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('30','222.244.242.171','1354688718','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('31','222.244.242.171','1354688721','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('32','222.244.242.171','1354688723','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('33','222.244.242.171','1354688725','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('34','222.244.242.171','1354688727','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('35','222.244.242.171','1354688988','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('36','222.244.242.171','1354688990','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('37','222.244.242.171','1354688991','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('38','222.244.242.171','1354688992','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('39','222.244.242.171','1354689022','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('40','222.244.242.171','1354689024','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('41','222.244.242.171','1354689025','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('42','222.244.242.171','1354689027','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('43','222.244.242.171','1354689045','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('44','222.244.242.171','1354689046','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('45','222.244.242.171','1354689047','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('46','222.244.242.171','1354689048','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('47','222.244.242.171','1354689049','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('48','222.244.242.171','1354689074','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('49','222.244.242.171','1354689077','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('50','222.244.242.171','1354689080','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('51','222.244.242.171','1354689082','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('52','222.244.242.171','1354689083','http://cx6274025.gicp.net/metv5/job/','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn','36','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('53','222.244.242.171','1354689085','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/job/','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('54','222.244.242.171','1354689087','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('55','222.244.242.171','1354689088','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('56','222.244.242.171','1354689089','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('57','222.244.242.171','1354689090','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('58','222.244.242.171','1354689149','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('59','222.244.242.171','1354689165','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('60','222.244.242.171','1354689176','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('61','222.244.242.171','1354689178','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('62','222.244.242.171','1354689195','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('63','222.244.242.171','1354689198','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('64','222.244.242.171','1354689217','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('65','222.244.242.171','1354689363','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('66','222.244.242.171','1354689365','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('67','222.244.242.171','1354689365','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('68','222.244.242.171','1354689366','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('69','222.244.242.171','1354689367','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('70','222.244.242.171','1354689368','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('71','222.244.242.171','1354689447','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('72','222.244.242.171','1354689450','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('73','222.244.242.171','1354689463','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('74','222.244.242.171','1354689465','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('75','222.244.242.171','1354689479','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('76','222.244.242.171','1354689514','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('77','222.244.242.171','1354689516','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('78','222.244.242.171','1354689517','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('79','222.244.242.171','1354689520','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('80','222.244.242.171','1354689522','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('81','222.244.242.171','1354689524','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('82','222.244.242.171','1354689525','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('83','222.244.242.171','1354689526','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('84','222.244.242.171','1354689548','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('85','222.244.242.171','1354689549','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('86','222.244.242.171','1354689550','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('87','222.244.242.171','1354689551','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('88','222.244.242.171','1354689552','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('89','222.244.242.171','1354689553','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('90','222.244.242.171','1354689554','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('91','222.244.242.171','1354689554','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('92','222.244.242.171','1354689556','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('93','222.244.242.171','1354689558','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('94','222.244.242.171','1354689565','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('95','222.244.242.171','1354689581','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('96','222.244.242.171','1354689663','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('97','222.244.242.171','1354689666','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('98','222.244.242.171','1354689669','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('99','222.244.242.171','1354689671','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('100','222.244.242.171','1354689672','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('101','222.244.242.171','1354689673','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('102','222.244.242.171','1354689675','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('103','222.244.242.171','1354689678','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('104','222.244.242.171','1354689680','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('105','222.244.242.171','1354689683','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('106','222.244.242.171','1354689685','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('107','222.244.242.171','1354689686','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('108','222.244.242.171','1354689691','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('109','222.244.242.171','1354689693','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('110','222.244.242.171','1354689702','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('111','222.244.242.171','1354689711','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('112','222.244.242.171','1354689764','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('113','222.244.242.171','1354689766','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('114','222.244.242.171','1354689767','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('115','222.244.242.171','1354689768','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('116','222.244.242.171','1354689771','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('117','222.244.242.171','1354689773','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('118','222.244.242.171','1354689774','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('119','222.244.242.171','1354689777','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('120','222.244.242.171','1354689780','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('121','222.244.242.171','1354689782','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('122','222.244.242.171','1354689802','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('123','222.244.242.171','1354689805','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('124','222.244.242.171','1354689808','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('125','222.244.242.171','1354689834','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('126','222.244.242.171','1354689836','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('127','222.244.242.171','1354689966','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('128','222.244.242.171','1354689975','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('129','222.244.242.171','1354690009','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('130','222.244.242.171','1354690594','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('131','222.244.242.171','1354690596','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('132','222.244.242.171','1354690598','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('133','192.168.1.108','1354690963','http://192.168.1.110/metv5/','','10001','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('134','222.244.242.171','1354692537','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('135','222.244.242.171','1354692573','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('136','222.244.242.171','1354692584','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('137','222.244.242.171','1354692606','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('138','222.244.242.171','1354692641','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('139','222.244.242.171','1354692749','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('140','222.244.242.171','1354692761','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('141','222.244.242.171','1354692770','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('142','222.244.242.171','1354692778','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('143','222.244.242.171','1354692780','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('144','222.244.242.171','1354692783','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('145','222.244.242.171','1354692786','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('146','222.244.242.171','1354692790','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('147','222.244.242.171','1354692792','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('148','222.244.242.171','1354692794','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('149','222.244.242.171','1354692829','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('150','222.244.242.171','1354692831','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('151','222.244.242.171','1354692892','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('152','222.244.242.171','1354692895','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=14','http://cx6274025.gicp.net/metv5/product/','10','14','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('153','222.244.242.171','1354692974','http://cx6274025.gicp.net/metv5/about/','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=14','19','19','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('154','222.244.242.171','1354692976','http://cx6274025.gicp.net/metv5/news/','http://cx6274025.gicp.net/metv5/about/','2','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('155','222.244.242.171','1354692978','http://cx6274025.gicp.net/metv5/case/','http://cx6274025.gicp.net/metv5/news/','33','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('156','222.244.242.171','1354692980','http://cx6274025.gicp.net/metv5/case/showimg.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/case/','33','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('157','222.244.242.171','1354692995','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/case/showimg.php?lang=cn&id=4','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('158','222.244.242.171','1354692996','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('159','222.244.242.171','1354693015','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('160','222.244.242.171','1354693028','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('161','222.244.242.171','1354693031','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('162','222.244.242.171','1354693033','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('163','222.244.242.171','1354693046','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('164','222.244.242.171','1354693243','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('165','222.244.242.171','1354693287','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','10001','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('166','222.244.242.171','1354693374','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('167','222.244.242.171','1354693378','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('168','222.244.242.171','1354693379','http://cx6274025.gicp.net/metv5/member/met_shop_addressview.php?action=add','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('169','222.244.242.171','1354693401','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_addressview.php?action=add','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('170','222.244.242.171','1354693421','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('171','222.244.242.171','1354693423','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('172','222.244.242.171','1354693513','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('173','222.244.242.171','1354693514','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('174','222.244.242.171','1354693538','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('175','222.244.242.171','1354693548','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('176','222.244.242.171','1354693549','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('177','222.244.242.171','1354693551','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('178','222.244.242.171','1354693554','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('179','222.244.242.171','1354693562','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','10001','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('180','222.244.242.171','1354693564','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('181','222.244.242.171','1354693570','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=16','http://cx6274025.gicp.net/metv5/product/','10','16','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('182','222.244.242.171','1354693571','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=16','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=16','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('183','222.244.242.171','1354693583','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=16','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('184','222.244.242.171','1354693584','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','http://cx6274025.gicp.net/metv5/product/','14','1','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('185','222.244.242.171','1354693585','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=1','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('186','222.244.242.171','1354693592','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=1','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=1','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('187','222.244.242.171','1354693593','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=1','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('188','222.244.242.171','1354693595','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=16','http://cx6274025.gicp.net/metv5/product/','10','16','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('189','222.244.242.171','1354693596','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=16','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=16','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('190','222.244.242.171','1354693613','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=16','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('191','222.244.242.171','1354693615','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','http://cx6274025.gicp.net/metv5/product/','14','1','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('192','222.244.242.171','1354693665','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','http://cx6274025.gicp.net/metv5/product/','14','1','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('193','222.244.242.171','1354693735','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','','14','1','ie7.0','nohost','','cn');
+INSERT INTO met_visit_day VALUES('194','222.244.242.171','1354693778','http://cx6274025.gicp.net/metv5/','','10001','0','ie7.0','nohost','','cn');
+INSERT INTO met_visit_day VALUES('195','222.244.242.171','1354693779','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/','3','0','ie7.0','nohost','','cn');
+INSERT INTO met_visit_day VALUES('196','222.244.242.171','1354693781','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','ie7.0','nohost','','cn');
+INSERT INTO met_visit_day VALUES('197','222.244.242.171','1354693785','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','38','0','ie7.0','nohost','','cn');
+INSERT INTO met_visit_day VALUES('198','222.244.242.171','1354693789','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','ie7.0','nohost','','cn');
+INSERT INTO met_visit_day VALUES('199','222.244.242.171','1354693858','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','http://cx6274025.gicp.net/metv5/product/','14','1','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('200','222.244.242.171','1354693899','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('201','222.244.242.171','1354693908','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('202','222.244.242.171','1354693909','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('203','222.244.242.171','1354694989','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('204','222.244.242.171','1354694993','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=15','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('205','222.244.242.171','1354694998','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=15','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('206','222.244.242.171','1354695000','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('207','222.244.242.171','1354695007','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('208','222.244.242.171','1354695019','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=2','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('209','222.244.242.171','1354695022','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=2','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('210','222.244.242.171','1354695024','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('211','222.244.242.171','1354695028','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('212','222.244.242.171','1354695038','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('213','222.244.242.171','1354695039','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('214','222.244.242.171','1354695147','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('215','222.244.242.171','1354695184','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('216','222.244.242.171','1354695191','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('217','222.244.242.171','1354695195','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('218','222.244.242.171','1354695196','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('219','222.244.242.171','1354695201','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=15','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('220','222.244.242.171','1354695207','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=15','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('221','222.244.242.171','1354695209','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('222','222.244.242.171','1354695241','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('223','222.244.242.171','1354695244','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('224','222.244.242.171','1354695248','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=3','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('225','222.244.242.171','1354695250','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=3','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('226','222.244.242.171','1354695252','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=2','http://cx6274025.gicp.net/metv5/product/','7','2','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('227','222.244.242.171','1354695255','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=2','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=2','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('228','222.244.242.171','1354695264','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=2','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('229','222.244.242.171','1354695266','http://cx6274025.gicp.net/metv5/member/met_shop_orderview.php?lang=cn&ordernumber=20121205161415265489','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('230','222.244.242.171','1354695345','http://cx6274025.gicp.net/metv5/member/met_shop_orderview.php?lang=cn&ordernumber=20121205161415265489','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('231','222.244.242.171','1354695350','http://cx6274025.gicp.net/metv5/member/met_shop_orderview.php?lang=cn&ordernumber=20121205161415265489','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('232','222.244.242.171','1354695351','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_orderview.php?lang=cn&ordernumber=20121205161415265489','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('233','222.244.242.171','1354695352','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('234','222.244.242.171','1354695354','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('235','222.244.242.171','1354695385','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('236','222.244.242.171','1354695386','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('237','222.244.242.171','1354695614','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('238','222.244.242.171','1354696446','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('239','222.244.242.171','1354696448','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('240','222.244.242.171','1354696451','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=4','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('241','222.244.242.171','1354696452','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=5','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('242','222.244.242.171','1354696454','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=5','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('243','222.244.242.171','1354696456','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('244','222.244.242.171','1354696457','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('245','222.244.242.171','1354696460','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('246','222.244.242.171','1354696462','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=6','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('247','222.244.242.171','1354696469','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=6','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('248','222.244.242.171','1354696472','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('249','222.244.242.171','1354696642','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('250','222.244.242.171','1354696855','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=14','http://cx6274025.gicp.net/metv5/product/','10','14','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('251','222.244.242.171','1354696889','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('252','222.244.242.171','1354696951','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('253','222.244.242.171','1354696963','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','http://cx6274025.gicp.net/metv5/product/','14','1','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('254','222.244.242.171','1354697187','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('255','222.244.242.171','1354697188','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('256','222.244.242.171','1354697221','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('257','222.244.242.171','1354697223','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=11','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('258','222.244.242.171','1354697225','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=12','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=11','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('259','222.244.242.171','1354697227','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=12','10001','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('260','222.244.242.171','1354697264','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('261','222.244.242.171','1354697271','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('262','222.244.242.171','1354697286','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/product/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('263','222.244.242.171','1354697288','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('264','222.244.242.171','1354697290','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=13','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('265','222.244.242.171','1354697292','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=13','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('266','222.244.242.171','1354697321','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('267','222.244.242.171','1354697433','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('268','222.244.242.171','1354697436','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('269','222.244.242.171','1354697481','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('270','222.244.242.171','1354697482','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('271','222.244.242.171','1354697509','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('272','222.244.242.171','1354697522','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('273','222.244.242.171','1354697524','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('274','222.244.242.171','1354697530','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('275','222.244.242.171','1354697657','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('276','222.244.242.171','1354697759','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('277','222.244.242.171','1354697762','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('278','222.244.242.171','1354698200','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('279','192.168.1.108','1354698278','http://192.168.1.110/metv5/','','10001','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('280','222.244.242.171','1354698632','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('281','222.244.242.171','1354698700','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('282','222.244.242.171','1354698752','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('283','222.244.242.171','1354698767','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('284','222.244.242.171','1354698815','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('285','222.244.242.171','1354698828','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('286','222.244.242.171','1354698853','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','http://cx6274025.gicp.net/metv5/product/','10','15','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('287','222.244.242.171','1354699162','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('288','222.244.242.171','1354699164','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=14','http://cx6274025.gicp.net/metv5/product/','10','14','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('289','222.244.242.171','1354699688','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=14','http://cx6274025.gicp.net/metv5/product/','10','14','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('290','222.244.242.171','1354755032','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/','10001','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('291','222.244.242.171','1354755843','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('292','222.244.242.171','1354755848','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('293','222.244.242.171','1354755854','http://cx6274025.gicp.net/metv5/feedback/index.php?lang=cn&title=%E7%A4%BA%E4%BE%8B%E4%BA%A7%E5%93%81%E5%9B%9B&id=','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','31','31','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('294','222.244.242.171','1354755855','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','http://cx6274025.gicp.net/metv5/','9','4','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('295','222.244.242.171','1354755874','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('296','222.244.242.171','1354755877','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','38','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('297','222.244.242.171','1354755880','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','3','0','chrome','nohost','','cn');
+INSERT INTO met_visit_day VALUES('298','222.244.242.171','1354757230','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('299','222.244.242.171','1354757232','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/','3','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('300','222.244.242.171','1354757237','http://cx6274025.gicp.net/metv5/search/','http://cx6274025.gicp.net/metv5/product/','39','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('301','222.244.242.171','1354757239','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/search/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('302','222.244.242.171','1354757240','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('303','222.244.242.171','1354757243','http://cx6274025.gicp.net/metv5/member/met_shop_addressview.php?action=add','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('304','222.244.242.171','1354757345','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_addressview.php?action=add','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('305','222.244.242.171','1354757360','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','3','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('306','222.244.242.171','1354757362','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','http://cx6274025.gicp.net/metv5/product/','10','13','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('307','222.244.242.171','1354757366','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('308','222.244.242.171','1354757403','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('309','222.244.242.171','1354757412','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','3','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('310','222.244.242.171','1354757415','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/product/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('311','222.244.242.171','1354757417','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('312','222.244.242.171','1354757465','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('313','222.244.242.171','1354757468','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('314','222.244.242.171','1354757471','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('315','222.244.242.171','1354757472','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('316','222.244.242.171','1354757565','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn&ordernumber=20121206092925745682','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('317','222.244.242.171','1354758122','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('318','222.244.242.171','1354758125','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('319','222.244.242.171','1354758138','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn&ordernumber=20121206092925745682','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('320','222.244.242.171','1354758199','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('321','222.244.242.171','1354758203','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('322','222.244.242.171','1354758296','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('323','222.244.242.171','1354758466','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('324','222.244.242.171','1354758684','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('325','222.244.242.171','1354758687','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('326','222.244.242.171','1354758960','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('327','222.244.242.171','1354758964','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('328','222.244.242.171','1354758966','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('329','222.244.242.171','1354759146','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('330','222.244.242.171','1354759148','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('331','222.244.242.171','1354759224','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('332','222.244.242.171','1354759315','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('333','222.244.242.171','1354762458','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('334','222.244.242.171','1354762525','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('335','222.244.242.171','1354771828','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('336','113.240.185.210','1354776722','http://cx6274025.gicp.net/metv5/','','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('337','113.240.185.210','1354776730','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/','3','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('338','113.240.185.210','1354776734','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/product/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('339','113.240.185.210','1354776736','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('340','113.240.185.210','1354776872','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('341','113.240.185.210','1354776874','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('342','113.240.185.210','1354776875','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('343','113.240.185.210','1354776876','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('344','113.240.185.210','1354777274','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('345','113.240.185.210','1354777298','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('346','113.240.185.210','1354777309','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('347','113.240.185.210','1354777314','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('348','113.240.185.210','1354777320','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('349','113.240.185.210','1354777323','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('350','113.240.185.210','1354777345','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('351','113.240.185.210','1354777347','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('352','113.240.185.210','1354777350','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('353','113.240.185.210','1354777352','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('354','113.240.185.210','1354777353','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('355','113.240.185.210','1354777354','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('356','113.240.185.210','1354777355','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('357','113.240.185.210','1354777356','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('358','113.240.185.210','1354777357','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('359','113.240.185.210','1354777358','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('360','113.240.185.210','1354777360','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('361','113.240.185.210','1354777413','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('362','113.240.185.210','1354777414','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('363','113.240.185.210','1354777415','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('364','113.240.185.210','1354777416','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('365','113.240.185.210','1354777416','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('366','113.240.185.210','1354777418','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('367','113.240.185.210','1354777418','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('368','113.240.185.210','1354777419','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('369','113.240.185.210','1354777420','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('370','113.240.185.210','1354777421','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('371','113.240.185.210','1354777434','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('372','113.240.185.210','1354777438','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('373','113.240.185.210','1354777445','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('374','113.240.185.210','1354777446','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('375','113.240.185.210','1354777447','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('376','113.240.185.210','1354777448','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('377','113.240.185.210','1354777449','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('378','113.240.185.210','1354777452','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('379','113.240.185.210','1354777452','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('380','113.240.185.210','1354777454','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('381','113.240.185.210','1354777456','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('382','113.240.185.210','1354777457','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('383','113.240.185.210','1354777458','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('384','113.240.185.210','1354777458','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('385','113.240.185.210','1354777698','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('386','113.240.185.210','1354777700','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('387','113.240.185.210','1354777711','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('388','113.240.185.210','1354777713','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('389','113.240.185.210','1354777745','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('390','113.240.185.210','1354777747','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('391','192.168.1.107','1354777761','http://192.168.1.110/metv5/','','10001','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('392','192.168.1.107','1354777795','http://192.168.1.110/metv5/product/','http://192.168.1.110/metv5/','3','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('393','192.168.1.107','1354777797','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('394','192.168.1.107','1354777841','http://192.168.1.110/metv5/download/','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','32','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('395','192.168.1.107','1354777842','http://192.168.1.110/metv5/product/','http://192.168.1.110/metv5/download/','3','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('396','192.168.1.107','1354777844','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=14','http://192.168.1.110/metv5/product/','10','14','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('397','113.240.185.210','1354777961','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('398','113.240.185.210','1354777962','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('399','113.240.185.210','1354777966','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('400','113.240.185.210','1354777970','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('401','113.240.185.210','1354777982','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('402','113.240.185.210','1354777994','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('403','113.240.185.210','1354778017','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('404','113.240.185.210','1354778028','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('405','113.240.185.210','1354778031','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('406','113.240.185.210','1354778035','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('407','113.240.185.210','1354778038','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('408','113.240.185.210','1354778323','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('409','113.240.185.210','1354778347','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','3','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('410','113.240.185.210','1354778361','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/product/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('411','113.240.185.210','1354778495','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('412','113.240.185.210','1354778500','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('413','113.240.185.210','1354778622','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('414','113.240.185.210','1354778624','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('415','113.240.185.210','1354778648','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&page=0','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('416','113.240.185.210','1354778650','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&page=0','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('417','113.240.185.210','1354778672','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&page=0','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('418','113.240.185.210','1354778676','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=0','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('419','113.240.185.210','1354778699','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=0','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('420','113.240.185.210','1354778701','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('421','113.240.185.210','1354778703','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('422','113.240.185.210','1354778715','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('423','113.240.185.210','1354778763','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('424','113.240.185.210','1354778763','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('425','113.240.185.210','1354778764','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('426','113.240.185.210','1354778765','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('427','113.240.185.210','1354778766','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('428','113.240.185.210','1354778777','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('429','113.240.185.210','1354778801','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('430','113.240.185.210','1354778895','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('431','113.240.185.210','1354778953','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('432','113.240.185.210','1354778989','http://cx6274025.gicp.net/metv5/product/','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','3','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('433','113.240.185.210','1354778998','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','http://cx6274025.gicp.net/metv5/product/','8','3','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('434','113.240.185.210','1354779002','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('435','113.240.185.210','1354779004','http://cx6274025.gicp.net/metv5/member/','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('436','113.240.185.210','1354779006','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('437','113.240.185.210','1354779008','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('438','113.240.185.210','1354779021','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('439','113.240.185.210','1354779022','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('440','113.240.185.210','1354779024','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=2','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('441','113.240.185.210','1354779025','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=1','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=2','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('442','113.240.185.210','1354779026','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=2','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=1','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('443','113.240.185.210','1354779027','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=1','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=2','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('444','113.240.185.210','1354779036','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=1','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('445','113.240.185.210','1354779125','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=1','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('446','113.240.185.210','1354779128','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('447','113.240.185.210','1354779130','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('448','113.240.185.210','1354779150','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('449','113.240.185.210','1354779161','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('450','113.240.185.210','1354779183','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('451','113.240.185.210','1354779185','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('452','113.240.185.210','1354779188','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('453','113.240.185.210','1354779203','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('454','113.240.185.210','1354779204','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=2','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('455','113.240.185.210','1354779205','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=3','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=2','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('456','113.240.185.210','1354779206','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=4','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=3','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('457','113.240.185.210','1354779207','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=5','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=4','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('458','113.240.185.210','1354779208','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=8','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=5','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('459','113.240.185.210','1354779209','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=7','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=8','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('460','113.240.185.210','1354779211','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=1','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=7','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('461','113.240.185.210','1354779222','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=1','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=7','38','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('462','192.168.1.107','1354779805','http://192.168.1.110/metv5/index.php?lang=cn','http://192.168.1.110/metv5/admin/index.php?lang=cn','10001','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('463','192.168.1.107','1354779806','http://192.168.1.110/metv5/product/','http://192.168.1.110/metv5/index.php?lang=cn','3','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('464','192.168.1.107','1354779808','http://192.168.1.110/metv5/member/','http://192.168.1.110/metv5/product/','38','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('465','192.168.1.107','1354779813','http://192.168.1.110/metv5/member/met_shop_shop.php?lang=cn','http://192.168.1.110/metv5/member/','38','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('466','192.168.1.107','1354779815','http://192.168.1.110/metv5/news/','http://192.168.1.110/metv5/member/met_shop_shop.php?lang=cn','2','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('467','192.168.1.107','1354779816','http://192.168.1.110/metv5/product/','http://192.168.1.110/metv5/news/','3','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('468','192.168.1.107','1354779820','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('469','192.168.1.107','1354781372','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('470','192.168.1.107','1354781444','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('471','192.168.1.107','1354782034','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('472','192.168.1.107','1354782219','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('473','192.168.1.107','1354782222','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('474','192.168.1.107','1354782556','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('475','192.168.1.107','1354782587','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('476','192.168.1.107','1354782919','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('477','192.168.1.107','1354782952','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('478','192.168.1.107','1354782968','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('479','192.168.1.107','1354782970','http://192.168.1.110/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','38','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('480','192.168.1.107','1354782974','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('481','192.168.1.107','1354782975','http://192.168.1.110/metv5/product/','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','3','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('482','192.168.1.107','1354782977','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('483','192.168.1.107','1354782987','http://192.168.1.110/metv5/index.php?lang=cn','http://192.168.1.110/metv5/admin/index.php?lang=cn','10001','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('484','192.168.1.107','1354782988','http://192.168.1.110/metv5/news/','http://192.168.1.110/metv5/index.php?lang=cn','2','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('485','192.168.1.107','1354782989','http://192.168.1.110/metv5/product/','http://192.168.1.110/metv5/news/','3','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('486','192.168.1.107','1354782989','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('487','192.168.1.107','1354783667','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('488','192.168.1.107','1354783694','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('489','113.240.185.210','1354783707','http://cx6274025.gicp.net/metv5/','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','10001','0','chrome','湖南省长沙市','电信','cn');
+INSERT INTO met_visit_day VALUES('490','192.168.1.107','1354784548','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('491','192.168.1.107','1354784557','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('492','192.168.1.107','1354785268','http://192.168.1.110/metv5/index.php?lang=cn','http://192.168.1.110/metv5/admin/index.php?lang=cn','10001','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('493','192.168.1.107','1354785270','http://192.168.1.110/metv5/product/','http://192.168.1.110/metv5/news/','3','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('494','192.168.1.107','1354785271','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('495','192.168.1.103','1354785876','http://192.168.1.110/metv5/','http://192.168.1.110/','10001','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('496','192.168.1.103','1354785878','http://192.168.1.110/metv5/product/','http://192.168.1.110/metv5/','3','0','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('497','192.168.1.103','1354785879','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','http://192.168.1.110/metv5/product/','8','3','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('498','192.168.1.107','1354786087','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('499','192.168.1.107','1354786091','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('500','192.168.1.107','1354786146','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('501','192.168.1.107','1354786178','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('502','192.168.1.107','1354786239','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','http://192.168.1.110/metv5/product/','10','13','chrome','本地局域网','','cn');
+INSERT INTO met_visit_day VALUES('503','113.240.187.66','1354842819','http://cx6274025.gicp.net/metv5/','http://cx6274025.gicp.net/','10001','0','chrome','湖南省长沙市','电信','cn');
+
+DROP TABLE IF EXISTS met_visit_detail;
+CREATE TABLE `met_visit_detail` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) character set utf8 collate utf8_bin NOT NULL,
+  `pv` int(11) NOT NULL default '0',
+  `ip` int(11) NOT NULL default '0',
+  `alone` int(11) NOT NULL default '0',
+  `remark` varchar(255) character set utf8 collate utf8_bin NOT NULL,
+  `type` int(1) NOT NULL default '0',
+  `columnid` int(11) NOT NULL,
+  `listid` int(11) NOT NULL,
+  `stattime` int(11) NOT NULL,
+  `lang` varchar(50) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=193 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_visit_detail VALUES('1','http://cx6274025.gicp.net/metv5/','5','1','1','','2','10001','0','1354550400','cn');
+INSERT INTO met_visit_detail VALUES('2','','1','1','1','','3','0','0','1354550400','');
+INSERT INTO met_visit_detail VALUES('3','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','1','1','1','','2','9','4','1354550400','cn');
+INSERT INTO met_visit_detail VALUES('4','http://cx6274025.gicp.net/metv5/','2','1','1','','3','0','0','1354550400','');
+INSERT INTO met_visit_detail VALUES('5','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','1','1','1','','3','0','0','1354550400','');
+INSERT INTO met_visit_detail VALUES('6','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','1','1','1','','2','14','1','1354550400','cn');
+INSERT INTO met_visit_detail VALUES('7','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','1','1','1','','3','0','0','1354550400','');
+INSERT INTO met_visit_detail VALUES('8','http://cx6274025.gicp.net/','2','1','1','','3','0','0','1354550400','');
+INSERT INTO met_visit_detail VALUES('9','http://192.168.1.110/metv5/','3','1','1','','2','10001','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('10','','9','2','3','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('11','http://cx6274025.gicp.net/metv5/','9','1','1','','2','10001','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('12','http://cx6274025.gicp.net/','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('13','http://cx6274025.gicp.net/metv5/member/','6','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('14','http://cx6274025.gicp.net/metv5/','9','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('15','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','7','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('16','http://cx6274025.gicp.net/metv5/member/','9','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('17','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','8','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('18','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','10','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('19','http://cx6274025.gicp.net/metv5/case/','2','1','1','','2','33','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('20','http://cx6274025.gicp.net/metv5/member/basic.php?lang=cn','11','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('21','http://cx6274025.gicp.net/metv5/case/','2','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('22','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','18','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('23','http://cx6274025.gicp.net/metv5/member/feedback.php?lang=cn','14','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('24','http://cx6274025.gicp.net/metv5/member/message.php?lang=cn','8','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('25','http://cx6274025.gicp.net/metv5/member/editor.php?lang=cn','6','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('26','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','18','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('27','http://cx6274025.gicp.net/metv5/member/cv.php?lang=cn','12','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('28','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','15','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('29','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','11','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('30','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','11','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('31','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','10','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('32','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','12','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('33','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','4','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('34','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn','4','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('35','http://cx6274025.gicp.net/metv5/job/','1','1','1','','2','36','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('36','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn','3','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('37','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','9','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('38','http://cx6274025.gicp.net/metv5/job/','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('39','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','9','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('40','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','3','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('41','http://cx6274025.gicp.net/metv5/member/register_include.php?lang=cn','5','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('42','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','5','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('43','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','7','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('44','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','16','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('45','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','13','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('46','http://cx6274025.gicp.net/metv5/product/','29','1','1','','2','3','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('47','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','13','1','1','','2','10','13','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('48','http://cx6274025.gicp.net/metv5/product/','66','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('49','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','3','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('50','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','4','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('51','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','4','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('52','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','9','1','1','','2','8','3','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('53','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=14','4','1','1','','2','10','14','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('54','http://cx6274025.gicp.net/metv5/about/','1','1','1','','2','19','19','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('55','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=14','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('56','http://cx6274025.gicp.net/metv5/news/','1','1','1','','2','2','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('57','http://cx6274025.gicp.net/metv5/about/','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('58','http://cx6274025.gicp.net/metv5/news/','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('59','http://cx6274025.gicp.net/metv5/case/showimg.php?lang=cn&id=4','1','1','1','','2','33','4','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('60','http://cx6274025.gicp.net/metv5/case/showimg.php?lang=cn&id=4','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('61','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','4','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('62','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','4','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('63','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','3','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('64','http://cx6274025.gicp.net/metv5/member/met_shop_addressview.php?action=add','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('65','http://cx6274025.gicp.net/metv5/member/met_shop_addressview.php?action=add','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('66','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','15','1','1','','2','9','4','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('67','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','8','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('68','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','8','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('69','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=16','2','1','1','','2','10','16','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('70','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=16','2','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('71','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=16','2','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('72','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=16','2','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('73','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','6','1','2','','2','14','1','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('74','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=1','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('75','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=1','3','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('76','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=1','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('77','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=1','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('78','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=1','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('79','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','17','1','1','','2','10','15','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('80','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=15','2','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('81','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=15','3','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('82','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=15','2','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('83','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=2','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('84','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','7','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('85','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=2','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('86','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=3','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('87','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=3','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('88','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=2','1','1','1','','2','7','2','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('89','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=2','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('90','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=2','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('91','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=2','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('92','http://cx6274025.gicp.net/metv5/member/met_shop_orderview.php?lang=cn&ordernumber=20121205161415265489','3','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('93','http://cx6274025.gicp.net/metv5/member/met_shop_orderview.php?lang=cn&ordernumber=20121205161415265489','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('94','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=4','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('95','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=5','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('96','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=4','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('97','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','2','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('98','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=5','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('99','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','2','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('100','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=6','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('101','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=6','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('102','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=11','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('103','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=12','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('104','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=11','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('105','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=12','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('106','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=13','1','1','1','','2','38','0','1354636800','cn');
+INSERT INTO met_visit_detail VALUES('107','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?action=del&shopid=13','1','1','1','','3','0','0','1354636800','');
+INSERT INTO met_visit_detail VALUES('108','http://cx6274025.gicp.net/metv5/','7','2','3','','2','10001','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('109','http://cx6274025.gicp.net/','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('110','','6','3','3','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('111','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','2','1','1','','2','9','4','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('112','http://cx6274025.gicp.net/metv5/','4','2','2','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('113','http://cx6274025.gicp.net/metv5/feedback/index.php?lang=cn&title=%E7%A4%BA%E4%BE%8B%E4%BA%A7%E5%93%81%E5%9B%9B&id=','1','1','1','','2','31','31','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('114','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=4','2','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('115','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('116','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','4','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('117','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=4','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('118','http://cx6274025.gicp.net/metv5/product/','7','2','2','','2','3','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('119','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn','4','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('120','http://cx6274025.gicp.net/metv5/search/','1','1','1','','2','39','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('121','http://cx6274025.gicp.net/metv5/product/','6','2','2','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('122','http://cx6274025.gicp.net/metv5/member/','5','2','2','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('123','http://cx6274025.gicp.net/metv5/search/','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('124','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','5','2','2','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('125','http://cx6274025.gicp.net/metv5/member/','7','2','2','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('126','http://cx6274025.gicp.net/metv5/member/met_shop_addressview.php?action=add','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('127','http://cx6274025.gicp.net/metv5/member/met_shop_address.php?lang=cn','10','2','2','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('128','http://cx6274025.gicp.net/metv5/member/met_shop_addressview.php?action=add','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('129','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','1','1','1','','2','10','13','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('130','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('131','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=13','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('132','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=13','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('133','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','4','2','2','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('134','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','71','2','2','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('135','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','30','2','2','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('136','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn','66','2','2','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('137','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn','29','2','2','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('138','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn','2','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('139','http://cx6274025.gicp.net/metv5/member/met_shop_settle.php?lang=cn&ordernumber=20121206092925745682','2','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('140','http://192.168.1.110/metv5/','2','2','2','','2','10001','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('141','http://192.168.1.110/metv5/product/','8','2','2','','2','3','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('142','http://192.168.1.110/metv5/','2','2','2','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('143','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','13','1','1','','2','10','13','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('144','http://192.168.1.110/metv5/product/','28','2','2','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('145','http://192.168.1.110/metv5/download/','1','1','1','','2','32','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('146','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=13','2','2','2','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('147','http://192.168.1.110/metv5/download/','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('148','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=14','1','1','1','','2','10','14','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('149','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','7','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('150','http://cx6274025.gicp.net/metv5/member/login.php?lang=cn&referer=','7','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('151','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('152','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&referer=','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('153','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&page=0','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('154','http://cx6274025.gicp.net/metv5/member/index.php?lang=cn&page=0','2','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('155','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=0','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('156','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=0','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('157','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','1','1','1','','2','8','3','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('158','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('159','http://cx6274025.gicp.net/metv5/product/showproduct.php?lang=cn&id=3','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('160','http://cx6274025.gicp.net/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('161','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=2','2','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('162','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=1','2','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('163','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=2','2','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('164','http://cx6274025.gicp.net/metv5/member/met_shop_orders.php?lang=cn&page=1','3','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('165','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=2','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('166','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=3','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('167','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=2','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('168','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=4','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('169','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=3','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('170','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=5','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('171','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=4','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('172','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=8','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('173','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=5','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('174','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=7','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('175','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=8','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('176','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=1','2','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('177','http://cx6274025.gicp.net/metv5/member/met_shop_journal.php?lang=cn&page=7','2','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('178','http://192.168.1.110/metv5/index.php?lang=cn','3','1','1','','2','10001','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('179','http://192.168.1.110/metv5/admin/index.php?lang=cn','3','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('180','http://192.168.1.110/metv5/index.php?lang=cn','2','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('181','http://192.168.1.110/metv5/member/','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('182','http://192.168.1.110/metv5/member/met_shop_shop.php?lang=cn','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('183','http://192.168.1.110/metv5/member/','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('184','http://192.168.1.110/metv5/news/','2','1','1','','2','2','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('185','http://192.168.1.110/metv5/member/met_shop_shop.php?lang=cn','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('186','http://192.168.1.110/metv5/news/','3','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('187','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','13','2','2','','2','8','3','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('188','http://192.168.1.110/metv5/member/met_shop_shop.php?lang=cn&shop=1&action=insert&shopid=3','1','1','1','','2','38','0','1354723200','cn');
+INSERT INTO met_visit_detail VALUES('189','http://192.168.1.110/metv5/product/showproduct.php?lang=cn&id=3','2','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('190','http://192.168.1.110/','1','1','1','','3','0','0','1354723200','');
+INSERT INTO met_visit_detail VALUES('191','http://cx6274025.gicp.net/metv5/','1','1','1','','2','10001','0','1354809600','cn');
+INSERT INTO met_visit_detail VALUES('192','http://cx6274025.gicp.net/','1','1','1','','3','0','0','1354809600','');
+
+DROP TABLE IF EXISTS met_visit_summary;
+CREATE TABLE `met_visit_summary` (
+  `id` int(11) NOT NULL auto_increment,
+  `pv` int(11) NOT NULL default '0',
+  `ip` int(11) NOT NULL default '0',
+  `alone` int(11) NOT NULL,
+  `parttime` text NOT NULL,
+  `stattime` int(10) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_visit_summary VALUES('1','7','1','1','||||||||||5-1-1|||1-0-0|1-0-0||||||||||','1354550400');
+INSERT INTO met_visit_summary VALUES('2','282','2','3','|||||||||1-1-1|||||124-1-1|70-0-1|75-0-0|12-0-0|||||||','1354636800');
+INSERT INTO met_visit_summary VALUES('3','213','4','5','||||||||1-1-1|40-0-0|4-0-0|||1-0-0|8-1-1|125-1-1|21-0-1|13-1-1|||||||','1354723200');
+INSERT INTO met_visit_summary VALUES('4','1','1','1','|||||||||1-1-1|||||||||||||||','1354809600');
+
+DROP TABLE IF EXISTS met_shop_orders;
+CREATE TABLE `met_shop_orders` (
+  `id` int(11) NOT NULL auto_increment,
+  `userid` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `consignee` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `tel` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `postal` varchar(50) NOT NULL,
+  `payment` varchar(50) NOT NULL,
+  `method` varchar(50) NOT NULL,
+  `freight` int(11) NOT NULL,
+  `waybill` varchar(50) NOT NULL,
+  `invoice` varchar(50) NOT NULL,
+  `invoicetype` varchar(50) NOT NULL,
+  `invoicescontent` varchar(50) NOT NULL,
+  `total` double NOT NULL,
+  `ordernumber` varchar(20) NOT NULL,
+  `alipay` varchar(50) NOT NULL,
+  `status` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  `lang` varchar(50) NOT NULL,
+  `remark` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_orders VALUES('5','1','admin','chenxuan','湖南省长沙市岳麓区阳光100','15616213396','364854234@qq.com','410000','1','顺风','22','','fgg','产品','ggg','0.01','20121206092925745682','2012120674611362','4','1354758136','cn','');
+INSERT INTO met_shop_orders VALUES('9','1','admin','','','','','','','','0','','','','','0','20121206153001438123','','1','1354779001','cn','');
+
+DROP TABLE IF EXISTS met_shop_shopcart;
+CREATE TABLE `met_shop_shopcart` (
+  `id` int(11) NOT NULL auto_increment,
+  `shopid` int(11) NOT NULL,
+  `shopname` varchar(255) NOT NULL,
+  `shopdescription` text NOT NULL,
+  `unitprice` double NOT NULL,
+  `shopnum` int(11) NOT NULL,
+  `ordernumber` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_shopcart VALUES('1','13','示例产品八','','11','10','20121206092925745682');
+INSERT INTO met_shop_shopcart VALUES('2','3','示例产品七','','1800','1','20121206153001438123');
+INSERT INTO met_shop_shopcart VALUES('3','0','','','0','2','20121206153001438123');
+
+DROP TABLE IF EXISTS met_shop_slist;
+CREATE TABLE `met_shop_slist` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `info` text NOT NULL,
+  `no_order` int(2) default NULL,
+  `class1` int(11) default NULL,
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_slist VALUES('1','test','','1','0','cn');
+
+DROP TABLE IF EXISTS met_shop_consignee;
+CREATE TABLE `met_shop_consignee` (
+  `id` int(11) NOT NULL auto_increment,
+  `defaultaddr` tinyint(1) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `province` int(11) NOT NULL,
+  `city` int(11) NOT NULL,
+  `district` int(11) NOT NULL,
+  `pname` varchar(50) NOT NULL,
+  `cname` varchar(50) NOT NULL,
+  `dname` varchar(50) NOT NULL,
+  `tel` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `postal` varchar(50) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_consignee VALUES('1','1','1','chenxuan','阳光100','18','183','1627','湖南省','长沙市','岳麓区','15616213396','364854234@qq.com','410000');
+
+DROP TABLE IF EXISTS met_shop_slists;
+CREATE TABLE `met_shop_slists` (
+  `id` int(11) NOT NULL auto_increment,
+  `bigid` int(11) default NULL,
+  `info` varchar(255) default NULL,
+  `no_order` int(11) default NULL,
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_slists VALUES('1','1','1','1','cn');
+INSERT INTO met_shop_slists VALUES('2','1','2','2','cn');
+
+DROP TABLE IF EXISTS met_shop_province;
+CREATE TABLE `met_shop_province` (
+  `pid` int(11) NOT NULL,
+  `pname` varchar(20) NOT NULL,
+  PRIMARY KEY  (`pid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_province VALUES('1','北京市');
+INSERT INTO met_shop_province VALUES('2','天津市');
+INSERT INTO met_shop_province VALUES('3','河北省');
+INSERT INTO met_shop_province VALUES('4','山西省');
+INSERT INTO met_shop_province VALUES('5','内蒙古自治区');
+INSERT INTO met_shop_province VALUES('6','辽宁省');
+INSERT INTO met_shop_province VALUES('7','吉林省');
+INSERT INTO met_shop_province VALUES('8','黑龙江省');
+INSERT INTO met_shop_province VALUES('9','上海市');
+INSERT INTO met_shop_province VALUES('10','江苏省');
+INSERT INTO met_shop_province VALUES('11','浙江省');
+INSERT INTO met_shop_province VALUES('12','安徽省');
+INSERT INTO met_shop_province VALUES('13','福建省');
+INSERT INTO met_shop_province VALUES('14','江西省');
+INSERT INTO met_shop_province VALUES('15','山东省');
+INSERT INTO met_shop_province VALUES('16','河南省');
+INSERT INTO met_shop_province VALUES('17','湖北省');
+INSERT INTO met_shop_province VALUES('18','湖南省');
+INSERT INTO met_shop_province VALUES('19','广东省');
+INSERT INTO met_shop_province VALUES('20','广西壮族自治区');
+INSERT INTO met_shop_province VALUES('21','海南省');
+INSERT INTO met_shop_province VALUES('22','重庆市');
+INSERT INTO met_shop_province VALUES('23','四川省');
+INSERT INTO met_shop_province VALUES('24','贵州省');
+INSERT INTO met_shop_province VALUES('25','云南省');
+INSERT INTO met_shop_province VALUES('26','西藏自治区');
+INSERT INTO met_shop_province VALUES('27','陕西省');
+INSERT INTO met_shop_province VALUES('28','甘肃省');
+INSERT INTO met_shop_province VALUES('29','青海省');
+INSERT INTO met_shop_province VALUES('30','宁夏回族自治区');
+INSERT INTO met_shop_province VALUES('31','新疆维吾尔自治区');
+INSERT INTO met_shop_province VALUES('32','香港特别行政区');
+INSERT INTO met_shop_province VALUES('33','澳门特别行政区');
+INSERT INTO met_shop_province VALUES('34','台湾省');
+INSERT INTO met_shop_province VALUES('35','海外');
+
+DROP TABLE IF EXISTS met_shop_city;
+CREATE TABLE `met_shop_city` (
+  `cid` int(11) NOT NULL,
+  `cname` varchar(20) NOT NULL,
+  `cpostcode` char(6) NOT NULL,
+  `pid` int(11) NOT NULL,
+  PRIMARY KEY  (`cid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_city VALUES('1','北京市','100000','1');
+INSERT INTO met_shop_city VALUES('2','天津市','100000','2');
+INSERT INTO met_shop_city VALUES('3','石家庄市','050000','3');
+INSERT INTO met_shop_city VALUES('4','唐山市','063000','3');
+INSERT INTO met_shop_city VALUES('5','秦皇岛市','066000','3');
+INSERT INTO met_shop_city VALUES('6','邯郸市','056000','3');
+INSERT INTO met_shop_city VALUES('7','邢台市','054000','3');
+INSERT INTO met_shop_city VALUES('8','保定市','071000','3');
+INSERT INTO met_shop_city VALUES('9','张家口市','075000','3');
+INSERT INTO met_shop_city VALUES('10','承德市','067000','3');
+INSERT INTO met_shop_city VALUES('11','沧州市','061000','3');
+INSERT INTO met_shop_city VALUES('12','廊坊市','065000','3');
+INSERT INTO met_shop_city VALUES('13','衡水市','053000','3');
+INSERT INTO met_shop_city VALUES('14','太原市','030000','4');
+INSERT INTO met_shop_city VALUES('15','大同市','037000','4');
+INSERT INTO met_shop_city VALUES('16','阳泉市','045000','4');
+INSERT INTO met_shop_city VALUES('17','长治市','046000','4');
+INSERT INTO met_shop_city VALUES('18','晋城市','048000','4');
+INSERT INTO met_shop_city VALUES('19','朔州市','036000','4');
+INSERT INTO met_shop_city VALUES('20','晋中市','030600','4');
+INSERT INTO met_shop_city VALUES('21','运城市','044000','4');
+INSERT INTO met_shop_city VALUES('22','忻州市','034000','4');
+INSERT INTO met_shop_city VALUES('23','临汾市','041000','4');
+INSERT INTO met_shop_city VALUES('24','吕梁市','030500','4');
+INSERT INTO met_shop_city VALUES('25','呼和浩特市','010000','5');
+INSERT INTO met_shop_city VALUES('26','包头市','014000','5');
+INSERT INTO met_shop_city VALUES('27','乌海市','016000','5');
+INSERT INTO met_shop_city VALUES('28','赤峰市','024000','5');
+INSERT INTO met_shop_city VALUES('29','通辽市','028000','5');
+INSERT INTO met_shop_city VALUES('30','鄂尔多斯市','010300','5');
+INSERT INTO met_shop_city VALUES('31','呼伦贝尔市','021000','5');
+INSERT INTO met_shop_city VALUES('32','巴彦淖尔市','014400','5');
+INSERT INTO met_shop_city VALUES('33','乌兰察布市','011800','5');
+INSERT INTO met_shop_city VALUES('34','兴安盟','137500','5');
+INSERT INTO met_shop_city VALUES('35','锡林郭勒盟','011100','5');
+INSERT INTO met_shop_city VALUES('36','阿拉善盟','016000','5');
+INSERT INTO met_shop_city VALUES('37','沈阳市','110000','6');
+INSERT INTO met_shop_city VALUES('38','大连市','116000','6');
+INSERT INTO met_shop_city VALUES('39','鞍山市','114000','6');
+INSERT INTO met_shop_city VALUES('40','抚顺市','113000','6');
+INSERT INTO met_shop_city VALUES('41','本溪市','117000','6');
+INSERT INTO met_shop_city VALUES('42','丹东市','118000','6');
+INSERT INTO met_shop_city VALUES('43','锦州市','121000','6');
+INSERT INTO met_shop_city VALUES('44','营口市','115000','6');
+INSERT INTO met_shop_city VALUES('45','阜新市','123000','6');
+INSERT INTO met_shop_city VALUES('46','辽阳市','111000','6');
+INSERT INTO met_shop_city VALUES('47','盘锦市','124000','6');
+INSERT INTO met_shop_city VALUES('48','铁岭市','112000','6');
+INSERT INTO met_shop_city VALUES('49','朝阳市','122000','6');
+INSERT INTO met_shop_city VALUES('50','葫芦岛市','125000','6');
+INSERT INTO met_shop_city VALUES('51','长春市','130000','7');
+INSERT INTO met_shop_city VALUES('52','吉林市','132000','7');
+INSERT INTO met_shop_city VALUES('53','四平市','136000','7');
+INSERT INTO met_shop_city VALUES('54','辽源市','136200','7');
+INSERT INTO met_shop_city VALUES('55','通化市','134000','7');
+INSERT INTO met_shop_city VALUES('56','白山市','134300','7');
+INSERT INTO met_shop_city VALUES('57','松原市','131100','7');
+INSERT INTO met_shop_city VALUES('58','白城市','137000','7');
+INSERT INTO met_shop_city VALUES('59','延边朝鲜族自治州','133000','7');
+INSERT INTO met_shop_city VALUES('60','哈尔滨市','150000','8');
+INSERT INTO met_shop_city VALUES('61','齐齐哈尔市','161000','8');
+INSERT INTO met_shop_city VALUES('62','鸡西市','158100','8');
+INSERT INTO met_shop_city VALUES('63','鹤岗市','154100','8');
+INSERT INTO met_shop_city VALUES('64','双鸭山市','155100','8');
+INSERT INTO met_shop_city VALUES('65','大庆市','163000','8');
+INSERT INTO met_shop_city VALUES('66','伊春市','152300','8');
+INSERT INTO met_shop_city VALUES('67','佳木斯市','154000','8');
+INSERT INTO met_shop_city VALUES('68','七台河市','154600','8');
+INSERT INTO met_shop_city VALUES('69','牡丹江市','157000','8');
+INSERT INTO met_shop_city VALUES('70','黑河市','164300','8');
+INSERT INTO met_shop_city VALUES('71','绥化市','152000','8');
+INSERT INTO met_shop_city VALUES('72','大兴安岭地区','165000','8');
+INSERT INTO met_shop_city VALUES('73','上海市','200000','9');
+INSERT INTO met_shop_city VALUES('74','南京市','210000','10');
+INSERT INTO met_shop_city VALUES('75','无锡市','214000','10');
+INSERT INTO met_shop_city VALUES('76','徐州市','221000','10');
+INSERT INTO met_shop_city VALUES('77','常州市','213000','10');
+INSERT INTO met_shop_city VALUES('78','苏州市','215000','10');
+INSERT INTO met_shop_city VALUES('79','南通市','226000','10');
+INSERT INTO met_shop_city VALUES('80','连云港市','222000','10');
+INSERT INTO met_shop_city VALUES('81','淮安市','223200','10');
+INSERT INTO met_shop_city VALUES('82','盐城市','224000','10');
+INSERT INTO met_shop_city VALUES('83','扬州市','225000','10');
+INSERT INTO met_shop_city VALUES('84','镇江市','212000','10');
+INSERT INTO met_shop_city VALUES('85','泰州市','225300','10');
+INSERT INTO met_shop_city VALUES('86','宿迁市','223800','10');
+INSERT INTO met_shop_city VALUES('87','杭州市','310000','11');
+INSERT INTO met_shop_city VALUES('88','宁波市','315000','11');
+INSERT INTO met_shop_city VALUES('89','温州市','325000','11');
+INSERT INTO met_shop_city VALUES('90','嘉兴市','314000','11');
+INSERT INTO met_shop_city VALUES('91','湖州市','313000','11');
+INSERT INTO met_shop_city VALUES('92','绍兴市','312000','11');
+INSERT INTO met_shop_city VALUES('93','金华市','321000','11');
+INSERT INTO met_shop_city VALUES('94','衢州市','324000','11');
+INSERT INTO met_shop_city VALUES('95','舟山市','316000','11');
+INSERT INTO met_shop_city VALUES('96','台州市','318000','11');
+INSERT INTO met_shop_city VALUES('97','丽水市','323000','11');
+INSERT INTO met_shop_city VALUES('98','合肥市','230000','12');
+INSERT INTO met_shop_city VALUES('99','芜湖市','241000','12');
+INSERT INTO met_shop_city VALUES('100','蚌埠市','233000','12');
+INSERT INTO met_shop_city VALUES('101','淮南市','232000','12');
+INSERT INTO met_shop_city VALUES('102','马鞍山市','243000','12');
+INSERT INTO met_shop_city VALUES('103','淮北市','235000','12');
+INSERT INTO met_shop_city VALUES('104','铜陵市','244000','12');
+INSERT INTO met_shop_city VALUES('105','安庆市','246000','12');
+INSERT INTO met_shop_city VALUES('106','黄山市','242700','12');
+INSERT INTO met_shop_city VALUES('107','滁州市','239000','12');
+INSERT INTO met_shop_city VALUES('108','阜阳市','236100','12');
+INSERT INTO met_shop_city VALUES('109','宿州市','234100','12');
+INSERT INTO met_shop_city VALUES('110','巢湖市','238000','12');
+INSERT INTO met_shop_city VALUES('111','六安市','237000','12');
+INSERT INTO met_shop_city VALUES('112','亳州市','236800','12');
+INSERT INTO met_shop_city VALUES('113','池州市','247100','12');
+INSERT INTO met_shop_city VALUES('114','宣城市','366000','12');
+INSERT INTO met_shop_city VALUES('115','福州市','350000','13');
+INSERT INTO met_shop_city VALUES('116','厦门市','361000','13');
+INSERT INTO met_shop_city VALUES('117','莆田市','351100','13');
+INSERT INTO met_shop_city VALUES('118','三明市','365000','13');
+INSERT INTO met_shop_city VALUES('119','泉州市','362000','13');
+INSERT INTO met_shop_city VALUES('120','漳州市','363000','13');
+INSERT INTO met_shop_city VALUES('121','南平市','353000','13');
+INSERT INTO met_shop_city VALUES('122','龙岩市','364000','13');
+INSERT INTO met_shop_city VALUES('123','宁德市','352100','13');
+INSERT INTO met_shop_city VALUES('124','南昌市','330000','14');
+INSERT INTO met_shop_city VALUES('125','景德镇市','333000','14');
+INSERT INTO met_shop_city VALUES('126','萍乡市','337000','14');
+INSERT INTO met_shop_city VALUES('127','九江市','332000','14');
+INSERT INTO met_shop_city VALUES('128','新余市','338000','14');
+INSERT INTO met_shop_city VALUES('129','鹰潭市','335000','14');
+INSERT INTO met_shop_city VALUES('130','赣州市','341000','14');
+INSERT INTO met_shop_city VALUES('131','吉安市','343000','14');
+INSERT INTO met_shop_city VALUES('132','宜春市','336000','14');
+INSERT INTO met_shop_city VALUES('133','抚州市','332900','14');
+INSERT INTO met_shop_city VALUES('134','上饶市','334000','14');
+INSERT INTO met_shop_city VALUES('135','济南市','250000','15');
+INSERT INTO met_shop_city VALUES('136','青岛市','266000','15');
+INSERT INTO met_shop_city VALUES('137','淄博市','255000','15');
+INSERT INTO met_shop_city VALUES('138','枣庄市','277100','15');
+INSERT INTO met_shop_city VALUES('139','东营市','257000','15');
+INSERT INTO met_shop_city VALUES('140','烟台市','264000','15');
+INSERT INTO met_shop_city VALUES('141','潍坊市','261000','15');
+INSERT INTO met_shop_city VALUES('142','济宁市','272100','15');
+INSERT INTO met_shop_city VALUES('143','泰安市','271000','15');
+INSERT INTO met_shop_city VALUES('144','威海市','265700','15');
+INSERT INTO met_shop_city VALUES('145','日照市','276800','15');
+INSERT INTO met_shop_city VALUES('146','莱芜市','271100','15');
+INSERT INTO met_shop_city VALUES('147','临沂市','276000','15');
+INSERT INTO met_shop_city VALUES('148','德州市','253000','15');
+INSERT INTO met_shop_city VALUES('149','聊城市','252000','15');
+INSERT INTO met_shop_city VALUES('150','滨州市','256600','15');
+INSERT INTO met_shop_city VALUES('151','荷泽市','255000','15');
+INSERT INTO met_shop_city VALUES('152','郑州市','450000','16');
+INSERT INTO met_shop_city VALUES('153','开封市','475000','16');
+INSERT INTO met_shop_city VALUES('154','洛阳市','471000','16');
+INSERT INTO met_shop_city VALUES('155','平顶山市','467000','16');
+INSERT INTO met_shop_city VALUES('156','安阳市','454900','16');
+INSERT INTO met_shop_city VALUES('157','鹤壁市','456600','16');
+INSERT INTO met_shop_city VALUES('158','新乡市','453000','16');
+INSERT INTO met_shop_city VALUES('159','焦作市','454100','16');
+INSERT INTO met_shop_city VALUES('160','濮阳市','457000','16');
+INSERT INTO met_shop_city VALUES('161','许昌市','461000','16');
+INSERT INTO met_shop_city VALUES('162','漯河市','462000','16');
+INSERT INTO met_shop_city VALUES('163','三门峡市','472000','16');
+INSERT INTO met_shop_city VALUES('164','南阳市','473000','16');
+INSERT INTO met_shop_city VALUES('165','商丘市','476000','16');
+INSERT INTO met_shop_city VALUES('166','信阳市','464000','16');
+INSERT INTO met_shop_city VALUES('167','周口市','466000','16');
+INSERT INTO met_shop_city VALUES('168','驻马店市','463000','16');
+INSERT INTO met_shop_city VALUES('169','武汉市','430000','17');
+INSERT INTO met_shop_city VALUES('170','黄石市','435000','17');
+INSERT INTO met_shop_city VALUES('171','十堰市','442000','17');
+INSERT INTO met_shop_city VALUES('172','宜昌市','443000','17');
+INSERT INTO met_shop_city VALUES('173','襄樊市','441000','17');
+INSERT INTO met_shop_city VALUES('174','鄂州市','436000','17');
+INSERT INTO met_shop_city VALUES('175','荆门市','448000','17');
+INSERT INTO met_shop_city VALUES('176','孝感市','432100','17');
+INSERT INTO met_shop_city VALUES('177','荆州市','434000','17');
+INSERT INTO met_shop_city VALUES('178','黄冈市','438000','17');
+INSERT INTO met_shop_city VALUES('179','咸宁市','437000','17');
+INSERT INTO met_shop_city VALUES('180','随州市','441300','17');
+INSERT INTO met_shop_city VALUES('181','恩施土家族苗族自治州','445000','17');
+INSERT INTO met_shop_city VALUES('182','神农架','442400','17');
+INSERT INTO met_shop_city VALUES('183','长沙市','410000','18');
+INSERT INTO met_shop_city VALUES('184','株洲市','412000','18');
+INSERT INTO met_shop_city VALUES('185','湘潭市','411100','18');
+INSERT INTO met_shop_city VALUES('186','衡阳市','421000','18');
+INSERT INTO met_shop_city VALUES('187','邵阳市','422000','18');
+INSERT INTO met_shop_city VALUES('188','岳阳市','414000','18');
+INSERT INTO met_shop_city VALUES('189','常德市','415000','18');
+INSERT INTO met_shop_city VALUES('190','张家界市','427000','18');
+INSERT INTO met_shop_city VALUES('191','益阳市','413000','18');
+INSERT INTO met_shop_city VALUES('192','郴州市','423000','18');
+INSERT INTO met_shop_city VALUES('193','永州市','425000','18');
+INSERT INTO met_shop_city VALUES('194','怀化市','418000','18');
+INSERT INTO met_shop_city VALUES('195','娄底市','417000','18');
+INSERT INTO met_shop_city VALUES('196','湘西土家族苗族自治州','416000','18');
+INSERT INTO met_shop_city VALUES('197','广州市','510000','19');
+INSERT INTO met_shop_city VALUES('198','韶关市','521000','19');
+INSERT INTO met_shop_city VALUES('199','深圳市','518000','19');
+INSERT INTO met_shop_city VALUES('200','珠海市','519000','19');
+INSERT INTO met_shop_city VALUES('201','汕头市','515000','19');
+INSERT INTO met_shop_city VALUES('202','佛山市','528000','19');
+INSERT INTO met_shop_city VALUES('203','江门市','529000','19');
+INSERT INTO met_shop_city VALUES('204','湛江市','524000','19');
+INSERT INTO met_shop_city VALUES('205','茂名市','525000','19');
+INSERT INTO met_shop_city VALUES('206','肇庆市','526000','19');
+INSERT INTO met_shop_city VALUES('207','惠州市','516000','19');
+INSERT INTO met_shop_city VALUES('208','梅州市','514000','19');
+INSERT INTO met_shop_city VALUES('209','汕尾市','516600','19');
+INSERT INTO met_shop_city VALUES('210','河源市','517000','19');
+INSERT INTO met_shop_city VALUES('211','阳江市','529500','19');
+INSERT INTO met_shop_city VALUES('212','清远市','511500','19');
+INSERT INTO met_shop_city VALUES('213','东莞市','511700','19');
+INSERT INTO met_shop_city VALUES('214','中山市','528400','19');
+INSERT INTO met_shop_city VALUES('215','潮州市','515600','19');
+INSERT INTO met_shop_city VALUES('216','揭阳市','522000','19');
+INSERT INTO met_shop_city VALUES('217','云浮市','527300','19');
+INSERT INTO met_shop_city VALUES('218','南宁市','530000','20');
+INSERT INTO met_shop_city VALUES('219','柳州市','545000','20');
+INSERT INTO met_shop_city VALUES('220','桂林市','541000','20');
+INSERT INTO met_shop_city VALUES('221','梧州市','543000','20');
+INSERT INTO met_shop_city VALUES('222','北海市','536000','20');
+INSERT INTO met_shop_city VALUES('223','防城港市','538000','20');
+INSERT INTO met_shop_city VALUES('224','钦州市','535000','20');
+INSERT INTO met_shop_city VALUES('225','贵港市','537100','20');
+INSERT INTO met_shop_city VALUES('226','玉林市','537000','20');
+INSERT INTO met_shop_city VALUES('227','百色市','533000','20');
+INSERT INTO met_shop_city VALUES('228','贺州市','542800','20');
+INSERT INTO met_shop_city VALUES('229','河池市','547000','20');
+INSERT INTO met_shop_city VALUES('230','来宾市','546100','20');
+INSERT INTO met_shop_city VALUES('231','崇左市','532200','20');
+INSERT INTO met_shop_city VALUES('232','海口市','570000','21');
+INSERT INTO met_shop_city VALUES('233','三亚市','572000','21');
+INSERT INTO met_shop_city VALUES('234','重庆市','400000','22');
+INSERT INTO met_shop_city VALUES('235','成都市','610000','23');
+INSERT INTO met_shop_city VALUES('236','自贡市','643000','23');
+INSERT INTO met_shop_city VALUES('237','攀枝花市','617000','23');
+INSERT INTO met_shop_city VALUES('238','泸州市','646100','23');
+INSERT INTO met_shop_city VALUES('239','德阳市','618000','23');
+INSERT INTO met_shop_city VALUES('240','绵阳市','621000','23');
+INSERT INTO met_shop_city VALUES('241','广元市','628000','23');
+INSERT INTO met_shop_city VALUES('242','遂宁市','629000','23');
+INSERT INTO met_shop_city VALUES('243','内江市','641000','23');
+INSERT INTO met_shop_city VALUES('244','乐山市','614000','23');
+INSERT INTO met_shop_city VALUES('245','南充市','637000','23');
+INSERT INTO met_shop_city VALUES('246','眉山市','612100','23');
+INSERT INTO met_shop_city VALUES('247','宜宾市','644000','23');
+INSERT INTO met_shop_city VALUES('248','广安市','638000','23');
+INSERT INTO met_shop_city VALUES('249','达州市','635000','23');
+INSERT INTO met_shop_city VALUES('250','雅安市','625000','23');
+INSERT INTO met_shop_city VALUES('251','巴中市','635500','23');
+INSERT INTO met_shop_city VALUES('252','资阳市','641300','23');
+INSERT INTO met_shop_city VALUES('253','阿坝藏族羌族自治州','624600','23');
+INSERT INTO met_shop_city VALUES('254','甘孜藏族自治州','626000','23');
+INSERT INTO met_shop_city VALUES('255','凉山彝族自治州','615000','23');
+INSERT INTO met_shop_city VALUES('256','贵阳市','55000','24');
+INSERT INTO met_shop_city VALUES('257','六盘水市','553000','24');
+INSERT INTO met_shop_city VALUES('258','遵义市','563000','24');
+INSERT INTO met_shop_city VALUES('259','安顺市','561000','24');
+INSERT INTO met_shop_city VALUES('260','铜仁地区','554300','24');
+INSERT INTO met_shop_city VALUES('261','黔西南布依族苗族自治州','551500','24');
+INSERT INTO met_shop_city VALUES('262','毕节地区','551700','24');
+INSERT INTO met_shop_city VALUES('263','黔东南苗族侗族自治州','551500','24');
+INSERT INTO met_shop_city VALUES('264','黔南布依族苗族自治州','550100','24');
+INSERT INTO met_shop_city VALUES('265','昆明市','650000','25');
+INSERT INTO met_shop_city VALUES('266','曲靖市','655000','25');
+INSERT INTO met_shop_city VALUES('267','玉溪市','653100','25');
+INSERT INTO met_shop_city VALUES('268','保山市','678000','25');
+INSERT INTO met_shop_city VALUES('269','昭通市','657000','25');
+INSERT INTO met_shop_city VALUES('270','丽江市','674100','25');
+INSERT INTO met_shop_city VALUES('271','思茅市','665000','25');
+INSERT INTO met_shop_city VALUES('272','临沧市','677000','25');
+INSERT INTO met_shop_city VALUES('273','楚雄彝族自治州','675000','25');
+INSERT INTO met_shop_city VALUES('274','红河哈尼族彝族自治州','654400','25');
+INSERT INTO met_shop_city VALUES('275','文山壮族苗族自治州','663000','25');
+INSERT INTO met_shop_city VALUES('276','西双版纳傣族自治州','666200','25');
+INSERT INTO met_shop_city VALUES('277','大理白族自治州','671000','25');
+INSERT INTO met_shop_city VALUES('278','德宏傣族景颇族自治州','678400','25');
+INSERT INTO met_shop_city VALUES('279','怒江傈僳族自治州','671400','25');
+INSERT INTO met_shop_city VALUES('280','迪庆藏族自治州','674400','25');
+INSERT INTO met_shop_city VALUES('281','拉萨市','850000','26');
+INSERT INTO met_shop_city VALUES('282','昌都地区','854000','26');
+INSERT INTO met_shop_city VALUES('283','山南地区','856000','26');
+INSERT INTO met_shop_city VALUES('284','日喀则地区','857000','26');
+INSERT INTO met_shop_city VALUES('285','那曲地区','852000','26');
+INSERT INTO met_shop_city VALUES('286','阿里地区','859100','26');
+INSERT INTO met_shop_city VALUES('287','林芝地区','860100','26');
+INSERT INTO met_shop_city VALUES('288','西安市','710000','27');
+INSERT INTO met_shop_city VALUES('289','铜川市','727000','27');
+INSERT INTO met_shop_city VALUES('290','宝鸡市','721000','27');
+INSERT INTO met_shop_city VALUES('291','咸阳市','712000','27');
+INSERT INTO met_shop_city VALUES('292','渭南市','714000','27');
+INSERT INTO met_shop_city VALUES('293','延安市','716000','27');
+INSERT INTO met_shop_city VALUES('294','汉中市','723000','27');
+INSERT INTO met_shop_city VALUES('295','榆林市','719000','27');
+INSERT INTO met_shop_city VALUES('296','安康市','725000','27');
+INSERT INTO met_shop_city VALUES('297','商洛市','711500','27');
+INSERT INTO met_shop_city VALUES('298','兰州市','730000','28');
+INSERT INTO met_shop_city VALUES('299','嘉峪关市','735100','28');
+INSERT INTO met_shop_city VALUES('300','金昌市','737100','28');
+INSERT INTO met_shop_city VALUES('301','白银市','730900','28');
+INSERT INTO met_shop_city VALUES('302','天水市','741000','28');
+INSERT INTO met_shop_city VALUES('303','武威市','733000','28');
+INSERT INTO met_shop_city VALUES('304','张掖市','734000','28');
+INSERT INTO met_shop_city VALUES('305','平凉市','744000','28');
+INSERT INTO met_shop_city VALUES('306','酒泉市','735000','28');
+INSERT INTO met_shop_city VALUES('307','庆阳市','744500','28');
+INSERT INTO met_shop_city VALUES('308','定西市','743000','28');
+INSERT INTO met_shop_city VALUES('309','陇南市','742100','28');
+INSERT INTO met_shop_city VALUES('310','临夏回族自治州','731100','28');
+INSERT INTO met_shop_city VALUES('311','甘南藏族自治州','747000','28');
+INSERT INTO met_shop_city VALUES('312','西宁市','810000','29');
+INSERT INTO met_shop_city VALUES('313','海东地区','810600','29');
+INSERT INTO met_shop_city VALUES('314','海北藏族自治州','810300','29');
+INSERT INTO met_shop_city VALUES('315','黄南藏族自治州','811300','29');
+INSERT INTO met_shop_city VALUES('316','海南藏族自治州','813000','29');
+INSERT INTO met_shop_city VALUES('317','果洛藏族自治州','814000','29');
+INSERT INTO met_shop_city VALUES('318','玉树藏族自治州','815000','29');
+INSERT INTO met_shop_city VALUES('319','海西蒙古族藏族自治州','817000','29');
+INSERT INTO met_shop_city VALUES('320','银川市','750000','30');
+INSERT INTO met_shop_city VALUES('321','石嘴山市','753000','30');
+INSERT INTO met_shop_city VALUES('322','吴忠市','751100','30');
+INSERT INTO met_shop_city VALUES('323','固原市','756000','30');
+INSERT INTO met_shop_city VALUES('324','中卫市','751700','30');
+INSERT INTO met_shop_city VALUES('325','乌鲁木齐市','830000','31');
+INSERT INTO met_shop_city VALUES('326','克拉玛依市','834000','31');
+INSERT INTO met_shop_city VALUES('327','吐鲁番地区','838000','31');
+INSERT INTO met_shop_city VALUES('328','哈密地区','839000','31');
+INSERT INTO met_shop_city VALUES('329','昌吉回族自治州','831100','31');
+INSERT INTO met_shop_city VALUES('330','博尔塔拉蒙古自治州','833400','31');
+INSERT INTO met_shop_city VALUES('331','巴音郭楞蒙古自治州','841000','31');
+INSERT INTO met_shop_city VALUES('332','阿克苏地区','843000','31');
+INSERT INTO met_shop_city VALUES('333','克孜勒苏柯尔克孜自治州','835600','31');
+INSERT INTO met_shop_city VALUES('334','喀什地区','844000','31');
+INSERT INTO met_shop_city VALUES('335','和田地区','848000','31');
+INSERT INTO met_shop_city VALUES('336','伊犁哈萨克自治州','833200','31');
+INSERT INTO met_shop_city VALUES('337','塔城地区','834700','31');
+INSERT INTO met_shop_city VALUES('338','阿勒泰地区','836500','31');
+INSERT INTO met_shop_city VALUES('339','石河子市','832000','31');
+INSERT INTO met_shop_city VALUES('340','阿拉尔市','843300','31');
+INSERT INTO met_shop_city VALUES('341','图木舒克市','843900','31');
+INSERT INTO met_shop_city VALUES('342','五家渠市','831300','31');
+
+DROP TABLE IF EXISTS met_shop_district;
+CREATE TABLE `met_shop_district` (
+  `did` int(11) NOT NULL,
+  `dname` varchar(20) NOT NULL,
+  `cid` int(11) NOT NULL,
+  PRIMARY KEY  (`did`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_district VALUES('1','东城区','1');
+INSERT INTO met_shop_district VALUES('2','西城区','1');
+INSERT INTO met_shop_district VALUES('3','崇文区','1');
+INSERT INTO met_shop_district VALUES('4','宣武区','1');
+INSERT INTO met_shop_district VALUES('5','朝阳区','1');
+INSERT INTO met_shop_district VALUES('6','丰台区','1');
+INSERT INTO met_shop_district VALUES('7','石景山区','1');
+INSERT INTO met_shop_district VALUES('8','海淀区','1');
+INSERT INTO met_shop_district VALUES('9','门头沟区','1');
+INSERT INTO met_shop_district VALUES('10','房山区','1');
+INSERT INTO met_shop_district VALUES('11','通州区','1');
+INSERT INTO met_shop_district VALUES('12','顺义区','1');
+INSERT INTO met_shop_district VALUES('13','昌平区','1');
+INSERT INTO met_shop_district VALUES('14','大兴区','1');
+INSERT INTO met_shop_district VALUES('15','怀柔区','1');
+INSERT INTO met_shop_district VALUES('16','平谷区','1');
+INSERT INTO met_shop_district VALUES('17','密云县','1');
+INSERT INTO met_shop_district VALUES('18','延庆县','1');
+INSERT INTO met_shop_district VALUES('19','和平区','2');
+INSERT INTO met_shop_district VALUES('20','河东区','2');
+INSERT INTO met_shop_district VALUES('21','河西区','2');
+INSERT INTO met_shop_district VALUES('22','南开区','2');
+INSERT INTO met_shop_district VALUES('23','河北区','2');
+INSERT INTO met_shop_district VALUES('24','红桥区','2');
+INSERT INTO met_shop_district VALUES('25','塘沽区','2');
+INSERT INTO met_shop_district VALUES('26','汉沽区','2');
+INSERT INTO met_shop_district VALUES('27','大港区','2');
+INSERT INTO met_shop_district VALUES('28','东丽区','2');
+INSERT INTO met_shop_district VALUES('29','西青区','2');
+INSERT INTO met_shop_district VALUES('30','津南区','2');
+INSERT INTO met_shop_district VALUES('31','北辰区','2');
+INSERT INTO met_shop_district VALUES('32','武清区','2');
+INSERT INTO met_shop_district VALUES('33','宝坻区','2');
+INSERT INTO met_shop_district VALUES('34','宁河县','2');
+INSERT INTO met_shop_district VALUES('35','静海县','2');
+INSERT INTO met_shop_district VALUES('36','蓟县','2');
+INSERT INTO met_shop_district VALUES('37','长安区','3');
+INSERT INTO met_shop_district VALUES('38','桥东区','3');
+INSERT INTO met_shop_district VALUES('39','桥西区','3');
+INSERT INTO met_shop_district VALUES('40','新华区','3');
+INSERT INTO met_shop_district VALUES('41','井陉矿区','3');
+INSERT INTO met_shop_district VALUES('42','裕华区','3');
+INSERT INTO met_shop_district VALUES('43','井陉县','3');
+INSERT INTO met_shop_district VALUES('44','正定县','3');
+INSERT INTO met_shop_district VALUES('45','栾城县','3');
+INSERT INTO met_shop_district VALUES('46','行唐县','3');
+INSERT INTO met_shop_district VALUES('47','灵寿县','3');
+INSERT INTO met_shop_district VALUES('48','高邑县','3');
+INSERT INTO met_shop_district VALUES('49','深泽县','3');
+INSERT INTO met_shop_district VALUES('50','赞皇县','3');
+INSERT INTO met_shop_district VALUES('51','无极县','3');
+INSERT INTO met_shop_district VALUES('52','平山县','3');
+INSERT INTO met_shop_district VALUES('53','元氏县','3');
+INSERT INTO met_shop_district VALUES('54','赵县','3');
+INSERT INTO met_shop_district VALUES('55','辛集市','3');
+INSERT INTO met_shop_district VALUES('56','藁城市','3');
+INSERT INTO met_shop_district VALUES('57','晋州市','3');
+INSERT INTO met_shop_district VALUES('58','新乐市','3');
+INSERT INTO met_shop_district VALUES('59','鹿泉市','3');
+INSERT INTO met_shop_district VALUES('60','路南区','4');
+INSERT INTO met_shop_district VALUES('61','路北区','4');
+INSERT INTO met_shop_district VALUES('62','古冶区','4');
+INSERT INTO met_shop_district VALUES('63','开平区','4');
+INSERT INTO met_shop_district VALUES('64','丰南区','4');
+INSERT INTO met_shop_district VALUES('65','丰润区','4');
+INSERT INTO met_shop_district VALUES('66','滦县','4');
+INSERT INTO met_shop_district VALUES('67','滦南县','4');
+INSERT INTO met_shop_district VALUES('68','乐亭县','4');
+INSERT INTO met_shop_district VALUES('69','迁西县','4');
+INSERT INTO met_shop_district VALUES('70','玉田县','4');
+INSERT INTO met_shop_district VALUES('71','唐海县','4');
+INSERT INTO met_shop_district VALUES('72','遵化市','4');
+INSERT INTO met_shop_district VALUES('73','迁安市','4');
+INSERT INTO met_shop_district VALUES('74','海港区','5');
+INSERT INTO met_shop_district VALUES('75','山海关区','5');
+INSERT INTO met_shop_district VALUES('76','北戴河区','5');
+INSERT INTO met_shop_district VALUES('77','青龙满族自治县','5');
+INSERT INTO met_shop_district VALUES('78','昌黎县','5');
+INSERT INTO met_shop_district VALUES('79','抚宁县','5');
+INSERT INTO met_shop_district VALUES('80','卢龙县','5');
+INSERT INTO met_shop_district VALUES('81','邯山区','6');
+INSERT INTO met_shop_district VALUES('82','丛台区','6');
+INSERT INTO met_shop_district VALUES('83','复兴区','6');
+INSERT INTO met_shop_district VALUES('84','峰峰矿区','6');
+INSERT INTO met_shop_district VALUES('85','邯郸县','6');
+INSERT INTO met_shop_district VALUES('86','临漳县','6');
+INSERT INTO met_shop_district VALUES('87','成安县','6');
+INSERT INTO met_shop_district VALUES('88','大名县','6');
+INSERT INTO met_shop_district VALUES('89','涉县','6');
+INSERT INTO met_shop_district VALUES('90','磁县','6');
+INSERT INTO met_shop_district VALUES('91','肥乡县','6');
+INSERT INTO met_shop_district VALUES('92','永年县','6');
+INSERT INTO met_shop_district VALUES('93','邱县','6');
+INSERT INTO met_shop_district VALUES('94','鸡泽县','6');
+INSERT INTO met_shop_district VALUES('95','广平县','6');
+INSERT INTO met_shop_district VALUES('96','馆陶县','6');
+INSERT INTO met_shop_district VALUES('97','魏县','6');
+INSERT INTO met_shop_district VALUES('98','曲周县','6');
+INSERT INTO met_shop_district VALUES('99','武安市','6');
+INSERT INTO met_shop_district VALUES('100','桥东区','7');
+INSERT INTO met_shop_district VALUES('101','桥西区','7');
+INSERT INTO met_shop_district VALUES('102','邢台县','7');
+INSERT INTO met_shop_district VALUES('103','临城县','7');
+INSERT INTO met_shop_district VALUES('104','内丘县','7');
+INSERT INTO met_shop_district VALUES('105','柏乡县','7');
+INSERT INTO met_shop_district VALUES('106','隆尧县','7');
+INSERT INTO met_shop_district VALUES('107','任县','7');
+INSERT INTO met_shop_district VALUES('108','南和县','7');
+INSERT INTO met_shop_district VALUES('109','宁晋县','7');
+INSERT INTO met_shop_district VALUES('110','巨鹿县','7');
+INSERT INTO met_shop_district VALUES('111','新河县','7');
+INSERT INTO met_shop_district VALUES('112','广宗县','7');
+INSERT INTO met_shop_district VALUES('113','平乡县','7');
+INSERT INTO met_shop_district VALUES('114','威县','7');
+INSERT INTO met_shop_district VALUES('115','清河县','7');
+INSERT INTO met_shop_district VALUES('116','临西县','7');
+INSERT INTO met_shop_district VALUES('117','南宫市','7');
+INSERT INTO met_shop_district VALUES('118','沙河市','7');
+INSERT INTO met_shop_district VALUES('119','新市区','8');
+INSERT INTO met_shop_district VALUES('120','北市区','8');
+INSERT INTO met_shop_district VALUES('121','南市区','8');
+INSERT INTO met_shop_district VALUES('122','满城县','8');
+INSERT INTO met_shop_district VALUES('123','清苑县','8');
+INSERT INTO met_shop_district VALUES('124','涞水县','8');
+INSERT INTO met_shop_district VALUES('125','阜平县','8');
+INSERT INTO met_shop_district VALUES('126','徐水县','8');
+INSERT INTO met_shop_district VALUES('127','定兴县','8');
+INSERT INTO met_shop_district VALUES('128','唐县','8');
+INSERT INTO met_shop_district VALUES('129','高阳县','8');
+INSERT INTO met_shop_district VALUES('130','容城县','8');
+INSERT INTO met_shop_district VALUES('131','涞源县','8');
+INSERT INTO met_shop_district VALUES('132','望都县','8');
+INSERT INTO met_shop_district VALUES('133','安新县','8');
+INSERT INTO met_shop_district VALUES('134','易县','8');
+INSERT INTO met_shop_district VALUES('135','曲阳县','8');
+INSERT INTO met_shop_district VALUES('136','蠡县','8');
+INSERT INTO met_shop_district VALUES('137','顺平县','8');
+INSERT INTO met_shop_district VALUES('138','博野县','8');
+INSERT INTO met_shop_district VALUES('139','雄县','8');
+INSERT INTO met_shop_district VALUES('140','涿州市','8');
+INSERT INTO met_shop_district VALUES('141','定州市','8');
+INSERT INTO met_shop_district VALUES('142','安国市','8');
+INSERT INTO met_shop_district VALUES('143','高碑店市','8');
+INSERT INTO met_shop_district VALUES('144','桥东区','9');
+INSERT INTO met_shop_district VALUES('145','桥西区','9');
+INSERT INTO met_shop_district VALUES('146','宣化区','9');
+INSERT INTO met_shop_district VALUES('147','下花园区','9');
+INSERT INTO met_shop_district VALUES('148','宣化县','9');
+INSERT INTO met_shop_district VALUES('149','张北县','9');
+INSERT INTO met_shop_district VALUES('150','康保县','9');
+INSERT INTO met_shop_district VALUES('151','沽源县','9');
+INSERT INTO met_shop_district VALUES('152','尚义县','9');
+INSERT INTO met_shop_district VALUES('153','蔚县','9');
+INSERT INTO met_shop_district VALUES('154','阳原县','9');
+INSERT INTO met_shop_district VALUES('155','怀安县','9');
+INSERT INTO met_shop_district VALUES('156','万全县','9');
+INSERT INTO met_shop_district VALUES('157','怀来县','9');
+INSERT INTO met_shop_district VALUES('158','涿鹿县','9');
+INSERT INTO met_shop_district VALUES('159','赤城县','9');
+INSERT INTO met_shop_district VALUES('160','崇礼县','9');
+INSERT INTO met_shop_district VALUES('161','双桥区','10');
+INSERT INTO met_shop_district VALUES('162','双滦区','10');
+INSERT INTO met_shop_district VALUES('163','鹰手营子矿区','10');
+INSERT INTO met_shop_district VALUES('164','承德县','10');
+INSERT INTO met_shop_district VALUES('165','兴隆县','10');
+INSERT INTO met_shop_district VALUES('166','平泉县','10');
+INSERT INTO met_shop_district VALUES('167','滦平县','10');
+INSERT INTO met_shop_district VALUES('168','隆化县','10');
+INSERT INTO met_shop_district VALUES('169','丰宁满族自治县','10');
+INSERT INTO met_shop_district VALUES('170','宽城满族自治县','10');
+INSERT INTO met_shop_district VALUES('171','围场满族蒙古族自治县','10');
+INSERT INTO met_shop_district VALUES('172','新华区','11');
+INSERT INTO met_shop_district VALUES('173','运河区','11');
+INSERT INTO met_shop_district VALUES('174','沧县','11');
+INSERT INTO met_shop_district VALUES('175','青县','11');
+INSERT INTO met_shop_district VALUES('176','东光县','11');
+INSERT INTO met_shop_district VALUES('177','海兴县','11');
+INSERT INTO met_shop_district VALUES('178','盐山县','11');
+INSERT INTO met_shop_district VALUES('179','肃宁县','11');
+INSERT INTO met_shop_district VALUES('180','南皮县','11');
+INSERT INTO met_shop_district VALUES('181','吴桥县','11');
+INSERT INTO met_shop_district VALUES('182','献县','11');
+INSERT INTO met_shop_district VALUES('183','孟村回族自治县','11');
+INSERT INTO met_shop_district VALUES('184','泊头市','11');
+INSERT INTO met_shop_district VALUES('185','任丘市','11');
+INSERT INTO met_shop_district VALUES('186','黄骅市','11');
+INSERT INTO met_shop_district VALUES('187','河间市','11');
+INSERT INTO met_shop_district VALUES('188','安次区','12');
+INSERT INTO met_shop_district VALUES('189','广阳区','12');
+INSERT INTO met_shop_district VALUES('190','固安县','12');
+INSERT INTO met_shop_district VALUES('191','永清县','12');
+INSERT INTO met_shop_district VALUES('192','香河县','12');
+INSERT INTO met_shop_district VALUES('193','大城县','12');
+INSERT INTO met_shop_district VALUES('194','文安县','12');
+INSERT INTO met_shop_district VALUES('195','大厂回族自治县','12');
+INSERT INTO met_shop_district VALUES('196','霸州市','12');
+INSERT INTO met_shop_district VALUES('197','三河市','12');
+INSERT INTO met_shop_district VALUES('198','桃城区','13');
+INSERT INTO met_shop_district VALUES('199','枣强县','13');
+INSERT INTO met_shop_district VALUES('200','武邑县','13');
+INSERT INTO met_shop_district VALUES('201','武强县','13');
+INSERT INTO met_shop_district VALUES('202','饶阳县','13');
+INSERT INTO met_shop_district VALUES('203','安平县','13');
+INSERT INTO met_shop_district VALUES('204','故城县','13');
+INSERT INTO met_shop_district VALUES('205','景县','13');
+INSERT INTO met_shop_district VALUES('206','阜城县','13');
+INSERT INTO met_shop_district VALUES('207','冀州市','13');
+INSERT INTO met_shop_district VALUES('208','深州市','13');
+INSERT INTO met_shop_district VALUES('209','小店区','14');
+INSERT INTO met_shop_district VALUES('210','迎泽区','14');
+INSERT INTO met_shop_district VALUES('211','杏花岭区','14');
+INSERT INTO met_shop_district VALUES('212','尖草坪区','14');
+INSERT INTO met_shop_district VALUES('213','万柏林区','14');
+INSERT INTO met_shop_district VALUES('214','晋源区','14');
+INSERT INTO met_shop_district VALUES('215','清徐县','14');
+INSERT INTO met_shop_district VALUES('216','阳曲县','14');
+INSERT INTO met_shop_district VALUES('217','娄烦县','14');
+INSERT INTO met_shop_district VALUES('218','古交市','14');
+INSERT INTO met_shop_district VALUES('219','城区','15');
+INSERT INTO met_shop_district VALUES('220','矿区','15');
+INSERT INTO met_shop_district VALUES('221','南郊区','15');
+INSERT INTO met_shop_district VALUES('222','新荣区','15');
+INSERT INTO met_shop_district VALUES('223','阳高县','15');
+INSERT INTO met_shop_district VALUES('224','天镇县','15');
+INSERT INTO met_shop_district VALUES('225','广灵县','15');
+INSERT INTO met_shop_district VALUES('226','灵丘县','15');
+INSERT INTO met_shop_district VALUES('227','浑源县','15');
+INSERT INTO met_shop_district VALUES('228','左云县','15');
+INSERT INTO met_shop_district VALUES('229','大同县','15');
+INSERT INTO met_shop_district VALUES('230','城区','16');
+INSERT INTO met_shop_district VALUES('231','矿区','16');
+INSERT INTO met_shop_district VALUES('232','郊区','16');
+INSERT INTO met_shop_district VALUES('233','平定县','16');
+INSERT INTO met_shop_district VALUES('234','盂县','16');
+INSERT INTO met_shop_district VALUES('235','城区','17');
+INSERT INTO met_shop_district VALUES('236','郊区','17');
+INSERT INTO met_shop_district VALUES('237','长治县','17');
+INSERT INTO met_shop_district VALUES('238','襄垣县','17');
+INSERT INTO met_shop_district VALUES('239','屯留县','17');
+INSERT INTO met_shop_district VALUES('240','平顺县','17');
+INSERT INTO met_shop_district VALUES('241','黎城县','17');
+INSERT INTO met_shop_district VALUES('242','壶关县','17');
+INSERT INTO met_shop_district VALUES('243','长子县','17');
+INSERT INTO met_shop_district VALUES('244','武乡县','17');
+INSERT INTO met_shop_district VALUES('245','沁县','17');
+INSERT INTO met_shop_district VALUES('246','沁源县','17');
+INSERT INTO met_shop_district VALUES('247','潞城市','17');
+INSERT INTO met_shop_district VALUES('248','城区','18');
+INSERT INTO met_shop_district VALUES('249','沁水县','18');
+INSERT INTO met_shop_district VALUES('250','阳城县','18');
+INSERT INTO met_shop_district VALUES('251','陵川县','18');
+INSERT INTO met_shop_district VALUES('252','泽州县','18');
+INSERT INTO met_shop_district VALUES('253','高平市','18');
+INSERT INTO met_shop_district VALUES('254','朔城区','19');
+INSERT INTO met_shop_district VALUES('255','平鲁区','19');
+INSERT INTO met_shop_district VALUES('256','山阴县','19');
+INSERT INTO met_shop_district VALUES('257','应县','19');
+INSERT INTO met_shop_district VALUES('258','右玉县','19');
+INSERT INTO met_shop_district VALUES('259','怀仁县','19');
+INSERT INTO met_shop_district VALUES('260','榆次区','20');
+INSERT INTO met_shop_district VALUES('261','榆社县','20');
+INSERT INTO met_shop_district VALUES('262','左权县','20');
+INSERT INTO met_shop_district VALUES('263','和顺县','20');
+INSERT INTO met_shop_district VALUES('264','昔阳县','20');
+INSERT INTO met_shop_district VALUES('265','寿阳县','20');
+INSERT INTO met_shop_district VALUES('266','太谷县','20');
+INSERT INTO met_shop_district VALUES('267','祁县','20');
+INSERT INTO met_shop_district VALUES('268','平遥县','20');
+INSERT INTO met_shop_district VALUES('269','灵石县','20');
+INSERT INTO met_shop_district VALUES('270','介休市','20');
+INSERT INTO met_shop_district VALUES('271','盐湖区','21');
+INSERT INTO met_shop_district VALUES('272','临猗县','21');
+INSERT INTO met_shop_district VALUES('273','万荣县','21');
+INSERT INTO met_shop_district VALUES('274','闻喜县','21');
+INSERT INTO met_shop_district VALUES('275','稷山县','21');
+INSERT INTO met_shop_district VALUES('276','新绛县','21');
+INSERT INTO met_shop_district VALUES('277','绛县','21');
+INSERT INTO met_shop_district VALUES('278','垣曲县','21');
+INSERT INTO met_shop_district VALUES('279','夏县','21');
+INSERT INTO met_shop_district VALUES('280','平陆县','21');
+INSERT INTO met_shop_district VALUES('281','芮城县','21');
+INSERT INTO met_shop_district VALUES('282','永济市','21');
+INSERT INTO met_shop_district VALUES('283','河津市','21');
+INSERT INTO met_shop_district VALUES('284','忻府区','22');
+INSERT INTO met_shop_district VALUES('285','定襄县','22');
+INSERT INTO met_shop_district VALUES('286','五台县','22');
+INSERT INTO met_shop_district VALUES('287','代县','22');
+INSERT INTO met_shop_district VALUES('288','繁峙县','22');
+INSERT INTO met_shop_district VALUES('289','宁武县','22');
+INSERT INTO met_shop_district VALUES('290','静乐县','22');
+INSERT INTO met_shop_district VALUES('291','神池县','22');
+INSERT INTO met_shop_district VALUES('292','五寨县','22');
+INSERT INTO met_shop_district VALUES('293','岢岚县','22');
+INSERT INTO met_shop_district VALUES('294','河曲县','22');
+INSERT INTO met_shop_district VALUES('295','保德县','22');
+INSERT INTO met_shop_district VALUES('296','偏关县','22');
+INSERT INTO met_shop_district VALUES('297','原平市','22');
+INSERT INTO met_shop_district VALUES('298','尧都区','23');
+INSERT INTO met_shop_district VALUES('299','曲沃县','23');
+INSERT INTO met_shop_district VALUES('300','翼城县','23');
+INSERT INTO met_shop_district VALUES('301','襄汾县','23');
+INSERT INTO met_shop_district VALUES('302','洪洞县','23');
+INSERT INTO met_shop_district VALUES('303','古县','23');
+INSERT INTO met_shop_district VALUES('304','安泽县','23');
+INSERT INTO met_shop_district VALUES('305','浮山县','23');
+INSERT INTO met_shop_district VALUES('306','吉县','23');
+INSERT INTO met_shop_district VALUES('307','乡宁县','23');
+INSERT INTO met_shop_district VALUES('308','大宁县','23');
+INSERT INTO met_shop_district VALUES('309','隰县','23');
+INSERT INTO met_shop_district VALUES('310','永和县','23');
+INSERT INTO met_shop_district VALUES('311','蒲县','23');
+INSERT INTO met_shop_district VALUES('312','汾西县','23');
+INSERT INTO met_shop_district VALUES('313','侯马市','23');
+INSERT INTO met_shop_district VALUES('314','霍州市','23');
+INSERT INTO met_shop_district VALUES('315','离石区','24');
+INSERT INTO met_shop_district VALUES('316','文水县','24');
+INSERT INTO met_shop_district VALUES('317','交城县','24');
+INSERT INTO met_shop_district VALUES('318','兴县','24');
+INSERT INTO met_shop_district VALUES('319','临县','24');
+INSERT INTO met_shop_district VALUES('320','柳林县','24');
+INSERT INTO met_shop_district VALUES('321','石楼县','24');
+INSERT INTO met_shop_district VALUES('322','岚县','24');
+INSERT INTO met_shop_district VALUES('323','方山县','24');
+INSERT INTO met_shop_district VALUES('324','中阳县','24');
+INSERT INTO met_shop_district VALUES('325','交口县','24');
+INSERT INTO met_shop_district VALUES('326','孝义市','24');
+INSERT INTO met_shop_district VALUES('327','汾阳市','24');
+INSERT INTO met_shop_district VALUES('328','新城区','25');
+INSERT INTO met_shop_district VALUES('329','回民区','25');
+INSERT INTO met_shop_district VALUES('330','玉泉区','25');
+INSERT INTO met_shop_district VALUES('331','赛罕区','25');
+INSERT INTO met_shop_district VALUES('332','土默特左旗','25');
+INSERT INTO met_shop_district VALUES('333','托克托县','25');
+INSERT INTO met_shop_district VALUES('334','和林格尔县','25');
+INSERT INTO met_shop_district VALUES('335','清水河县','25');
+INSERT INTO met_shop_district VALUES('336','武川县','25');
+INSERT INTO met_shop_district VALUES('337','东河区','26');
+INSERT INTO met_shop_district VALUES('338','昆都仑区','26');
+INSERT INTO met_shop_district VALUES('339','青山区','26');
+INSERT INTO met_shop_district VALUES('340','石拐区','26');
+INSERT INTO met_shop_district VALUES('341','白云矿区','26');
+INSERT INTO met_shop_district VALUES('342','九原区','26');
+INSERT INTO met_shop_district VALUES('343','土默特右旗','26');
+INSERT INTO met_shop_district VALUES('344','固阳县','26');
+INSERT INTO met_shop_district VALUES('345','达尔罕茂明安联合旗','26');
+INSERT INTO met_shop_district VALUES('346','海勃湾区','27');
+INSERT INTO met_shop_district VALUES('347','海南区','27');
+INSERT INTO met_shop_district VALUES('348','乌达区','27');
+INSERT INTO met_shop_district VALUES('349','红山区','28');
+INSERT INTO met_shop_district VALUES('350','元宝山区','28');
+INSERT INTO met_shop_district VALUES('351','松山区','28');
+INSERT INTO met_shop_district VALUES('352','阿鲁科尔沁旗','28');
+INSERT INTO met_shop_district VALUES('353','巴林左旗','28');
+INSERT INTO met_shop_district VALUES('354','巴林右旗','28');
+INSERT INTO met_shop_district VALUES('355','林西县','28');
+INSERT INTO met_shop_district VALUES('356','克什克腾旗','28');
+INSERT INTO met_shop_district VALUES('357','翁牛特旗','28');
+INSERT INTO met_shop_district VALUES('358','喀喇沁旗','28');
+INSERT INTO met_shop_district VALUES('359','宁城县','28');
+INSERT INTO met_shop_district VALUES('360','敖汉旗','28');
+INSERT INTO met_shop_district VALUES('361','科尔沁区','29');
+INSERT INTO met_shop_district VALUES('362','科尔沁左翼中旗','29');
+INSERT INTO met_shop_district VALUES('363','科尔沁左翼后旗','29');
+INSERT INTO met_shop_district VALUES('364','开鲁县','29');
+INSERT INTO met_shop_district VALUES('365','库伦旗','29');
+INSERT INTO met_shop_district VALUES('366','奈曼旗','29');
+INSERT INTO met_shop_district VALUES('367','扎鲁特旗','29');
+INSERT INTO met_shop_district VALUES('368','霍林郭勒市','29');
+INSERT INTO met_shop_district VALUES('369','东胜区','30');
+INSERT INTO met_shop_district VALUES('370','达拉特旗','30');
+INSERT INTO met_shop_district VALUES('371','准格尔旗','30');
+INSERT INTO met_shop_district VALUES('372','鄂托克前旗','30');
+INSERT INTO met_shop_district VALUES('373','鄂托克旗','30');
+INSERT INTO met_shop_district VALUES('374','杭锦旗','30');
+INSERT INTO met_shop_district VALUES('375','乌审旗','30');
+INSERT INTO met_shop_district VALUES('376','伊金霍洛旗','30');
+INSERT INTO met_shop_district VALUES('377','海拉尔区','31');
+INSERT INTO met_shop_district VALUES('378','阿荣旗','31');
+INSERT INTO met_shop_district VALUES('379','莫力达瓦达斡尔族自治旗','31');
+INSERT INTO met_shop_district VALUES('380','鄂伦春自治旗','31');
+INSERT INTO met_shop_district VALUES('381','鄂温克族自治旗','31');
+INSERT INTO met_shop_district VALUES('382','陈巴尔虎旗','31');
+INSERT INTO met_shop_district VALUES('383','新巴尔虎左旗','31');
+INSERT INTO met_shop_district VALUES('384','新巴尔虎右旗','31');
+INSERT INTO met_shop_district VALUES('385','满洲里市','31');
+INSERT INTO met_shop_district VALUES('386','牙克石市','31');
+INSERT INTO met_shop_district VALUES('387','扎兰屯市','31');
+INSERT INTO met_shop_district VALUES('388','额尔古纳市','31');
+INSERT INTO met_shop_district VALUES('389','根河市','31');
+INSERT INTO met_shop_district VALUES('390','临河区','32');
+INSERT INTO met_shop_district VALUES('391','五原县','32');
+INSERT INTO met_shop_district VALUES('392','磴口县','32');
+INSERT INTO met_shop_district VALUES('393','乌拉特前旗','32');
+INSERT INTO met_shop_district VALUES('394','乌拉特中旗','32');
+INSERT INTO met_shop_district VALUES('395','乌拉特后旗','32');
+INSERT INTO met_shop_district VALUES('396','杭锦后旗','32');
+INSERT INTO met_shop_district VALUES('397','集宁区','33');
+INSERT INTO met_shop_district VALUES('398','卓资县','33');
+INSERT INTO met_shop_district VALUES('399','化德县','33');
+INSERT INTO met_shop_district VALUES('400','商都县','33');
+INSERT INTO met_shop_district VALUES('401','兴和县','33');
+INSERT INTO met_shop_district VALUES('402','凉城县','33');
+INSERT INTO met_shop_district VALUES('403','察哈尔右翼前旗','33');
+INSERT INTO met_shop_district VALUES('404','察哈尔右翼中旗','33');
+INSERT INTO met_shop_district VALUES('405','察哈尔右翼后旗','33');
+INSERT INTO met_shop_district VALUES('406','四子王旗','33');
+INSERT INTO met_shop_district VALUES('407','丰镇市','33');
+INSERT INTO met_shop_district VALUES('408','乌兰浩特市','34');
+INSERT INTO met_shop_district VALUES('409','阿尔山市','34');
+INSERT INTO met_shop_district VALUES('410','科尔沁右翼前旗','34');
+INSERT INTO met_shop_district VALUES('411','科尔沁右翼中旗','34');
+INSERT INTO met_shop_district VALUES('412','扎赉特旗','34');
+INSERT INTO met_shop_district VALUES('413','突泉县','34');
+INSERT INTO met_shop_district VALUES('414','二连浩特市','35');
+INSERT INTO met_shop_district VALUES('415','锡林浩特市','35');
+INSERT INTO met_shop_district VALUES('416','阿巴嘎旗','35');
+INSERT INTO met_shop_district VALUES('417','苏尼特左旗','35');
+INSERT INTO met_shop_district VALUES('418','苏尼特右旗','35');
+INSERT INTO met_shop_district VALUES('419','东乌珠穆沁旗','35');
+INSERT INTO met_shop_district VALUES('420','西乌珠穆沁旗','35');
+INSERT INTO met_shop_district VALUES('421','太仆寺旗','35');
+INSERT INTO met_shop_district VALUES('422','镶黄旗','35');
+INSERT INTO met_shop_district VALUES('423','正镶白旗','35');
+INSERT INTO met_shop_district VALUES('424','正蓝旗','35');
+INSERT INTO met_shop_district VALUES('425','多伦县','35');
+INSERT INTO met_shop_district VALUES('426','阿拉善左旗','36');
+INSERT INTO met_shop_district VALUES('427','阿拉善右旗','36');
+INSERT INTO met_shop_district VALUES('428','额济纳旗','36');
+INSERT INTO met_shop_district VALUES('429','和平区','37');
+INSERT INTO met_shop_district VALUES('430','沈河区','37');
+INSERT INTO met_shop_district VALUES('431','大东区','37');
+INSERT INTO met_shop_district VALUES('432','皇姑区','37');
+INSERT INTO met_shop_district VALUES('433','铁西区','37');
+INSERT INTO met_shop_district VALUES('434','苏家屯区','37');
+INSERT INTO met_shop_district VALUES('435','东陵区','37');
+INSERT INTO met_shop_district VALUES('436','新城子区','37');
+INSERT INTO met_shop_district VALUES('437','于洪区','37');
+INSERT INTO met_shop_district VALUES('438','辽中县','37');
+INSERT INTO met_shop_district VALUES('439','康平县','37');
+INSERT INTO met_shop_district VALUES('440','法库县','37');
+INSERT INTO met_shop_district VALUES('441','新民市','37');
+INSERT INTO met_shop_district VALUES('442','中山区','38');
+INSERT INTO met_shop_district VALUES('443','西岗区','38');
+INSERT INTO met_shop_district VALUES('444','沙河口区','38');
+INSERT INTO met_shop_district VALUES('445','甘井子区','38');
+INSERT INTO met_shop_district VALUES('446','旅顺口区','38');
+INSERT INTO met_shop_district VALUES('447','金州区','38');
+INSERT INTO met_shop_district VALUES('448','长海县','38');
+INSERT INTO met_shop_district VALUES('449','瓦房店市','38');
+INSERT INTO met_shop_district VALUES('450','普兰店市','38');
+INSERT INTO met_shop_district VALUES('451','庄河市','38');
+INSERT INTO met_shop_district VALUES('452','铁东区','39');
+INSERT INTO met_shop_district VALUES('453','铁西区','39');
+INSERT INTO met_shop_district VALUES('454','立山区','39');
+INSERT INTO met_shop_district VALUES('455','千山区','39');
+INSERT INTO met_shop_district VALUES('456','台安县','39');
+INSERT INTO met_shop_district VALUES('457','岫岩满族自治县','39');
+INSERT INTO met_shop_district VALUES('458','海城市','39');
+INSERT INTO met_shop_district VALUES('459','新抚区','40');
+INSERT INTO met_shop_district VALUES('460','东洲区','40');
+INSERT INTO met_shop_district VALUES('461','望花区','40');
+INSERT INTO met_shop_district VALUES('462','顺城区','40');
+INSERT INTO met_shop_district VALUES('463','抚顺县','40');
+INSERT INTO met_shop_district VALUES('464','新宾满族自治县','40');
+INSERT INTO met_shop_district VALUES('465','清原满族自治县','40');
+INSERT INTO met_shop_district VALUES('466','平山区','41');
+INSERT INTO met_shop_district VALUES('467','溪湖区','41');
+INSERT INTO met_shop_district VALUES('468','明山区','41');
+INSERT INTO met_shop_district VALUES('469','南芬区','41');
+INSERT INTO met_shop_district VALUES('470','本溪满族自治县','41');
+INSERT INTO met_shop_district VALUES('471','桓仁满族自治县','41');
+INSERT INTO met_shop_district VALUES('472','元宝区','42');
+INSERT INTO met_shop_district VALUES('473','振兴区','42');
+INSERT INTO met_shop_district VALUES('474','振安区','42');
+INSERT INTO met_shop_district VALUES('475','宽甸满族自治县','42');
+INSERT INTO met_shop_district VALUES('476','东港市','42');
+INSERT INTO met_shop_district VALUES('477','凤城市','42');
+INSERT INTO met_shop_district VALUES('478','古塔区','43');
+INSERT INTO met_shop_district VALUES('479','凌河区','43');
+INSERT INTO met_shop_district VALUES('480','太和区','43');
+INSERT INTO met_shop_district VALUES('481','黑山县','43');
+INSERT INTO met_shop_district VALUES('482','义县','43');
+INSERT INTO met_shop_district VALUES('483','凌海市','43');
+INSERT INTO met_shop_district VALUES('484','北宁市','43');
+INSERT INTO met_shop_district VALUES('485','站前区','44');
+INSERT INTO met_shop_district VALUES('486','西市区','44');
+INSERT INTO met_shop_district VALUES('487','鲅鱼圈区','44');
+INSERT INTO met_shop_district VALUES('488','老边区','44');
+INSERT INTO met_shop_district VALUES('489','盖州市','44');
+INSERT INTO met_shop_district VALUES('490','大石桥市','44');
+INSERT INTO met_shop_district VALUES('491','海州区','45');
+INSERT INTO met_shop_district VALUES('492','新邱区','45');
+INSERT INTO met_shop_district VALUES('493','太平区','45');
+INSERT INTO met_shop_district VALUES('494','清河门区','45');
+INSERT INTO met_shop_district VALUES('495','细河区','45');
+INSERT INTO met_shop_district VALUES('496','阜新蒙古族自治县','45');
+INSERT INTO met_shop_district VALUES('497','彰武县','45');
+INSERT INTO met_shop_district VALUES('498','白塔区','46');
+INSERT INTO met_shop_district VALUES('499','文圣区','46');
+INSERT INTO met_shop_district VALUES('500','宏伟区','46');
+INSERT INTO met_shop_district VALUES('501','弓长岭区','46');
+INSERT INTO met_shop_district VALUES('502','太子河区','46');
+INSERT INTO met_shop_district VALUES('503','辽阳县','46');
+INSERT INTO met_shop_district VALUES('504','灯塔市','46');
+INSERT INTO met_shop_district VALUES('505','双台子区','47');
+INSERT INTO met_shop_district VALUES('506','兴隆台区','47');
+INSERT INTO met_shop_district VALUES('507','大洼县','47');
+INSERT INTO met_shop_district VALUES('508','盘山县','47');
+INSERT INTO met_shop_district VALUES('509','银州区','48');
+INSERT INTO met_shop_district VALUES('510','清河区','48');
+INSERT INTO met_shop_district VALUES('511','铁岭县','48');
+INSERT INTO met_shop_district VALUES('512','西丰县','48');
+INSERT INTO met_shop_district VALUES('513','昌图县','48');
+INSERT INTO met_shop_district VALUES('514','调兵山市','48');
+INSERT INTO met_shop_district VALUES('515','开原市','48');
+INSERT INTO met_shop_district VALUES('516','双塔区','49');
+INSERT INTO met_shop_district VALUES('517','龙城区','49');
+INSERT INTO met_shop_district VALUES('518','朝阳县','49');
+INSERT INTO met_shop_district VALUES('519','建平县','49');
+INSERT INTO met_shop_district VALUES('520','喀喇沁左翼蒙古族自治县','49');
+INSERT INTO met_shop_district VALUES('521','北票市','49');
+INSERT INTO met_shop_district VALUES('522','凌源市','49');
+INSERT INTO met_shop_district VALUES('523','连山区','50');
+INSERT INTO met_shop_district VALUES('524','龙港区','50');
+INSERT INTO met_shop_district VALUES('525','南票区','50');
+INSERT INTO met_shop_district VALUES('526','绥中县','50');
+INSERT INTO met_shop_district VALUES('527','建昌县','50');
+INSERT INTO met_shop_district VALUES('528','兴城市','50');
+INSERT INTO met_shop_district VALUES('529','南关区','51');
+INSERT INTO met_shop_district VALUES('530','宽城区','51');
+INSERT INTO met_shop_district VALUES('531','朝阳区','51');
+INSERT INTO met_shop_district VALUES('532','二道区','51');
+INSERT INTO met_shop_district VALUES('533','绿园区','51');
+INSERT INTO met_shop_district VALUES('534','双阳区','51');
+INSERT INTO met_shop_district VALUES('535','农安县','51');
+INSERT INTO met_shop_district VALUES('536','九台市','51');
+INSERT INTO met_shop_district VALUES('537','榆树市','51');
+INSERT INTO met_shop_district VALUES('538','德惠市','51');
+INSERT INTO met_shop_district VALUES('539','昌邑区','52');
+INSERT INTO met_shop_district VALUES('540','龙潭区','52');
+INSERT INTO met_shop_district VALUES('541','船营区','52');
+INSERT INTO met_shop_district VALUES('542','丰满区','52');
+INSERT INTO met_shop_district VALUES('543','永吉县','52');
+INSERT INTO met_shop_district VALUES('544','蛟河市','52');
+INSERT INTO met_shop_district VALUES('545','桦甸市','52');
+INSERT INTO met_shop_district VALUES('546','舒兰市','52');
+INSERT INTO met_shop_district VALUES('547','磐石市','52');
+INSERT INTO met_shop_district VALUES('548','铁西区','53');
+INSERT INTO met_shop_district VALUES('549','铁东区','53');
+INSERT INTO met_shop_district VALUES('550','梨树县','53');
+INSERT INTO met_shop_district VALUES('551','伊通满族自治县','53');
+INSERT INTO met_shop_district VALUES('552','公主岭市','53');
+INSERT INTO met_shop_district VALUES('553','双辽市','53');
+INSERT INTO met_shop_district VALUES('554','龙山区','54');
+INSERT INTO met_shop_district VALUES('555','西安区','54');
+INSERT INTO met_shop_district VALUES('556','东丰县','54');
+INSERT INTO met_shop_district VALUES('557','东辽县','54');
+INSERT INTO met_shop_district VALUES('558','东昌区','55');
+INSERT INTO met_shop_district VALUES('559','二道江区','55');
+INSERT INTO met_shop_district VALUES('560','通化县','55');
+INSERT INTO met_shop_district VALUES('561','辉南县','55');
+INSERT INTO met_shop_district VALUES('562','柳河县','55');
+INSERT INTO met_shop_district VALUES('563','梅河口市','55');
+INSERT INTO met_shop_district VALUES('564','集安市','55');
+INSERT INTO met_shop_district VALUES('565','八道江区','56');
+INSERT INTO met_shop_district VALUES('566','抚松县','56');
+INSERT INTO met_shop_district VALUES('567','靖宇县','56');
+INSERT INTO met_shop_district VALUES('568','长白朝鲜族自治县','56');
+INSERT INTO met_shop_district VALUES('569','江源县','56');
+INSERT INTO met_shop_district VALUES('570','临江市','56');
+INSERT INTO met_shop_district VALUES('571','宁江区','57');
+INSERT INTO met_shop_district VALUES('572','前郭尔罗斯蒙古族自治县','57');
+INSERT INTO met_shop_district VALUES('573','长岭县','57');
+INSERT INTO met_shop_district VALUES('574','乾安县','57');
+INSERT INTO met_shop_district VALUES('575','扶余县','57');
+INSERT INTO met_shop_district VALUES('576','洮北区','58');
+INSERT INTO met_shop_district VALUES('577','镇赉县','58');
+INSERT INTO met_shop_district VALUES('578','通榆县','58');
+INSERT INTO met_shop_district VALUES('579','洮南市','58');
+INSERT INTO met_shop_district VALUES('580','大安市','58');
+INSERT INTO met_shop_district VALUES('581','延吉市','59');
+INSERT INTO met_shop_district VALUES('582','图们市','59');
+INSERT INTO met_shop_district VALUES('583','敦化市','59');
+INSERT INTO met_shop_district VALUES('584','珲春市','59');
+INSERT INTO met_shop_district VALUES('585','龙井市','59');
+INSERT INTO met_shop_district VALUES('586','和龙市','59');
+INSERT INTO met_shop_district VALUES('587','汪清县','59');
+INSERT INTO met_shop_district VALUES('588','安图县','59');
+INSERT INTO met_shop_district VALUES('589','道里区','60');
+INSERT INTO met_shop_district VALUES('590','南岗区','60');
+INSERT INTO met_shop_district VALUES('591','道外区','60');
+INSERT INTO met_shop_district VALUES('592','香坊区','60');
+INSERT INTO met_shop_district VALUES('593','动力区','60');
+INSERT INTO met_shop_district VALUES('594','平房区','60');
+INSERT INTO met_shop_district VALUES('595','松北区','60');
+INSERT INTO met_shop_district VALUES('596','呼兰区','60');
+INSERT INTO met_shop_district VALUES('597','依兰县','60');
+INSERT INTO met_shop_district VALUES('598','方正县','60');
+INSERT INTO met_shop_district VALUES('599','宾县','60');
+INSERT INTO met_shop_district VALUES('600','巴彦县','60');
+INSERT INTO met_shop_district VALUES('601','木兰县','60');
+INSERT INTO met_shop_district VALUES('602','通河县','60');
+INSERT INTO met_shop_district VALUES('603','延寿县','60');
+INSERT INTO met_shop_district VALUES('604','阿城市','60');
+INSERT INTO met_shop_district VALUES('605','双城市','60');
+INSERT INTO met_shop_district VALUES('606','尚志市','60');
+INSERT INTO met_shop_district VALUES('607','五常市','60');
+INSERT INTO met_shop_district VALUES('608','龙沙区','61');
+INSERT INTO met_shop_district VALUES('609','建华区','61');
+INSERT INTO met_shop_district VALUES('610','铁锋区','61');
+INSERT INTO met_shop_district VALUES('611','昂昂溪区','61');
+INSERT INTO met_shop_district VALUES('612','富拉尔基区','61');
+INSERT INTO met_shop_district VALUES('613','碾子山区','61');
+INSERT INTO met_shop_district VALUES('614','梅里斯达斡尔族区','61');
+INSERT INTO met_shop_district VALUES('615','龙江县','61');
+INSERT INTO met_shop_district VALUES('616','依安县','61');
+INSERT INTO met_shop_district VALUES('617','泰来县','61');
+INSERT INTO met_shop_district VALUES('618','甘南县','61');
+INSERT INTO met_shop_district VALUES('619','富裕县','61');
+INSERT INTO met_shop_district VALUES('620','克山县','61');
+INSERT INTO met_shop_district VALUES('621','克东县','61');
+INSERT INTO met_shop_district VALUES('622','拜泉县','61');
+INSERT INTO met_shop_district VALUES('623','讷河市','61');
+INSERT INTO met_shop_district VALUES('624','鸡冠区','62');
+INSERT INTO met_shop_district VALUES('625','恒山区','62');
+INSERT INTO met_shop_district VALUES('626','滴道区','62');
+INSERT INTO met_shop_district VALUES('627','梨树区','62');
+INSERT INTO met_shop_district VALUES('628','城子河区','62');
+INSERT INTO met_shop_district VALUES('629','麻山区','62');
+INSERT INTO met_shop_district VALUES('630','鸡东县','62');
+INSERT INTO met_shop_district VALUES('631','虎林市','62');
+INSERT INTO met_shop_district VALUES('632','密山市','62');
+INSERT INTO met_shop_district VALUES('633','向阳区','63');
+INSERT INTO met_shop_district VALUES('634','工农区','63');
+INSERT INTO met_shop_district VALUES('635','南山区','63');
+INSERT INTO met_shop_district VALUES('636','兴安区','63');
+INSERT INTO met_shop_district VALUES('637','东山区','63');
+INSERT INTO met_shop_district VALUES('638','兴山区','63');
+INSERT INTO met_shop_district VALUES('639','萝北县','63');
+INSERT INTO met_shop_district VALUES('640','绥滨县','63');
+INSERT INTO met_shop_district VALUES('641','尖山区','64');
+INSERT INTO met_shop_district VALUES('642','岭东区','64');
+INSERT INTO met_shop_district VALUES('643','四方台区','64');
+INSERT INTO met_shop_district VALUES('644','宝山区','64');
+INSERT INTO met_shop_district VALUES('645','集贤县','64');
+INSERT INTO met_shop_district VALUES('646','友谊县','64');
+INSERT INTO met_shop_district VALUES('647','宝清县','64');
+INSERT INTO met_shop_district VALUES('648','饶河县','64');
+INSERT INTO met_shop_district VALUES('649','萨尔图区','65');
+INSERT INTO met_shop_district VALUES('650','龙凤区','65');
+INSERT INTO met_shop_district VALUES('651','让胡路区','65');
+INSERT INTO met_shop_district VALUES('652','红岗区','65');
+INSERT INTO met_shop_district VALUES('653','大同区','65');
+INSERT INTO met_shop_district VALUES('654','肇州县','65');
+INSERT INTO met_shop_district VALUES('655','肇源县','65');
+INSERT INTO met_shop_district VALUES('656','林甸县','65');
+INSERT INTO met_shop_district VALUES('657','杜尔伯特蒙古族自治县','65');
+INSERT INTO met_shop_district VALUES('658','伊春区','66');
+INSERT INTO met_shop_district VALUES('659','南岔区','66');
+INSERT INTO met_shop_district VALUES('660','友好区','66');
+INSERT INTO met_shop_district VALUES('661','西林区','66');
+INSERT INTO met_shop_district VALUES('662','翠峦区','66');
+INSERT INTO met_shop_district VALUES('663','新青区','66');
+INSERT INTO met_shop_district VALUES('664','美溪区','66');
+INSERT INTO met_shop_district VALUES('665','金山屯区','66');
+INSERT INTO met_shop_district VALUES('666','五营区','66');
+INSERT INTO met_shop_district VALUES('667','乌马河区','66');
+INSERT INTO met_shop_district VALUES('668','汤旺河区','66');
+INSERT INTO met_shop_district VALUES('669','带岭区','66');
+INSERT INTO met_shop_district VALUES('670','乌伊岭区','66');
+INSERT INTO met_shop_district VALUES('671','红星区','66');
+INSERT INTO met_shop_district VALUES('672','上甘岭区','66');
+INSERT INTO met_shop_district VALUES('673','嘉荫县','66');
+INSERT INTO met_shop_district VALUES('674','铁力市','66');
+INSERT INTO met_shop_district VALUES('675','永红区','67');
+INSERT INTO met_shop_district VALUES('676','向阳区','67');
+INSERT INTO met_shop_district VALUES('677','前进区','67');
+INSERT INTO met_shop_district VALUES('678','东风区','67');
+INSERT INTO met_shop_district VALUES('679','郊区','67');
+INSERT INTO met_shop_district VALUES('680','桦南县','67');
+INSERT INTO met_shop_district VALUES('681','桦川县','67');
+INSERT INTO met_shop_district VALUES('682','汤原县','67');
+INSERT INTO met_shop_district VALUES('683','抚远县','67');
+INSERT INTO met_shop_district VALUES('684','同江市','67');
+INSERT INTO met_shop_district VALUES('685','富锦市','67');
+INSERT INTO met_shop_district VALUES('686','新兴区','68');
+INSERT INTO met_shop_district VALUES('687','桃山区','68');
+INSERT INTO met_shop_district VALUES('688','茄子河区','68');
+INSERT INTO met_shop_district VALUES('689','勃利县','68');
+INSERT INTO met_shop_district VALUES('690','东安区','69');
+INSERT INTO met_shop_district VALUES('691','阳明区','69');
+INSERT INTO met_shop_district VALUES('692','爱民区','69');
+INSERT INTO met_shop_district VALUES('693','西安区','69');
+INSERT INTO met_shop_district VALUES('694','东宁县','69');
+INSERT INTO met_shop_district VALUES('695','林口县','69');
+INSERT INTO met_shop_district VALUES('696','绥芬河市','69');
+INSERT INTO met_shop_district VALUES('697','海林市','69');
+INSERT INTO met_shop_district VALUES('698','宁安市','69');
+INSERT INTO met_shop_district VALUES('699','穆棱市','69');
+INSERT INTO met_shop_district VALUES('700','爱辉区','70');
+INSERT INTO met_shop_district VALUES('701','嫩江县','70');
+INSERT INTO met_shop_district VALUES('702','逊克县','70');
+INSERT INTO met_shop_district VALUES('703','孙吴县','70');
+INSERT INTO met_shop_district VALUES('704','北安市','70');
+INSERT INTO met_shop_district VALUES('705','五大连池市','70');
+INSERT INTO met_shop_district VALUES('706','北林区','71');
+INSERT INTO met_shop_district VALUES('707','望奎县','71');
+INSERT INTO met_shop_district VALUES('708','兰西县','71');
+INSERT INTO met_shop_district VALUES('709','青冈县','71');
+INSERT INTO met_shop_district VALUES('710','庆安县','71');
+INSERT INTO met_shop_district VALUES('711','明水县','71');
+INSERT INTO met_shop_district VALUES('712','绥棱县','71');
+INSERT INTO met_shop_district VALUES('713','安达市','71');
+INSERT INTO met_shop_district VALUES('714','肇东市','71');
+INSERT INTO met_shop_district VALUES('715','海伦市','71');
+INSERT INTO met_shop_district VALUES('716','呼玛县','72');
+INSERT INTO met_shop_district VALUES('717','塔河县','72');
+INSERT INTO met_shop_district VALUES('718','漠河县','72');
+INSERT INTO met_shop_district VALUES('719','黄浦区','73');
+INSERT INTO met_shop_district VALUES('720','卢湾区','73');
+INSERT INTO met_shop_district VALUES('721','徐汇区','73');
+INSERT INTO met_shop_district VALUES('722','长宁区','73');
+INSERT INTO met_shop_district VALUES('723','静安区','73');
+INSERT INTO met_shop_district VALUES('724','普陀区','73');
+INSERT INTO met_shop_district VALUES('725','闸北区','73');
+INSERT INTO met_shop_district VALUES('726','虹口区','73');
+INSERT INTO met_shop_district VALUES('727','杨浦区','73');
+INSERT INTO met_shop_district VALUES('728','闵行区','73');
+INSERT INTO met_shop_district VALUES('729','宝山区','73');
+INSERT INTO met_shop_district VALUES('730','嘉定区','73');
+INSERT INTO met_shop_district VALUES('731','浦东新区','73');
+INSERT INTO met_shop_district VALUES('732','金山区','73');
+INSERT INTO met_shop_district VALUES('733','松江区','73');
+INSERT INTO met_shop_district VALUES('734','青浦区','73');
+INSERT INTO met_shop_district VALUES('735','南汇区','73');
+INSERT INTO met_shop_district VALUES('736','奉贤区','73');
+INSERT INTO met_shop_district VALUES('737','崇明县','73');
+INSERT INTO met_shop_district VALUES('738','玄武区','74');
+INSERT INTO met_shop_district VALUES('739','白下区','74');
+INSERT INTO met_shop_district VALUES('740','秦淮区','74');
+INSERT INTO met_shop_district VALUES('741','建邺区','74');
+INSERT INTO met_shop_district VALUES('742','鼓楼区','74');
+INSERT INTO met_shop_district VALUES('743','下关区','74');
+INSERT INTO met_shop_district VALUES('744','浦口区','74');
+INSERT INTO met_shop_district VALUES('745','栖霞区','74');
+INSERT INTO met_shop_district VALUES('746','雨花台区','74');
+INSERT INTO met_shop_district VALUES('747','江宁区','74');
+INSERT INTO met_shop_district VALUES('748','六合区','74');
+INSERT INTO met_shop_district VALUES('749','溧水县','74');
+INSERT INTO met_shop_district VALUES('750','高淳县','74');
+INSERT INTO met_shop_district VALUES('751','崇安区','75');
+INSERT INTO met_shop_district VALUES('752','南长区','75');
+INSERT INTO met_shop_district VALUES('753','北塘区','75');
+INSERT INTO met_shop_district VALUES('754','锡山区','75');
+INSERT INTO met_shop_district VALUES('755','惠山区','75');
+INSERT INTO met_shop_district VALUES('756','滨湖区','75');
+INSERT INTO met_shop_district VALUES('757','江阴市','75');
+INSERT INTO met_shop_district VALUES('758','宜兴市','75');
+INSERT INTO met_shop_district VALUES('759','鼓楼区','76');
+INSERT INTO met_shop_district VALUES('760','云龙区','76');
+INSERT INTO met_shop_district VALUES('761','九里区','76');
+INSERT INTO met_shop_district VALUES('762','贾汪区','76');
+INSERT INTO met_shop_district VALUES('763','泉山区','76');
+INSERT INTO met_shop_district VALUES('764','丰县','76');
+INSERT INTO met_shop_district VALUES('765','沛县','76');
+INSERT INTO met_shop_district VALUES('766','铜山县','76');
+INSERT INTO met_shop_district VALUES('767','睢宁县','76');
+INSERT INTO met_shop_district VALUES('768','新沂市','76');
+INSERT INTO met_shop_district VALUES('769','邳州市','76');
+INSERT INTO met_shop_district VALUES('770','天宁区','77');
+INSERT INTO met_shop_district VALUES('771','钟楼区','77');
+INSERT INTO met_shop_district VALUES('772','戚墅堰区','77');
+INSERT INTO met_shop_district VALUES('773','新北区','77');
+INSERT INTO met_shop_district VALUES('774','武进区','77');
+INSERT INTO met_shop_district VALUES('775','溧阳市','77');
+INSERT INTO met_shop_district VALUES('776','金坛市','77');
+INSERT INTO met_shop_district VALUES('777','沧浪区','78');
+INSERT INTO met_shop_district VALUES('778','平江区','78');
+INSERT INTO met_shop_district VALUES('779','金阊区','78');
+INSERT INTO met_shop_district VALUES('780','虎丘区','78');
+INSERT INTO met_shop_district VALUES('781','吴中区','78');
+INSERT INTO met_shop_district VALUES('782','相城区','78');
+INSERT INTO met_shop_district VALUES('783','常熟市','78');
+INSERT INTO met_shop_district VALUES('784','张家港市','78');
+INSERT INTO met_shop_district VALUES('785','昆山市','78');
+INSERT INTO met_shop_district VALUES('786','吴江市','78');
+INSERT INTO met_shop_district VALUES('787','太仓市','78');
+INSERT INTO met_shop_district VALUES('788','崇川区','79');
+INSERT INTO met_shop_district VALUES('789','港闸区','79');
+INSERT INTO met_shop_district VALUES('790','海安县','79');
+INSERT INTO met_shop_district VALUES('791','如东县','79');
+INSERT INTO met_shop_district VALUES('792','启东市','79');
+INSERT INTO met_shop_district VALUES('793','如皋市','79');
+INSERT INTO met_shop_district VALUES('794','通州市','79');
+INSERT INTO met_shop_district VALUES('795','海门市','79');
+INSERT INTO met_shop_district VALUES('796','连云区','80');
+INSERT INTO met_shop_district VALUES('797','新浦区','80');
+INSERT INTO met_shop_district VALUES('798','海州区','80');
+INSERT INTO met_shop_district VALUES('799','赣榆县','80');
+INSERT INTO met_shop_district VALUES('800','东海县','80');
+INSERT INTO met_shop_district VALUES('801','灌云县','80');
+INSERT INTO met_shop_district VALUES('802','灌南县','80');
+INSERT INTO met_shop_district VALUES('803','清河区','81');
+INSERT INTO met_shop_district VALUES('804','楚州区','81');
+INSERT INTO met_shop_district VALUES('805','淮阴区','81');
+INSERT INTO met_shop_district VALUES('806','清浦区','81');
+INSERT INTO met_shop_district VALUES('807','涟水县','81');
+INSERT INTO met_shop_district VALUES('808','洪泽县','81');
+INSERT INTO met_shop_district VALUES('809','盱眙县','81');
+INSERT INTO met_shop_district VALUES('810','金湖县','81');
+INSERT INTO met_shop_district VALUES('811','亭湖区','82');
+INSERT INTO met_shop_district VALUES('812','盐都区','82');
+INSERT INTO met_shop_district VALUES('813','响水县','82');
+INSERT INTO met_shop_district VALUES('814','滨海县','82');
+INSERT INTO met_shop_district VALUES('815','阜宁县','82');
+INSERT INTO met_shop_district VALUES('816','射阳县','82');
+INSERT INTO met_shop_district VALUES('817','建湖县','82');
+INSERT INTO met_shop_district VALUES('818','东台市','82');
+INSERT INTO met_shop_district VALUES('819','大丰市','82');
+INSERT INTO met_shop_district VALUES('820','广陵区','83');
+INSERT INTO met_shop_district VALUES('821','邗江区','83');
+INSERT INTO met_shop_district VALUES('822','维扬区','83');
+INSERT INTO met_shop_district VALUES('823','宝应县','83');
+INSERT INTO met_shop_district VALUES('824','仪征市','83');
+INSERT INTO met_shop_district VALUES('825','高邮市','83');
+INSERT INTO met_shop_district VALUES('826','江都市','83');
+INSERT INTO met_shop_district VALUES('827','京口区','84');
+INSERT INTO met_shop_district VALUES('828','润州区','84');
+INSERT INTO met_shop_district VALUES('829','丹徒区','84');
+INSERT INTO met_shop_district VALUES('830','丹阳市','84');
+INSERT INTO met_shop_district VALUES('831','扬中市','84');
+INSERT INTO met_shop_district VALUES('832','句容市','84');
+INSERT INTO met_shop_district VALUES('833','海陵区','85');
+INSERT INTO met_shop_district VALUES('834','高港区','85');
+INSERT INTO met_shop_district VALUES('835','兴化市','85');
+INSERT INTO met_shop_district VALUES('836','靖江市','85');
+INSERT INTO met_shop_district VALUES('837','泰兴市','85');
+INSERT INTO met_shop_district VALUES('838','姜堰市','85');
+INSERT INTO met_shop_district VALUES('839','宿城区','86');
+INSERT INTO met_shop_district VALUES('840','宿豫区','86');
+INSERT INTO met_shop_district VALUES('841','沭阳县','86');
+INSERT INTO met_shop_district VALUES('842','泗阳县','86');
+INSERT INTO met_shop_district VALUES('843','泗洪县','86');
+INSERT INTO met_shop_district VALUES('844','上城区','87');
+INSERT INTO met_shop_district VALUES('845','下城区','87');
+INSERT INTO met_shop_district VALUES('846','江干区','87');
+INSERT INTO met_shop_district VALUES('847','拱墅区','87');
+INSERT INTO met_shop_district VALUES('848','西湖区','87');
+INSERT INTO met_shop_district VALUES('849','滨江区','87');
+INSERT INTO met_shop_district VALUES('850','萧山区','87');
+INSERT INTO met_shop_district VALUES('851','余杭区','87');
+INSERT INTO met_shop_district VALUES('852','桐庐县','87');
+INSERT INTO met_shop_district VALUES('853','淳安县','87');
+INSERT INTO met_shop_district VALUES('854','建德市','87');
+INSERT INTO met_shop_district VALUES('855','富阳市','87');
+INSERT INTO met_shop_district VALUES('856','临安市','87');
+INSERT INTO met_shop_district VALUES('857','海曙区','88');
+INSERT INTO met_shop_district VALUES('858','江东区','88');
+INSERT INTO met_shop_district VALUES('859','江北区','88');
+INSERT INTO met_shop_district VALUES('860','北仑区','88');
+INSERT INTO met_shop_district VALUES('861','镇海区','88');
+INSERT INTO met_shop_district VALUES('862','鄞州区','88');
+INSERT INTO met_shop_district VALUES('863','象山县','88');
+INSERT INTO met_shop_district VALUES('864','宁海县','88');
+INSERT INTO met_shop_district VALUES('865','余姚市','88');
+INSERT INTO met_shop_district VALUES('866','慈溪市','88');
+INSERT INTO met_shop_district VALUES('867','奉化市','88');
+INSERT INTO met_shop_district VALUES('868','鹿城区','89');
+INSERT INTO met_shop_district VALUES('869','龙湾区','89');
+INSERT INTO met_shop_district VALUES('870','瓯海区','89');
+INSERT INTO met_shop_district VALUES('871','洞头县','89');
+INSERT INTO met_shop_district VALUES('872','永嘉县','89');
+INSERT INTO met_shop_district VALUES('873','平阳县','89');
+INSERT INTO met_shop_district VALUES('874','苍南县','89');
+INSERT INTO met_shop_district VALUES('875','文成县','89');
+INSERT INTO met_shop_district VALUES('876','泰顺县','89');
+INSERT INTO met_shop_district VALUES('877','瑞安市','89');
+INSERT INTO met_shop_district VALUES('878','乐清市','89');
+INSERT INTO met_shop_district VALUES('879','秀城区','90');
+INSERT INTO met_shop_district VALUES('880','秀洲区','90');
+INSERT INTO met_shop_district VALUES('881','嘉善县','90');
+INSERT INTO met_shop_district VALUES('882','海盐县','90');
+INSERT INTO met_shop_district VALUES('883','海宁市','90');
+INSERT INTO met_shop_district VALUES('884','平湖市','90');
+INSERT INTO met_shop_district VALUES('885','桐乡市','90');
+INSERT INTO met_shop_district VALUES('886','吴兴区','91');
+INSERT INTO met_shop_district VALUES('887','南浔区','91');
+INSERT INTO met_shop_district VALUES('888','德清县','91');
+INSERT INTO met_shop_district VALUES('889','长兴县','91');
+INSERT INTO met_shop_district VALUES('890','安吉县','91');
+INSERT INTO met_shop_district VALUES('891','越城区','92');
+INSERT INTO met_shop_district VALUES('892','绍兴县','92');
+INSERT INTO met_shop_district VALUES('893','新昌县','92');
+INSERT INTO met_shop_district VALUES('894','诸暨市','92');
+INSERT INTO met_shop_district VALUES('895','上虞市','92');
+INSERT INTO met_shop_district VALUES('896','嵊州市','92');
+INSERT INTO met_shop_district VALUES('897','婺城区','93');
+INSERT INTO met_shop_district VALUES('898','金东区','93');
+INSERT INTO met_shop_district VALUES('899','武义县','93');
+INSERT INTO met_shop_district VALUES('900','浦江县','93');
+INSERT INTO met_shop_district VALUES('901','磐安县','93');
+INSERT INTO met_shop_district VALUES('902','兰溪市','93');
+INSERT INTO met_shop_district VALUES('903','义乌市','93');
+INSERT INTO met_shop_district VALUES('904','东阳市','93');
+INSERT INTO met_shop_district VALUES('905','永康市','93');
+INSERT INTO met_shop_district VALUES('906','柯城区','94');
+INSERT INTO met_shop_district VALUES('907','衢江区','94');
+INSERT INTO met_shop_district VALUES('908','常山县','94');
+INSERT INTO met_shop_district VALUES('909','开化县','94');
+INSERT INTO met_shop_district VALUES('910','龙游县','94');
+INSERT INTO met_shop_district VALUES('911','江山市','94');
+INSERT INTO met_shop_district VALUES('912','定海区','95');
+INSERT INTO met_shop_district VALUES('913','普陀区','95');
+INSERT INTO met_shop_district VALUES('914','岱山县','95');
+INSERT INTO met_shop_district VALUES('915','嵊泗县','95');
+INSERT INTO met_shop_district VALUES('916','椒江区','96');
+INSERT INTO met_shop_district VALUES('917','黄岩区','96');
+INSERT INTO met_shop_district VALUES('918','路桥区','96');
+INSERT INTO met_shop_district VALUES('919','玉环县','96');
+INSERT INTO met_shop_district VALUES('920','三门县','96');
+INSERT INTO met_shop_district VALUES('921','天台县','96');
+INSERT INTO met_shop_district VALUES('922','仙居县','96');
+INSERT INTO met_shop_district VALUES('923','温岭市','96');
+INSERT INTO met_shop_district VALUES('924','临海市','96');
+INSERT INTO met_shop_district VALUES('925','莲都区','97');
+INSERT INTO met_shop_district VALUES('926','青田县','97');
+INSERT INTO met_shop_district VALUES('927','缙云县','97');
+INSERT INTO met_shop_district VALUES('928','遂昌县','97');
+INSERT INTO met_shop_district VALUES('929','松阳县','97');
+INSERT INTO met_shop_district VALUES('930','云和县','97');
+INSERT INTO met_shop_district VALUES('931','庆元县','97');
+INSERT INTO met_shop_district VALUES('932','景宁畲族自治县','97');
+INSERT INTO met_shop_district VALUES('933','龙泉市','97');
+INSERT INTO met_shop_district VALUES('934','瑶海区','98');
+INSERT INTO met_shop_district VALUES('935','庐阳区','98');
+INSERT INTO met_shop_district VALUES('936','蜀山区','98');
+INSERT INTO met_shop_district VALUES('937','包河区','98');
+INSERT INTO met_shop_district VALUES('938','长丰县','98');
+INSERT INTO met_shop_district VALUES('939','肥东县','98');
+INSERT INTO met_shop_district VALUES('940','肥西县','98');
+INSERT INTO met_shop_district VALUES('941','镜湖区','99');
+INSERT INTO met_shop_district VALUES('942','马塘区','99');
+INSERT INTO met_shop_district VALUES('943','新芜区','99');
+INSERT INTO met_shop_district VALUES('944','鸠江区','99');
+INSERT INTO met_shop_district VALUES('945','芜湖县','99');
+INSERT INTO met_shop_district VALUES('946','繁昌县','99');
+INSERT INTO met_shop_district VALUES('947','南陵县','99');
+INSERT INTO met_shop_district VALUES('948','龙子湖区','100');
+INSERT INTO met_shop_district VALUES('949','蚌山区','100');
+INSERT INTO met_shop_district VALUES('950','禹会区','100');
+INSERT INTO met_shop_district VALUES('951','淮上区','100');
+INSERT INTO met_shop_district VALUES('952','怀远县','100');
+INSERT INTO met_shop_district VALUES('953','五河县','100');
+INSERT INTO met_shop_district VALUES('954','固镇县','100');
+INSERT INTO met_shop_district VALUES('955','大通区','101');
+INSERT INTO met_shop_district VALUES('956','田家庵区','101');
+INSERT INTO met_shop_district VALUES('957','谢家集区','101');
+INSERT INTO met_shop_district VALUES('958','八公山区','101');
+INSERT INTO met_shop_district VALUES('959','潘集区','101');
+INSERT INTO met_shop_district VALUES('960','凤台县','101');
+INSERT INTO met_shop_district VALUES('961','金家庄区','102');
+INSERT INTO met_shop_district VALUES('962','花山区','102');
+INSERT INTO met_shop_district VALUES('963','雨山区','102');
+INSERT INTO met_shop_district VALUES('964','当涂县','102');
+INSERT INTO met_shop_district VALUES('965','杜集区','103');
+INSERT INTO met_shop_district VALUES('966','相山区','103');
+INSERT INTO met_shop_district VALUES('967','烈山区','103');
+INSERT INTO met_shop_district VALUES('968','濉溪县','103');
+INSERT INTO met_shop_district VALUES('969','铜官山区','104');
+INSERT INTO met_shop_district VALUES('970','狮子山区','104');
+INSERT INTO met_shop_district VALUES('971','郊区','104');
+INSERT INTO met_shop_district VALUES('972','铜陵县','104');
+INSERT INTO met_shop_district VALUES('973','迎江区','105');
+INSERT INTO met_shop_district VALUES('974','大观区','105');
+INSERT INTO met_shop_district VALUES('975','郊区','105');
+INSERT INTO met_shop_district VALUES('976','怀宁县','105');
+INSERT INTO met_shop_district VALUES('977','枞阳县','105');
+INSERT INTO met_shop_district VALUES('978','潜山县','105');
+INSERT INTO met_shop_district VALUES('979','太湖县','105');
+INSERT INTO met_shop_district VALUES('980','宿松县','105');
+INSERT INTO met_shop_district VALUES('981','望江县','105');
+INSERT INTO met_shop_district VALUES('982','岳西县','105');
+INSERT INTO met_shop_district VALUES('983','桐城市','105');
+INSERT INTO met_shop_district VALUES('984','屯溪区','106');
+INSERT INTO met_shop_district VALUES('985','黄山区','106');
+INSERT INTO met_shop_district VALUES('986','徽州区','106');
+INSERT INTO met_shop_district VALUES('987','歙县','106');
+INSERT INTO met_shop_district VALUES('988','休宁县','106');
+INSERT INTO met_shop_district VALUES('989','黟县','106');
+INSERT INTO met_shop_district VALUES('990','祁门县','106');
+INSERT INTO met_shop_district VALUES('991','琅琊区','107');
+INSERT INTO met_shop_district VALUES('992','南谯区','107');
+INSERT INTO met_shop_district VALUES('993','来安县','107');
+INSERT INTO met_shop_district VALUES('994','全椒县','107');
+INSERT INTO met_shop_district VALUES('995','定远县','107');
+INSERT INTO met_shop_district VALUES('996','凤阳县','107');
+INSERT INTO met_shop_district VALUES('997','天长市','107');
+INSERT INTO met_shop_district VALUES('998','明光市','107');
+INSERT INTO met_shop_district VALUES('999','颍州区','108');
+INSERT INTO met_shop_district VALUES('1000','颍东区','108');
+INSERT INTO met_shop_district VALUES('1001','颍泉区','108');
+INSERT INTO met_shop_district VALUES('1002','临泉县','108');
+INSERT INTO met_shop_district VALUES('1003','太和县','108');
+INSERT INTO met_shop_district VALUES('1004','阜南县','108');
+INSERT INTO met_shop_district VALUES('1005','颍上县','108');
+INSERT INTO met_shop_district VALUES('1006','界首市','108');
+INSERT INTO met_shop_district VALUES('1007','埇桥区','109');
+INSERT INTO met_shop_district VALUES('1008','砀山县','109');
+INSERT INTO met_shop_district VALUES('1009','萧县','109');
+INSERT INTO met_shop_district VALUES('1010','灵璧县','109');
+INSERT INTO met_shop_district VALUES('1011','泗县','109');
+INSERT INTO met_shop_district VALUES('1012','居巢区','110');
+INSERT INTO met_shop_district VALUES('1013','庐江县','110');
+INSERT INTO met_shop_district VALUES('1014','无为县','110');
+INSERT INTO met_shop_district VALUES('1015','含山县','110');
+INSERT INTO met_shop_district VALUES('1016','和县','110');
+INSERT INTO met_shop_district VALUES('1017','金安区','111');
+INSERT INTO met_shop_district VALUES('1018','裕安区','111');
+INSERT INTO met_shop_district VALUES('1019','寿县','111');
+INSERT INTO met_shop_district VALUES('1020','霍邱县','111');
+INSERT INTO met_shop_district VALUES('1021','舒城县','111');
+INSERT INTO met_shop_district VALUES('1022','金寨县','111');
+INSERT INTO met_shop_district VALUES('1023','霍山县','111');
+INSERT INTO met_shop_district VALUES('1024','谯城区','112');
+INSERT INTO met_shop_district VALUES('1025','涡阳县','112');
+INSERT INTO met_shop_district VALUES('1026','蒙城县','112');
+INSERT INTO met_shop_district VALUES('1027','利辛县','112');
+INSERT INTO met_shop_district VALUES('1028','贵池区','113');
+INSERT INTO met_shop_district VALUES('1029','东至县','113');
+INSERT INTO met_shop_district VALUES('1030','石台县','113');
+INSERT INTO met_shop_district VALUES('1031','青阳县','113');
+INSERT INTO met_shop_district VALUES('1032','宣州区','114');
+INSERT INTO met_shop_district VALUES('1033','郎溪县','114');
+INSERT INTO met_shop_district VALUES('1034','广德县','114');
+INSERT INTO met_shop_district VALUES('1035','泾县','114');
+INSERT INTO met_shop_district VALUES('1036','绩溪县','114');
+INSERT INTO met_shop_district VALUES('1037','旌德县','114');
+INSERT INTO met_shop_district VALUES('1038','宁国市','114');
+INSERT INTO met_shop_district VALUES('1039','鼓楼区','115');
+INSERT INTO met_shop_district VALUES('1040','台江区','115');
+INSERT INTO met_shop_district VALUES('1041','仓山区','115');
+INSERT INTO met_shop_district VALUES('1042','马尾区','115');
+INSERT INTO met_shop_district VALUES('1043','晋安区','115');
+INSERT INTO met_shop_district VALUES('1044','闽侯县','115');
+INSERT INTO met_shop_district VALUES('1045','连江县','115');
+INSERT INTO met_shop_district VALUES('1046','罗源县','115');
+INSERT INTO met_shop_district VALUES('1047','闽清县','115');
+INSERT INTO met_shop_district VALUES('1048','永泰县','115');
+INSERT INTO met_shop_district VALUES('1049','平潭县','115');
+INSERT INTO met_shop_district VALUES('1050','福清市','115');
+INSERT INTO met_shop_district VALUES('1051','长乐市','115');
+INSERT INTO met_shop_district VALUES('1052','思明区','116');
+INSERT INTO met_shop_district VALUES('1053','海沧区','116');
+INSERT INTO met_shop_district VALUES('1054','湖里区','116');
+INSERT INTO met_shop_district VALUES('1055','集美区','116');
+INSERT INTO met_shop_district VALUES('1056','同安区','116');
+INSERT INTO met_shop_district VALUES('1057','翔安区','116');
+INSERT INTO met_shop_district VALUES('1058','城厢区','117');
+INSERT INTO met_shop_district VALUES('1059','涵江区','117');
+INSERT INTO met_shop_district VALUES('1060','荔城区','117');
+INSERT INTO met_shop_district VALUES('1061','秀屿区','117');
+INSERT INTO met_shop_district VALUES('1062','仙游县','117');
+INSERT INTO met_shop_district VALUES('1063','梅列区','118');
+INSERT INTO met_shop_district VALUES('1064','三元区','118');
+INSERT INTO met_shop_district VALUES('1065','明溪县','118');
+INSERT INTO met_shop_district VALUES('1066','清流县','118');
+INSERT INTO met_shop_district VALUES('1067','宁化县','118');
+INSERT INTO met_shop_district VALUES('1068','大田县','118');
+INSERT INTO met_shop_district VALUES('1069','尤溪县','118');
+INSERT INTO met_shop_district VALUES('1070','沙县','118');
+INSERT INTO met_shop_district VALUES('1071','将乐县','118');
+INSERT INTO met_shop_district VALUES('1072','泰宁县','118');
+INSERT INTO met_shop_district VALUES('1073','建宁县','118');
+INSERT INTO met_shop_district VALUES('1074','永安市','118');
+INSERT INTO met_shop_district VALUES('1075','鲤城区','119');
+INSERT INTO met_shop_district VALUES('1076','丰泽区','119');
+INSERT INTO met_shop_district VALUES('1077','洛江区','119');
+INSERT INTO met_shop_district VALUES('1078','泉港区','119');
+INSERT INTO met_shop_district VALUES('1079','惠安县','119');
+INSERT INTO met_shop_district VALUES('1080','安溪县','119');
+INSERT INTO met_shop_district VALUES('1081','永春县','119');
+INSERT INTO met_shop_district VALUES('1082','德化县','119');
+INSERT INTO met_shop_district VALUES('1083','金门县','119');
+INSERT INTO met_shop_district VALUES('1084','石狮市','119');
+INSERT INTO met_shop_district VALUES('1085','晋江市','119');
+INSERT INTO met_shop_district VALUES('1086','南安市','119');
+INSERT INTO met_shop_district VALUES('1087','芗城区','120');
+INSERT INTO met_shop_district VALUES('1088','龙文区','120');
+INSERT INTO met_shop_district VALUES('1089','云霄县','120');
+INSERT INTO met_shop_district VALUES('1090','漳浦县','120');
+INSERT INTO met_shop_district VALUES('1091','诏安县','120');
+INSERT INTO met_shop_district VALUES('1092','长泰县','120');
+INSERT INTO met_shop_district VALUES('1093','东山县','120');
+INSERT INTO met_shop_district VALUES('1094','南靖县','120');
+INSERT INTO met_shop_district VALUES('1095','平和县','120');
+INSERT INTO met_shop_district VALUES('1096','华安县','120');
+INSERT INTO met_shop_district VALUES('1097','龙海市','120');
+INSERT INTO met_shop_district VALUES('1098','延平区','121');
+INSERT INTO met_shop_district VALUES('1099','顺昌县','121');
+INSERT INTO met_shop_district VALUES('1100','浦城县','121');
+INSERT INTO met_shop_district VALUES('1101','光泽县','121');
+INSERT INTO met_shop_district VALUES('1102','松溪县','121');
+INSERT INTO met_shop_district VALUES('1103','政和县','121');
+INSERT INTO met_shop_district VALUES('1104','邵武市','121');
+INSERT INTO met_shop_district VALUES('1105','武夷山市','121');
+INSERT INTO met_shop_district VALUES('1106','建瓯市','121');
+INSERT INTO met_shop_district VALUES('1107','建阳市','121');
+INSERT INTO met_shop_district VALUES('1108','新罗区','122');
+INSERT INTO met_shop_district VALUES('1109','长汀县','122');
+INSERT INTO met_shop_district VALUES('1110','永定县','122');
+INSERT INTO met_shop_district VALUES('1111','上杭县','122');
+INSERT INTO met_shop_district VALUES('1112','武平县','122');
+INSERT INTO met_shop_district VALUES('1113','连城县','122');
+INSERT INTO met_shop_district VALUES('1114','漳平市','122');
+INSERT INTO met_shop_district VALUES('1115','蕉城区','123');
+INSERT INTO met_shop_district VALUES('1116','霞浦县','123');
+INSERT INTO met_shop_district VALUES('1117','古田县','123');
+INSERT INTO met_shop_district VALUES('1118','屏南县','123');
+INSERT INTO met_shop_district VALUES('1119','寿宁县','123');
+INSERT INTO met_shop_district VALUES('1120','周宁县','123');
+INSERT INTO met_shop_district VALUES('1121','柘荣县','123');
+INSERT INTO met_shop_district VALUES('1122','福安市','123');
+INSERT INTO met_shop_district VALUES('1123','福鼎市','123');
+INSERT INTO met_shop_district VALUES('1124','东湖区','124');
+INSERT INTO met_shop_district VALUES('1125','西湖区','124');
+INSERT INTO met_shop_district VALUES('1126','青云谱区','124');
+INSERT INTO met_shop_district VALUES('1127','湾里区','124');
+INSERT INTO met_shop_district VALUES('1128','青山湖区','124');
+INSERT INTO met_shop_district VALUES('1129','南昌县','124');
+INSERT INTO met_shop_district VALUES('1130','新建县','124');
+INSERT INTO met_shop_district VALUES('1131','安义县','124');
+INSERT INTO met_shop_district VALUES('1132','进贤县','124');
+INSERT INTO met_shop_district VALUES('1133','昌江区','125');
+INSERT INTO met_shop_district VALUES('1134','珠山区','125');
+INSERT INTO met_shop_district VALUES('1135','浮梁县','125');
+INSERT INTO met_shop_district VALUES('1136','乐平市','125');
+INSERT INTO met_shop_district VALUES('1137','安源区','126');
+INSERT INTO met_shop_district VALUES('1138','湘东区','126');
+INSERT INTO met_shop_district VALUES('1139','莲花县','126');
+INSERT INTO met_shop_district VALUES('1140','上栗县','126');
+INSERT INTO met_shop_district VALUES('1141','芦溪县','126');
+INSERT INTO met_shop_district VALUES('1142','庐山区','127');
+INSERT INTO met_shop_district VALUES('1143','浔阳区','127');
+INSERT INTO met_shop_district VALUES('1144','九江县','127');
+INSERT INTO met_shop_district VALUES('1145','武宁县','127');
+INSERT INTO met_shop_district VALUES('1146','修水县','127');
+INSERT INTO met_shop_district VALUES('1147','永修县','127');
+INSERT INTO met_shop_district VALUES('1148','德安县','127');
+INSERT INTO met_shop_district VALUES('1149','星子县','127');
+INSERT INTO met_shop_district VALUES('1150','都昌县','127');
+INSERT INTO met_shop_district VALUES('1151','湖口县','127');
+INSERT INTO met_shop_district VALUES('1152','彭泽县','127');
+INSERT INTO met_shop_district VALUES('1153','瑞昌市','127');
+INSERT INTO met_shop_district VALUES('1154','渝水区','128');
+INSERT INTO met_shop_district VALUES('1155','分宜县','128');
+INSERT INTO met_shop_district VALUES('1156','月湖区','129');
+INSERT INTO met_shop_district VALUES('1157','余江县','129');
+INSERT INTO met_shop_district VALUES('1158','贵溪市','129');
+INSERT INTO met_shop_district VALUES('1159','章贡区','130');
+INSERT INTO met_shop_district VALUES('1160','赣县','130');
+INSERT INTO met_shop_district VALUES('1161','信丰县','130');
+INSERT INTO met_shop_district VALUES('1162','大余县','130');
+INSERT INTO met_shop_district VALUES('1163','上犹县','130');
+INSERT INTO met_shop_district VALUES('1164','崇义县','130');
+INSERT INTO met_shop_district VALUES('1165','安远县','130');
+INSERT INTO met_shop_district VALUES('1166','龙南县','130');
+INSERT INTO met_shop_district VALUES('1167','定南县','130');
+INSERT INTO met_shop_district VALUES('1168','全南县','130');
+INSERT INTO met_shop_district VALUES('1169','宁都县','130');
+INSERT INTO met_shop_district VALUES('1170','于都县','130');
+INSERT INTO met_shop_district VALUES('1171','兴国县','130');
+INSERT INTO met_shop_district VALUES('1172','会昌县','130');
+INSERT INTO met_shop_district VALUES('1173','寻乌县','130');
+INSERT INTO met_shop_district VALUES('1174','石城县','130');
+INSERT INTO met_shop_district VALUES('1175','瑞金市','130');
+INSERT INTO met_shop_district VALUES('1176','南康市','130');
+INSERT INTO met_shop_district VALUES('1177','吉州区','131');
+INSERT INTO met_shop_district VALUES('1178','青原区','131');
+INSERT INTO met_shop_district VALUES('1179','吉安县','131');
+INSERT INTO met_shop_district VALUES('1180','吉水县','131');
+INSERT INTO met_shop_district VALUES('1181','峡江县','131');
+INSERT INTO met_shop_district VALUES('1182','新干县','131');
+INSERT INTO met_shop_district VALUES('1183','永丰县','131');
+INSERT INTO met_shop_district VALUES('1184','泰和县','131');
+INSERT INTO met_shop_district VALUES('1185','遂川县','131');
+INSERT INTO met_shop_district VALUES('1186','万安县','131');
+INSERT INTO met_shop_district VALUES('1187','安福县','131');
+INSERT INTO met_shop_district VALUES('1188','永新县','131');
+INSERT INTO met_shop_district VALUES('1189','井冈山市','131');
+INSERT INTO met_shop_district VALUES('1190','袁州区','132');
+INSERT INTO met_shop_district VALUES('1191','奉新县','132');
+INSERT INTO met_shop_district VALUES('1192','万载县','132');
+INSERT INTO met_shop_district VALUES('1193','上高县','132');
+INSERT INTO met_shop_district VALUES('1194','宜丰县','132');
+INSERT INTO met_shop_district VALUES('1195','靖安县','132');
+INSERT INTO met_shop_district VALUES('1196','铜鼓县','132');
+INSERT INTO met_shop_district VALUES('1197','丰城市','132');
+INSERT INTO met_shop_district VALUES('1198','樟树市','132');
+INSERT INTO met_shop_district VALUES('1199','高安市','132');
+INSERT INTO met_shop_district VALUES('1200','临川区','133');
+INSERT INTO met_shop_district VALUES('1201','南城县','133');
+INSERT INTO met_shop_district VALUES('1202','黎川县','133');
+INSERT INTO met_shop_district VALUES('1203','南丰县','133');
+INSERT INTO met_shop_district VALUES('1204','崇仁县','133');
+INSERT INTO met_shop_district VALUES('1205','乐安县','133');
+INSERT INTO met_shop_district VALUES('1206','宜黄县','133');
+INSERT INTO met_shop_district VALUES('1207','金溪县','133');
+INSERT INTO met_shop_district VALUES('1208','资溪县','133');
+INSERT INTO met_shop_district VALUES('1209','东乡县','133');
+INSERT INTO met_shop_district VALUES('1210','广昌县','133');
+INSERT INTO met_shop_district VALUES('1211','信州区','134');
+INSERT INTO met_shop_district VALUES('1212','上饶县','134');
+INSERT INTO met_shop_district VALUES('1213','广丰县','134');
+INSERT INTO met_shop_district VALUES('1214','玉山县','134');
+INSERT INTO met_shop_district VALUES('1215','铅山县','134');
+INSERT INTO met_shop_district VALUES('1216','横峰县','134');
+INSERT INTO met_shop_district VALUES('1217','弋阳县','134');
+INSERT INTO met_shop_district VALUES('1218','余干县','134');
+INSERT INTO met_shop_district VALUES('1219','鄱阳县','134');
+INSERT INTO met_shop_district VALUES('1220','万年县','134');
+INSERT INTO met_shop_district VALUES('1221','婺源县','134');
+INSERT INTO met_shop_district VALUES('1222','德兴市','134');
+INSERT INTO met_shop_district VALUES('1223','历下区','135');
+INSERT INTO met_shop_district VALUES('1224','市中区','135');
+INSERT INTO met_shop_district VALUES('1225','槐荫区','135');
+INSERT INTO met_shop_district VALUES('1226','天桥区','135');
+INSERT INTO met_shop_district VALUES('1227','历城区','135');
+INSERT INTO met_shop_district VALUES('1228','长清区','135');
+INSERT INTO met_shop_district VALUES('1229','平阴县','135');
+INSERT INTO met_shop_district VALUES('1230','济阳县','135');
+INSERT INTO met_shop_district VALUES('1231','商河县','135');
+INSERT INTO met_shop_district VALUES('1232','章丘市','135');
+INSERT INTO met_shop_district VALUES('1233','市南区','136');
+INSERT INTO met_shop_district VALUES('1234','市北区','136');
+INSERT INTO met_shop_district VALUES('1235','四方区','136');
+INSERT INTO met_shop_district VALUES('1236','黄岛区','136');
+INSERT INTO met_shop_district VALUES('1237','崂山区','136');
+INSERT INTO met_shop_district VALUES('1238','李沧区','136');
+INSERT INTO met_shop_district VALUES('1239','城阳区','136');
+INSERT INTO met_shop_district VALUES('1240','胶州市','136');
+INSERT INTO met_shop_district VALUES('1241','即墨市','136');
+INSERT INTO met_shop_district VALUES('1242','平度市','136');
+INSERT INTO met_shop_district VALUES('1243','胶南市','136');
+INSERT INTO met_shop_district VALUES('1244','莱西市','136');
+INSERT INTO met_shop_district VALUES('1245','淄川区','137');
+INSERT INTO met_shop_district VALUES('1246','张店区','137');
+INSERT INTO met_shop_district VALUES('1247','博山区','137');
+INSERT INTO met_shop_district VALUES('1248','临淄区','137');
+INSERT INTO met_shop_district VALUES('1249','周村区','137');
+INSERT INTO met_shop_district VALUES('1250','桓台县','137');
+INSERT INTO met_shop_district VALUES('1251','高青县','137');
+INSERT INTO met_shop_district VALUES('1252','沂源县','137');
+INSERT INTO met_shop_district VALUES('1253','市中区','138');
+INSERT INTO met_shop_district VALUES('1254','薛城区','138');
+INSERT INTO met_shop_district VALUES('1255','峄城区','138');
+INSERT INTO met_shop_district VALUES('1256','台儿庄区','138');
+INSERT INTO met_shop_district VALUES('1257','山亭区','138');
+INSERT INTO met_shop_district VALUES('1258','滕州市','138');
+INSERT INTO met_shop_district VALUES('1259','东营区','139');
+INSERT INTO met_shop_district VALUES('1260','河口区','139');
+INSERT INTO met_shop_district VALUES('1261','垦利县','139');
+INSERT INTO met_shop_district VALUES('1262','利津县','139');
+INSERT INTO met_shop_district VALUES('1263','广饶县','139');
+INSERT INTO met_shop_district VALUES('1264','芝罘区','140');
+INSERT INTO met_shop_district VALUES('1265','福山区','140');
+INSERT INTO met_shop_district VALUES('1266','牟平区','140');
+INSERT INTO met_shop_district VALUES('1267','莱山区','140');
+INSERT INTO met_shop_district VALUES('1268','长岛县','140');
+INSERT INTO met_shop_district VALUES('1269','龙口市','140');
+INSERT INTO met_shop_district VALUES('1270','莱阳市','140');
+INSERT INTO met_shop_district VALUES('1271','莱州市','140');
+INSERT INTO met_shop_district VALUES('1272','蓬莱市','140');
+INSERT INTO met_shop_district VALUES('1273','招远市','140');
+INSERT INTO met_shop_district VALUES('1274','栖霞市','140');
+INSERT INTO met_shop_district VALUES('1275','海阳市','140');
+INSERT INTO met_shop_district VALUES('1276','潍城区','141');
+INSERT INTO met_shop_district VALUES('1277','寒亭区','141');
+INSERT INTO met_shop_district VALUES('1278','坊子区','141');
+INSERT INTO met_shop_district VALUES('1279','奎文区','141');
+INSERT INTO met_shop_district VALUES('1280','临朐县','141');
+INSERT INTO met_shop_district VALUES('1281','昌乐县','141');
+INSERT INTO met_shop_district VALUES('1282','青州市','141');
+INSERT INTO met_shop_district VALUES('1283','诸城市','141');
+INSERT INTO met_shop_district VALUES('1284','寿光市','141');
+INSERT INTO met_shop_district VALUES('1285','安丘市','141');
+INSERT INTO met_shop_district VALUES('1286','高密市','141');
+INSERT INTO met_shop_district VALUES('1287','昌邑市','141');
+INSERT INTO met_shop_district VALUES('1288','市中区','142');
+INSERT INTO met_shop_district VALUES('1289','任城区','142');
+INSERT INTO met_shop_district VALUES('1290','微山县','142');
+INSERT INTO met_shop_district VALUES('1291','鱼台县','142');
+INSERT INTO met_shop_district VALUES('1292','金乡县','142');
+INSERT INTO met_shop_district VALUES('1293','嘉祥县','142');
+INSERT INTO met_shop_district VALUES('1294','汶上县','142');
+INSERT INTO met_shop_district VALUES('1295','泗水县','142');
+INSERT INTO met_shop_district VALUES('1296','梁山县','142');
+INSERT INTO met_shop_district VALUES('1297','曲阜市','142');
+INSERT INTO met_shop_district VALUES('1298','兖州市','142');
+INSERT INTO met_shop_district VALUES('1299','邹城市','142');
+INSERT INTO met_shop_district VALUES('1300','泰山区','143');
+INSERT INTO met_shop_district VALUES('1301','岱岳区','143');
+INSERT INTO met_shop_district VALUES('1302','宁阳县','143');
+INSERT INTO met_shop_district VALUES('1303','东平县','143');
+INSERT INTO met_shop_district VALUES('1304','新泰市','143');
+INSERT INTO met_shop_district VALUES('1305','肥城市','143');
+INSERT INTO met_shop_district VALUES('1306','环翠区','144');
+INSERT INTO met_shop_district VALUES('1307','文登市','144');
+INSERT INTO met_shop_district VALUES('1308','荣成市','144');
+INSERT INTO met_shop_district VALUES('1309','乳山市','144');
+INSERT INTO met_shop_district VALUES('1310','东港区','145');
+INSERT INTO met_shop_district VALUES('1311','岚山区','145');
+INSERT INTO met_shop_district VALUES('1312','五莲县','145');
+INSERT INTO met_shop_district VALUES('1313','莒县','145');
+INSERT INTO met_shop_district VALUES('1314','莱城区','146');
+INSERT INTO met_shop_district VALUES('1315','钢城区','146');
+INSERT INTO met_shop_district VALUES('1316','兰山区','147');
+INSERT INTO met_shop_district VALUES('1317','罗庄区','147');
+INSERT INTO met_shop_district VALUES('1318','河东区','147');
+INSERT INTO met_shop_district VALUES('1319','沂南县','147');
+INSERT INTO met_shop_district VALUES('1320','郯城县','147');
+INSERT INTO met_shop_district VALUES('1321','沂水县','147');
+INSERT INTO met_shop_district VALUES('1322','苍山县','147');
+INSERT INTO met_shop_district VALUES('1323','费县','147');
+INSERT INTO met_shop_district VALUES('1324','平邑县','147');
+INSERT INTO met_shop_district VALUES('1325','莒南县','147');
+INSERT INTO met_shop_district VALUES('1326','蒙阴县','147');
+INSERT INTO met_shop_district VALUES('1327','临沭县','147');
+INSERT INTO met_shop_district VALUES('1328','德城区','148');
+INSERT INTO met_shop_district VALUES('1329','陵县','148');
+INSERT INTO met_shop_district VALUES('1330','宁津县','148');
+INSERT INTO met_shop_district VALUES('1331','庆云县','148');
+INSERT INTO met_shop_district VALUES('1332','临邑县','148');
+INSERT INTO met_shop_district VALUES('1333','齐河县','148');
+INSERT INTO met_shop_district VALUES('1334','平原县','148');
+INSERT INTO met_shop_district VALUES('1335','夏津县','148');
+INSERT INTO met_shop_district VALUES('1336','武城县','148');
+INSERT INTO met_shop_district VALUES('1337','乐陵市','148');
+INSERT INTO met_shop_district VALUES('1338','禹城市','148');
+INSERT INTO met_shop_district VALUES('1339','东昌府区','149');
+INSERT INTO met_shop_district VALUES('1340','阳谷县','149');
+INSERT INTO met_shop_district VALUES('1341','莘县','149');
+INSERT INTO met_shop_district VALUES('1342','茌平县','149');
+INSERT INTO met_shop_district VALUES('1343','东阿县','149');
+INSERT INTO met_shop_district VALUES('1344','冠县','149');
+INSERT INTO met_shop_district VALUES('1345','高唐县','149');
+INSERT INTO met_shop_district VALUES('1346','临清市','149');
+INSERT INTO met_shop_district VALUES('1347','滨城区','150');
+INSERT INTO met_shop_district VALUES('1348','惠民县','150');
+INSERT INTO met_shop_district VALUES('1349','阳信县','150');
+INSERT INTO met_shop_district VALUES('1350','无棣县','150');
+INSERT INTO met_shop_district VALUES('1351','沾化县','150');
+INSERT INTO met_shop_district VALUES('1352','博兴县','150');
+INSERT INTO met_shop_district VALUES('1353','邹平县','150');
+INSERT INTO met_shop_district VALUES('1354','牡丹区','151');
+INSERT INTO met_shop_district VALUES('1355','曹县','151');
+INSERT INTO met_shop_district VALUES('1356','单县','151');
+INSERT INTO met_shop_district VALUES('1357','成武县','151');
+INSERT INTO met_shop_district VALUES('1358','巨野县','151');
+INSERT INTO met_shop_district VALUES('1359','郓城县','151');
+INSERT INTO met_shop_district VALUES('1360','鄄城县','151');
+INSERT INTO met_shop_district VALUES('1361','定陶县','151');
+INSERT INTO met_shop_district VALUES('1362','东明县','151');
+INSERT INTO met_shop_district VALUES('1363','中原区','152');
+INSERT INTO met_shop_district VALUES('1364','二七区','152');
+INSERT INTO met_shop_district VALUES('1365','管城回族区','152');
+INSERT INTO met_shop_district VALUES('1366','金水区','152');
+INSERT INTO met_shop_district VALUES('1367','上街区','152');
+INSERT INTO met_shop_district VALUES('1368','惠济区','152');
+INSERT INTO met_shop_district VALUES('1369','中牟县','152');
+INSERT INTO met_shop_district VALUES('1370','巩义市','152');
+INSERT INTO met_shop_district VALUES('1371','荥阳市','152');
+INSERT INTO met_shop_district VALUES('1372','新密市','152');
+INSERT INTO met_shop_district VALUES('1373','新郑市','152');
+INSERT INTO met_shop_district VALUES('1374','登封市','152');
+INSERT INTO met_shop_district VALUES('1375','龙亭区','153');
+INSERT INTO met_shop_district VALUES('1376','顺河回族区','153');
+INSERT INTO met_shop_district VALUES('1377','鼓楼区','153');
+INSERT INTO met_shop_district VALUES('1378','南关区','153');
+INSERT INTO met_shop_district VALUES('1379','郊区','153');
+INSERT INTO met_shop_district VALUES('1380','杞县','153');
+INSERT INTO met_shop_district VALUES('1381','通许县','153');
+INSERT INTO met_shop_district VALUES('1382','尉氏县','153');
+INSERT INTO met_shop_district VALUES('1383','开封县','153');
+INSERT INTO met_shop_district VALUES('1384','兰考县','153');
+INSERT INTO met_shop_district VALUES('1385','老城区','154');
+INSERT INTO met_shop_district VALUES('1386','西工区','154');
+INSERT INTO met_shop_district VALUES('1387','廛河回族区','154');
+INSERT INTO met_shop_district VALUES('1388','涧西区','154');
+INSERT INTO met_shop_district VALUES('1389','吉利区','154');
+INSERT INTO met_shop_district VALUES('1390','洛龙区','154');
+INSERT INTO met_shop_district VALUES('1391','孟津县','154');
+INSERT INTO met_shop_district VALUES('1392','新安县','154');
+INSERT INTO met_shop_district VALUES('1393','栾川县','154');
+INSERT INTO met_shop_district VALUES('1394','嵩县','154');
+INSERT INTO met_shop_district VALUES('1395','汝阳县','154');
+INSERT INTO met_shop_district VALUES('1396','宜阳县','154');
+INSERT INTO met_shop_district VALUES('1397','洛宁县','154');
+INSERT INTO met_shop_district VALUES('1398','伊川县','154');
+INSERT INTO met_shop_district VALUES('1399','偃师市','154');
+INSERT INTO met_shop_district VALUES('1400','新华区','155');
+INSERT INTO met_shop_district VALUES('1401','卫东区','155');
+INSERT INTO met_shop_district VALUES('1402','石龙区','155');
+INSERT INTO met_shop_district VALUES('1403','湛河区','155');
+INSERT INTO met_shop_district VALUES('1404','宝丰县','155');
+INSERT INTO met_shop_district VALUES('1405','叶县','155');
+INSERT INTO met_shop_district VALUES('1406','鲁山县','155');
+INSERT INTO met_shop_district VALUES('1407','郏县','155');
+INSERT INTO met_shop_district VALUES('1408','舞钢市','155');
+INSERT INTO met_shop_district VALUES('1409','汝州市','155');
+INSERT INTO met_shop_district VALUES('1410','文峰区','156');
+INSERT INTO met_shop_district VALUES('1411','北关区','156');
+INSERT INTO met_shop_district VALUES('1412','殷都区','156');
+INSERT INTO met_shop_district VALUES('1413','龙安区','156');
+INSERT INTO met_shop_district VALUES('1414','安阳县','156');
+INSERT INTO met_shop_district VALUES('1415','汤阴县','156');
+INSERT INTO met_shop_district VALUES('1416','滑县','156');
+INSERT INTO met_shop_district VALUES('1417','内黄县','156');
+INSERT INTO met_shop_district VALUES('1418','林州市','156');
+INSERT INTO met_shop_district VALUES('1419','鹤山区','157');
+INSERT INTO met_shop_district VALUES('1420','山城区','157');
+INSERT INTO met_shop_district VALUES('1421','淇滨区','157');
+INSERT INTO met_shop_district VALUES('1422','浚县','157');
+INSERT INTO met_shop_district VALUES('1423','淇县','157');
+INSERT INTO met_shop_district VALUES('1424','红旗区','158');
+INSERT INTO met_shop_district VALUES('1425','卫滨区','158');
+INSERT INTO met_shop_district VALUES('1426','凤泉区','158');
+INSERT INTO met_shop_district VALUES('1427','牧野区','158');
+INSERT INTO met_shop_district VALUES('1428','新乡县','158');
+INSERT INTO met_shop_district VALUES('1429','获嘉县','158');
+INSERT INTO met_shop_district VALUES('1430','原阳县','158');
+INSERT INTO met_shop_district VALUES('1431','延津县','158');
+INSERT INTO met_shop_district VALUES('1432','封丘县','158');
+INSERT INTO met_shop_district VALUES('1433','长垣县','158');
+INSERT INTO met_shop_district VALUES('1434','卫辉市','158');
+INSERT INTO met_shop_district VALUES('1435','辉县市','158');
+INSERT INTO met_shop_district VALUES('1436','解放区','159');
+INSERT INTO met_shop_district VALUES('1437','中站区','159');
+INSERT INTO met_shop_district VALUES('1438','马村区','159');
+INSERT INTO met_shop_district VALUES('1439','山阳区','159');
+INSERT INTO met_shop_district VALUES('1440','修武县','159');
+INSERT INTO met_shop_district VALUES('1441','博爱县','159');
+INSERT INTO met_shop_district VALUES('1442','武陟县','159');
+INSERT INTO met_shop_district VALUES('1443','温县','159');
+INSERT INTO met_shop_district VALUES('1444','济源市','159');
+INSERT INTO met_shop_district VALUES('1445','沁阳市','159');
+INSERT INTO met_shop_district VALUES('1446','孟州市','159');
+INSERT INTO met_shop_district VALUES('1447','华龙区','160');
+INSERT INTO met_shop_district VALUES('1448','清丰县','160');
+INSERT INTO met_shop_district VALUES('1449','南乐县','160');
+INSERT INTO met_shop_district VALUES('1450','范县','160');
+INSERT INTO met_shop_district VALUES('1451','台前县','160');
+INSERT INTO met_shop_district VALUES('1452','濮阳县','160');
+INSERT INTO met_shop_district VALUES('1453','魏都区','161');
+INSERT INTO met_shop_district VALUES('1454','许昌县','161');
+INSERT INTO met_shop_district VALUES('1455','鄢陵县','161');
+INSERT INTO met_shop_district VALUES('1456','襄城县','161');
+INSERT INTO met_shop_district VALUES('1457','禹州市','161');
+INSERT INTO met_shop_district VALUES('1458','长葛市','161');
+INSERT INTO met_shop_district VALUES('1459','源汇区','162');
+INSERT INTO met_shop_district VALUES('1460','郾城区','162');
+INSERT INTO met_shop_district VALUES('1461','召陵区','162');
+INSERT INTO met_shop_district VALUES('1462','舞阳县','162');
+INSERT INTO met_shop_district VALUES('1463','临颍县','162');
+INSERT INTO met_shop_district VALUES('1464','市辖区','163');
+INSERT INTO met_shop_district VALUES('1465','湖滨区','163');
+INSERT INTO met_shop_district VALUES('1466','渑池县','163');
+INSERT INTO met_shop_district VALUES('1467','陕县','163');
+INSERT INTO met_shop_district VALUES('1468','卢氏县','163');
+INSERT INTO met_shop_district VALUES('1469','义马市','163');
+INSERT INTO met_shop_district VALUES('1470','灵宝市','163');
+INSERT INTO met_shop_district VALUES('1471','宛城区','164');
+INSERT INTO met_shop_district VALUES('1472','卧龙区','164');
+INSERT INTO met_shop_district VALUES('1473','南召县','164');
+INSERT INTO met_shop_district VALUES('1474','方城县','164');
+INSERT INTO met_shop_district VALUES('1475','西峡县','164');
+INSERT INTO met_shop_district VALUES('1476','镇平县','164');
+INSERT INTO met_shop_district VALUES('1477','内乡县','164');
+INSERT INTO met_shop_district VALUES('1478','淅川县','164');
+INSERT INTO met_shop_district VALUES('1479','社旗县','164');
+INSERT INTO met_shop_district VALUES('1480','唐河县','164');
+INSERT INTO met_shop_district VALUES('1481','新野县','164');
+INSERT INTO met_shop_district VALUES('1482','桐柏县','164');
+INSERT INTO met_shop_district VALUES('1483','邓州市','164');
+INSERT INTO met_shop_district VALUES('1484','梁园区','165');
+INSERT INTO met_shop_district VALUES('1485','睢阳区','165');
+INSERT INTO met_shop_district VALUES('1486','民权县','165');
+INSERT INTO met_shop_district VALUES('1487','睢县','165');
+INSERT INTO met_shop_district VALUES('1488','宁陵县','165');
+INSERT INTO met_shop_district VALUES('1489','柘城县','165');
+INSERT INTO met_shop_district VALUES('1490','虞城县','165');
+INSERT INTO met_shop_district VALUES('1491','夏邑县','165');
+INSERT INTO met_shop_district VALUES('1492','永城市','165');
+INSERT INTO met_shop_district VALUES('1493','浉河区','166');
+INSERT INTO met_shop_district VALUES('1494','平桥区','166');
+INSERT INTO met_shop_district VALUES('1495','罗山县','166');
+INSERT INTO met_shop_district VALUES('1496','光山县','166');
+INSERT INTO met_shop_district VALUES('1497','新县','166');
+INSERT INTO met_shop_district VALUES('1498','商城县','166');
+INSERT INTO met_shop_district VALUES('1499','固始县','166');
+INSERT INTO met_shop_district VALUES('1500','潢川县','166');
+INSERT INTO met_shop_district VALUES('1501','淮滨县','166');
+INSERT INTO met_shop_district VALUES('1502','息县','166');
+INSERT INTO met_shop_district VALUES('1503','川汇区','167');
+INSERT INTO met_shop_district VALUES('1504','扶沟县','167');
+INSERT INTO met_shop_district VALUES('1505','西华县','167');
+INSERT INTO met_shop_district VALUES('1506','商水县','167');
+INSERT INTO met_shop_district VALUES('1507','沈丘县','167');
+INSERT INTO met_shop_district VALUES('1508','郸城县','167');
+INSERT INTO met_shop_district VALUES('1509','淮阳县','167');
+INSERT INTO met_shop_district VALUES('1510','太康县','167');
+INSERT INTO met_shop_district VALUES('1511','鹿邑县','167');
+INSERT INTO met_shop_district VALUES('1512','项城市','167');
+INSERT INTO met_shop_district VALUES('1513','驿城区','168');
+INSERT INTO met_shop_district VALUES('1514','西平县','168');
+INSERT INTO met_shop_district VALUES('1515','上蔡县','168');
+INSERT INTO met_shop_district VALUES('1516','平舆县','168');
+INSERT INTO met_shop_district VALUES('1517','正阳县','168');
+INSERT INTO met_shop_district VALUES('1518','确山县','168');
+INSERT INTO met_shop_district VALUES('1519','泌阳县','168');
+INSERT INTO met_shop_district VALUES('1520','汝南县','168');
+INSERT INTO met_shop_district VALUES('1521','遂平县','168');
+INSERT INTO met_shop_district VALUES('1522','新蔡县','168');
+INSERT INTO met_shop_district VALUES('1523','江岸区','169');
+INSERT INTO met_shop_district VALUES('1524','江汉区','169');
+INSERT INTO met_shop_district VALUES('1525','硚口区','169');
+INSERT INTO met_shop_district VALUES('1526','汉阳区','169');
+INSERT INTO met_shop_district VALUES('1527','武昌区','169');
+INSERT INTO met_shop_district VALUES('1528','青山区','169');
+INSERT INTO met_shop_district VALUES('1529','洪山区','169');
+INSERT INTO met_shop_district VALUES('1530','东西湖区','169');
+INSERT INTO met_shop_district VALUES('1531','汉南区','169');
+INSERT INTO met_shop_district VALUES('1532','蔡甸区','169');
+INSERT INTO met_shop_district VALUES('1533','江夏区','169');
+INSERT INTO met_shop_district VALUES('1534','黄陂区','169');
+INSERT INTO met_shop_district VALUES('1535','新洲区','169');
+INSERT INTO met_shop_district VALUES('1536','黄石港区','170');
+INSERT INTO met_shop_district VALUES('1537','西塞山区','170');
+INSERT INTO met_shop_district VALUES('1538','下陆区','170');
+INSERT INTO met_shop_district VALUES('1539','铁山区','170');
+INSERT INTO met_shop_district VALUES('1540','阳新县','170');
+INSERT INTO met_shop_district VALUES('1541','大冶市','170');
+INSERT INTO met_shop_district VALUES('1542','茅箭区','171');
+INSERT INTO met_shop_district VALUES('1543','张湾区','171');
+INSERT INTO met_shop_district VALUES('1544','郧县','171');
+INSERT INTO met_shop_district VALUES('1545','郧西县','171');
+INSERT INTO met_shop_district VALUES('1546','竹山县','171');
+INSERT INTO met_shop_district VALUES('1547','竹溪县','171');
+INSERT INTO met_shop_district VALUES('1548','房县','171');
+INSERT INTO met_shop_district VALUES('1549','丹江口市','171');
+INSERT INTO met_shop_district VALUES('1550','西陵区','172');
+INSERT INTO met_shop_district VALUES('1551','伍家岗区','172');
+INSERT INTO met_shop_district VALUES('1552','点军区','172');
+INSERT INTO met_shop_district VALUES('1553','猇亭区','172');
+INSERT INTO met_shop_district VALUES('1554','夷陵区','172');
+INSERT INTO met_shop_district VALUES('1555','远安县','172');
+INSERT INTO met_shop_district VALUES('1556','兴山县','172');
+INSERT INTO met_shop_district VALUES('1557','秭归县','172');
+INSERT INTO met_shop_district VALUES('1558','长阳土家族自治县','172');
+INSERT INTO met_shop_district VALUES('1559','五峰土家族自治县','172');
+INSERT INTO met_shop_district VALUES('1560','宜都市','172');
+INSERT INTO met_shop_district VALUES('1561','当阳市','172');
+INSERT INTO met_shop_district VALUES('1562','枝江市','172');
+INSERT INTO met_shop_district VALUES('1563','襄城区','173');
+INSERT INTO met_shop_district VALUES('1564','樊城区','173');
+INSERT INTO met_shop_district VALUES('1565','襄阳区','173');
+INSERT INTO met_shop_district VALUES('1566','南漳县','173');
+INSERT INTO met_shop_district VALUES('1567','谷城县','173');
+INSERT INTO met_shop_district VALUES('1568','保康县','173');
+INSERT INTO met_shop_district VALUES('1569','老河口市','173');
+INSERT INTO met_shop_district VALUES('1570','枣阳市','173');
+INSERT INTO met_shop_district VALUES('1571','宜城市','173');
+INSERT INTO met_shop_district VALUES('1572','梁子湖区','174');
+INSERT INTO met_shop_district VALUES('1573','华容区','174');
+INSERT INTO met_shop_district VALUES('1574','鄂城区','174');
+INSERT INTO met_shop_district VALUES('1575','东宝区','175');
+INSERT INTO met_shop_district VALUES('1576','掇刀区','175');
+INSERT INTO met_shop_district VALUES('1577','京山县','175');
+INSERT INTO met_shop_district VALUES('1578','沙洋县','175');
+INSERT INTO met_shop_district VALUES('1579','钟祥市','175');
+INSERT INTO met_shop_district VALUES('1580','孝南区','176');
+INSERT INTO met_shop_district VALUES('1581','孝昌县','176');
+INSERT INTO met_shop_district VALUES('1582','大悟县','176');
+INSERT INTO met_shop_district VALUES('1583','云梦县','176');
+INSERT INTO met_shop_district VALUES('1584','应城市','176');
+INSERT INTO met_shop_district VALUES('1585','安陆市','176');
+INSERT INTO met_shop_district VALUES('1586','汉川市','176');
+INSERT INTO met_shop_district VALUES('1587','沙市区','177');
+INSERT INTO met_shop_district VALUES('1588','荆州区','177');
+INSERT INTO met_shop_district VALUES('1589','公安县','177');
+INSERT INTO met_shop_district VALUES('1590','监利县','177');
+INSERT INTO met_shop_district VALUES('1591','江陵县','177');
+INSERT INTO met_shop_district VALUES('1592','石首市','177');
+INSERT INTO met_shop_district VALUES('1593','洪湖市','177');
+INSERT INTO met_shop_district VALUES('1594','松滋市','177');
+INSERT INTO met_shop_district VALUES('1595','黄州区','178');
+INSERT INTO met_shop_district VALUES('1596','团风县','178');
+INSERT INTO met_shop_district VALUES('1597','红安县','178');
+INSERT INTO met_shop_district VALUES('1598','罗田县','178');
+INSERT INTO met_shop_district VALUES('1599','英山县','178');
+INSERT INTO met_shop_district VALUES('1600','浠水县','178');
+INSERT INTO met_shop_district VALUES('1601','蕲春县','178');
+INSERT INTO met_shop_district VALUES('1602','黄梅县','178');
+INSERT INTO met_shop_district VALUES('1603','麻城市','178');
+INSERT INTO met_shop_district VALUES('1604','武穴市','178');
+INSERT INTO met_shop_district VALUES('1605','咸安区','179');
+INSERT INTO met_shop_district VALUES('1606','嘉鱼县','179');
+INSERT INTO met_shop_district VALUES('1607','通城县','179');
+INSERT INTO met_shop_district VALUES('1608','崇阳县','179');
+INSERT INTO met_shop_district VALUES('1609','通山县','179');
+INSERT INTO met_shop_district VALUES('1610','赤壁市','179');
+INSERT INTO met_shop_district VALUES('1611','曾都区','180');
+INSERT INTO met_shop_district VALUES('1612','广水市','180');
+INSERT INTO met_shop_district VALUES('1613','恩施市','181');
+INSERT INTO met_shop_district VALUES('1614','利川市','181');
+INSERT INTO met_shop_district VALUES('1615','建始县','181');
+INSERT INTO met_shop_district VALUES('1616','巴东县','181');
+INSERT INTO met_shop_district VALUES('1617','宣恩县','181');
+INSERT INTO met_shop_district VALUES('1618','咸丰县','181');
+INSERT INTO met_shop_district VALUES('1619','来凤县','181');
+INSERT INTO met_shop_district VALUES('1620','鹤峰县','181');
+INSERT INTO met_shop_district VALUES('1621','仙桃市','182');
+INSERT INTO met_shop_district VALUES('1622','潜江市','182');
+INSERT INTO met_shop_district VALUES('1623','天门市','182');
+INSERT INTO met_shop_district VALUES('1624','神农架林区','182');
+INSERT INTO met_shop_district VALUES('1625','芙蓉区','183');
+INSERT INTO met_shop_district VALUES('1626','天心区','183');
+INSERT INTO met_shop_district VALUES('1627','岳麓区','183');
+INSERT INTO met_shop_district VALUES('1628','开福区','183');
+INSERT INTO met_shop_district VALUES('1629','雨花区','183');
+INSERT INTO met_shop_district VALUES('1630','长沙县','183');
+INSERT INTO met_shop_district VALUES('1631','望城县','183');
+INSERT INTO met_shop_district VALUES('1632','宁乡县','183');
+INSERT INTO met_shop_district VALUES('1633','浏阳市','183');
+INSERT INTO met_shop_district VALUES('1634','荷塘区','184');
+INSERT INTO met_shop_district VALUES('1635','芦淞区','184');
+INSERT INTO met_shop_district VALUES('1636','石峰区','184');
+INSERT INTO met_shop_district VALUES('1637','天元区','184');
+INSERT INTO met_shop_district VALUES('1638','株洲县','184');
+INSERT INTO met_shop_district VALUES('1639','攸县','184');
+INSERT INTO met_shop_district VALUES('1640','茶陵县','184');
+INSERT INTO met_shop_district VALUES('1641','炎陵县','184');
+INSERT INTO met_shop_district VALUES('1642','醴陵市','184');
+INSERT INTO met_shop_district VALUES('1643','雨湖区','185');
+INSERT INTO met_shop_district VALUES('1644','岳塘区','185');
+INSERT INTO met_shop_district VALUES('1645','湘潭县','185');
+INSERT INTO met_shop_district VALUES('1646','湘乡市','185');
+INSERT INTO met_shop_district VALUES('1647','韶山市','185');
+INSERT INTO met_shop_district VALUES('1648','珠晖区','186');
+INSERT INTO met_shop_district VALUES('1649','雁峰区','186');
+INSERT INTO met_shop_district VALUES('1650','石鼓区','186');
+INSERT INTO met_shop_district VALUES('1651','蒸湘区','186');
+INSERT INTO met_shop_district VALUES('1652','南岳区','186');
+INSERT INTO met_shop_district VALUES('1653','衡阳县','186');
+INSERT INTO met_shop_district VALUES('1654','衡南县','186');
+INSERT INTO met_shop_district VALUES('1655','衡山县','186');
+INSERT INTO met_shop_district VALUES('1656','衡东县','186');
+INSERT INTO met_shop_district VALUES('1657','祁东县','186');
+INSERT INTO met_shop_district VALUES('1658','耒阳市','186');
+INSERT INTO met_shop_district VALUES('1659','常宁市','186');
+INSERT INTO met_shop_district VALUES('1660','双清区','187');
+INSERT INTO met_shop_district VALUES('1661','大祥区','187');
+INSERT INTO met_shop_district VALUES('1662','北塔区','187');
+INSERT INTO met_shop_district VALUES('1663','邵东县','187');
+INSERT INTO met_shop_district VALUES('1664','新邵县','187');
+INSERT INTO met_shop_district VALUES('1665','邵阳县','187');
+INSERT INTO met_shop_district VALUES('1666','隆回县','187');
+INSERT INTO met_shop_district VALUES('1667','洞口县','187');
+INSERT INTO met_shop_district VALUES('1668','绥宁县','187');
+INSERT INTO met_shop_district VALUES('1669','新宁县','187');
+INSERT INTO met_shop_district VALUES('1670','城步苗族自治县','187');
+INSERT INTO met_shop_district VALUES('1671','武冈市','187');
+INSERT INTO met_shop_district VALUES('1672','岳阳楼区','188');
+INSERT INTO met_shop_district VALUES('1673','云溪区','188');
+INSERT INTO met_shop_district VALUES('1674','君山区','188');
+INSERT INTO met_shop_district VALUES('1675','岳阳县','188');
+INSERT INTO met_shop_district VALUES('1676','华容县','188');
+INSERT INTO met_shop_district VALUES('1677','湘阴县','188');
+INSERT INTO met_shop_district VALUES('1678','平江县','188');
+INSERT INTO met_shop_district VALUES('1679','汨罗市','188');
+INSERT INTO met_shop_district VALUES('1680','临湘市','188');
+INSERT INTO met_shop_district VALUES('1681','武陵区','189');
+INSERT INTO met_shop_district VALUES('1682','鼎城区','189');
+INSERT INTO met_shop_district VALUES('1683','安乡县','189');
+INSERT INTO met_shop_district VALUES('1684','汉寿县','189');
+INSERT INTO met_shop_district VALUES('1685','澧县','189');
+INSERT INTO met_shop_district VALUES('1686','临澧县','189');
+INSERT INTO met_shop_district VALUES('1687','桃源县','189');
+INSERT INTO met_shop_district VALUES('1688','石门县','189');
+INSERT INTO met_shop_district VALUES('1689','津市市','189');
+INSERT INTO met_shop_district VALUES('1690','永定区','190');
+INSERT INTO met_shop_district VALUES('1691','武陵源区','190');
+INSERT INTO met_shop_district VALUES('1692','慈利县','190');
+INSERT INTO met_shop_district VALUES('1693','桑植县','190');
+INSERT INTO met_shop_district VALUES('1694','资阳区','191');
+INSERT INTO met_shop_district VALUES('1695','赫山区','191');
+INSERT INTO met_shop_district VALUES('1696','南县','191');
+INSERT INTO met_shop_district VALUES('1697','桃江县','191');
+INSERT INTO met_shop_district VALUES('1698','安化县','191');
+INSERT INTO met_shop_district VALUES('1699','沅江市','191');
+INSERT INTO met_shop_district VALUES('1700','北湖区','192');
+INSERT INTO met_shop_district VALUES('1701','苏仙区','192');
+INSERT INTO met_shop_district VALUES('1702','桂阳县','192');
+INSERT INTO met_shop_district VALUES('1703','宜章县','192');
+INSERT INTO met_shop_district VALUES('1704','永兴县','192');
+INSERT INTO met_shop_district VALUES('1705','嘉禾县','192');
+INSERT INTO met_shop_district VALUES('1706','临武县','192');
+INSERT INTO met_shop_district VALUES('1707','汝城县','192');
+INSERT INTO met_shop_district VALUES('1708','桂东县','192');
+INSERT INTO met_shop_district VALUES('1709','安仁县','192');
+INSERT INTO met_shop_district VALUES('1710','资兴市','192');
+INSERT INTO met_shop_district VALUES('1711','芝山区','193');
+INSERT INTO met_shop_district VALUES('1712','冷水滩区','193');
+INSERT INTO met_shop_district VALUES('1713','祁阳县','193');
+INSERT INTO met_shop_district VALUES('1714','东安县','193');
+INSERT INTO met_shop_district VALUES('1715','双牌县','193');
+INSERT INTO met_shop_district VALUES('1716','道县','193');
+INSERT INTO met_shop_district VALUES('1717','江永县','193');
+INSERT INTO met_shop_district VALUES('1718','宁远县','193');
+INSERT INTO met_shop_district VALUES('1719','蓝山县','193');
+INSERT INTO met_shop_district VALUES('1720','新田县','193');
+INSERT INTO met_shop_district VALUES('1721','江华瑶族自治县','193');
+INSERT INTO met_shop_district VALUES('1722','鹤城区','194');
+INSERT INTO met_shop_district VALUES('1723','中方县','194');
+INSERT INTO met_shop_district VALUES('1724','沅陵县','194');
+INSERT INTO met_shop_district VALUES('1725','辰溪县','194');
+INSERT INTO met_shop_district VALUES('1726','溆浦县','194');
+INSERT INTO met_shop_district VALUES('1727','会同县','194');
+INSERT INTO met_shop_district VALUES('1728','麻阳苗族自治县','194');
+INSERT INTO met_shop_district VALUES('1729','新晃侗族自治县','194');
+INSERT INTO met_shop_district VALUES('1730','芷江侗族自治县','194');
+INSERT INTO met_shop_district VALUES('1731','靖州苗族侗族自治县','194');
+INSERT INTO met_shop_district VALUES('1732','通道侗族自治县','194');
+INSERT INTO met_shop_district VALUES('1733','洪江市','194');
+INSERT INTO met_shop_district VALUES('1734','娄星区','195');
+INSERT INTO met_shop_district VALUES('1735','双峰县','195');
+INSERT INTO met_shop_district VALUES('1736','新化县','195');
+INSERT INTO met_shop_district VALUES('1737','冷水江市','195');
+INSERT INTO met_shop_district VALUES('1738','涟源市','195');
+INSERT INTO met_shop_district VALUES('1739','吉首市','196');
+INSERT INTO met_shop_district VALUES('1740','泸溪县','196');
+INSERT INTO met_shop_district VALUES('1741','凤凰县','196');
+INSERT INTO met_shop_district VALUES('1742','花垣县','196');
+INSERT INTO met_shop_district VALUES('1743','保靖县','196');
+INSERT INTO met_shop_district VALUES('1744','古丈县','196');
+INSERT INTO met_shop_district VALUES('1745','永顺县','196');
+INSERT INTO met_shop_district VALUES('1746','龙山县','196');
+INSERT INTO met_shop_district VALUES('1747','东山区','197');
+INSERT INTO met_shop_district VALUES('1748','荔湾区','197');
+INSERT INTO met_shop_district VALUES('1749','越秀区','197');
+INSERT INTO met_shop_district VALUES('1750','海珠区','197');
+INSERT INTO met_shop_district VALUES('1751','天河区','197');
+INSERT INTO met_shop_district VALUES('1752','芳村区','197');
+INSERT INTO met_shop_district VALUES('1753','白云区','197');
+INSERT INTO met_shop_district VALUES('1754','黄埔区','197');
+INSERT INTO met_shop_district VALUES('1755','番禺区','197');
+INSERT INTO met_shop_district VALUES('1756','花都区','197');
+INSERT INTO met_shop_district VALUES('1757','增城市','197');
+INSERT INTO met_shop_district VALUES('1758','从化市','197');
+INSERT INTO met_shop_district VALUES('1759','武江区','198');
+INSERT INTO met_shop_district VALUES('1760','浈江区','198');
+INSERT INTO met_shop_district VALUES('1761','曲江区','198');
+INSERT INTO met_shop_district VALUES('1762','始兴县','198');
+INSERT INTO met_shop_district VALUES('1763','仁化县','198');
+INSERT INTO met_shop_district VALUES('1764','翁源县','198');
+INSERT INTO met_shop_district VALUES('1765','乳源瑶族自治县','198');
+INSERT INTO met_shop_district VALUES('1766','新丰县','198');
+INSERT INTO met_shop_district VALUES('1767','乐昌市','198');
+INSERT INTO met_shop_district VALUES('1768','南雄市','198');
+INSERT INTO met_shop_district VALUES('1769','罗湖区','199');
+INSERT INTO met_shop_district VALUES('1770','福田区','199');
+INSERT INTO met_shop_district VALUES('1771','南山区','199');
+INSERT INTO met_shop_district VALUES('1772','宝安区','199');
+INSERT INTO met_shop_district VALUES('1773','龙岗区','199');
+INSERT INTO met_shop_district VALUES('1774','盐田区','199');
+INSERT INTO met_shop_district VALUES('1775','香洲区','200');
+INSERT INTO met_shop_district VALUES('1776','斗门区','200');
+INSERT INTO met_shop_district VALUES('1777','金湾区','200');
+INSERT INTO met_shop_district VALUES('1778','龙湖区','201');
+INSERT INTO met_shop_district VALUES('1779','金平区','201');
+INSERT INTO met_shop_district VALUES('1780','濠江区','201');
+INSERT INTO met_shop_district VALUES('1781','潮阳区','201');
+INSERT INTO met_shop_district VALUES('1782','潮南区','201');
+INSERT INTO met_shop_district VALUES('1783','澄海区','201');
+INSERT INTO met_shop_district VALUES('1784','南澳县','201');
+INSERT INTO met_shop_district VALUES('1785','禅城区','202');
+INSERT INTO met_shop_district VALUES('1786','南海区','202');
+INSERT INTO met_shop_district VALUES('1787','顺德区','202');
+INSERT INTO met_shop_district VALUES('1788','三水区','202');
+INSERT INTO met_shop_district VALUES('1789','高明区','202');
+INSERT INTO met_shop_district VALUES('1790','蓬江区','203');
+INSERT INTO met_shop_district VALUES('1791','江海区','203');
+INSERT INTO met_shop_district VALUES('1792','新会区','203');
+INSERT INTO met_shop_district VALUES('1793','台山市','203');
+INSERT INTO met_shop_district VALUES('1794','开平市','203');
+INSERT INTO met_shop_district VALUES('1795','鹤山市','203');
+INSERT INTO met_shop_district VALUES('1796','恩平市','203');
+INSERT INTO met_shop_district VALUES('1797','赤坎区','204');
+INSERT INTO met_shop_district VALUES('1798','霞山区','204');
+INSERT INTO met_shop_district VALUES('1799','坡头区','204');
+INSERT INTO met_shop_district VALUES('1800','麻章区','204');
+INSERT INTO met_shop_district VALUES('1801','遂溪县','204');
+INSERT INTO met_shop_district VALUES('1802','徐闻县','204');
+INSERT INTO met_shop_district VALUES('1803','廉江市','204');
+INSERT INTO met_shop_district VALUES('1804','雷州市','204');
+INSERT INTO met_shop_district VALUES('1805','吴川市','204');
+INSERT INTO met_shop_district VALUES('1806','茂南区','205');
+INSERT INTO met_shop_district VALUES('1807','茂港区','205');
+INSERT INTO met_shop_district VALUES('1808','电白县','205');
+INSERT INTO met_shop_district VALUES('1809','高州市','205');
+INSERT INTO met_shop_district VALUES('1810','化州市','205');
+INSERT INTO met_shop_district VALUES('1811','信宜市','205');
+INSERT INTO met_shop_district VALUES('1812','端州区','206');
+INSERT INTO met_shop_district VALUES('1813','鼎湖区','206');
+INSERT INTO met_shop_district VALUES('1814','广宁县','206');
+INSERT INTO met_shop_district VALUES('1815','怀集县','206');
+INSERT INTO met_shop_district VALUES('1816','封开县','206');
+INSERT INTO met_shop_district VALUES('1817','德庆县','206');
+INSERT INTO met_shop_district VALUES('1818','高要市','206');
+INSERT INTO met_shop_district VALUES('1819','四会市','206');
+INSERT INTO met_shop_district VALUES('1820','惠城区','207');
+INSERT INTO met_shop_district VALUES('1821','惠阳区','207');
+INSERT INTO met_shop_district VALUES('1822','博罗县','207');
+INSERT INTO met_shop_district VALUES('1823','惠东县','207');
+INSERT INTO met_shop_district VALUES('1824','龙门县','207');
+INSERT INTO met_shop_district VALUES('1825','梅江区','208');
+INSERT INTO met_shop_district VALUES('1826','梅县','208');
+INSERT INTO met_shop_district VALUES('1827','大埔县','208');
+INSERT INTO met_shop_district VALUES('1828','丰顺县','208');
+INSERT INTO met_shop_district VALUES('1829','五华县','208');
+INSERT INTO met_shop_district VALUES('1830','平远县','208');
+INSERT INTO met_shop_district VALUES('1831','蕉岭县','208');
+INSERT INTO met_shop_district VALUES('1832','兴宁市','208');
+INSERT INTO met_shop_district VALUES('1833','城区','209');
+INSERT INTO met_shop_district VALUES('1834','海丰县','209');
+INSERT INTO met_shop_district VALUES('1835','陆河县','209');
+INSERT INTO met_shop_district VALUES('1836','陆丰市','209');
+INSERT INTO met_shop_district VALUES('1837','源城区','210');
+INSERT INTO met_shop_district VALUES('1838','紫金县','210');
+INSERT INTO met_shop_district VALUES('1839','龙川县','210');
+INSERT INTO met_shop_district VALUES('1840','连平县','210');
+INSERT INTO met_shop_district VALUES('1841','和平县','210');
+INSERT INTO met_shop_district VALUES('1842','东源县','210');
+INSERT INTO met_shop_district VALUES('1843','江城区','211');
+INSERT INTO met_shop_district VALUES('1844','阳西县','211');
+INSERT INTO met_shop_district VALUES('1845','阳东县','211');
+INSERT INTO met_shop_district VALUES('1846','阳春市','211');
+INSERT INTO met_shop_district VALUES('1847','清城区','212');
+INSERT INTO met_shop_district VALUES('1848','佛冈县','212');
+INSERT INTO met_shop_district VALUES('1849','阳山县','212');
+INSERT INTO met_shop_district VALUES('1850','连山壮族瑶族自治县','212');
+INSERT INTO met_shop_district VALUES('1851','连南瑶族自治县','212');
+INSERT INTO met_shop_district VALUES('1852','清新县','212');
+INSERT INTO met_shop_district VALUES('1853','英德市','212');
+INSERT INTO met_shop_district VALUES('1854','连州市','212');
+INSERT INTO met_shop_district VALUES('1855','湘桥区','215');
+INSERT INTO met_shop_district VALUES('1856','潮安县','215');
+INSERT INTO met_shop_district VALUES('1857','饶平县','215');
+INSERT INTO met_shop_district VALUES('1858','榕城区','216');
+INSERT INTO met_shop_district VALUES('1859','揭东县','216');
+INSERT INTO met_shop_district VALUES('1860','揭西县','216');
+INSERT INTO met_shop_district VALUES('1861','惠来县','216');
+INSERT INTO met_shop_district VALUES('1862','普宁市','216');
+INSERT INTO met_shop_district VALUES('1863','云城区','217');
+INSERT INTO met_shop_district VALUES('1864','新兴县','217');
+INSERT INTO met_shop_district VALUES('1865','郁南县','217');
+INSERT INTO met_shop_district VALUES('1866','云安县','217');
+INSERT INTO met_shop_district VALUES('1867','罗定市','217');
+INSERT INTO met_shop_district VALUES('1868','兴宁区','218');
+INSERT INTO met_shop_district VALUES('1869','青秀区','218');
+INSERT INTO met_shop_district VALUES('1870','江南区','218');
+INSERT INTO met_shop_district VALUES('1871','西乡塘区','218');
+INSERT INTO met_shop_district VALUES('1872','良庆区','218');
+INSERT INTO met_shop_district VALUES('1873','邕宁区','218');
+INSERT INTO met_shop_district VALUES('1874','武鸣县','218');
+INSERT INTO met_shop_district VALUES('1875','隆安县','218');
+INSERT INTO met_shop_district VALUES('1876','马山县','218');
+INSERT INTO met_shop_district VALUES('1877','上林县','218');
+INSERT INTO met_shop_district VALUES('1878','宾阳县','218');
+INSERT INTO met_shop_district VALUES('1879','横县','218');
+INSERT INTO met_shop_district VALUES('1880','城中区','219');
+INSERT INTO met_shop_district VALUES('1881','鱼峰区','219');
+INSERT INTO met_shop_district VALUES('1882','柳南区','219');
+INSERT INTO met_shop_district VALUES('1883','柳北区','219');
+INSERT INTO met_shop_district VALUES('1884','柳江县','219');
+INSERT INTO met_shop_district VALUES('1885','柳城县','219');
+INSERT INTO met_shop_district VALUES('1886','鹿寨县','219');
+INSERT INTO met_shop_district VALUES('1887','融安县','219');
+INSERT INTO met_shop_district VALUES('1888','融水苗族自治县','219');
+INSERT INTO met_shop_district VALUES('1889','三江侗族自治县','219');
+INSERT INTO met_shop_district VALUES('1890','秀峰区','220');
+INSERT INTO met_shop_district VALUES('1891','叠彩区','220');
+INSERT INTO met_shop_district VALUES('1892','象山区','220');
+INSERT INTO met_shop_district VALUES('1893','七星区','220');
+INSERT INTO met_shop_district VALUES('1894','雁山区','220');
+INSERT INTO met_shop_district VALUES('1895','阳朔县','220');
+INSERT INTO met_shop_district VALUES('1896','临桂县','220');
+INSERT INTO met_shop_district VALUES('1897','灵川县','220');
+INSERT INTO met_shop_district VALUES('1898','全州县','220');
+INSERT INTO met_shop_district VALUES('1899','兴安县','220');
+INSERT INTO met_shop_district VALUES('1900','永福县','220');
+INSERT INTO met_shop_district VALUES('1901','灌阳县','220');
+INSERT INTO met_shop_district VALUES('1902','龙胜各族自治县','220');
+INSERT INTO met_shop_district VALUES('1903','资源县','220');
+INSERT INTO met_shop_district VALUES('1904','平乐县','220');
+INSERT INTO met_shop_district VALUES('1905','荔蒲县','220');
+INSERT INTO met_shop_district VALUES('1906','恭城瑶族自治县','220');
+INSERT INTO met_shop_district VALUES('1907','万秀区','221');
+INSERT INTO met_shop_district VALUES('1908','蝶山区','221');
+INSERT INTO met_shop_district VALUES('1909','长洲区','221');
+INSERT INTO met_shop_district VALUES('1910','苍梧县','221');
+INSERT INTO met_shop_district VALUES('1911','藤县','221');
+INSERT INTO met_shop_district VALUES('1912','蒙山县','221');
+INSERT INTO met_shop_district VALUES('1913','岑溪市','221');
+INSERT INTO met_shop_district VALUES('1914','海城区','222');
+INSERT INTO met_shop_district VALUES('1915','银海区','222');
+INSERT INTO met_shop_district VALUES('1916','铁山港区','222');
+INSERT INTO met_shop_district VALUES('1917','合浦县','222');
+INSERT INTO met_shop_district VALUES('1918','港口区','223');
+INSERT INTO met_shop_district VALUES('1919','防城区','223');
+INSERT INTO met_shop_district VALUES('1920','上思县','223');
+INSERT INTO met_shop_district VALUES('1921','东兴市','223');
+INSERT INTO met_shop_district VALUES('1922','钦南区','224');
+INSERT INTO met_shop_district VALUES('1923','钦北区','224');
+INSERT INTO met_shop_district VALUES('1924','灵山县','224');
+INSERT INTO met_shop_district VALUES('1925','浦北县','224');
+INSERT INTO met_shop_district VALUES('1926','港北区','225');
+INSERT INTO met_shop_district VALUES('1927','港南区','225');
+INSERT INTO met_shop_district VALUES('1928','覃塘区','225');
+INSERT INTO met_shop_district VALUES('1929','平南县','225');
+INSERT INTO met_shop_district VALUES('1930','桂平市','225');
+INSERT INTO met_shop_district VALUES('1931','玉州区','226');
+INSERT INTO met_shop_district VALUES('1932','容县','226');
+INSERT INTO met_shop_district VALUES('1933','陆川县','226');
+INSERT INTO met_shop_district VALUES('1934','博白县','226');
+INSERT INTO met_shop_district VALUES('1935','兴业县','226');
+INSERT INTO met_shop_district VALUES('1936','北流市','226');
+INSERT INTO met_shop_district VALUES('1937','右江区','227');
+INSERT INTO met_shop_district VALUES('1938','田阳县','227');
+INSERT INTO met_shop_district VALUES('1939','田东县','227');
+INSERT INTO met_shop_district VALUES('1940','平果县','227');
+INSERT INTO met_shop_district VALUES('1941','德保县','227');
+INSERT INTO met_shop_district VALUES('1942','靖西县','227');
+INSERT INTO met_shop_district VALUES('1943','那坡县','227');
+INSERT INTO met_shop_district VALUES('1944','凌云县','227');
+INSERT INTO met_shop_district VALUES('1945','乐业县','227');
+INSERT INTO met_shop_district VALUES('1946','田林县','227');
+INSERT INTO met_shop_district VALUES('1947','西林县','227');
+INSERT INTO met_shop_district VALUES('1948','隆林各族自治县','227');
+INSERT INTO met_shop_district VALUES('1949','八步区','228');
+INSERT INTO met_shop_district VALUES('1950','昭平县','228');
+INSERT INTO met_shop_district VALUES('1951','钟山县','228');
+INSERT INTO met_shop_district VALUES('1952','富川瑶族自治县','228');
+INSERT INTO met_shop_district VALUES('1953','金城江区','229');
+INSERT INTO met_shop_district VALUES('1954','南丹县','229');
+INSERT INTO met_shop_district VALUES('1955','天峨县','229');
+INSERT INTO met_shop_district VALUES('1956','凤山县','229');
+INSERT INTO met_shop_district VALUES('1957','东兰县','229');
+INSERT INTO met_shop_district VALUES('1958','罗城仫佬族自治县','229');
+INSERT INTO met_shop_district VALUES('1959','环江毛南族自治县','229');
+INSERT INTO met_shop_district VALUES('1960','巴马瑶族自治县','229');
+INSERT INTO met_shop_district VALUES('1961','都安瑶族自治县','229');
+INSERT INTO met_shop_district VALUES('1962','大化瑶族自治县','229');
+INSERT INTO met_shop_district VALUES('1963','宜州市','229');
+INSERT INTO met_shop_district VALUES('1964','兴宾区','230');
+INSERT INTO met_shop_district VALUES('1965','忻城县','230');
+INSERT INTO met_shop_district VALUES('1966','象州县','230');
+INSERT INTO met_shop_district VALUES('1967','武宣县','230');
+INSERT INTO met_shop_district VALUES('1968','金秀瑶族自治县','230');
+INSERT INTO met_shop_district VALUES('1969','合山市','230');
+INSERT INTO met_shop_district VALUES('1970','江洲区','231');
+INSERT INTO met_shop_district VALUES('1971','扶绥县','231');
+INSERT INTO met_shop_district VALUES('1972','宁明县','231');
+INSERT INTO met_shop_district VALUES('1973','龙州县','231');
+INSERT INTO met_shop_district VALUES('1974','大新县','231');
+INSERT INTO met_shop_district VALUES('1975','天等县','231');
+INSERT INTO met_shop_district VALUES('1976','凭祥市','231');
+INSERT INTO met_shop_district VALUES('1977','秀英区','232');
+INSERT INTO met_shop_district VALUES('1978','龙华区','232');
+INSERT INTO met_shop_district VALUES('1979','琼山区','232');
+INSERT INTO met_shop_district VALUES('1980','美兰区','232');
+INSERT INTO met_shop_district VALUES('1981','五指山市','233');
+INSERT INTO met_shop_district VALUES('1982','琼海市','233');
+INSERT INTO met_shop_district VALUES('1983','儋州市','233');
+INSERT INTO met_shop_district VALUES('1984','文昌市','233');
+INSERT INTO met_shop_district VALUES('1985','万宁市','233');
+INSERT INTO met_shop_district VALUES('1986','东方市','233');
+INSERT INTO met_shop_district VALUES('1987','定安县','233');
+INSERT INTO met_shop_district VALUES('1988','屯昌县','233');
+INSERT INTO met_shop_district VALUES('1989','澄迈县','233');
+INSERT INTO met_shop_district VALUES('1990','临高县','233');
+INSERT INTO met_shop_district VALUES('1991','白沙黎族自治县','233');
+INSERT INTO met_shop_district VALUES('1992','昌江黎族自治县','233');
+INSERT INTO met_shop_district VALUES('1993','乐东黎族自治县','233');
+INSERT INTO met_shop_district VALUES('1994','陵水黎族自治县','233');
+INSERT INTO met_shop_district VALUES('1995','保亭黎族苗族自治县','233');
+INSERT INTO met_shop_district VALUES('1996','琼中黎族苗族自治县','233');
+INSERT INTO met_shop_district VALUES('1997','西沙群岛','233');
+INSERT INTO met_shop_district VALUES('1998','南沙群岛','233');
+INSERT INTO met_shop_district VALUES('1999','中沙群岛的岛礁及其海域','233');
+INSERT INTO met_shop_district VALUES('2000','万州区','234');
+INSERT INTO met_shop_district VALUES('2001','涪陵区','234');
+INSERT INTO met_shop_district VALUES('2002','渝中区','234');
+INSERT INTO met_shop_district VALUES('2003','大渡口区','234');
+INSERT INTO met_shop_district VALUES('2004','江北区','234');
+INSERT INTO met_shop_district VALUES('2005','沙坪坝区','234');
+INSERT INTO met_shop_district VALUES('2006','九龙坡区','234');
+INSERT INTO met_shop_district VALUES('2007','南岸区','234');
+INSERT INTO met_shop_district VALUES('2008','北碚区','234');
+INSERT INTO met_shop_district VALUES('2009','万盛区','234');
+INSERT INTO met_shop_district VALUES('2010','双桥区','234');
+INSERT INTO met_shop_district VALUES('2011','渝北区','234');
+INSERT INTO met_shop_district VALUES('2012','巴南区','234');
+INSERT INTO met_shop_district VALUES('2013','黔江区','234');
+INSERT INTO met_shop_district VALUES('2014','长寿区','234');
+INSERT INTO met_shop_district VALUES('2015','綦江县','234');
+INSERT INTO met_shop_district VALUES('2016','潼南县','234');
+INSERT INTO met_shop_district VALUES('2017','铜梁县','234');
+INSERT INTO met_shop_district VALUES('2018','大足县','234');
+INSERT INTO met_shop_district VALUES('2019','荣昌县','234');
+INSERT INTO met_shop_district VALUES('2020','璧山县','234');
+INSERT INTO met_shop_district VALUES('2021','梁平县','234');
+INSERT INTO met_shop_district VALUES('2022','城口县','234');
+INSERT INTO met_shop_district VALUES('2023','丰都县','234');
+INSERT INTO met_shop_district VALUES('2024','垫江县','234');
+INSERT INTO met_shop_district VALUES('2025','武隆县','234');
+INSERT INTO met_shop_district VALUES('2026','忠县','234');
+INSERT INTO met_shop_district VALUES('2027','开县','234');
+INSERT INTO met_shop_district VALUES('2028','云阳县','234');
+INSERT INTO met_shop_district VALUES('2029','奉节县','234');
+INSERT INTO met_shop_district VALUES('2030','巫山县','234');
+INSERT INTO met_shop_district VALUES('2031','巫溪县','234');
+INSERT INTO met_shop_district VALUES('2032','石柱土家族自治县','234');
+INSERT INTO met_shop_district VALUES('2033','秀山土家族苗族自治县','234');
+INSERT INTO met_shop_district VALUES('2034','酉阳土家族苗族自治县','234');
+INSERT INTO met_shop_district VALUES('2035','彭水苗族土家族自治县','234');
+INSERT INTO met_shop_district VALUES('2036','江津市','234');
+INSERT INTO met_shop_district VALUES('2037','合川市','234');
+INSERT INTO met_shop_district VALUES('2038','永川市','234');
+INSERT INTO met_shop_district VALUES('2039','南川市','234');
+INSERT INTO met_shop_district VALUES('2040','锦江区','235');
+INSERT INTO met_shop_district VALUES('2041','青羊区','235');
+INSERT INTO met_shop_district VALUES('2042','金牛区','235');
+INSERT INTO met_shop_district VALUES('2043','武侯区','235');
+INSERT INTO met_shop_district VALUES('2044','成华区','235');
+INSERT INTO met_shop_district VALUES('2045','龙泉驿区','235');
+INSERT INTO met_shop_district VALUES('2046','青白江区','235');
+INSERT INTO met_shop_district VALUES('2047','新都区','235');
+INSERT INTO met_shop_district VALUES('2048','温江区','235');
+INSERT INTO met_shop_district VALUES('2049','金堂县','235');
+INSERT INTO met_shop_district VALUES('2050','双流县','235');
+INSERT INTO met_shop_district VALUES('2051','郫县','235');
+INSERT INTO met_shop_district VALUES('2052','大邑县','235');
+INSERT INTO met_shop_district VALUES('2053','蒲江县','235');
+INSERT INTO met_shop_district VALUES('2054','新津县','235');
+INSERT INTO met_shop_district VALUES('2055','都江堰市','235');
+INSERT INTO met_shop_district VALUES('2056','彭州市','235');
+INSERT INTO met_shop_district VALUES('2057','邛崃市','235');
+INSERT INTO met_shop_district VALUES('2058','崇州市','235');
+INSERT INTO met_shop_district VALUES('2059','自流井区','236');
+INSERT INTO met_shop_district VALUES('2060','贡井区','236');
+INSERT INTO met_shop_district VALUES('2061','大安区','236');
+INSERT INTO met_shop_district VALUES('2062','沿滩区','236');
+INSERT INTO met_shop_district VALUES('2063','荣县','236');
+INSERT INTO met_shop_district VALUES('2064','富顺县','236');
+INSERT INTO met_shop_district VALUES('2065','东区','237');
+INSERT INTO met_shop_district VALUES('2066','西区','237');
+INSERT INTO met_shop_district VALUES('2067','仁和区','237');
+INSERT INTO met_shop_district VALUES('2068','米易县','237');
+INSERT INTO met_shop_district VALUES('2069','盐边县','237');
+INSERT INTO met_shop_district VALUES('2070','江阳区','238');
+INSERT INTO met_shop_district VALUES('2071','纳溪区','238');
+INSERT INTO met_shop_district VALUES('2072','龙马潭区','238');
+INSERT INTO met_shop_district VALUES('2073','泸县','238');
+INSERT INTO met_shop_district VALUES('2074','合江县','238');
+INSERT INTO met_shop_district VALUES('2075','叙永县','238');
+INSERT INTO met_shop_district VALUES('2076','古蔺县','238');
+INSERT INTO met_shop_district VALUES('2077','旌阳区','239');
+INSERT INTO met_shop_district VALUES('2078','中江县','239');
+INSERT INTO met_shop_district VALUES('2079','罗江县','239');
+INSERT INTO met_shop_district VALUES('2080','广汉市','239');
+INSERT INTO met_shop_district VALUES('2081','什邡市','239');
+INSERT INTO met_shop_district VALUES('2082','绵竹市','239');
+INSERT INTO met_shop_district VALUES('2083','涪城区','240');
+INSERT INTO met_shop_district VALUES('2084','游仙区','240');
+INSERT INTO met_shop_district VALUES('2085','三台县','240');
+INSERT INTO met_shop_district VALUES('2086','盐亭县','240');
+INSERT INTO met_shop_district VALUES('2087','安县','240');
+INSERT INTO met_shop_district VALUES('2088','梓潼县','240');
+INSERT INTO met_shop_district VALUES('2089','北川羌族自治县','240');
+INSERT INTO met_shop_district VALUES('2090','平武县','240');
+INSERT INTO met_shop_district VALUES('2091','江油市','240');
+INSERT INTO met_shop_district VALUES('2092','市中区','241');
+INSERT INTO met_shop_district VALUES('2093','元坝区','241');
+INSERT INTO met_shop_district VALUES('2094','朝天区','241');
+INSERT INTO met_shop_district VALUES('2095','旺苍县','241');
+INSERT INTO met_shop_district VALUES('2096','青川县','241');
+INSERT INTO met_shop_district VALUES('2097','剑阁县','241');
+INSERT INTO met_shop_district VALUES('2098','苍溪县','241');
+INSERT INTO met_shop_district VALUES('2099','船山区','242');
+INSERT INTO met_shop_district VALUES('2100','安居区','242');
+INSERT INTO met_shop_district VALUES('2101','蓬溪县','242');
+INSERT INTO met_shop_district VALUES('2102','射洪县','242');
+INSERT INTO met_shop_district VALUES('2103','大英县','242');
+INSERT INTO met_shop_district VALUES('2104','市中区','243');
+INSERT INTO met_shop_district VALUES('2105','东兴区','243');
+INSERT INTO met_shop_district VALUES('2106','威远县','243');
+INSERT INTO met_shop_district VALUES('2107','资中县','243');
+INSERT INTO met_shop_district VALUES('2108','隆昌县','243');
+INSERT INTO met_shop_district VALUES('2109','市中区','244');
+INSERT INTO met_shop_district VALUES('2110','沙湾区','244');
+INSERT INTO met_shop_district VALUES('2111','五通桥区','244');
+INSERT INTO met_shop_district VALUES('2112','金口河区','244');
+INSERT INTO met_shop_district VALUES('2113','犍为县','244');
+INSERT INTO met_shop_district VALUES('2114','井研县','244');
+INSERT INTO met_shop_district VALUES('2115','夹江县','244');
+INSERT INTO met_shop_district VALUES('2116','沐川县','244');
+INSERT INTO met_shop_district VALUES('2117','峨边彝族自治县','244');
+INSERT INTO met_shop_district VALUES('2118','马边彝族自治县','244');
+INSERT INTO met_shop_district VALUES('2119','峨眉山市','244');
+INSERT INTO met_shop_district VALUES('2120','顺庆区','245');
+INSERT INTO met_shop_district VALUES('2121','高坪区','245');
+INSERT INTO met_shop_district VALUES('2122','嘉陵区','245');
+INSERT INTO met_shop_district VALUES('2123','南部县','245');
+INSERT INTO met_shop_district VALUES('2124','营山县','245');
+INSERT INTO met_shop_district VALUES('2125','蓬安县','245');
+INSERT INTO met_shop_district VALUES('2126','仪陇县','245');
+INSERT INTO met_shop_district VALUES('2127','西充县','245');
+INSERT INTO met_shop_district VALUES('2128','阆中市','245');
+INSERT INTO met_shop_district VALUES('2129','东坡区','246');
+INSERT INTO met_shop_district VALUES('2130','仁寿县','246');
+INSERT INTO met_shop_district VALUES('2131','彭山县','246');
+INSERT INTO met_shop_district VALUES('2132','洪雅县','246');
+INSERT INTO met_shop_district VALUES('2133','丹棱县','246');
+INSERT INTO met_shop_district VALUES('2134','青神县','246');
+INSERT INTO met_shop_district VALUES('2135','翠屏区','247');
+INSERT INTO met_shop_district VALUES('2136','宜宾县','247');
+INSERT INTO met_shop_district VALUES('2137','南溪县','247');
+INSERT INTO met_shop_district VALUES('2138','江安县','247');
+INSERT INTO met_shop_district VALUES('2139','长宁县','247');
+INSERT INTO met_shop_district VALUES('2140','高县','247');
+INSERT INTO met_shop_district VALUES('2141','珙县','247');
+INSERT INTO met_shop_district VALUES('2142','筠连县','247');
+INSERT INTO met_shop_district VALUES('2143','兴文县','247');
+INSERT INTO met_shop_district VALUES('2144','屏山县','247');
+INSERT INTO met_shop_district VALUES('2145','广安区','248');
+INSERT INTO met_shop_district VALUES('2146','岳池县','248');
+INSERT INTO met_shop_district VALUES('2147','武胜县','248');
+INSERT INTO met_shop_district VALUES('2148','邻水县','248');
+INSERT INTO met_shop_district VALUES('2149','华蓥市','248');
+INSERT INTO met_shop_district VALUES('2150','通川区','249');
+INSERT INTO met_shop_district VALUES('2151','达县','249');
+INSERT INTO met_shop_district VALUES('2152','宣汉县','249');
+INSERT INTO met_shop_district VALUES('2153','开江县','249');
+INSERT INTO met_shop_district VALUES('2154','大竹县','249');
+INSERT INTO met_shop_district VALUES('2155','渠县','249');
+INSERT INTO met_shop_district VALUES('2156','万源市','249');
+INSERT INTO met_shop_district VALUES('2157','雨城区','250');
+INSERT INTO met_shop_district VALUES('2158','名山县','250');
+INSERT INTO met_shop_district VALUES('2159','荥经县','250');
+INSERT INTO met_shop_district VALUES('2160','汉源县','250');
+INSERT INTO met_shop_district VALUES('2161','石棉县','250');
+INSERT INTO met_shop_district VALUES('2162','天全县','250');
+INSERT INTO met_shop_district VALUES('2163','芦山县','250');
+INSERT INTO met_shop_district VALUES('2164','宝兴县','250');
+INSERT INTO met_shop_district VALUES('2165','巴州区','251');
+INSERT INTO met_shop_district VALUES('2166','通江县','251');
+INSERT INTO met_shop_district VALUES('2167','南江县','251');
+INSERT INTO met_shop_district VALUES('2168','平昌县','251');
+INSERT INTO met_shop_district VALUES('2169','雁江区','252');
+INSERT INTO met_shop_district VALUES('2170','安岳县','252');
+INSERT INTO met_shop_district VALUES('2171','乐至县','252');
+INSERT INTO met_shop_district VALUES('2172','简阳市','252');
+INSERT INTO met_shop_district VALUES('2173','汶川县','253');
+INSERT INTO met_shop_district VALUES('2174','理县','253');
+INSERT INTO met_shop_district VALUES('2175','茂县','253');
+INSERT INTO met_shop_district VALUES('2176','松潘县','253');
+INSERT INTO met_shop_district VALUES('2177','九寨沟县','253');
+INSERT INTO met_shop_district VALUES('2178','金川县','253');
+INSERT INTO met_shop_district VALUES('2179','小金县','253');
+INSERT INTO met_shop_district VALUES('2180','黑水县','253');
+INSERT INTO met_shop_district VALUES('2181','马尔康县','253');
+INSERT INTO met_shop_district VALUES('2182','壤塘县','253');
+INSERT INTO met_shop_district VALUES('2183','阿坝县','253');
+INSERT INTO met_shop_district VALUES('2184','若尔盖县','253');
+INSERT INTO met_shop_district VALUES('2185','红原县','253');
+INSERT INTO met_shop_district VALUES('2186','康定县','254');
+INSERT INTO met_shop_district VALUES('2187','泸定县','254');
+INSERT INTO met_shop_district VALUES('2188','丹巴县','254');
+INSERT INTO met_shop_district VALUES('2189','九龙县','254');
+INSERT INTO met_shop_district VALUES('2190','雅江县','254');
+INSERT INTO met_shop_district VALUES('2191','道孚县','254');
+INSERT INTO met_shop_district VALUES('2192','炉霍县','254');
+INSERT INTO met_shop_district VALUES('2193','甘孜县','254');
+INSERT INTO met_shop_district VALUES('2194','新龙县','254');
+INSERT INTO met_shop_district VALUES('2195','德格县','254');
+INSERT INTO met_shop_district VALUES('2196','白玉县','254');
+INSERT INTO met_shop_district VALUES('2197','石渠县','254');
+INSERT INTO met_shop_district VALUES('2198','色达县','254');
+INSERT INTO met_shop_district VALUES('2199','理塘县','254');
+INSERT INTO met_shop_district VALUES('2200','巴塘县','254');
+INSERT INTO met_shop_district VALUES('2201','乡城县','254');
+INSERT INTO met_shop_district VALUES('2202','稻城县','254');
+INSERT INTO met_shop_district VALUES('2203','得荣县','254');
+INSERT INTO met_shop_district VALUES('2204','西昌市','255');
+INSERT INTO met_shop_district VALUES('2205','木里藏族自治县','255');
+INSERT INTO met_shop_district VALUES('2206','盐源县','255');
+INSERT INTO met_shop_district VALUES('2207','德昌县','255');
+INSERT INTO met_shop_district VALUES('2208','会理县','255');
+INSERT INTO met_shop_district VALUES('2209','会东县','255');
+INSERT INTO met_shop_district VALUES('2210','宁南县','255');
+INSERT INTO met_shop_district VALUES('2211','普格县','255');
+INSERT INTO met_shop_district VALUES('2212','布拖县','255');
+INSERT INTO met_shop_district VALUES('2213','金阳县','255');
+INSERT INTO met_shop_district VALUES('2214','昭觉县','255');
+INSERT INTO met_shop_district VALUES('2215','喜德县','255');
+INSERT INTO met_shop_district VALUES('2216','冕宁县','255');
+INSERT INTO met_shop_district VALUES('2217','越西县','255');
+INSERT INTO met_shop_district VALUES('2218','甘洛县','255');
+INSERT INTO met_shop_district VALUES('2219','美姑县','255');
+INSERT INTO met_shop_district VALUES('2220','雷波县','255');
+INSERT INTO met_shop_district VALUES('2221','南明区','256');
+INSERT INTO met_shop_district VALUES('2222','云岩区','256');
+INSERT INTO met_shop_district VALUES('2223','花溪区','256');
+INSERT INTO met_shop_district VALUES('2224','乌当区','256');
+INSERT INTO met_shop_district VALUES('2225','白云区','256');
+INSERT INTO met_shop_district VALUES('2226','小河区','256');
+INSERT INTO met_shop_district VALUES('2227','开阳县','256');
+INSERT INTO met_shop_district VALUES('2228','息烽县','256');
+INSERT INTO met_shop_district VALUES('2229','修文县','256');
+INSERT INTO met_shop_district VALUES('2230','清镇市','256');
+INSERT INTO met_shop_district VALUES('2231','钟山区','257');
+INSERT INTO met_shop_district VALUES('2232','六枝特区','257');
+INSERT INTO met_shop_district VALUES('2233','水城县','257');
+INSERT INTO met_shop_district VALUES('2234','盘县','257');
+INSERT INTO met_shop_district VALUES('2235','红花岗区','258');
+INSERT INTO met_shop_district VALUES('2236','汇川区','258');
+INSERT INTO met_shop_district VALUES('2237','遵义县','258');
+INSERT INTO met_shop_district VALUES('2238','桐梓县','258');
+INSERT INTO met_shop_district VALUES('2239','绥阳县','258');
+INSERT INTO met_shop_district VALUES('2240','正安县','258');
+INSERT INTO met_shop_district VALUES('2241','道真仡佬族苗族自治县','258');
+INSERT INTO met_shop_district VALUES('2242','务川仡佬族苗族自治县','258');
+INSERT INTO met_shop_district VALUES('2243','凤冈县','258');
+INSERT INTO met_shop_district VALUES('2244','湄潭县','258');
+INSERT INTO met_shop_district VALUES('2245','余庆县','258');
+INSERT INTO met_shop_district VALUES('2246','习水县','258');
+INSERT INTO met_shop_district VALUES('2247','赤水市','258');
+INSERT INTO met_shop_district VALUES('2248','仁怀市','258');
+INSERT INTO met_shop_district VALUES('2249','西秀区','259');
+INSERT INTO met_shop_district VALUES('2250','平坝县','259');
+INSERT INTO met_shop_district VALUES('2251','普定县','259');
+INSERT INTO met_shop_district VALUES('2252','镇宁布依族苗族自治县','259');
+INSERT INTO met_shop_district VALUES('2253','关岭布依族苗族自治县','259');
+INSERT INTO met_shop_district VALUES('2254','紫云苗族布依族自治县','259');
+INSERT INTO met_shop_district VALUES('2255','铜仁市','260');
+INSERT INTO met_shop_district VALUES('2256','江口县','260');
+INSERT INTO met_shop_district VALUES('2257','玉屏侗族自治县','260');
+INSERT INTO met_shop_district VALUES('2258','石阡县','260');
+INSERT INTO met_shop_district VALUES('2259','思南县','260');
+INSERT INTO met_shop_district VALUES('2260','印江土家族苗族自治县','260');
+INSERT INTO met_shop_district VALUES('2261','德江县','260');
+INSERT INTO met_shop_district VALUES('2262','沿河土家族自治县','260');
+INSERT INTO met_shop_district VALUES('2263','松桃苗族自治县','260');
+INSERT INTO met_shop_district VALUES('2264','万山特区','260');
+INSERT INTO met_shop_district VALUES('2265','兴义市','261');
+INSERT INTO met_shop_district VALUES('2266','兴仁县','261');
+INSERT INTO met_shop_district VALUES('2267','普安县','261');
+INSERT INTO met_shop_district VALUES('2268','晴隆县','261');
+INSERT INTO met_shop_district VALUES('2269','贞丰县','261');
+INSERT INTO met_shop_district VALUES('2270','望谟县','261');
+INSERT INTO met_shop_district VALUES('2271','册亨县','261');
+INSERT INTO met_shop_district VALUES('2272','安龙县','261');
+INSERT INTO met_shop_district VALUES('2273','毕节市','262');
+INSERT INTO met_shop_district VALUES('2274','大方县','262');
+INSERT INTO met_shop_district VALUES('2275','黔西县','262');
+INSERT INTO met_shop_district VALUES('2276','金沙县','262');
+INSERT INTO met_shop_district VALUES('2277','织金县','262');
+INSERT INTO met_shop_district VALUES('2278','纳雍县','262');
+INSERT INTO met_shop_district VALUES('2279','威宁彝族回族苗族自治县','262');
+INSERT INTO met_shop_district VALUES('2280','赫章县','262');
+INSERT INTO met_shop_district VALUES('2281','凯里市','263');
+INSERT INTO met_shop_district VALUES('2282','黄平县','263');
+INSERT INTO met_shop_district VALUES('2283','施秉县','263');
+INSERT INTO met_shop_district VALUES('2284','三穗县','263');
+INSERT INTO met_shop_district VALUES('2285','镇远县','263');
+INSERT INTO met_shop_district VALUES('2286','岑巩县','263');
+INSERT INTO met_shop_district VALUES('2287','天柱县','263');
+INSERT INTO met_shop_district VALUES('2288','锦屏县','263');
+INSERT INTO met_shop_district VALUES('2289','剑河县','263');
+INSERT INTO met_shop_district VALUES('2290','台江县','263');
+INSERT INTO met_shop_district VALUES('2291','黎平县','263');
+INSERT INTO met_shop_district VALUES('2292','榕江县','263');
+INSERT INTO met_shop_district VALUES('2293','从江县','263');
+INSERT INTO met_shop_district VALUES('2294','雷山县','263');
+INSERT INTO met_shop_district VALUES('2295','麻江县','263');
+INSERT INTO met_shop_district VALUES('2296','丹寨县','263');
+INSERT INTO met_shop_district VALUES('2297','都匀市','264');
+INSERT INTO met_shop_district VALUES('2298','福泉市','264');
+INSERT INTO met_shop_district VALUES('2299','荔波县','264');
+INSERT INTO met_shop_district VALUES('2300','贵定县','264');
+INSERT INTO met_shop_district VALUES('2301','瓮安县','264');
+INSERT INTO met_shop_district VALUES('2302','独山县','264');
+INSERT INTO met_shop_district VALUES('2303','平塘县','264');
+INSERT INTO met_shop_district VALUES('2304','罗甸县','264');
+INSERT INTO met_shop_district VALUES('2305','长顺县','264');
+INSERT INTO met_shop_district VALUES('2306','龙里县','264');
+INSERT INTO met_shop_district VALUES('2307','惠水县','264');
+INSERT INTO met_shop_district VALUES('2308','三都水族自治县','264');
+INSERT INTO met_shop_district VALUES('2309','五华区','265');
+INSERT INTO met_shop_district VALUES('2310','盘龙区','265');
+INSERT INTO met_shop_district VALUES('2311','官渡区','265');
+INSERT INTO met_shop_district VALUES('2312','西山区','265');
+INSERT INTO met_shop_district VALUES('2313','东川区','265');
+INSERT INTO met_shop_district VALUES('2314','呈贡县','265');
+INSERT INTO met_shop_district VALUES('2315','晋宁县','265');
+INSERT INTO met_shop_district VALUES('2316','富民县','265');
+INSERT INTO met_shop_district VALUES('2317','宜良县','265');
+INSERT INTO met_shop_district VALUES('2318','石林彝族自治县','265');
+INSERT INTO met_shop_district VALUES('2319','嵩明县','265');
+INSERT INTO met_shop_district VALUES('2320','禄劝彝族苗族自治县','265');
+INSERT INTO met_shop_district VALUES('2321','寻甸回族彝族自治县','265');
+INSERT INTO met_shop_district VALUES('2322','安宁市','265');
+INSERT INTO met_shop_district VALUES('2323','麒麟区','266');
+INSERT INTO met_shop_district VALUES('2324','马龙县','266');
+INSERT INTO met_shop_district VALUES('2325','陆良县','266');
+INSERT INTO met_shop_district VALUES('2326','师宗县','266');
+INSERT INTO met_shop_district VALUES('2327','罗平县','266');
+INSERT INTO met_shop_district VALUES('2328','富源县','266');
+INSERT INTO met_shop_district VALUES('2329','会泽县','266');
+INSERT INTO met_shop_district VALUES('2330','沾益县','266');
+INSERT INTO met_shop_district VALUES('2331','宣威市','266');
+INSERT INTO met_shop_district VALUES('2332','红塔区','267');
+INSERT INTO met_shop_district VALUES('2333','江川县','267');
+INSERT INTO met_shop_district VALUES('2334','澄江县','267');
+INSERT INTO met_shop_district VALUES('2335','通海县','267');
+INSERT INTO met_shop_district VALUES('2336','华宁县','267');
+INSERT INTO met_shop_district VALUES('2337','易门县','267');
+INSERT INTO met_shop_district VALUES('2338','峨山彝族自治县','267');
+INSERT INTO met_shop_district VALUES('2339','新平彝族傣族自治县','267');
+INSERT INTO met_shop_district VALUES('2340','元江哈尼族彝族傣族自治县','267');
+INSERT INTO met_shop_district VALUES('2341','隆阳区','268');
+INSERT INTO met_shop_district VALUES('2342','施甸县','268');
+INSERT INTO met_shop_district VALUES('2343','腾冲县','268');
+INSERT INTO met_shop_district VALUES('2344','龙陵县','268');
+INSERT INTO met_shop_district VALUES('2345','昌宁县','268');
+INSERT INTO met_shop_district VALUES('2346','昭阳区','269');
+INSERT INTO met_shop_district VALUES('2347','鲁甸县','269');
+INSERT INTO met_shop_district VALUES('2348','巧家县','269');
+INSERT INTO met_shop_district VALUES('2349','盐津县','269');
+INSERT INTO met_shop_district VALUES('2350','大关县','269');
+INSERT INTO met_shop_district VALUES('2351','永善县','269');
+INSERT INTO met_shop_district VALUES('2352','绥江县','269');
+INSERT INTO met_shop_district VALUES('2353','镇雄县','269');
+INSERT INTO met_shop_district VALUES('2354','彝良县','269');
+INSERT INTO met_shop_district VALUES('2355','威信县','269');
+INSERT INTO met_shop_district VALUES('2356','水富县','269');
+INSERT INTO met_shop_district VALUES('2357','古城区','270');
+INSERT INTO met_shop_district VALUES('2358','玉龙纳西族自治县','270');
+INSERT INTO met_shop_district VALUES('2359','永胜县','270');
+INSERT INTO met_shop_district VALUES('2360','华坪县','270');
+INSERT INTO met_shop_district VALUES('2361','宁蒗彝族自治县','270');
+INSERT INTO met_shop_district VALUES('2362','翠云区','271');
+INSERT INTO met_shop_district VALUES('2363','普洱哈尼族彝族自治县','271');
+INSERT INTO met_shop_district VALUES('2364','墨江哈尼族自治县','271');
+INSERT INTO met_shop_district VALUES('2365','景东彝族自治县','271');
+INSERT INTO met_shop_district VALUES('2366','景谷傣族彝族自治县','271');
+INSERT INTO met_shop_district VALUES('2367','镇沅彝族哈尼族拉祜族自治县','271');
+INSERT INTO met_shop_district VALUES('2368','江城哈尼族彝族自治县','271');
+INSERT INTO met_shop_district VALUES('2369','孟连傣族拉祜族佤族自治县','271');
+INSERT INTO met_shop_district VALUES('2370','澜沧拉祜族自治县','271');
+INSERT INTO met_shop_district VALUES('2371','西盟佤族自治县','271');
+INSERT INTO met_shop_district VALUES('2372','临翔区','272');
+INSERT INTO met_shop_district VALUES('2373','凤庆县','272');
+INSERT INTO met_shop_district VALUES('2374','云县','272');
+INSERT INTO met_shop_district VALUES('2375','永德县','272');
+INSERT INTO met_shop_district VALUES('2376','镇康县','272');
+INSERT INTO met_shop_district VALUES('2377','双江拉祜族佤族布朗族傣族自治县','272');
+INSERT INTO met_shop_district VALUES('2378','耿马傣族佤族自治县','272');
+INSERT INTO met_shop_district VALUES('2379','沧源佤族自治县','272');
+INSERT INTO met_shop_district VALUES('2380','楚雄市','273');
+INSERT INTO met_shop_district VALUES('2381','双柏县','273');
+INSERT INTO met_shop_district VALUES('2382','牟定县','273');
+INSERT INTO met_shop_district VALUES('2383','南华县','273');
+INSERT INTO met_shop_district VALUES('2384','姚安县','273');
+INSERT INTO met_shop_district VALUES('2385','大姚县','273');
+INSERT INTO met_shop_district VALUES('2386','永仁县','273');
+INSERT INTO met_shop_district VALUES('2387','元谋县','273');
+INSERT INTO met_shop_district VALUES('2388','武定县','273');
+INSERT INTO met_shop_district VALUES('2389','禄丰县','273');
+INSERT INTO met_shop_district VALUES('2390','个旧市','274');
+INSERT INTO met_shop_district VALUES('2391','开远市','274');
+INSERT INTO met_shop_district VALUES('2392','蒙自县','274');
+INSERT INTO met_shop_district VALUES('2393','屏边苗族自治县','274');
+INSERT INTO met_shop_district VALUES('2394','建水县','274');
+INSERT INTO met_shop_district VALUES('2395','石屏县','274');
+INSERT INTO met_shop_district VALUES('2396','弥勒县','274');
+INSERT INTO met_shop_district VALUES('2397','泸西县','274');
+INSERT INTO met_shop_district VALUES('2398','元阳县','274');
+INSERT INTO met_shop_district VALUES('2399','红河县','274');
+INSERT INTO met_shop_district VALUES('2400','金平苗族瑶族傣族自治县','274');
+INSERT INTO met_shop_district VALUES('2401','绿春县','274');
+INSERT INTO met_shop_district VALUES('2402','河口瑶族自治县','274');
+INSERT INTO met_shop_district VALUES('2403','文山县','275');
+INSERT INTO met_shop_district VALUES('2404','砚山县','275');
+INSERT INTO met_shop_district VALUES('2405','西畴县','275');
+INSERT INTO met_shop_district VALUES('2406','麻栗坡县','275');
+INSERT INTO met_shop_district VALUES('2407','马关县','275');
+INSERT INTO met_shop_district VALUES('2408','丘北县','275');
+INSERT INTO met_shop_district VALUES('2409','广南县','275');
+INSERT INTO met_shop_district VALUES('2410','富宁县','275');
+INSERT INTO met_shop_district VALUES('2411','景洪市','276');
+INSERT INTO met_shop_district VALUES('2412','勐海县','276');
+INSERT INTO met_shop_district VALUES('2413','勐腊县','276');
+INSERT INTO met_shop_district VALUES('2414','大理市','277');
+INSERT INTO met_shop_district VALUES('2415','漾濞彝族自治县','277');
+INSERT INTO met_shop_district VALUES('2416','祥云县','277');
+INSERT INTO met_shop_district VALUES('2417','宾川县','277');
+INSERT INTO met_shop_district VALUES('2418','弥渡县','277');
+INSERT INTO met_shop_district VALUES('2419','南涧彝族自治县','277');
+INSERT INTO met_shop_district VALUES('2420','巍山彝族回族自治县','277');
+INSERT INTO met_shop_district VALUES('2421','永平县','277');
+INSERT INTO met_shop_district VALUES('2422','云龙县','277');
+INSERT INTO met_shop_district VALUES('2423','洱源县','277');
+INSERT INTO met_shop_district VALUES('2424','剑川县','277');
+INSERT INTO met_shop_district VALUES('2425','鹤庆县','277');
+INSERT INTO met_shop_district VALUES('2426','瑞丽市','278');
+INSERT INTO met_shop_district VALUES('2427','潞西市','278');
+INSERT INTO met_shop_district VALUES('2428','梁河县','278');
+INSERT INTO met_shop_district VALUES('2429','盈江县','278');
+INSERT INTO met_shop_district VALUES('2430','陇川县','278');
+INSERT INTO met_shop_district VALUES('2431','泸水县','279');
+INSERT INTO met_shop_district VALUES('2432','福贡县','279');
+INSERT INTO met_shop_district VALUES('2433','贡山独龙族怒族自治县','279');
+INSERT INTO met_shop_district VALUES('2434','兰坪白族普米族自治县','279');
+INSERT INTO met_shop_district VALUES('2435','香格里拉县','280');
+INSERT INTO met_shop_district VALUES('2436','德钦县','280');
+INSERT INTO met_shop_district VALUES('2437','维西傈僳族自治县','280');
+INSERT INTO met_shop_district VALUES('2438','城关区','281');
+INSERT INTO met_shop_district VALUES('2439','林周县','281');
+INSERT INTO met_shop_district VALUES('2440','当雄县','281');
+INSERT INTO met_shop_district VALUES('2441','尼木县','281');
+INSERT INTO met_shop_district VALUES('2442','曲水县','281');
+INSERT INTO met_shop_district VALUES('2443','堆龙德庆县','281');
+INSERT INTO met_shop_district VALUES('2444','达孜县','281');
+INSERT INTO met_shop_district VALUES('2445','墨竹工卡县','281');
+INSERT INTO met_shop_district VALUES('2446','昌都县','282');
+INSERT INTO met_shop_district VALUES('2447','江达县','282');
+INSERT INTO met_shop_district VALUES('2448','贡觉县','282');
+INSERT INTO met_shop_district VALUES('2449','类乌齐县','282');
+INSERT INTO met_shop_district VALUES('2450','丁青县','282');
+INSERT INTO met_shop_district VALUES('2451','察雅县','282');
+INSERT INTO met_shop_district VALUES('2452','八宿县','282');
+INSERT INTO met_shop_district VALUES('2453','左贡县','282');
+INSERT INTO met_shop_district VALUES('2454','芒康县','282');
+INSERT INTO met_shop_district VALUES('2455','洛隆县','282');
+INSERT INTO met_shop_district VALUES('2456','边坝县','282');
+INSERT INTO met_shop_district VALUES('2457','乃东县','283');
+INSERT INTO met_shop_district VALUES('2458','扎囊县','283');
+INSERT INTO met_shop_district VALUES('2459','贡嘎县','283');
+INSERT INTO met_shop_district VALUES('2460','桑日县','283');
+INSERT INTO met_shop_district VALUES('2461','琼结县','283');
+INSERT INTO met_shop_district VALUES('2462','曲松县','283');
+INSERT INTO met_shop_district VALUES('2463','措美县','283');
+INSERT INTO met_shop_district VALUES('2464','洛扎县','283');
+INSERT INTO met_shop_district VALUES('2465','加查县','283');
+INSERT INTO met_shop_district VALUES('2466','隆子县','283');
+INSERT INTO met_shop_district VALUES('2467','错那县','283');
+INSERT INTO met_shop_district VALUES('2468','浪卡子县','283');
+INSERT INTO met_shop_district VALUES('2469','日喀则市','284');
+INSERT INTO met_shop_district VALUES('2470','南木林县','284');
+INSERT INTO met_shop_district VALUES('2471','江孜县','284');
+INSERT INTO met_shop_district VALUES('2472','定日县','284');
+INSERT INTO met_shop_district VALUES('2473','萨迦县','284');
+INSERT INTO met_shop_district VALUES('2474','拉孜县','284');
+INSERT INTO met_shop_district VALUES('2475','昂仁县','284');
+INSERT INTO met_shop_district VALUES('2476','谢通门县','284');
+INSERT INTO met_shop_district VALUES('2477','白朗县','284');
+INSERT INTO met_shop_district VALUES('2478','仁布县','284');
+INSERT INTO met_shop_district VALUES('2479','康马县','284');
+INSERT INTO met_shop_district VALUES('2480','定结县','284');
+INSERT INTO met_shop_district VALUES('2481','仲巴县','284');
+INSERT INTO met_shop_district VALUES('2482','亚东县','284');
+INSERT INTO met_shop_district VALUES('2483','吉隆县','284');
+INSERT INTO met_shop_district VALUES('2484','聂拉木县','284');
+INSERT INTO met_shop_district VALUES('2485','萨嘎县','284');
+INSERT INTO met_shop_district VALUES('2486','岗巴县','284');
+INSERT INTO met_shop_district VALUES('2487','那曲县','285');
+INSERT INTO met_shop_district VALUES('2488','嘉黎县','285');
+INSERT INTO met_shop_district VALUES('2489','比如县','285');
+INSERT INTO met_shop_district VALUES('2490','聂荣县','285');
+INSERT INTO met_shop_district VALUES('2491','安多县','285');
+INSERT INTO met_shop_district VALUES('2492','申扎县','285');
+INSERT INTO met_shop_district VALUES('2493','索县','285');
+INSERT INTO met_shop_district VALUES('2494','班戈县','285');
+INSERT INTO met_shop_district VALUES('2495','巴青县','285');
+INSERT INTO met_shop_district VALUES('2496','尼玛县','285');
+INSERT INTO met_shop_district VALUES('2497','普兰县','286');
+INSERT INTO met_shop_district VALUES('2498','札达县','286');
+INSERT INTO met_shop_district VALUES('2499','噶尔县','286');
+INSERT INTO met_shop_district VALUES('2500','日土县','286');
+INSERT INTO met_shop_district VALUES('2501','革吉县','286');
+INSERT INTO met_shop_district VALUES('2502','改则县','286');
+INSERT INTO met_shop_district VALUES('2503','措勤县','286');
+INSERT INTO met_shop_district VALUES('2504','林芝县','287');
+INSERT INTO met_shop_district VALUES('2505','工布江达县','287');
+INSERT INTO met_shop_district VALUES('2506','米林县','287');
+INSERT INTO met_shop_district VALUES('2507','墨脱县','287');
+INSERT INTO met_shop_district VALUES('2508','波密县','287');
+INSERT INTO met_shop_district VALUES('2509','察隅县','287');
+INSERT INTO met_shop_district VALUES('2510','朗县','287');
+INSERT INTO met_shop_district VALUES('2511','新城区','288');
+INSERT INTO met_shop_district VALUES('2512','碑林区','288');
+INSERT INTO met_shop_district VALUES('2513','莲湖区','288');
+INSERT INTO met_shop_district VALUES('2514','灞桥区','288');
+INSERT INTO met_shop_district VALUES('2515','未央区','288');
+INSERT INTO met_shop_district VALUES('2516','雁塔区','288');
+INSERT INTO met_shop_district VALUES('2517','阎良区','288');
+INSERT INTO met_shop_district VALUES('2518','临潼区','288');
+INSERT INTO met_shop_district VALUES('2519','长安区','288');
+INSERT INTO met_shop_district VALUES('2520','蓝田县','288');
+INSERT INTO met_shop_district VALUES('2521','周至县','288');
+INSERT INTO met_shop_district VALUES('2522','户县','288');
+INSERT INTO met_shop_district VALUES('2523','高陵县','288');
+INSERT INTO met_shop_district VALUES('2524','王益区','289');
+INSERT INTO met_shop_district VALUES('2525','印台区','289');
+INSERT INTO met_shop_district VALUES('2526','耀州区','289');
+INSERT INTO met_shop_district VALUES('2527','宜君县','289');
+INSERT INTO met_shop_district VALUES('2528','渭滨区','290');
+INSERT INTO met_shop_district VALUES('2529','金台区','290');
+INSERT INTO met_shop_district VALUES('2530','陈仓区','290');
+INSERT INTO met_shop_district VALUES('2531','凤翔县','290');
+INSERT INTO met_shop_district VALUES('2532','岐山县','290');
+INSERT INTO met_shop_district VALUES('2533','扶风县','290');
+INSERT INTO met_shop_district VALUES('2534','眉县','290');
+INSERT INTO met_shop_district VALUES('2535','陇县','290');
+INSERT INTO met_shop_district VALUES('2536','千阳县','290');
+INSERT INTO met_shop_district VALUES('2537','麟游县','290');
+INSERT INTO met_shop_district VALUES('2538','凤县','290');
+INSERT INTO met_shop_district VALUES('2539','太白县','290');
+INSERT INTO met_shop_district VALUES('2540','秦都区','291');
+INSERT INTO met_shop_district VALUES('2541','杨凌区','291');
+INSERT INTO met_shop_district VALUES('2542','渭城区','291');
+INSERT INTO met_shop_district VALUES('2543','三原县','291');
+INSERT INTO met_shop_district VALUES('2544','泾阳县','291');
+INSERT INTO met_shop_district VALUES('2545','乾县','291');
+INSERT INTO met_shop_district VALUES('2546','礼泉县','291');
+INSERT INTO met_shop_district VALUES('2547','永寿县','291');
+INSERT INTO met_shop_district VALUES('2548','彬县','291');
+INSERT INTO met_shop_district VALUES('2549','长武县','291');
+INSERT INTO met_shop_district VALUES('2550','旬邑县','291');
+INSERT INTO met_shop_district VALUES('2551','淳化县','291');
+INSERT INTO met_shop_district VALUES('2552','武功县','291');
+INSERT INTO met_shop_district VALUES('2553','兴平市','291');
+INSERT INTO met_shop_district VALUES('2554','临渭区','292');
+INSERT INTO met_shop_district VALUES('2555','华县','292');
+INSERT INTO met_shop_district VALUES('2556','潼关县','292');
+INSERT INTO met_shop_district VALUES('2557','大荔县','292');
+INSERT INTO met_shop_district VALUES('2558','合阳县','292');
+INSERT INTO met_shop_district VALUES('2559','澄城县','292');
+INSERT INTO met_shop_district VALUES('2560','蒲城县','292');
+INSERT INTO met_shop_district VALUES('2561','白水县','292');
+INSERT INTO met_shop_district VALUES('2562','富平县','292');
+INSERT INTO met_shop_district VALUES('2563','韩城市','292');
+INSERT INTO met_shop_district VALUES('2564','华阴市','292');
+INSERT INTO met_shop_district VALUES('2565','宝塔区','293');
+INSERT INTO met_shop_district VALUES('2566','延长县','293');
+INSERT INTO met_shop_district VALUES('2567','延川县','293');
+INSERT INTO met_shop_district VALUES('2568','子长县','293');
+INSERT INTO met_shop_district VALUES('2569','安塞县','293');
+INSERT INTO met_shop_district VALUES('2570','志丹县','293');
+INSERT INTO met_shop_district VALUES('2571','吴旗县','293');
+INSERT INTO met_shop_district VALUES('2572','甘泉县','293');
+INSERT INTO met_shop_district VALUES('2573','富县','293');
+INSERT INTO met_shop_district VALUES('2574','洛川县','293');
+INSERT INTO met_shop_district VALUES('2575','宜川县','293');
+INSERT INTO met_shop_district VALUES('2576','黄龙县','293');
+INSERT INTO met_shop_district VALUES('2577','黄陵县','293');
+INSERT INTO met_shop_district VALUES('2578','汉台区','294');
+INSERT INTO met_shop_district VALUES('2579','南郑县','294');
+INSERT INTO met_shop_district VALUES('2580','城固县','294');
+INSERT INTO met_shop_district VALUES('2581','洋县','294');
+INSERT INTO met_shop_district VALUES('2582','西乡县','294');
+INSERT INTO met_shop_district VALUES('2583','勉县','294');
+INSERT INTO met_shop_district VALUES('2584','宁强县','294');
+INSERT INTO met_shop_district VALUES('2585','略阳县','294');
+INSERT INTO met_shop_district VALUES('2586','镇巴县','294');
+INSERT INTO met_shop_district VALUES('2587','留坝县','294');
+INSERT INTO met_shop_district VALUES('2588','佛坪县','294');
+INSERT INTO met_shop_district VALUES('2589','榆阳区','295');
+INSERT INTO met_shop_district VALUES('2590','神木县','295');
+INSERT INTO met_shop_district VALUES('2591','府谷县','295');
+INSERT INTO met_shop_district VALUES('2592','横山县','295');
+INSERT INTO met_shop_district VALUES('2593','靖边县','295');
+INSERT INTO met_shop_district VALUES('2594','定边县','295');
+INSERT INTO met_shop_district VALUES('2595','绥德县','295');
+INSERT INTO met_shop_district VALUES('2596','米脂县','295');
+INSERT INTO met_shop_district VALUES('2597','佳县','295');
+INSERT INTO met_shop_district VALUES('2598','吴堡县','295');
+INSERT INTO met_shop_district VALUES('2599','清涧县','295');
+INSERT INTO met_shop_district VALUES('2600','子洲县','295');
+INSERT INTO met_shop_district VALUES('2601','汉滨区','296');
+INSERT INTO met_shop_district VALUES('2602','汉阴县','296');
+INSERT INTO met_shop_district VALUES('2603','石泉县','296');
+INSERT INTO met_shop_district VALUES('2604','宁陕县','296');
+INSERT INTO met_shop_district VALUES('2605','紫阳县','296');
+INSERT INTO met_shop_district VALUES('2606','岚皋县','296');
+INSERT INTO met_shop_district VALUES('2607','平利县','296');
+INSERT INTO met_shop_district VALUES('2608','镇坪县','296');
+INSERT INTO met_shop_district VALUES('2609','旬阳县','296');
+INSERT INTO met_shop_district VALUES('2610','白河县','296');
+INSERT INTO met_shop_district VALUES('2611','商州区','297');
+INSERT INTO met_shop_district VALUES('2612','洛南县','297');
+INSERT INTO met_shop_district VALUES('2613','丹凤县','297');
+INSERT INTO met_shop_district VALUES('2614','商南县','297');
+INSERT INTO met_shop_district VALUES('2615','山阳县','297');
+INSERT INTO met_shop_district VALUES('2616','镇安县','297');
+INSERT INTO met_shop_district VALUES('2617','柞水县','297');
+INSERT INTO met_shop_district VALUES('2618','城关区','298');
+INSERT INTO met_shop_district VALUES('2619','七里河区','298');
+INSERT INTO met_shop_district VALUES('2620','西固区','298');
+INSERT INTO met_shop_district VALUES('2621','安宁区','298');
+INSERT INTO met_shop_district VALUES('2622','红古区','298');
+INSERT INTO met_shop_district VALUES('2623','永登县','298');
+INSERT INTO met_shop_district VALUES('2624','皋兰县','298');
+INSERT INTO met_shop_district VALUES('2625','榆中县','298');
+INSERT INTO met_shop_district VALUES('2626','金川区','300');
+INSERT INTO met_shop_district VALUES('2627','永昌县','300');
+INSERT INTO met_shop_district VALUES('2628','白银区','301');
+INSERT INTO met_shop_district VALUES('2629','平川区','301');
+INSERT INTO met_shop_district VALUES('2630','靖远县','301');
+INSERT INTO met_shop_district VALUES('2631','会宁县','301');
+INSERT INTO met_shop_district VALUES('2632','景泰县','301');
+INSERT INTO met_shop_district VALUES('2633','秦城区','302');
+INSERT INTO met_shop_district VALUES('2634','北道区','302');
+INSERT INTO met_shop_district VALUES('2635','清水县','302');
+INSERT INTO met_shop_district VALUES('2636','秦安县','302');
+INSERT INTO met_shop_district VALUES('2637','甘谷县','302');
+INSERT INTO met_shop_district VALUES('2638','武山县','302');
+INSERT INTO met_shop_district VALUES('2639','张家川回族自治县','302');
+INSERT INTO met_shop_district VALUES('2640','凉州区','303');
+INSERT INTO met_shop_district VALUES('2641','民勤县','303');
+INSERT INTO met_shop_district VALUES('2642','古浪县','303');
+INSERT INTO met_shop_district VALUES('2643','天祝藏族自治县','303');
+INSERT INTO met_shop_district VALUES('2644','甘州区','304');
+INSERT INTO met_shop_district VALUES('2645','肃南裕固族自治县','304');
+INSERT INTO met_shop_district VALUES('2646','民乐县','304');
+INSERT INTO met_shop_district VALUES('2647','临泽县','304');
+INSERT INTO met_shop_district VALUES('2648','高台县','304');
+INSERT INTO met_shop_district VALUES('2649','山丹县','304');
+INSERT INTO met_shop_district VALUES('2650','崆峒区','305');
+INSERT INTO met_shop_district VALUES('2651','泾川县','305');
+INSERT INTO met_shop_district VALUES('2652','灵台县','305');
+INSERT INTO met_shop_district VALUES('2653','崇信县','305');
+INSERT INTO met_shop_district VALUES('2654','华亭县','305');
+INSERT INTO met_shop_district VALUES('2655','庄浪县','305');
+INSERT INTO met_shop_district VALUES('2656','静宁县','305');
+INSERT INTO met_shop_district VALUES('2657','肃州区','306');
+INSERT INTO met_shop_district VALUES('2658','金塔县','306');
+INSERT INTO met_shop_district VALUES('2659','安西县','306');
+INSERT INTO met_shop_district VALUES('2660','肃北蒙古族自治县','306');
+INSERT INTO met_shop_district VALUES('2661','阿克塞哈萨克族自治县','306');
+INSERT INTO met_shop_district VALUES('2662','玉门市','306');
+INSERT INTO met_shop_district VALUES('2663','敦煌市','306');
+INSERT INTO met_shop_district VALUES('2664','西峰区','307');
+INSERT INTO met_shop_district VALUES('2665','庆城县','307');
+INSERT INTO met_shop_district VALUES('2666','环县','307');
+INSERT INTO met_shop_district VALUES('2667','华池县','307');
+INSERT INTO met_shop_district VALUES('2668','合水县','307');
+INSERT INTO met_shop_district VALUES('2669','正宁县','307');
+INSERT INTO met_shop_district VALUES('2670','宁县','307');
+INSERT INTO met_shop_district VALUES('2671','镇原县','307');
+INSERT INTO met_shop_district VALUES('2672','安定区','308');
+INSERT INTO met_shop_district VALUES('2673','通渭县','308');
+INSERT INTO met_shop_district VALUES('2674','陇西县','308');
+INSERT INTO met_shop_district VALUES('2675','渭源县','308');
+INSERT INTO met_shop_district VALUES('2676','临洮县','308');
+INSERT INTO met_shop_district VALUES('2677','漳县','308');
+INSERT INTO met_shop_district VALUES('2678','岷县','308');
+INSERT INTO met_shop_district VALUES('2679','武都区','309');
+INSERT INTO met_shop_district VALUES('2680','成县','309');
+INSERT INTO met_shop_district VALUES('2681','文县','309');
+INSERT INTO met_shop_district VALUES('2682','宕昌县','309');
+INSERT INTO met_shop_district VALUES('2683','康县','309');
+INSERT INTO met_shop_district VALUES('2684','西和县','309');
+INSERT INTO met_shop_district VALUES('2685','礼县','309');
+INSERT INTO met_shop_district VALUES('2686','徽县','309');
+INSERT INTO met_shop_district VALUES('2687','两当县','309');
+INSERT INTO met_shop_district VALUES('2688','临夏市','310');
+INSERT INTO met_shop_district VALUES('2689','临夏县','310');
+INSERT INTO met_shop_district VALUES('2690','康乐县','310');
+INSERT INTO met_shop_district VALUES('2691','永靖县','310');
+INSERT INTO met_shop_district VALUES('2692','广河县','310');
+INSERT INTO met_shop_district VALUES('2693','和政县','310');
+INSERT INTO met_shop_district VALUES('2694','东乡族自治县','310');
+INSERT INTO met_shop_district VALUES('2695','积石山保安族东乡族撒拉族自治县','310');
+INSERT INTO met_shop_district VALUES('2696','合作市','311');
+INSERT INTO met_shop_district VALUES('2697','临潭县','311');
+INSERT INTO met_shop_district VALUES('2698','卓尼县','311');
+INSERT INTO met_shop_district VALUES('2699','舟曲县','311');
+INSERT INTO met_shop_district VALUES('2700','迭部县','311');
+INSERT INTO met_shop_district VALUES('2701','玛曲县','311');
+INSERT INTO met_shop_district VALUES('2702','碌曲县','311');
+INSERT INTO met_shop_district VALUES('2703','夏河县','311');
+INSERT INTO met_shop_district VALUES('2704','城东区','312');
+INSERT INTO met_shop_district VALUES('2705','城中区','312');
+INSERT INTO met_shop_district VALUES('2706','城西区','312');
+INSERT INTO met_shop_district VALUES('2707','城北区','312');
+INSERT INTO met_shop_district VALUES('2708','大通回族土族自治县','312');
+INSERT INTO met_shop_district VALUES('2709','湟中县','312');
+INSERT INTO met_shop_district VALUES('2710','湟源县','312');
+INSERT INTO met_shop_district VALUES('2711','平安县','313');
+INSERT INTO met_shop_district VALUES('2712','民和回族土族自治县','313');
+INSERT INTO met_shop_district VALUES('2713','乐都县','313');
+INSERT INTO met_shop_district VALUES('2714','互助土族自治县','313');
+INSERT INTO met_shop_district VALUES('2715','化隆回族自治县','313');
+INSERT INTO met_shop_district VALUES('2716','循化撒拉族自治县','313');
+INSERT INTO met_shop_district VALUES('2717','门源回族自治县','314');
+INSERT INTO met_shop_district VALUES('2718','祁连县','314');
+INSERT INTO met_shop_district VALUES('2719','海晏县','314');
+INSERT INTO met_shop_district VALUES('2720','刚察县','314');
+INSERT INTO met_shop_district VALUES('2721','同仁县','315');
+INSERT INTO met_shop_district VALUES('2722','尖扎县','315');
+INSERT INTO met_shop_district VALUES('2723','泽库县','315');
+INSERT INTO met_shop_district VALUES('2724','河南蒙古族自治县','315');
+INSERT INTO met_shop_district VALUES('2725','共和县','316');
+INSERT INTO met_shop_district VALUES('2726','同德县','316');
+INSERT INTO met_shop_district VALUES('2727','贵德县','316');
+INSERT INTO met_shop_district VALUES('2728','兴海县','316');
+INSERT INTO met_shop_district VALUES('2729','贵南县','316');
+INSERT INTO met_shop_district VALUES('2730','玛沁县','317');
+INSERT INTO met_shop_district VALUES('2731','班玛县','317');
+INSERT INTO met_shop_district VALUES('2732','甘德县','317');
+INSERT INTO met_shop_district VALUES('2733','达日县','317');
+INSERT INTO met_shop_district VALUES('2734','久治县','317');
+INSERT INTO met_shop_district VALUES('2735','玛多县','317');
+INSERT INTO met_shop_district VALUES('2736','玉树县','318');
+INSERT INTO met_shop_district VALUES('2737','杂多县','318');
+INSERT INTO met_shop_district VALUES('2738','称多县','318');
+INSERT INTO met_shop_district VALUES('2739','治多县','318');
+INSERT INTO met_shop_district VALUES('2740','囊谦县','318');
+INSERT INTO met_shop_district VALUES('2741','曲麻莱县','318');
+INSERT INTO met_shop_district VALUES('2742','格尔木市','319');
+INSERT INTO met_shop_district VALUES('2743','德令哈市','319');
+INSERT INTO met_shop_district VALUES('2744','乌兰县','319');
+INSERT INTO met_shop_district VALUES('2745','都兰县','319');
+INSERT INTO met_shop_district VALUES('2746','天峻县','319');
+INSERT INTO met_shop_district VALUES('2747','兴庆区','320');
+INSERT INTO met_shop_district VALUES('2748','西夏区','320');
+INSERT INTO met_shop_district VALUES('2749','金凤区','320');
+INSERT INTO met_shop_district VALUES('2750','永宁县','320');
+INSERT INTO met_shop_district VALUES('2751','贺兰县','320');
+INSERT INTO met_shop_district VALUES('2752','灵武市','320');
+INSERT INTO met_shop_district VALUES('2753','大武口区','321');
+INSERT INTO met_shop_district VALUES('2754','惠农区','321');
+INSERT INTO met_shop_district VALUES('2755','平罗县','321');
+INSERT INTO met_shop_district VALUES('2756','利通区','322');
+INSERT INTO met_shop_district VALUES('2757','盐池县','322');
+INSERT INTO met_shop_district VALUES('2758','同心县','322');
+INSERT INTO met_shop_district VALUES('2759','青铜峡市','322');
+INSERT INTO met_shop_district VALUES('2760','原州区','323');
+INSERT INTO met_shop_district VALUES('2761','西吉县','323');
+INSERT INTO met_shop_district VALUES('2762','隆德县','323');
+INSERT INTO met_shop_district VALUES('2763','泾源县','323');
+INSERT INTO met_shop_district VALUES('2764','彭阳县','323');
+INSERT INTO met_shop_district VALUES('2765','沙坡头区','324');
+INSERT INTO met_shop_district VALUES('2766','中宁县','324');
+INSERT INTO met_shop_district VALUES('2767','海原县','324');
+INSERT INTO met_shop_district VALUES('2768','天山区','325');
+INSERT INTO met_shop_district VALUES('2769','沙依巴克区','325');
+INSERT INTO met_shop_district VALUES('2770','新市区','325');
+INSERT INTO met_shop_district VALUES('2771','水磨沟区','325');
+INSERT INTO met_shop_district VALUES('2772','头屯河区','325');
+INSERT INTO met_shop_district VALUES('2773','达坂城区','325');
+INSERT INTO met_shop_district VALUES('2774','东山区','325');
+INSERT INTO met_shop_district VALUES('2775','乌鲁木齐县','325');
+INSERT INTO met_shop_district VALUES('2776','独山子区','326');
+INSERT INTO met_shop_district VALUES('2777','克拉玛依区','326');
+INSERT INTO met_shop_district VALUES('2778','白碱滩区','326');
+INSERT INTO met_shop_district VALUES('2779','乌尔禾区','326');
+INSERT INTO met_shop_district VALUES('2780','吐鲁番市','327');
+INSERT INTO met_shop_district VALUES('2781','鄯善县','327');
+INSERT INTO met_shop_district VALUES('2782','托克逊县','327');
+INSERT INTO met_shop_district VALUES('2783','哈密市','328');
+INSERT INTO met_shop_district VALUES('2784','巴里坤哈萨克自治县','328');
+INSERT INTO met_shop_district VALUES('2785','伊吾县','328');
+INSERT INTO met_shop_district VALUES('2786','昌吉市','329');
+INSERT INTO met_shop_district VALUES('2787','阜康市','329');
+INSERT INTO met_shop_district VALUES('2788','米泉市','329');
+INSERT INTO met_shop_district VALUES('2789','呼图壁县','329');
+INSERT INTO met_shop_district VALUES('2790','玛纳斯县','329');
+INSERT INTO met_shop_district VALUES('2791','奇台县','329');
+INSERT INTO met_shop_district VALUES('2792','吉木萨尔县','329');
+INSERT INTO met_shop_district VALUES('2793','木垒哈萨克自治县','329');
+INSERT INTO met_shop_district VALUES('2794','博乐市','330');
+INSERT INTO met_shop_district VALUES('2795','精河县','330');
+INSERT INTO met_shop_district VALUES('2796','温泉县','330');
+INSERT INTO met_shop_district VALUES('2797','库尔勒市','331');
+INSERT INTO met_shop_district VALUES('2798','轮台县','331');
+INSERT INTO met_shop_district VALUES('2799','尉犁县','331');
+INSERT INTO met_shop_district VALUES('2800','若羌县','331');
+INSERT INTO met_shop_district VALUES('2801','且末县','331');
+INSERT INTO met_shop_district VALUES('2802','焉耆回族自治县','331');
+INSERT INTO met_shop_district VALUES('2803','和静县','331');
+INSERT INTO met_shop_district VALUES('2804','和硕县','331');
+INSERT INTO met_shop_district VALUES('2805','博湖县','331');
+INSERT INTO met_shop_district VALUES('2806','阿克苏市','332');
+INSERT INTO met_shop_district VALUES('2807','温宿县','332');
+INSERT INTO met_shop_district VALUES('2808','库车县','332');
+INSERT INTO met_shop_district VALUES('2809','沙雅县','332');
+INSERT INTO met_shop_district VALUES('2810','新和县','332');
+INSERT INTO met_shop_district VALUES('2811','拜城县','332');
+INSERT INTO met_shop_district VALUES('2812','乌什县','332');
+INSERT INTO met_shop_district VALUES('2813','阿瓦提县','332');
+INSERT INTO met_shop_district VALUES('2814','柯坪县','332');
+INSERT INTO met_shop_district VALUES('2815','阿图什市','333');
+INSERT INTO met_shop_district VALUES('2816','阿克陶县','333');
+INSERT INTO met_shop_district VALUES('2817','阿合奇县','333');
+INSERT INTO met_shop_district VALUES('2818','乌恰县','333');
+INSERT INTO met_shop_district VALUES('2819','喀什市','334');
+INSERT INTO met_shop_district VALUES('2820','疏附县','334');
+INSERT INTO met_shop_district VALUES('2821','疏勒县','334');
+INSERT INTO met_shop_district VALUES('2822','英吉沙县','334');
+INSERT INTO met_shop_district VALUES('2823','泽普县','334');
+INSERT INTO met_shop_district VALUES('2824','莎车县','334');
+INSERT INTO met_shop_district VALUES('2825','叶城县','334');
+INSERT INTO met_shop_district VALUES('2826','麦盖提县','334');
+INSERT INTO met_shop_district VALUES('2827','岳普湖县','334');
+INSERT INTO met_shop_district VALUES('2828','伽师县','334');
+INSERT INTO met_shop_district VALUES('2829','巴楚县','334');
+INSERT INTO met_shop_district VALUES('2830','塔什库尔干塔吉克自治县','334');
+INSERT INTO met_shop_district VALUES('2831','和田市','335');
+INSERT INTO met_shop_district VALUES('2832','和田县','335');
+INSERT INTO met_shop_district VALUES('2833','墨玉县','335');
+INSERT INTO met_shop_district VALUES('2834','皮山县','335');
+INSERT INTO met_shop_district VALUES('2835','洛浦县','335');
+INSERT INTO met_shop_district VALUES('2836','策勒县','335');
+INSERT INTO met_shop_district VALUES('2837','于田县','335');
+INSERT INTO met_shop_district VALUES('2838','民丰县','335');
+INSERT INTO met_shop_district VALUES('2839','伊宁市','336');
+INSERT INTO met_shop_district VALUES('2840','奎屯市','336');
+INSERT INTO met_shop_district VALUES('2841','伊宁县','336');
+INSERT INTO met_shop_district VALUES('2842','察布查尔锡伯自治县','336');
+INSERT INTO met_shop_district VALUES('2843','霍城县','336');
+INSERT INTO met_shop_district VALUES('2844','巩留县','336');
+INSERT INTO met_shop_district VALUES('2845','新源县','336');
+INSERT INTO met_shop_district VALUES('2846','昭苏县','336');
+INSERT INTO met_shop_district VALUES('2847','特克斯县','336');
+INSERT INTO met_shop_district VALUES('2848','尼勒克县','336');
+INSERT INTO met_shop_district VALUES('2849','塔城市','337');
+INSERT INTO met_shop_district VALUES('2850','乌苏市','337');
+INSERT INTO met_shop_district VALUES('2851','额敏县','337');
+INSERT INTO met_shop_district VALUES('2852','沙湾县','337');
+INSERT INTO met_shop_district VALUES('2853','托里县','337');
+INSERT INTO met_shop_district VALUES('2854','裕民县','337');
+INSERT INTO met_shop_district VALUES('2855','和布克赛尔蒙古自治县','337');
+INSERT INTO met_shop_district VALUES('2856','阿勒泰市','338');
+INSERT INTO met_shop_district VALUES('2857','布尔津县','338');
+INSERT INTO met_shop_district VALUES('2858','富蕴县','338');
+INSERT INTO met_shop_district VALUES('2859','福海县','338');
+INSERT INTO met_shop_district VALUES('2860','哈巴河县','338');
+INSERT INTO met_shop_district VALUES('2861','青河县','338');
+INSERT INTO met_shop_district VALUES('2862','吉木乃县','338');
+
+DROP TABLE IF EXISTS met_shop_journal;
+CREATE TABLE `met_shop_journal` (
+  `id` int(11) NOT NULL auto_increment,
+  `alipay_id` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `time` int(11) NOT NULL,
+  `state` int(1) NOT NULL,
+  `cost` float NOT NULL,
+  `balance` float NOT NULL,
+  `remark` varchar(255) NOT NULL,
+  `lang` varchar(50) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_journal VALUES('1','2012120674611362','1','admin','1354758458','2','0.01','0.01','订单20121206092925745682充值,支付宝号：2012120674611362','');
+INSERT INTO met_shop_journal VALUES('2','','1','admin','1354758458','1','0.01','0','订单20121206092925745682扣款','');
+INSERT INTO met_shop_journal VALUES('3','2012120674778162','1','admin','1354762514','2','0.01','0.01','用户充值,支付宝号:2012120674778162','');
+INSERT INTO met_shop_journal VALUES('4','11111111','1','admin','1354763067','2','11','11.01','用户充值,支付宝号:11111111','');
+INSERT INTO met_shop_journal VALUES('5','11111111','1','admin','1354763210','2','11','22.01','用户充值,支付宝号:11111111','');
+INSERT INTO met_shop_journal VALUES('6','2012120675358362','1','admin','1354776863','2','0.01','22.02','用户充值,支付宝号:2012120675358362','');
+INSERT INTO met_shop_journal VALUES('7','2012120675375362','1','admin','1354777520','2','0.01','22.03','用户充值,支付宝号:2012120675375362','');
+INSERT INTO met_shop_journal VALUES('8','11111111','1','admin','1354777557','2','11','33.03','用户充值,支付宝号:11111111','');
+INSERT INTO met_shop_journal VALUES('9','2012120675507162','1','admin','1354780390','2','0.01','33.04','用户充值,支付宝号:2012120675507162','');
+
+DROP TABLE IF EXISTS met_shop_balance;
+CREATE TABLE `met_shop_balance` (
+  `id` int(11) NOT NULL auto_increment,
+  `userid` int(11) NOT NULL,
+  `balance` double NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO met_shop_balance VALUES('1','1','33.04');
+

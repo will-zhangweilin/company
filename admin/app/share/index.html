@@ -1,0 +1,99 @@
+<!--<?php
+
+require_once template('head');
+echo <<<EOT
+-->
+</head>
+<!--
+EOT;
+$title="分享修改";
+$rurl="../dlapp/index.php?anyid={$anyid}&lang={$lang}";
+require_once template('metlangs');
+echo <<<EOT
+-->
+<body>
+<style type="text/css">
+textarea.gens{width:70% !important;height:150px;}
+</style>
+<form method="POST" name="myform" action="../share/index.php?anyid={$anyid}&lang={$lang}&cs={$cs}" target="_self">
+<input name="action" type="hidden" value="modify" />
+<table cellpadding="2" cellspacing="1" class="table">
+	<tr> 
+		<td class="text">百度分享代码生成地址：</td>
+		<td class="input"><a href="http://share.baidu.com/" target="_blank">http://share.baidu.com/</a></td>
+	</tr>
+	<tr> 
+		<td class="text">JiaThis分享代码生成地址：</td>
+		<td class="input"><a href="http://www.jiathis.com/" target="_blank">http://www.jiathis.com/</a></td>
+	</tr>
+	<tr> 
+		<td class="text"></td>
+		<td class="input">请从以上网站获取所需代码复制到下面输入框中</td>
+	</tr>
+	<tr> 
+		<td class="text">当前编辑语言：</td>
+		<td class="input">
+<!--
+EOT;
+foreach($met_langok as $key=>$val){
+if($val[mark]==$lang){
+echo <<<EOT
+-->
+	<label>{$val[name]}</label>&nbsp;&nbsp;
+<!--
+EOT;
+}
+}
+echo <<<EOT
+-->
+注：每种语言需要单独添加代码,请点击右上角语言切换。
+		</td>
+	</tr>
+	<tr> 
+		<td class="text">侧栏式（左侧浮窗）</td>
+		<td class="input">
+		<label><input name="met_jiathis_ok" type="radio" class="radio" value="1" $met_jiathis_ok1[1] >{$lang_open}</label>
+		&nbsp;&nbsp;
+		<label><input name="met_jiathis_ok" type="radio" class="radio" value="0" $met_jiathis_ok1[0] >{$lang_close}</label>
+		</td>
+	</tr>
+	<tr> 
+		<td class="text"></td>
+		<td class="input"><textarea name="met_jiathis_code" cols="100" rows="50" class="textarea gens">$met_jiathis_code</textarea></td>
+	</tr>
+	<tr> 
+		<td class="text">工具式（将显示在各模块内容页底部）</td>
+		<td class="input">
+		<label><input name="met_tools_ok" type="radio" class="radio" value="1" $met_tools_ok1[1] >{$lang_open}</label>
+		&nbsp;&nbsp;
+		<label><input name="met_tools_ok" type="radio" class="radio" value="0" $met_tools_ok1[0] >{$lang_close}</label>
+		</td>
+	</tr> 
+	<tr> 
+		<td class="text"></td>
+		<td class="input"><textarea name="met_tools_code" cols="50" rows="10" class="textarea gens">$met_tools_code</textarea></td>
+	</tr> 
+	<tr> 
+		<td class="text">使用注意事项</td>
+		<td class="input">
+		1.如在内容管理->其他内容（备用字段）->第三方代码处添加过分享工具，请先删除，以免造成冲突。<br/>
+		2.自行修改模板文件，程序文件添加的分享，可能会产生冲突。
+		</td>
+	</tr> 
+	<tr>
+		<td class="text"></td>
+		<td class="submit">
+			<input type="submit" name="submit" value="{$lang_Submit}" class="submit" onclick="return Smit($(this),'myform')" />
+		</td>
+    </tr>   
+	<tr>
+		  <td class="footer" colspan="9">$foot</td>
+	  </tr>
+</table>
+</form>
+</body>
+</html>
+<!--
+EOT;
+
+?>-->

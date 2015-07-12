@@ -1,0 +1,7 @@
+<?php
+ $strs=array (
+  0 => 'admin/app/ico/index.php',
+  1 => 'admin/app/ico/index.html',
+  2 => 'update.php',
+  3 => 'sql.sql',
+); ?>
